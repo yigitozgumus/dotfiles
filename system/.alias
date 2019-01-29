@@ -1,1 +1,7 @@
-/Users/yigitozgumus/.alias
+# Mac
+alias show_all='defaults write com.apple.finder AppleShowAllFiles YES ; killall Finder'
+alias hide_all='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
+
+# Dotfile
+#
+alias dotfile='cd ~/dev/dotfiles; vim ; cd'
