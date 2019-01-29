@@ -1,5 +1,12 @@
-dotfiles=(  ".gitconfig" ".bash_profile")
-system=(".alias" ".functions" ".exports" ".env")
+dotfiles=(
+    "init.vim"
+    ".gitconfig"
+    ".bash_profile")
+system=(
+    ".alias" 
+    ".functions"
+    ".exports"
+    ".env")
 dir="${HOME}/dev/dotfiles"
 dir_system="${HOME}/dev/dotfiles/system"
 

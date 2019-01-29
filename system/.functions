@@ -7,9 +7,9 @@ laod_env(){
 deload(){
     conda deactivate
 }
+# Thesis Server Connection
 
 thesis(){
-
 if [ $1 -eq 1 ]; then
      echo 'Connecting to Server'
      # This part will connect to the remote machine and run the .jpt script inside a tmux session
@@ -27,4 +27,14 @@ if [ $1 -eq 1 ]; then
      pkill -n  ssh -N -f -L
      echo 'Environment is closed'
  fi
+}
+
+# Mac related Functions
+
+remove_dmg(){
+    cd ~/Downloads/ ; rm -rf *.dmg ; cd
+}
+
+clean_trash(){
+    cd ~/.Trash ; rm -rf * ; cd
 }
