@@ -5,3 +5,4 @@ alias hide_all='defaults write com.apple.finder AppleShowAllFiles NO;  killall F
 # Dotfile
 #
 alias dotfile='cd ~/dev/dotfiles; vim ; cd'
+alias topcoder='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'

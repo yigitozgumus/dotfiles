@@ -7,27 +7,6 @@ laod_env(){
 deload(){
     conda deactivate
 }
-# Thesis Server Connection
-
-thesis(){
-if [ $1 -eq 1 ]; then
-     echo 'Connecting to Server'
-     # This part will connect to the remote machine and run the .jpt script inside a tmux session
-     sshpass -p M0g0f0g0 ssh -t  yigit@131.175.15.12 tmux new -s remote -d "./.jpt"
-     echo 'Starting to listen the server'
-     # This part will forward the port to the 8888 to open the connection through the browser
-     sshpass -p M0g0f0g0 ssh -N -f -L 'localhost':8888:'localhost':8889 yigit@131.175.15.12
-     echo 'Opening the Browser'
-     # open the browser with the address
-     open  -a '/Applications/Safari.app/' 'http://localhost:8888'
-     echo 'Environment is ready'
- elif [ $1 -eq 0 ]; then
-     echo 'Connecting to Server'
-     sshpass -p M0g0f0g0 ssh -t  yigit@131.175.15.12 tmux kill-session -t remote;
-     pkill -n  ssh -N -f -L
-     echo 'Environment is closed'
- fi
-}
 
 # Mac related Functions
 
