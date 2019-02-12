@@ -1,6 +1,5 @@
 # python functions
-laod_env(){
-
+load_env(){
     conda activate $1
 }
 

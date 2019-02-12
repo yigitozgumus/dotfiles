@@ -1,4 +1,5 @@
 dotfiles=(
+    ".vimrc"
     ".gitconfig"
     ".bash_profile")
 system=(

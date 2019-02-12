@@ -1,8 +1,14 @@
+# General
+alias jl='jupyter lab'
+alias jn='jupyter notebook'
+alias v='vim'
+alias nv='nvim'
 # Mac
 alias show_all='defaults write com.apple.finder AppleShowAllFiles YES ; killall Finder'
 alias hide_all='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
 
-# Dotfile
-#
+# Shortcutse
+alias iv='cd ~/Desktop/interview/; load_env interview; vim'
 alias dotfile='cd ~/dev/dotfiles; vim ; cd'
-alias topcoder='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'
+alias topcoder='open ~/topcoder.jnlp'
+alias topcoder_w='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'
