@@ -21,10 +21,26 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen installation
 execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+Plug 'junegunn/goyo.vim'
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+"" Initialize plugin system
+call plug#end()
 
 " Set compatibility to Vim only.
 set nocompatible
 
+"Ruby setup installation
+"
+let $RUBYHOME=$HOME."/.rbenv/versions/2.6.1"
+set rubydll=$HOME/.rbenv/versions/2.6.1/lib/libruby.2.6.1.dylib"
+
+" For markdown rendering
+let vim_markdown_preview_pandoc=1
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -139,15 +155,10 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable 
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+" Enable full color support for iTerm
+set term=xterm-256color
 
-try
-    colorscheme desert
-catch
-endtry
+colorscheme PaperColor
 
 set background=dark
 
@@ -222,6 +233,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Wrapped lines goes down/up to next row, rather than next line in file.
+noremap j gj
+noremap k gk
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
@@ -230,7 +245,8 @@ map <leader>ba :bufdo bd<cr>
 
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
-
+map <leader>hh :tabprevious<cr>
+map <leader>ll :tabnext<cr>
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -305,4 +321,48 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin Specific Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NerdTree"
+map <C-e> <plug>NERDTreeTabsToggle<CR>
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
+
+let g:NERDTreeNodeDelimiter = "\u00a0"
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=1
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
+
+" Goyo
+let g:goyo_width=120
+map <leader>gg :Goyo<cr>
+function! s:goyo_enter()
+""  silent !tmux set status off
+""  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set number 
+  set noshowmode
+  set noshowcmd
+  NERDTreeToggle
+  set scrolloff=999
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  ""silent !tmux set status on
+  ""silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
