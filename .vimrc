@@ -20,26 +20,30 @@
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen installation
-""execute pathogen#infect()
+"execute pathogen#infect()
 call plug#begin('~/.vim/plugged')
-" Make sure you use single quotes
 Plug 'junegunn/goyo.vim'
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'junegunn/vim-easy-align'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
-Plug 'davidhalter/jedi-vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+""Plug 'davidhalter/jedi-vim'
 Plug 'luochen1990/rainbow'
+Plug 'lervag/vimtex'
 Plug 'godlygeek/tabular'
 "" Initialize plugin system
 call plug#end()
 
 " Set compatibility to Vim only.
 set nocompatible
-
-"Ruby setup installation
+let g:python_highlight_all = 1
+""Ruby setup installation
 "
 let $RUBYHOME=$HOME."/.rbenv/versions/2.6.1"
 set rubydll=$HOME/.rbenv/versions/2.6.1/lib/libruby.2.6.1.dylib"
@@ -148,6 +152,7 @@ set tm=500
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
+    set guifont=Monaco:h12
 endif
 
 
@@ -191,7 +196,8 @@ set nobackup
 set nowb
 set noswapfile
 
-
+" Python mode lint check disable
+let g:pymode_lint_on_write = 0"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -446,13 +452,14 @@ let g:mkdp_highlight_css = ''
 " use a custom port to start server or random for empty
 let g:mkdp_port = ''
 " Python Settings"
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=mac
+" Latex settings"
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'
+"Ultisnipts 
+"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical""

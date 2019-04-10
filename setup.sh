@@ -3,7 +3,7 @@ dotfiles=(
     ".gitconfig"
     ".bash_profile")
 system=(
-    ".alias" 
+    ".alias"
     ".functions"
     ".exports"
     ".env")

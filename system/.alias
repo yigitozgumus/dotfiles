@@ -3,12 +3,25 @@ alias jl='jupyter lab'
 alias jn='jupyter notebook'
 alias v='vim'
 alias nv='nvim'
+alias mvim='/usr/local/Cellar/macvim/8.1-155/MacVim.app/Contents/bin/mvim'
+# Command Shortcuts
+alias tt='tmux attach -t'
+alias tls='tmux ls'
+alias tmx='tmuxinator'
+alias tkill='tmux kill-session -t'
 # Mac
 alias show_all='defaults write com.apple.finder AppleShowAllFiles YES ; killall Finder'
 alias hide_all='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
 
 # Shortcutse
-alias iv='cd ~/Desktop/interview/; load_env interview; vim'
-alias dotfile='cd ~/dev/dotfiles; vim ; cd'
+alias iv='cd ~/Desktop/interview/; load_env interview; vim; cd'
+alias dotfile='cd ~/dev/dotfiles; vim ; cd; deload'
 alias topcoder='open ~/topcoder.jnlp'
 alias topcoder_w='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'
+alias ths='cd ~/dev/Polimi_Thesis ; load_env school ; vim; cd'
+alias slive='bundle exec jekyll serve'
+
+
+# Python related ones
+alias sp36='brew switch python 3.6.5_1'
+alias sp37='brew switch python 3.7.2_2'
