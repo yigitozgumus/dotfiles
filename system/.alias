@@ -13,14 +13,14 @@ alias tkill='tmux kill-session -t'
 alias show_all='defaults write com.apple.finder AppleShowAllFiles YES ; killall Finder'
 alias hide_all='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
 
-# Shortcutse
+# Shortcuts
 alias iv='cd ~/Desktop/interview/; load_env interview; vim; cd'
 alias dotfile='cd ~/dev/dotfiles; vim ; cd; deload'
 alias topcoder='open ~/topcoder.jnlp'
 alias topcoder_w='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'
 alias ths='cd ~/dev/Polimi_Thesis ; load_env school ; vim; cd'
 alias slive='bundle exec jekyll serve'
-
+alias tlatex='cd ~/Google\ Drive/THESIS/Thesis_Document ; nv'
 
 # Python related ones
 alias sp36='brew switch python 3.6.5_1'

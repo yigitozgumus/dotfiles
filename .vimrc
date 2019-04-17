@@ -17,32 +17,37 @@
 "    -> Helper functions
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+" => Plugin Management
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen installation
-"execute pathogen#infect()
 call plug#begin('~/.vim/plugged')
+" Distraction free writing
 Plug 'junegunn/goyo.vim'
+" Python mode
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Alignment of the assignment statements
 Plug 'junegunn/vim-easy-align'
+" Bottom status bar plugin 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Tex Live Preview 
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+" Nerd Tree plugin for file traversing inside vim
 Plug 'scrooloose/nerdtree'
+" Colorschemes to not get bored
 Plug 'flazz/vim-colorschemes'
+" Emmet Plugin for the web development stuff
 Plug 'mattn/emmet-vim'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-""Plug 'davidhalter/jedi-vim'
-Plug 'luochen1990/rainbow'
+" Tex Plugin for vim
 Plug 'lervag/vimtex'
+" Better syntax highlighting for python 
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'davidhalter/jedi-vim'
+Plug 'luochen1990/rainbow'
 Plug 'godlygeek/tabular'
-"" Initialize plugin system
 call plug#end()
 
 " Set compatibility to Vim only.
 set nocompatible
-let g:python_highlight_all = 1
 ""Ruby setup installation
 "
 let $RUBYHOME=$HOME."/.rbenv/versions/2.6.1"
@@ -60,9 +65,6 @@ nmap <leader>w :w!<cr>
 
 " Helps force plug-ins to load correctly when it is turned back on below.
 filetype off
-
-" Turn on syntax highlighting.
-syntax on
 
 " Turn off modelines
 set modelines=0
@@ -159,7 +161,6 @@ endif
 " Add a bit extra margin to the left
 set foldcolumn=1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -168,9 +169,7 @@ syntax enable
 
 " Enable full color support for iTerm
 set term=xterm-256color
-
 colorscheme PaperColor
-
 set background=dark
 
 " Set extra options when running in GUI mode
@@ -187,6 +186,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+let g:python_highlight_all = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -236,6 +236,12 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 map <space> /
 map <c-space> ?
 
+" Arrows are no no
+map <left> :echo "Don't use arrow keys, you are in vim."<cr>
+map <right> :echo "Don't use arrow keys, you are in vim."<cr>
+map <up> :echo "Don't use arrow keys, you are in vim."<cr>
+map <down> :echo "Don't use arrow keys, you are in vim."<cr>
+
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
@@ -249,6 +255,8 @@ map <C-l> <C-W>l
 noremap j gj
 noremap k gk
 
+" Enable folding with the spacebar
+nnoremap <leader> za
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
@@ -338,8 +346,7 @@ map <leader>s? z=
 " => Plugin Specific Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree"
-map <C-e> :NERDTreeToggle<CR>
-map <leader>e :NERDTreeFind<CR>
+map <leader>e :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
 let g:NERDTreeNodeDelimiter = "\u00a0"
@@ -463,3 +470,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical""
+" Jedi mode settings
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#use_splits_not_buffers = "left"
+let g:pymode_rope = 0

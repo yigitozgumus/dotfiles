@@ -7,6 +7,8 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'junegunn/vim-easy-align'
 Plug 'ambv/black'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'drewtempelmeyer/palenight.vim'"
+Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
@@ -16,6 +18,8 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'donRaphaco/neotex', { 'for': 'tex' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi',
+Plug 'davidhalter/jedi-vim',
 Plug 'honza/vim-snippets'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'vim-airline/vim-airline'
@@ -245,9 +249,9 @@ syntax enable
 " Enable full color support for iTerm
 "set term=xterm-256color
 
-colorscheme PaperColor
-
+set t_Co=256
 set background=dark
+colorscheme palenight
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -310,6 +314,11 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 map <c-space> ?
+" Arrows are no no
+map <left> :echo "Don't use arrow keys, you are in vim."<cr>
+map <right> :echo "Don't use arrow keys, you are in vim."<cr>
+map <up> :echo "Don't use arrow keys, you are in vim."<cr>
+map <down> :echo "Don't use arrow keys, you are in vim."<cr>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -413,8 +422,7 @@ map <leader>s? z=
 " => Plugin Specific Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree"
-map <C-e> :NERDTreeToggle<CR>
-map <leader>e :NERDTreeFind<CR>
+map <leader>e :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
 let g:NERDTreeNodeDelimiter = "\u00a0"
@@ -651,3 +659,25 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Ulti snips configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Markdown configuration regarding latex
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_new_list_item_indent = 2
+" Latex Settings
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+" COlorscheme settings
+let g:lightline.colorscheme = 'palenight'
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
