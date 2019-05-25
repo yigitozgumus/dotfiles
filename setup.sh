@@ -1,8 +1,10 @@
 dotfiles=(
     ".vimrc"
+    ".vimrc.core"
     ".gitconfig"
     ".chunkvmrc"
     ".skhdrc"
+    ".ctags"
     ".bash_profile")
 system=(
     ".alias"

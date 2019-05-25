@@ -12,7 +12,8 @@ alias tkill='tmux kill-session -t'
 # Mac
 alias show_all='defaults write com.apple.finder AppleShowAllFiles YES ; killall Finder'
 alias hide_all='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
-
+alias menu_hide='defaults write NSGlobalDomain _HIHideMenuBar -bool true; killall -KILL SystemUIServer'
+alias menu_show='defaults write NSGlobalDomain _HIHideMenuBar -bool false; killall -KILL SystemUIServer'
 # Shortcuts
 alias iv='cd ~/Desktop/interview/; load_env interview; vim; cd'
 alias dotfile='cd ~/dev/dotfiles; vim ; cd; deload'
@@ -25,3 +26,6 @@ alias tlatex='cd ~/Google\ Drive/THESIS/Thesis_Document ; nv'
 # Python related ones
 alias sp36='brew switch python 3.6.5_1'
 alias sp37='brew switch python 3.7.2_2'
+alias python_cheatsheet='open -a "/Applications/Macdown.app/" "dev/Python_Cheatsheet.md"'
+alias thesis_notebook='ssh -N -f -L 'localhost':8895:'localhost':8889 yigito19@131.175.15.12'
+ctags=/usr/local/bin/ctags
