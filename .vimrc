@@ -33,12 +33,22 @@ Plug 'godlygeek/tabular'
 Plug 'vim-python/python-syntax'
 Plug 'drewtempelmeyer/palenight.vim'"
 Plug 'rust-lang/rust.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'dracula/vim'
+Plug 'ternjs/tern_for_vim',{'do': 'npm install'}
+Plug 'ntk148v/vim-horizon'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Core Settings File
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:so /Users/yigitozgumus/.vimrc.core
+:so /Users/${USER}/.vimrc.core
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Specific Settings
@@ -46,7 +56,9 @@ call plug#end()
 
 " Enable full color support for iTerm
 set term=xterm-256color
-
+"colorscheme palenight
+colorscheme palenight
 " Ruby setup installation
 let $RUBYHOME=$HOME."/.rbenv/versions/2.6.1"
 set rubydll=$HOME/.rbenv/versions/2.6.1/lib/libruby.2.6.1.dylib"
+set omnifunc=syntaxcomplete#Complete

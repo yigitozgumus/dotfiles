@@ -2,8 +2,6 @@
 " Set compatibility to Vim only.
 set nocompatible
 
-
-
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -25,7 +23,7 @@ set modelines=0
 
 " Set cursor line and column
 set cursorline   
-set cursorcolumn 
+"set cursorcolumn 
 " Speed up scrolling in Vim
 set ttyfast
 
@@ -107,7 +105,6 @@ set foldcolumn=1
 set t_Co=256
 set background=dark
 
-colorscheme gruvbox
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -197,7 +194,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>t<leader> :tabnext<cr> 
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -392,6 +389,7 @@ let g:UltiSnipsEditSplit="vertical""
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
 let g:pymode_rope = 0
-nnoremap <leader>b :ls<cr>:b<space>
+map <leader>m :Buffers<CR>
 let g:polyglot_disabled = ['latex']
 set tags=tags
+let g:deoplete#enable_at_startup = 1

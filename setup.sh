@@ -1,3 +1,4 @@
+#!/bin/sh
 dotfiles=(
     ".vimrc"
     ".vimrc.core"
@@ -11,8 +12,8 @@ system=(
     ".functions"
     ".exports"
     ".env")
-dir="${HOME}/dev/dotfiles"
-dir_system="${HOME}/dev/dotfiles/system"
+dir="${HOME}/dev/own/dotfiles"
+dir_system="${HOME}/dev/own/dotfiles/system"
 
 #Get rid of the stock files
 mkdir -p "${HOME}/.backup"

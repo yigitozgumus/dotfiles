@@ -31,7 +31,7 @@ open_interview(){
     tmx start interview
 }
 
-jupy_lab(){
+jlab(){
     var="$1"
     if [ -z "$var" ]
     then
@@ -39,6 +39,19 @@ jupy_lab(){
         open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:8888"
     else
         jupyter lab --no-browser --port="$var" | sleep 4 |
+        open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$var"
+   
+    fi
+}
+
+jnote(){
+    var="$1"
+    if [ -z "$var" ]
+    then
+        jupyter notebook --no-browser --port=8888 | sleep 4 |
+        open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:8888"
+    else
+        jupyter notebook --no-browser --port="$var" | sleep 4 |
         open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$var"
    
     fi
