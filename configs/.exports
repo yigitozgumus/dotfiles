@@ -15,7 +15,7 @@ export PATH=$PATH:$PYTHON_UTILS
 export PATH="/usr/local/opt/python/libexec/bin:/usr/local/sbin:$PATH"
 #Virtualenvwrapper
 export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/dev"
+export PROJECT_HOME="$HOME/cs/dev"
 source /usr/local/bin/virtualenvwrapper.sh
 #Flutter path
 export PATH="$PATH:$HOME/flutter/bin"
