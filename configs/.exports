@@ -1,21 +1,32 @@
 export EDITOR='nvim'
 export PATH="$HOME/.cargo/bin:$PATH"
+
 # Ruby installation
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/Cellar/ruby/2.6.3/lib"
 export CPPFLAGS="-I/usr/local/Cellar/ruby/2.6.3/include"
 export PKG_CONFIG_PATH="/usr/local/Cellar/ruby/2.6.3/lib/pkgconfig"
 export PATH="$PATH:/usr/local/lib/ruby/gems/2.6.0/bin"
+
 #Spark
 export SPARK_HOME=/usr/local/spark
 export PATH=$SPARK_HOME/bin:$PATH
+
 #Python Exercise Script
 export PYTHON_UTILS="$HOME/practise_repo/init"
 export PATH=$PATH:$PYTHON_UTILS
 export PATH="/usr/local/opt/python/libexec/bin:/usr/local/sbin:$PATH"
+
 #Virtualenvwrapper
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/cs/dev"
 source /usr/local/bin/virtualenvwrapper.sh
+
 #Flutter path
 export PATH="$PATH:$HOME/flutter/bin"
+
+# Go Installation
+export GOPATH="/Users/yigitozgumus/cs/go"
+export GO="/usr/local/Cellar/go/1.13.4"
+export GOROOT=$GO/libexec
+export PATH=$GO/bin:$GOPATH/bin:$PATH

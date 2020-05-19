@@ -32,6 +32,11 @@ open_interview(){
 }
 
 jlab(){
+    env=$VIRTUAL_ENV
+    if [ -z "$env" ] 
+    then
+        workon ml
+    fi
     var="$1"
     if [ -z "$var" ]
     then
@@ -55,4 +60,8 @@ jnote(){
         open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$var"
    
     fi
+}
+
+colab_online(){
+    open -a /Applications/Google\ Chrome.app "https://colab.research.google.com"
 }

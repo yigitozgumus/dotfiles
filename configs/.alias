@@ -7,7 +7,7 @@ alias mvim='/usr/local/Cellar/macvim/8.1-155/MacVim.app/Contents/bin/mvim'
 alias r='ranger'
 alias lg='lazygit'
 alias zepp='cd ~; ./zeppelin/bin/zeppelin.sh'
-alias poly='./Users/yigitozgumus/polynote/polynote'
+alias poly='.$HOME/cs/polynote/polynote'
 
 # Command Shortcuts
 alias tt='tmux attach -t'

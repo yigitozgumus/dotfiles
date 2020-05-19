@@ -41,6 +41,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'

@@ -57,7 +57,7 @@ call plug#end()
 " Enable full color support for iTerm
 set term=xterm-256color
 "colorscheme palenight
-colorscheme palenight
+colorscheme gruvbox
 " Ruby setup installation
 let $RUBYHOME=$HOME."/.rbenv/versions/2.6.1"
 set rubydll=$HOME/.rbenv/versions/2.6.1/lib/libruby.2.6.1.dylib"
