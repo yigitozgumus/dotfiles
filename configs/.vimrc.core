@@ -32,7 +32,7 @@ set showmode
 set showcmd
 
 " Show line numbers
-set number
+set number relativenumber
 
 " Fast reloading for configuration change 
 map <leader>rr :source ~/.vimrc<CR>"

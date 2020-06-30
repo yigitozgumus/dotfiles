@@ -6,56 +6,40 @@
 " => Plugin Management
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'SirVer/ultisnips'
-Plug 'brooth/far.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'junegunn/vim-easy-align'
 Plug 'ambv/black'
 "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'drewtempelmeyer/palenight.vim'"
 "Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'donRaphaco/neotex', { 'for': 'tex' }
 Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-jedi',
-Plug 'davidhalter/jedi-vim',
 Plug 'honza/vim-snippets'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
 Plug 'tmhedberg/SimpylFold'
+Plug 'neoclide/coc.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dracula/vim'
-Plug 'ayu-theme/ayu-vim' " or other package manager
-Plug 'flrnprz/plastic.vim'
-Plug 'sainnhe/vim-color-forest-night'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,11 +54,8 @@ map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 " => Plugin Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"colorscheme gruvbox
-"colorscheme palenight
+colorscheme gruvbox
 set termguicolors
-let ayucolor="dark"
-colorscheme palenight
 " Python Settings"
 let g:deoplete#auto_complete_delay = 100
 let g:black_linelength = 100
@@ -100,13 +81,12 @@ let g:vim_markdown_new_list_item_indent = 2
 "set conceallevel=1
 "let g:tex_conceal='abdmg'
 
-" COlorscheme settings
+" Colorscheme settings
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-let g:semshi#no_default_builtin_highlight = 0
 let g:python_highlight_all = 1
 nnoremap <silent>  <leader>b :ls<cr>:b<space>
 nnoremap <silent> <leader>t :TagbarToggle<CR>
@@ -141,8 +121,9 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nnoremap <C-p> :GFiles<CR>
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
