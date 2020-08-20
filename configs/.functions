@@ -65,3 +65,58 @@ jnote(){
 colab_online(){
     open -a /Applications/Google\ Chrome.app "https://colab.research.google.com"
 }
+
+# Git based functions
+rebase(){
+    var=$1
+    git rebase -i @~$var
+}
+
+change(){
+    git add .
+    git commit --amend
+}
+
+step_forward(){
+    git rebase --continue
+}
+
+go_to_local(){
+    branch=`git branch --show-current`
+    local="_local"
+    local_branch="$branch$local"
+    echo "Switching to local copy"
+    git checkout -b $local_branch
+    echo "Cherry picking the given commits"
+    for i in "$@"
+    do 
+    echo $i # add web hook line to here
+    done
+}
+
+copy_to_original(){
+    # get the original branch name
+    echo "Patching things to original branch...\n"
+    local_branch=`git branch --show-current`
+    length=$( expr ${#local_branch} - 6 )
+    original_branch=`echo $local_branch | cut -c-$length`
+    echo "Original branch is $original_branch\n"
+    
+    echo "Switched to original branch\n"
+    author=`git config user.name`
+    commits=`git log  $original_branch..$local_branch --pretty=format:'%H' --author $author`
+    echo "Commits from the local branches are:\n"
+    for commit in $commits; do
+        echo $commit
+    done
+    echo "Switching to original branch"
+    commits=(`echo $commits | tr '\n' ' '`)
+    git checkout $original_branch
+    for commit in $commits; do
+        cherry=`echo $commit | tr -d " "`;
+        if [ -n $cherry ]; then 
+            git cherry-pick $cherry
+        fi 
+    done
+    #git branch -D $local_branch
+}
