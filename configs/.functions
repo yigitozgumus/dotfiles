@@ -109,7 +109,7 @@ copy_to_original(){
     for commit in $commits; do
         echo $commit
     done
-    echo "Switching to original branch"
+    echo "Switching to original branch\n"
     commits=(`echo $commits | tr '\n' ' '`)
     git checkout $original_branch
     for commit in $commits; do
@@ -118,7 +118,11 @@ copy_to_original(){
             git cherry-pick $cherry
         fi 
     done
-    echo "Deleting Local branch"
-    git branch -D $local_branch
+
+    change=$1
+    if [ $change = '-d' ]; then
+        echo "Deleting Local branch"
+        git branch -D $local_branch
+    fi
 }
 
