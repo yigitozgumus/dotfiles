@@ -35,6 +35,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
+Plug 'morhetz/gruvbox'
 Plug 'tmhedberg/SimpylFold'
 Plug 'neoclide/coc.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -73,13 +74,6 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 2
-
-" Latex Settings
-"let g:tex_flavor = 'latex'
-"let g:vimtex_view_method='skim'
-"let g:vimtex_quickfix_mode=0
-"set conceallevel=1
-"let g:tex_conceal='abdmg'
 
 " Colorscheme settings
 if (has("nvim"))

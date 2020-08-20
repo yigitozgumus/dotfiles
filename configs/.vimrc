@@ -33,13 +33,6 @@ Plug 'godlygeek/tabular'
 Plug 'vim-python/python-syntax'
 Plug 'drewtempelmeyer/palenight.vim'"
 Plug 'rust-lang/rust.vim'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
 Plug 'dracula/vim'
 Plug 'ternjs/tern_for_vim',{'do': 'npm install'}
 Plug 'ntk148v/vim-horizon'
@@ -62,3 +55,4 @@ colorscheme gruvbox
 let $RUBYHOME=$HOME."/.rbenv/versions/2.6.1"
 set rubydll=$HOME/.rbenv/versions/2.6.1/lib/libruby.2.6.1.dylib"
 set omnifunc=syntaxcomplete#Complete
+let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
