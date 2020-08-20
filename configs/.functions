@@ -118,5 +118,5 @@ copy_to_original(){
             git cherry-pick $cherry
         fi 
     done
-    #git branch -D $local_branch
+    git branch -D $local_branch
 }
