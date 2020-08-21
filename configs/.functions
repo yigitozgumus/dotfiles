@@ -81,7 +81,11 @@ step_forward(){
     git rebase --continue
 }
 
-go_to_local(){
+ctlv(){
+    change_to_local_version $@
+}
+
+change_to_local_version(){
     branch=`git branch --show-current`
     local="_local"
     local_branch="$branch$local"
@@ -90,11 +94,15 @@ go_to_local(){
     echo "Cherry picking the given commits"
     for i in "$@"
     do 
-    echo $i # add web hook line to here
+        git cherry-pick $i # add web hook line to here
     done
 }
 
-copy_to_original(){
+bto(){
+ back_to_original $@   
+}
+
+back_to_original(){
     # get the original branch name
     echo "Patching things to original branch...\n"
     local_branch=`git branch --show-current`
