@@ -67,6 +67,14 @@ colab_online(){
 }
 
 # Git based functions
+
+PROJECT_NAME="ssh://ozgumusy@gerrit.pozitron.com:29418/Pegasus-Redesign-Android"
+
+send_to_review(){
+    branch=`git branch --show-current`
+    git push origin HEAD:refs/for/$branch
+}
+
 rebase(){
     var=$1
     git rebase -i @~$var
@@ -89,13 +97,21 @@ change_to_local_version(){
     branch=`git branch --show-current`
     local="_local"
     local_branch="$branch$local"
-    echo "Switching to local copy"
+    echo "Switching to local copy\n"
     git checkout -b $local_branch
-    echo "Cherry picking the given commits"
-    for i in "$@"
-    do 
-        git cherry-pick $i # add web hook line to here
-    done
+    if [ -z "$@"]; then
+        echo "\nOperation completed.\n"
+    else
+        echo "\nCherry picking the given commits\n"
+        for i in "$@"
+        do 
+            git fetch $PROJECT_NAME $i
+            git cherry-pick FETCH_HEAD  # add web hook line to here
+            echo "\n"
+        done
+        echo "\nOperation completed.\n"
+    fi
+    
 }
 
 bto(){
@@ -113,23 +129,34 @@ back_to_original(){
     echo "Switched to original branch\n"
     author=`git config user.name`
     commits=`git log  $original_branch..$local_branch --pretty=format:'%H' --author $author`
-    echo "Commits from the local branches are:\n"
-    for commit in $commits; do
-        echo $commit
-    done
+    if [ ! -z $commits ]; then
+        echo "Commits from the local branches are:\n"
+        commits=(`echo $commits | tr '\n' ' '`)
+        for (( idx=${#commits[@]} ; idx>=0 ; idx-- )) ; do
+            echo "${commits[idx]}"
+        done
+    fi
+    
     echo "Switching to original branch\n"
-    commits=(`echo $commits | tr '\n' ' '`)
+        
     git checkout $original_branch
-    for commit in $commits; do
+    if [ ! -z $commits ]; then
+        echo "\nCommits will be applied.\n"
+    fi
+   for (( idx=${#commits[@]} ; idx>=0 ; idx-- )) ; do
+        commit="${commits[idx]}"
         cherry=`echo $commit | tr -d " "`;
-        if [ -n $cherry ]; then 
-            git cherry-pick $cherry
-        fi 
+       if [ -z $cherry ]; then
+           echo "Commits are transferred.\n"
+       else
+           git cherry-pick $cherry
+           echo "\n"
+       fi
     done
 
     change=$1
     if [ $change = '-d' ]; then
-        echo "Deleting Local branch"
+        echo "Deleting Local branch\n"
         git branch -D $local_branch
     fi
 }
