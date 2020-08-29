@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # python functions
 load_env(){
     conda activate $1
@@ -23,42 +23,29 @@ open_session(){
     tmx start $1
 }
 
-# usage jlab ENVIRONMENT PORT
-jlab(){
-    if [ -z "$1"]; then
-        echo "Environment name must be given".
-    else
-        workon "$1"
-        var="$2"
-        if [ -z "$var" ]
-        then
-            jupyter lab --no-browser --port=8888 | sleep 4 |
-            open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:8888"
-        else
-            jupyter lab --no-browser --port="$var" | sleep 4 |
-            open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$var"
-        fi
+# usage jupy TYPE ENVIRONMENT PORT
+jupy(){
+    total_args="$#"
+    type="lab"
+    environment="root"
+    port="8888"
+    if [ -z $1 ]; then
+        echo "Environment name should not be empty"
+        echo "jupy ENVIRONMENT TYPE(default=lab) PORT(default=8888)"
+        return 0
     fi
+    environment=$1
+    if [ $total_args -eq "2" ]; then
+        type=$2
+    elif [ $total_args -eq "3" ]; then
+        port=$3
+    fi
+    workon $environment
+    jupyter $type --no-browser --port=$port | sleep 4 |
+    open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$port"
 }
 
-jnote(){
-    if [ -z "$1"]; then
-        echo "Environment name must be given".
-    else
-        workon "$1"
-        var="$2"
-        if [ -z "$var" ]
-        then
-            jupyter notebook --no-browser --port=8888 | sleep 4 |
-            open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:8888"
-        else
-            jupyter notebook --no-browser --port="$var" | sleep 4 |
-            open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$var"
-        fi
-    fi
-}
-
-colab(){
+colab_online(){
     open -a /Applications/Google\ Chrome.app "https://colab.research.google.com"
 }
 
