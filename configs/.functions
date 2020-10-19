@@ -40,7 +40,8 @@ jupy(){
     elif [ $total_args -eq "3" ]; then
         port=$3
     fi
-    workon $environment
+    workon $environment;
+    cd /Users/$USER/cs/notebooks/ 
     jupyter $type --no-browser --port=$port | sleep 4 |
     open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$port"
 }

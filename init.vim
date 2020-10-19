@@ -10,13 +10,13 @@ Plug 'derekwyatt/vim-scala'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'junegunn/vim-easy-align'
 Plug 'ambv/black'
-"Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-"Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'mxw/vim-jsx'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'godoctor/godoctor.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
@@ -40,6 +40,14 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'neoclide/coc.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dracula/vim'
+if !has('nvim')
+ Plug 'maralla/completor.vim' " or whichever you use
+endif
+if has('nvim')
+ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+ Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+ Plug 'jodosha/vim-godebug' " Debugger integration via delve
+endif
 
 call plug#end()
 
@@ -57,12 +65,16 @@ map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 
 colorscheme gruvbox
 set termguicolors
+
+
 " Python Settings"
-let g:deoplete#auto_complete_delay = 100
 let g:black_linelength = 100
+let g:python_highlight_all = 1
+
 " Airline theme additions
 let g:jsx_ext_required = 1
 let g:airline_powerline_fonts = 1
+
 " Vim Node 
 " Ulti snips configuration
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -81,7 +93,6 @@ if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-let g:python_highlight_all = 1
 nnoremap <silent>  <leader>b :ls<cr>:b<space>
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 let g:highlighter#syntax_python = [
@@ -134,6 +145,14 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Remap keys for line up and down
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

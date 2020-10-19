@@ -8,6 +8,7 @@ alias r='ranger'
 alias lg='lazygit'
 alias zepp='cd ~; ./zeppelin/bin/zeppelin.sh'
 alias poly='.$HOME/cs/polynote/polynote'
+alias dev='cd ~/cs/dev/own'
 
 # Command Shortcuts
 alias tt='tmux attach -t'

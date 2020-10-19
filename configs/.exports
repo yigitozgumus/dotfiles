@@ -27,6 +27,6 @@ export PATH="$PATH:$HOME/flutter/bin"
 
 # Go Installation
 export GOPATH="/Users/yigitozgumus/cs/go"
-export GO="/usr/local/Cellar/go/1.14.3"
+export GO="/usr/local/Cellar/go/1.14.7"
 export GOROOT=$GO/libexec
 export PATH=$GO/bin:$GOPATH/bin:$PATH
