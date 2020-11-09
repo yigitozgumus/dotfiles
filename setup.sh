@@ -5,7 +5,12 @@ CONFIG_FILES=$(find . -type f | awk -F"/" '$NF ~ /^\..*$/ {print $NF}')
 DOTFILE_DIR=$(pwd)
 NVIM_CONFIG="init.vim"
 OBSIDIAN_CONFIG="obsidian_sync"
-
+# Options
+if [[ $1 == '--no-git' ]]; then
+    echo "\\nGitconfig file is excluded\\n"
+    shopt -s extglob
+    CONFIG_FILES=`echo ${CONFIG_FILES//.gitconfig}`
+fi
 # Update the backup
 rm -rf "${HOME}/.backup"
 mkdir -p "${HOME}/.backup"
