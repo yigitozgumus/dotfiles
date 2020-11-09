@@ -6,7 +6,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export TERM="xterm-256color"
-DOTFILE_DIR="$HOME/cs/dev/own/dotfiles"
+
+# Dotfile management
+DOTFILE_DIR="$HOME/cs/dev/dotfiles"
 
 for DOTFILE in "$DOTFILE_DIR"/configs/.{env,alias,functions,exports}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
@@ -24,7 +26,14 @@ fi
 # Yarn path addition
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Python aliasing for version management
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
+# iTerm Integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export LC_CTYPE=en_US.UTF-8
@@ -38,7 +47,14 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
 export KEYTIMEOUT=1
+
+# Terminal theme
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

@@ -6,10 +6,12 @@ alias nv='nvim'
 alias mvim='/usr/local/Cellar/macvim/8.1-155/MacVim.app/Contents/bin/mvim'
 alias r='ranger'
 alias lg='lazygit'
+alias ldo='lazydocker'
 alias zepp='cd ~; ./zeppelin/bin/zeppelin.sh'
 alias poly='.$HOME/cs/polynote/polynote'
-alias dev='cd ~/cs/dev/own'
-
+alias dev='cd ~/cs/dev'
+alias vault='cd ~/Google\ Drive/Personal/Obsidian/Second\ Brain/'
+alias vault_setup='vault; code obsidian.css'
 # Command Shortcuts
 alias tt='tmux attach -t'
 alias ttt='tmux new-session -s'
@@ -24,8 +26,7 @@ alias menu_hide='defaults write NSGlobalDomain _HIHideMenuBar -bool true; killal
 alias menu_show='defaults write NSGlobalDomain _HIHideMenuBar -bool false; killall -KILL SystemUIServer'
 
 # Shortcuts
-alias dotfile='cd ~/cs/dev/own/dotfiles; nvim' 
-alias topcoder='open ~/topcoder.jnlp'
+alias dotfile='cd ~/cs/dev/dotfiles; nvim' 
 alias topcoder_w='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'
 alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'

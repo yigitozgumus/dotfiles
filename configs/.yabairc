@@ -43,4 +43,8 @@ yabai -m config left_padding                 10
 yabai -m config right_padding                10
 yabai -m config window_gap                   10
 
+# rules
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^iStat Menus$" manage=off
+
 echo "yabai configuration loaded.."
