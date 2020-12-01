@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-NOTES_PATH="/Users/yigitozgumus/Google Drive/Personal/Obsidian/Second Brain/"
+NOTES_PATH="/Users/yigitozgumus/Google Drive/Personal/Obsidian/"
 
 cd "$NOTES_PATH"
 

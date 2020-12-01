@@ -1,5 +1,6 @@
 # General
 alias jl='jupyter lab'
+alias please='sudo'
 alias jn='jupyter notebook'
 alias v='vim'
 alias nv='nvim'

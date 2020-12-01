@@ -27,8 +27,7 @@ fi
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Python aliasing for version management
-alias python=/usr/local/bin/python3
-alias pip=/usr/local/bin/pip3
+
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi

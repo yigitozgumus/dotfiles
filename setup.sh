@@ -4,7 +4,6 @@ CONFIG_FILES=$(find . -type f | awk -F"/" '$NF ~ /^\..*$/ {print $NF}')
 # Get the configuration directory
 DOTFILE_DIR=$(pwd)
 NVIM_CONFIG="init.vim"
-OBSIDIAN_CONFIG="obsidian_sync"
 # Options
 if [[ $1 == '--no-git' ]]; then
     echo "\\nGitconfig file is excluded\\n"
@@ -25,12 +24,6 @@ mv "${HOME}/.config/nvim/${NVIM_CONFIG}" "${HOME/.backup}"
 mv "${HOME}/.local/bin/${OBSIDIAN_CONFIG}" "${HOME/.backup}"
 
 echo "\\nAll old configuration files are backed up.\\n"
-
-# Obsidian repo sync
-ln -sv "${DOTFILE_DIR}/${OBSIDIAN_CONFIG}" "${HOME}/.local/bin"
-crontab -l
-echo "*/60 * * * * ${HOME}/.local/bin/${OBSIDIAN_CONFIG}" | sort - | uniq - | crontab -
-echo "\\nCronjob is added.\\n"
 
 for file in $CONFIG_FILES;do
     ln -sv "${DOTFILE_DIR}/configs/${file}" "${HOME}"

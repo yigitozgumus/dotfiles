@@ -1,14 +1,12 @@
 #!/bin/bash
-# python functions
-load_env() {
-    conda activate $1
-}
-
-deload() {
-    conda deactivate
-}
 
 # Mac related Functions
+# Formatting helpers
+FORMAT_INFO='\e[36m >> \e[39m\e[1m'
+FORMAT_DONE='\e[36m >> \e[1m'
+FORMAT_INSTALL='\e[36m >> \e[92m\e[1m'
+FORMAT_END='\e[0m'
+FORMAT_WARNING='\e[36m >> \e[91m'
 
 remove_dmg() {
     cd ~/Downloads/
@@ -29,13 +27,14 @@ open_session() {
 
 # usage jupy TYPE ENVIRONMENT PORT
 jupy(){
+
     total_args="$#"
     type="lab"
     environment="root"
     port="8888"
     if [ -z $1 ]; then
-        echo "Environment name should not be empty"
-        echo "jupy ENVIRONMENT TYPE(default=lab) PORT(default=8888)"
+        printf "${FORMAT_WARNING}Environment name should not be empty.\n${FORMAT_END}"
+        printf "${FORMAT_INFO}jupy ENVIRONMENT TYPE(default=lab) PORT(default=8888).\n${FORMAT_END}"
         return 0
     fi
     environment=$1
@@ -47,7 +46,7 @@ jupy(){
     workon $environment;
     cd /Users/$USER/cs/notebooks/ 
     jupyter $type --no-browser --port=$port | sleep 4 |
-    open -a /Applications/Safari\ Technology\ Preview.app "http://localhost:$port"
+    open -a /Applications/Safari.app "http://localhost:$port"
 }
 
 colab_online() {
@@ -85,18 +84,18 @@ change_to_local_version() {
     branch=$(git branch --show-current)
     local="_local"
     local_branch="$branch$local"
-    echo "Switching to local copy\n"
+    printf "${FORMAT_INFO}Switching to local copy\n${FORMAT_END}"
     git checkout -b $local_branch
     if [ -z "$@"]; then
-        echo "\nOperation completed.\n"
+        printf "${FORMAT_INFO}Operation completed.\n${FORMAT_END}"
     else
-        echo "\nCherry picking the given commits\n"
+        printf "${FORMAT_INFO}Cherry picking commits..\n${FORMAT_END}"
         for i in "$@"; do
             git fetch $PROJECT_NAME $i
             git cherry-pick FETCH_HEAD # add web hook line to here
             echo "\n"
         done
-        echo "\nOperation completed.\n"
+        printf "${FORMAT_INFO}Operation completed.\n${FORMAT_END}"
     fi
 
 }
