@@ -51,10 +51,9 @@ jupy(){
     elif [ $total_args -eq "3" ]; then
         port=$3
     fi
-    workon $environment;
-    cd /Users/$USER/cs/dev/notebooks/ 
+    load_env $environment;
     jupyter $type --no-browser --port=$port | sleep 4 |
-    open -a /Applications/Safari.app "http://localhost:$port"
+    open -a /Applications/Google\ Chrome.app "http://localhost:$port"
 }
 
 colab_online() {

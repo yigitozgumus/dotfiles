@@ -11,8 +11,11 @@ alias ldo='lazydocker'
 alias zepp='cd ~; ./zeppelin/bin/zeppelin.sh'
 alias poly='.$HOME/cs/polynote/polynote'
 alias dev='cd ~/cs/dev'
-alias vault='cd ~/Google\ Drive/Personal/Obsidian/Second\ Brain/'
+alias vault='cd ~/Google\ Drive/Personal/Obsidian/secondBrain'
 alias vault_setup='vault; code obsidian.css'
+alias website='cd ~/cs/dev/yigitozgumus.github.io; code .'
+alias website_nv='cd ~/cs/dev/yigitozgumus.github.io ; nv '
+alias post_lab='cd ~/cs/dev/yigitozgumus.github.io; load_env ml; jupy ml lab 8888'
 # Command Shortcuts
 alias tt='tmux attach -t'
 alias ttt='tmux new-session -s'
@@ -34,7 +37,7 @@ alias ccd='cd ;exa -i'
 #alias ls='exa'
 alias aws_spark='ssh -i "~/.ssh/Pyspark.pem" ec2-user@ec2-18-233-170-145.compute-1.amazonaws.com'
 alias jobs='cd ~/Google\ Drive/JOB\ HUNT; code .'
-alias lg='lazygit'
+
 
 # Python related ones
 alias sp36='brew switch python 3.6.5_1'
