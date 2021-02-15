@@ -21,7 +21,9 @@ for file in $CONFIG_FILES;do
 done
 
 #Nvim
-mv "${HOME}/.config/nvim/${NVIM_CONFIG}" "${HOME/.backup}"
+mv "${HOME}/.config/nvim/${NVIM_CONFIG}" "${HOME}/.backup"
+#Alacritty
+mv "${HOME}/.config/alacritty" "${HOME}/.backup"
 
 echo "\\nAll old configuration files are backed up.\\n"
 
@@ -33,3 +35,8 @@ echo "\\nConfiguration Files are linked.\\n"
 # Connect the nvim
 ln -sv "${DOTFILE_DIR}/configs/init.vim" "${HOME}/.config/nvim"
 echo "\\nNvim configurations are linked.\\n"
+
+# Connect alacritty
+mkdir -p "${HOME}/.config/alacritty"
+ln -sv "${DOTFILE_DIR}/configs/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
+ln -sv "${DOTFILE_DIR}/configs/color.yml" "${HOME}/.config/alacritty/color.yml"
