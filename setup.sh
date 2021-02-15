@@ -22,8 +22,12 @@ done
 
 #Nvim
 mv "${HOME}/.config/nvim/${NVIM_CONFIG}" "${HOME}/.backup"
+
 #Alacritty
 mv "${HOME}/.config/alacritty" "${HOME}/.backup"
+
+#Tmux
+mv "${HOME}/.tmux/.tmux.conf" "${HOME}/.backup"
 
 echo "\\nAll old configuration files are backed up.\\n"
 
@@ -40,3 +44,4 @@ echo "\\nNvim configurations are linked.\\n"
 mkdir -p "${HOME}/.config/alacritty"
 ln -sv "${DOTFILE_DIR}/configs/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
 ln -sv "${DOTFILE_DIR}/configs/color.yml" "${HOME}/.config/alacritty/color.yml"
+ln -sv "${DOTFILE_DIR}/.tmux.conf" "${HOME}/.tmux/.tmux.conf"
