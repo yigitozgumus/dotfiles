@@ -185,12 +185,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 map <space> /
 map <c-space> ?
 
-" Arrows are no no
-map <left> :echo "Don't use arrow keys, you are in vim."<cr>
-map <right> :echo "Don't use arrow keys, you are in vim."<cr>
-map <up> :echo "Don't use arrow keys, you are in vim."<cr>
-map <down> :echo "Don't use arrow keys, you are in vim."<cr>
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
@@ -199,10 +193,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" Wrapped lines goes down/up to next row, rather than next line in file.
-noremap j gj
-noremap k gk
 
 " Enable folding with the spacebar
 nnoremap <leader> za
@@ -309,7 +299,6 @@ function! s:goyo_enter()
   set number 
   set noshowmode
   set noshowcmd
-  NERDTreeClose
   set scrolloff=999
   " ...
 endfunction
@@ -568,8 +557,22 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+"function! StatusDiagnostic() abort
+"  let info = get(b:, 'coc_diagnostic_info', {})
+"  if empty(info) | return '' | endif
+"  let msgs = []
+"  if get(info, 'error', 0)
+"	call add(msgs, 'E' . info['error'])
+"  endif
+"  if get(info, 'warning', 0)
+"	call add(msgs, 'W' . info['warning'])
+"  endif
+"  return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
+"endfunction
+
 " Add line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}
+
 
 " Using CocList
 " Show all diagnostics
