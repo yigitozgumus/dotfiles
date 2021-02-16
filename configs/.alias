@@ -18,8 +18,6 @@ alias website_nv='cd ~/cs/dev/yigitozgumus.github.io ; nv '
 alias post_lab='cd ~/cs/dev/yigitozgumus.github.io; load_env ml; jupy ml lab 8888'
 # Replacements
 alias code='code-insiders'
-alias v='nv'
-alias vim='nv'
 
 # Command Shortcuts
 alias tt='tmux attach -t'

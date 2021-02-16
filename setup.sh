@@ -28,6 +28,8 @@ mv "${HOME}/.config/alacritty" "${HOME}/.backup"
 
 #Tmux
 mv "${HOME}/.tmux/.tmux.conf" "${HOME}/.backup"
+mv "${HOME}/.tmux/tmux-dark.conf" "${HOME}/.backup"
+mv "${HOME}/.tmux/tmux-light.conf" "${HOME}/.backup"
 
 echo "\\nAll old configuration files are backed up.\\n"
 
@@ -43,5 +45,8 @@ echo "\\nNvim configurations are linked.\\n"
 # Connect alacritty
 mkdir -p "${HOME}/.config/alacritty"
 ln -sv "${DOTFILE_DIR}/configs/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
-ln -sv "${DOTFILE_DIR}/configs/color.yml" "${HOME}/.config/alacritty/color.yml"
+cp "${DOTFILE_DIR}/configs/color.yml" "${HOME}/.config/alacritty/color.yml"
+# Tmux
 ln -sv "${DOTFILE_DIR}/.tmux.conf" "${HOME}/.tmux/.tmux.conf"
+cp "${DOTFILE_DIR}/tmux-dark.conf" "${HOME}/.tmux/tmux-dark.conf"
+cp "${DOTFILE_DIR}/tmux-light.conf" "${HOME}/.tmux/tmux-light.conf"

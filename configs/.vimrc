@@ -95,8 +95,31 @@ endif
 syntax enable
 set t_Co=256
 let g:rehash256 = 1
-let g:molokai_original = 1
-colorscheme molokai
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_light = "hard"
+
+" ChangeBackground changes the background mode based on macOS's `Appearance`
+" setting. We also refresh the statusline colors to reflect the new mode.
+function! ChangeBackground()
+  if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+    set background=dark   " for dark version of theme
+  else
+    set background=light  " for light version of theme
+  endif
+  colorscheme gruvbox
+
+  try
+    execute "AirlineRefresh"
+  catch
+  endtry
+endfunction
+
+" initialize the colorscheme for the first run
+call ChangeBackground()
 
 """"""""""""""""""""""
 "      Mappings      "
@@ -181,12 +204,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 map <c-space> ?
-
-" Arrows are no no
-map <left> :echo "Don't use arrow keys, you are in vim."<cr>
-map <right> :echo "Don't use arrow keys, you are in vim."<cr>
-map <up> :echo "Don't use arrow keys, you are in vim."<cr>
-map <down> :echo "Don't use arrow keys, you are in vim."<cr>
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -322,6 +339,21 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"=====================================================
+"===================== STATUSLINE ====================
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '%Y-%m-%d %H:%M',
+      \'z'    : ' #h',
+      \'options' : {'status-justify' : 'left', 'status-position' : 'top'}}
+
+let g:tmuxline_powerline_separators = 0
+
 
 
 
