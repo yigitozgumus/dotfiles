@@ -249,11 +249,11 @@ change_background(){
     #         done
     # done
 
-    if [[ "$MODE" == "dark" ]]; then
-        tmux source-file ~/.tmux/tmux-dark.conf
-    else
-        tmux source-file ~/.tmux/tmux-light.conf
-    fi
+    #if [[ "$MODE" == "dark" ]]; then
+    #    tmux source-file ~/.tmux/tmux-dark.conf
+    #else
+    #    tmux source-file ~/.tmux/tmux-light.conf
+    #fi
     if [[ "$MODE" == "light" ]]; then
         `alacritty_theme gruvbox_light`
     else
