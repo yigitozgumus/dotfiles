@@ -218,6 +218,18 @@ alacritty_theme(){
     sed -i "" -e "s#^colors: \*.*#colors: *$1#g" $CONFIG_PATH ;
 }
 
+lazygit_theme(){
+    if [ -z "~/Library/ApplicationSupport/jesseduffield/lazygit/config.yml" ]; then
+        echo "file doesn't exist."
+        return 0
+    fi
+    CONFIG_PATH="$HOME/Library/ApplicationSupport/jesseduffield/lazygit/config.yml"
+    if [[ "$1" == "light" ]]; then
+        sed -i -e 's/--dark/--light/g' $CONFIG_PATH
+    else
+        sed -i -e 's/--light/--dark/g' $CONFIG_PATH
+    fi
+}
 
 change_background(){
     local MODE="light"
@@ -258,5 +270,11 @@ change_background(){
         `alacritty_theme gruvbox_light`
     else
         `alacritty_theme gruvbox_dark`
+    fi
+
+    if [[ "$MODE" == "light" ]]; then
+        `lazygit_theme light`
+    else
+        `lazygit_theme dark`
     fi
 }
