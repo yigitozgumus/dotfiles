@@ -33,12 +33,12 @@ function change_background --argument mode_setting
   end
 
   # change tmux
-  #  switch $mode
-  #    case dark
-  #      tmux source-file ~/.tmux/tmux-dark.conf
-  #    case light
-  #      tmux source-file ~/.tmux/tmux-light.conf
-  #  end
+    switch $mode
+      case dark
+        tmux source-file ~/.tmux-dark.conf
+      case light
+        tmux source-file ~/.tmux-light.conf
+    end
 
   # change alacritty
   switch $mode
@@ -46,5 +46,13 @@ function change_background --argument mode_setting
       alacritty-theme gruvbox_dark
     case light
       alacritty-theme gruvbox_light
+  end
+  
+  # change lazygit
+  switch $mode
+    case dark
+      lazygit_theme dark
+    case light
+      lazygit_theme light
   end
 end

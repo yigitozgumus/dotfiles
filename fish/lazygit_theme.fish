@@ -10,5 +10,4 @@ function lazygit_theme --argument theme
         case dark
             sed -i -e 's/--light/--dark/g' $config_path
         end
-    end
 end

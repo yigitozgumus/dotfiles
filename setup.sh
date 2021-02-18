@@ -11,6 +11,7 @@ if [[ $1 == '--no-git' ]]; then
     shopt -s extglob
     CONFIG_FILES=`echo ${CONFIG_FILES//.gitconfig}`
 fi
+CONFIG_FILES=`echo ${CONFIG_FILES//.tmux.conf.local}`
 # Update the backup
 rm -rf "${HOME}/.backup"
 mkdir -p "${HOME}/.backup"
@@ -48,7 +49,8 @@ cp "${DOTFILE_DIR}/configs/alacritty.yml" "${HOME}/.config/alacritty/alacritty.y
 cp "${DOTFILE_DIR}/configs/color.yml" "${HOME}/.config/alacritty/color.yml"
 
 # Tmux
-cd ~
-git clone https://github.com/gpakosz/.tmux.git
-ln -sv "${HOME}/.tmux/.tmux.conf" "${HOME}/.tmux.conf"
-cp "${DOTFILE_DIR}/.tmux.conf.local" .
+ln -sv "${DOTFILE_DIR}/tmux-dark.conf" "${HOME}/.tmux-dark.conf"
+ln -sv "${DOTFILE_DIR}/tmux-light.conf" "${HOME}/.tmux-light.conf"
+
+# Fish
+cp -r "${DOTFILE_DIR}/fish/." "${HOME}/.config/fish/functions"
