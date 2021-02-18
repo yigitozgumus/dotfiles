@@ -27,9 +27,9 @@ mv "${HOME}/.config/nvim/${NVIM_CONFIG}" "${HOME}/.backup"
 mv "${HOME}/.config/alacritty" "${HOME}/.backup"
 
 #Tmux
-#mv "${HOME}/.tmux/.tmux.conf" "${HOME}/.backup"
-#mv "${HOME}/.tmux/tmux-dark.conf" "${HOME}/.backup"
-#mv "${HOME}/.tmux/tmux-light.conf" "${HOME}/.backup"
+mv "${HOME}/.tmux/" "${HOME}/.backup"
+rm -f "${HOME}/.tmux.conf"
+rm -f "${HOME}/.tmux.conf.local"
 
 echo "\\nAll old configuration files are backed up.\\n"
 
@@ -46,9 +46,9 @@ echo "\\nNvim configurations are linked.\\n"
 mkdir -p "${HOME}/.config/alacritty"
 cp "${DOTFILE_DIR}/configs/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
 cp "${DOTFILE_DIR}/configs/color.yml" "${HOME}/.config/alacritty/color.yml"
+
 # Tmux
-#mkdir -p "${HOME}/.tmux"
-#ln -sv "${DOTFILE_DIR}/.tmux.conf" "${HOME}/.tmux/.tmux.conf"
-#cp "${DOTFILE_DIR}/tmux-dark.conf" "${HOME}/.tmux/tmux-dark.conf"
-#cp "${DOTFILE_DIR}/tmux-light.conf" "${HOME}/.tmux/tmux-light.conf"
-#cp "${DOTFILE_DIR}/tmuxconf" "${HOME}/.tmux/.tmux.conf"
+cd ~
+git clone https://github.com/gpakosz/.tmux.git
+ln -sv "${HOME}/.tmux/.tmux.conf" "${HOME}/.tmux.conf"
+cp "${DOTFILE_DIR}/.tmux.conf.local" .
