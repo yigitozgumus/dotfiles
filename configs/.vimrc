@@ -23,7 +23,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
 " Tex Plugin for vim
 Plug 'lervag/vimtex'
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 " Better syntax highlighting for python 
 Plug 'davidhalter/jedi-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -122,6 +122,9 @@ endfunction
 " initialize the colorscheme for the first run
 call ChangeBackground()
 
+" change the color scheme if we receive a SigUSR1
+autocmd SigUSR1 * call ChangeBackground()
+
 augroup filetypedetect
   command! -nargs=* -complete=help Help vertical belowright help <args>
   autocmd FileType help wincmd L
@@ -147,6 +150,21 @@ augroup filetypedetect
   autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
+
+"=====================================================
+"===================== STATUSLINE ====================
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '%Y-%m-%d %H:%M',
+      \'z'    : ' #h',
+      \'options' : {'status-justify' : 'left', 'status-position' : 'top'}}
+
+let g:tmuxline_powerline_separators = 0
+
 
 """"""""""""""""""""""
 "      Mappings      "
@@ -326,20 +344,13 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-" NerdTree"
-map <leader>e :NERDTreeToggle<CR>
-nmap <leader>nt :NERDTreeFind<CR>
+" ==================== NerdTree ====================
+" For toggling
+noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>f :NERDTreeFind<cr>
 
-
-let g:NERDTreeNodeDelimiter = "\u00a0"
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
+
 
 " Goyo
 let g:goyo_width=150
@@ -366,21 +377,6 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-"=====================================================
-"===================== STATUSLINE ====================
-
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '%a',
-      \'y'    : '%Y-%m-%d %H:%M',
-      \'z'    : ' #h',
-      \'options' : {'status-justify' : 'left', 'status-position' : 'top'}}
-
-let g:tmuxline_powerline_separators = 0
-
 
 
 

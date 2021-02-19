@@ -22,9 +22,11 @@ Plug 'sheerun/vim-polygot'
 Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim'
+Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'KeitaNakamura/highlighter.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
@@ -122,6 +124,9 @@ endfunction
 
 " initialize the colorscheme for the first run
 call ChangeBackground()
+
+" change the color scheme if we receive a SigUSR1
+autocmd SigUSR1 * call ChangeBackground()
 
 augroup filetypedetect
   command! -nargs=* -complete=help Help vertical belowright help <args>
@@ -336,20 +341,12 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-" NerdTree"
-map <leader>e :NERDTreeToggle<CR>
-nmap <leader>nt :NERDTreeFind<CR>
+" ==================== NerdTree ====================
+" For toggling
+noremap <Leader>n :NERDTreeToggle<cr>
+noremap <Leader>f :NERDTreeFind<cr>
 
-
-let g:NERDTreeNodeDelimiter = "\u00a0"
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
 
 " Goyo
 let g:goyo_width=150
@@ -472,6 +469,31 @@ function! s:build_go_files()
   endif
 endfunction
 
+" ==================== FZF ====================
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_layout = { 'down': '~20%' }
+
+" search 
+nmap <C-p> :FzfHistory<cr>
+imap <C-p> <esc>:<C-u>FzfHistory<cr>
+
+" search across files in the current directory
+nmap <C-b> :FzfFiles<cr>
+imap <C-b> <esc>:<C-u>FzfFiles<cr>
+
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
 
 " Python Settings"

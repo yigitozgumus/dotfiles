@@ -35,9 +35,9 @@ function change_background --argument mode_setting
   # change tmux
     switch $mode
       case dark
-        tmux source-file ~/.tmux-dark.conf
+        tmux source-file ~/.tmux/tmux-dark.conf
       case light
-        tmux source-file ~/.tmux-light.conf
+        tmux source-file ~/.tmux/tmux-light.conf
     end
 
   # change alacritty

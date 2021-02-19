@@ -27,9 +27,9 @@ mv "${HOME}/.config/nvim/${NVIM_CONFIG}" "${HOME}/.backup"
 mv "${HOME}/.config/alacritty" "${HOME}/.backup"
 
 #Tmux
-mv "${HOME}/.tmux/" "${HOME}/.backup"
 rm -f "${HOME}/.tmux.conf"
-rm -f "${HOME}/.tmux.conf.local"
+rm -f "${HOME}/.tmux-dark.conf"
+rm -f "${HOME}/.tmux-light.conf"
 
 echo "\\nAll old configuration files are backed up.\\n"
 
@@ -48,8 +48,9 @@ cp "${DOTFILE_DIR}/configs/alacritty.yml" "${HOME}/.config/alacritty/alacritty.y
 cp "${DOTFILE_DIR}/configs/color.yml" "${HOME}/.config/alacritty/color.yml"
 
 # Tmux
-ln -sv "${DOTFILE_DIR}/tmux-dark.conf" "${HOME}/.tmux-dark.conf"
-ln -sv "${DOTFILE_DIR}/tmux-light.conf" "${HOME}/.tmux-light.conf"
+mkdir -p "${HOME}/.tmux"
+ln -s "${DOTFILE_DIR}/tmux-dark.conf" "${HOME}/.tmux"
+ln -s "${DOTFILE_DIR}/tmux-light.conf" "${HOME}/.tmux"
 cp -f "tmux.conf" "${HOME}/.tmux.conf"
 # Fish
 cp -r "${DOTFILE_DIR}/fish/." "${HOME}/.config/fish/functions"
