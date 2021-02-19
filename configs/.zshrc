@@ -21,7 +21,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # Dotfile management
-DOTFILE_DIR="$HOME/cs/dev/dotfiles"
+DOTFILE_DIR="$HOME/personal/dotfiles"
 
 for DOTFILE in "$DOTFILE_DIR"/configs/.{env,alias,functions,exports}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
