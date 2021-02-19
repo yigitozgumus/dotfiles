@@ -111,7 +111,7 @@ function! ChangeBackground()
   else
     set background=light  " for light version of theme
   endif
-  colorscheme gruvbox
+  colorscheme pencil
 
   try
     execute "AirlineRefresh"
