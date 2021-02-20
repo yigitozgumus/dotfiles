@@ -35,6 +35,8 @@ Plug 'udalov/kotlin-vim'
 Plug 'dag/vim-fish'
 Plug 'dracula/vim'
 Plug 'ntk148v/vim-horizon'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()

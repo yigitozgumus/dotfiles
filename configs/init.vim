@@ -18,7 +18,6 @@ Plug 'mxw/vim-jsx'
 Plug 'godoctor/godoctor.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polygot'
 Plug 'honza/vim-snippets'
 Plug 'dag/vim-fish'
 Plug 'vim-airline/vim-airline'
@@ -43,6 +42,8 @@ Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 if !has('nvim')
  Plug 'maralla/completor.vim' " or whichever you use
 endif
