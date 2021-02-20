@@ -31,6 +31,10 @@ rm -f "${HOME}/.tmux.conf"
 rm -f "${HOME}/.tmux-dark.conf"
 rm -f "${HOME}/.tmux-light.conf"
 
+#Lazygit
+mkdir -p "${HOME}/.config/lazygit"
+rm -f "${HOME}/.config/lazygit/config.yml"
+
 echo "\\nAll old configuration files are backed up.\\n"
 
 for file in $CONFIG_FILES;do
@@ -52,5 +56,10 @@ mkdir -p "${HOME}/.tmux"
 ln -s "${DOTFILE_DIR}/tmux-dark.conf" "${HOME}/.tmux"
 ln -s "${DOTFILE_DIR}/tmux-light.conf" "${HOME}/.tmux"
 cp -f "tmux.conf" "${HOME}/.tmux.conf"
+
 # Fish
 cp -r "${DOTFILE_DIR}/fish/." "${HOME}/.config/fish/functions"
+
+# Lazygit
+cp "${DOTFILE_DIR}/config-dark.yml" "${HOME}/.config/lazygit/config-dark.yml"
+cp "${DOTFILE_DIR}/config-light.yml" "${HOME}/.config/lazygit/config-light.yml"
