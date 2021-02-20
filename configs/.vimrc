@@ -6,25 +6,15 @@
 " => Plugin Management
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-" Distraction free writing
 Plug 'junegunn/goyo.vim'
-" Python mode
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
-" Alignment of the assignment statements
 Plug 'junegunn/vim-easy-align'
-" Bottom status bar plugin 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Nerd Tree plugin for file traversing inside vim
 Plug 'scrooloose/nerdtree'
-" Colorschemes to not get bored
-Plug 'flazz/vim-colorschemes'
-" Emmet Plugin for the web development stuff
 Plug 'mattn/emmet-vim'
-" Tex Plugin for vim
 Plug 'lervag/vimtex'
 "Plug 'edkolev/tmuxline.vim'
-" Better syntax highlighting for python 
 Plug 'davidhalter/jedi-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'fatih/vim-go'
@@ -33,14 +23,19 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'luochen1990/rainbow'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-python/python-syntax'
+Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'"
 Plug 'rust-lang/rust.vim'
 Plug 'udalov/kotlin-vim' 
+Plug 'dag/vim-fish'
 Plug 'dracula/vim'
 Plug 'ntk148v/vim-horizon'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 """"""""""""""""""""""
@@ -107,11 +102,12 @@ let g:gruvbox_contrast_light = "hard"
 " setting. We also refresh the statusline colors to reflect the new mode.
 function! ChangeBackground()
   if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
-    set background=dark   " for dark version of theme
+    set background=dark " for dark version of theme
+    colorscheme gruvbox
   else
     set background=light  " for light version of theme
+    colorscheme PaperColor
   endif
-  colorscheme pencil
 
   try
     execute "AirlineRefresh"

@@ -20,6 +20,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polygot'
 Plug 'honza/vim-snippets'
+Plug 'dag/vim-fish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'edkolev/tmuxline.vim'
@@ -111,10 +112,11 @@ let g:gruvbox_contrast_light = "hard"
 function! ChangeBackground()
   if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
     set background=dark   " for dark version of theme
+    colorscheme gruvbox
   else
     set background=light  " for light version of theme
+    colorscheme PaperColor
   endif
-  colorscheme gruvbox
 
   try
     execute "AirlineRefresh"
@@ -126,7 +128,7 @@ endfunction
 call ChangeBackground()
 
 " change the color scheme if we receive a SigUSR1
-autocmd SigUSR1 * call ChangeBackground()
+" autocmd SigUSR1 * call ChangeBackground()
 
 augroup filetypedetect
   command! -nargs=* -complete=help Help vertical belowright help <args>
