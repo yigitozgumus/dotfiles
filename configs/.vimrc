@@ -26,6 +26,7 @@ Plug 'luochen1990/rainbow'
 " Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'cormacrelf/vim-colors-github'
 Plug 'vim-python/python-syntax'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'"
@@ -106,7 +107,7 @@ function! ChangeBackground()
     colorscheme gruvbox
   else
     set background=light  " for light version of theme
-    colorscheme PaperColor
+    colorscheme github
   endif
 
   try

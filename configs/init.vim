@@ -33,13 +33,13 @@ Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'cormacrelf/vim-colors-github'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'morhetz/gruvbox'
 Plug 'tmhedberg/SimpylFold'
 Plug 'udalov/kotlin-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'fatih/vim-go'
-Plug 'fatih/molokai'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -115,7 +115,7 @@ function! ChangeBackground()
     colorscheme gruvbox
   else
     set background=light  " for light version of theme
-    colorscheme PaperColor
+    colorscheme github
   endif
 
   try
