@@ -35,6 +35,9 @@ rm -f "${HOME}/.tmux-light.conf"
 mkdir -p "${HOME}/.config/lazygit"
 rm -f "${HOME}/.config/lazygit/config.yml"
 
+#Starship
+mv "${HOME}/.config/starship.toml" "${HOME}/.backup"
+
 echo "\\nAll old configuration files are backed up.\\n"
 
 for file in $CONFIG_FILES;do
@@ -63,3 +66,6 @@ cp -r "${DOTFILE_DIR}/fish/." "${HOME}/.config/fish/functions"
 # Lazygit
 cp "${DOTFILE_DIR}/config-dark.yml" "${HOME}/.config/lazygit/config-dark.yml"
 cp "${DOTFILE_DIR}/config-light.yml" "${HOME}/.config/lazygit/config-light.yml"
+
+# Starship
+ln -sv "${DOTFILE_DIR}/starship.toml" "${HOME}/.config/starship.toml"

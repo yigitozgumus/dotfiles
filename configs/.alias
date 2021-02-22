@@ -33,7 +33,7 @@ alias menu_hide='defaults write NSGlobalDomain _HIHideMenuBar -bool true; killal
 alias menu_show='defaults write NSGlobalDomain _HIHideMenuBar -bool false; killall -KILL SystemUIServer'
 
 # Shortcuts
-alias dotfile='cd ~/cs/dev/dotfiles; code .' 
+alias dotfile='cd ~/cs/dev/dotfiles; nv .' 
 alias topcoder_w='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'
 alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'
