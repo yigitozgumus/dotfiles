@@ -44,9 +44,6 @@ Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
-if !has('nvim')
- Plug 'maralla/completor.vim' " or whichever you use
-endif
 
 call plug#end()
 
