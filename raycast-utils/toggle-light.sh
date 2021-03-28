@@ -16,5 +16,5 @@
 
 change_background "light"
 
-echo "$1 Mode Enabled."
+echo "Light Mode Enabled."
 
