@@ -6,7 +6,7 @@
 # @raycast.mode compact
 
 # Optional parameters:
-# @raycast.icon 🤖
+# @raycast.icon 💾
 # @raycast.packageName Developer tools
 
 # @Documentation:
@@ -15,4 +15,5 @@
 # @raycast.authorURL www.twitter.com/yigitozgumus
 
 cd "$HOME/Google Drive/notes/"
+./obsidian_refresh.sh
 ./obsidian_sync_work.sh

@@ -6,7 +6,7 @@
 # @raycast.mode compact
 
 # Optional parameters:
-# @raycast.icon 🤖
+# @raycast.icon 🗄
 # @raycast.argument1 { "type": "text", "placeholder": "Placeholder" }
 # @raycast.packageName Developer Tools
 
@@ -31,4 +31,4 @@ elif [ $1 == "personal" ]; then
   open $PERSONAL
 fi
 
-
+echo "$1 vault is opened"
