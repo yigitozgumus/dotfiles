@@ -14,6 +14,6 @@
 # @raycast.author Yigit Ozgumus
 # @raycast.authorURL www.twitter.com/yigitozgumus
 
-cd "$HOME/Google Drive/notes/"
+cd "$HOME/personal/notes/"
 ./obsidian_refresh.sh
 ./obsidian_sync_personal.sh
