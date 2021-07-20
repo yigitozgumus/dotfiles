@@ -14,6 +14,6 @@
 # @raycast.author Yigit Ozgumus
 # @raycast.authorURL www.twitter.com/yigitozgumus
 
-cd "$HOME/personal/notes/"
+cd "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 ./obsidian_refresh.sh
 ./obsidian_sync_work.sh
