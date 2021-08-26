@@ -1,4 +1,4 @@
-function change_background --argument mode_setting
+function cb --argument mode_setting
   # change background to the given mode. If mode is missing, 
   # we try to deduct it from the system settings.
 
