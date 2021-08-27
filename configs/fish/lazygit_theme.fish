@@ -1,5 +1,5 @@
 function lazygit_theme --argument theme
-    if ! test -f ~/Library/ApplicationSupport/lazygit/config.yml
+    if ! test -f ~/Library/Application\ Support/lazygit/config.yml
         echo "Lazygit config file doesn't exist"
         return
     end
