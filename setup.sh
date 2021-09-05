@@ -76,6 +76,7 @@ cp -f "${TMUX_DIR}/tmux.conf" "${HOME}/.tmux.conf"
 
 # Fish
 cp -r "${FISH_DIR}/." "${HOME}/.config/fish/functions"
+cp -R "${CONFIG_DIR}/config.fish" "${HOME}/.config/fish/config.fish"
 
 # Lazygit
 cp "${LAZYGIT_DIR}/config-dark.yml" "${HOME}/.config/lazygit/config-dark.yml"
