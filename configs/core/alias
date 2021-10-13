@@ -4,20 +4,10 @@ alias please='sudo'
 alias jn='jupyter notebook'
 alias v='vim'
 alias nv='nvim'
-alias mvim='/usr/local/Cellar/macvim/8.1-155/MacVim.app/Contents/bin/mvim'
 alias r='ranger'
 alias lg='lazygit'
 alias ldo='lazydocker'
-alias zepp='cd ~; ./zeppelin/bin/zeppelin.sh'
-alias poly='.$HOME/cs/polynote/polynote'
-alias dev='cd ~/cs/dev'
-alias vault='cd ~/Google\ Drive/notes/secondBrain'
 alias vault_setup='vault; code obsidian.css'
-alias website='cd ~/cs/dev/yigitozgumus.github.io; code .'
-alias website_nv='cd ~/cs/dev/yigitozgumus.github.io ; nv '
-alias post_lab='cd ~/cs/dev/yigitozgumus.github.io; load_env ml; jupy ml lab 8888'
-# Replacements
-alias code='code-insiders'
 
 # Command Shortcuts
 alias tt='tmux attach -t'
@@ -33,24 +23,10 @@ alias menu_hide='defaults write NSGlobalDomain _HIHideMenuBar -bool true; killal
 alias menu_show='defaults write NSGlobalDomain _HIHideMenuBar -bool false; killall -KILL SystemUIServer'
 
 # Shortcuts
-alias dotfile='cd ~/cs/dev/dotfiles; nv .' 
-alias topcoder_w='open -a "/Applications/Safari.app/"  "https://arena.topcoder.com/#/u/dashboard"'
 alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'
-alias aws_spark='ssh -i "~/.ssh/Pyspark.pem" ec2-user@ec2-18-233-170-145.compute-1.amazonaws.com'
-alias gd='cd ~/Google Drive/'
 
-# Python related ones
-alias sp36='brew switch python 3.6.5_1'
-alias sp37='brew switch python 3.7.2_2'
-alias colab='cd /Google\ Drive/Colab\ Notebooks; jupy_lab 8087'
-alias python_cheatsheet='open -a "/Applications/Macdown.app/" "dev/Python_Cheatsheet.md"'
-alias thesis_notebook='ssh -N -f -L 'localhost':8895:'localhost':8889 yigito19@131.175.15.12'
 
 # Ctags
 ctags=/usr/local/bin/ctags
 alias g++='g++ -std=c++11'
-
-# Flink
-alias flink-start-cluster='cd /usr/local/Cellar/apache-flink/1.9.1/libexec/bin ; ./start-cluster.sh ; cd'
-alias flink-stop-cluster='cd /usr/local/Cellar/apache-flink/1.9.1/libexec/bin ; ./stop-cluster.sh ; cd'
