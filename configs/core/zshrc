@@ -21,9 +21,9 @@
 # <<< conda initialize <<<
 
 # Dotfile management
-DOTFILE_DIR="$HOME/cs/dev/dotfiles"
+DOTFILE_DIR="$HOME/personal/dotfiles"
 
-for DOTFILE in "$DOTFILE_DIR"/configs/.{env,alias,functions,exports}; do
+for DOTFILE in "$DOTFILE_DIR"/configs/core/{env,alias,functions,exports}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
@@ -59,7 +59,5 @@ export KEYTIMEOUT=1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-conda deactivate
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
