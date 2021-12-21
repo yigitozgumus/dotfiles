@@ -11,7 +11,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -103,10 +103,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+[[ ! -f ~/.alias ]] || source ~/.alias
+[[ ! -f ~/.functions ]] || source ~/.functions
+[[ ! -f ~/.exports ]] || source ~/.exports
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -119,3 +118,7 @@ source $ZSH/oh-my-zsh.sh
 # Please make sure this block is at the end of this file.
 [ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
 #### END FIG ENV VARIABLES ####
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

@@ -8,14 +8,6 @@ FORMAT_INSTALL='\e[36m >> \e[92m\e[1m'
 FORMAT_END='\e[0m'
 FORMAT_WARNING='\e[36m >> \e[91m'
 
-load_env(){
-    conda activate $1
-}
-
-deload(){
-    conda deactivate
-}
-
 remove_dmg() {
     cd ~/Downloads/
     rm -rf *.dmg
@@ -56,9 +48,6 @@ jupy(){
     open -a /Applications/Google\ Chrome.app "http://localhost:$port"
 }
 
-colab_online() {
-    open -a /Applications/Google\ Chrome.app "https://colab.research.google.com"
-}
 
 # Git based functions
 
