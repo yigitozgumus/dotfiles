@@ -27,7 +27,6 @@ echo "\\nThe backup is created."
 for file in $CONFIG_FILES;do
     target_file=`echo $file | sed "s/configs\/core\///g"`
     mv "${HOME}/.${target_file}" "${HOME}/.backup"
-    #echo "${HOME}/.${file}"
 done
 
 #Nvim
@@ -43,16 +42,11 @@ rm -f "${HOME}/.tmux.conf"
 mkdir -p "${HOME}/.config/lazygit"
 rm -f "${HOME}/.config/lazygit/config.yml"
 
-#Starship
-mv "${HOME}/.config/starship.toml" "${HOME}/.backup"
-
 echo "\\nAll old configuration files are backed up.\\n"
 
 for file in $CONFIG_FILES;do
     target_file=`echo $file | sed "s/configs\/core\///g"`
     ln -sv "${DOTFILE_DIR}/${file}" "${HOME}/.${target_file}"
-    #echo "${DOTFILE_DIR}/$file"
-    #echo $file
 done
 echo "\\nConfiguration Files are linked.\\n"
 
