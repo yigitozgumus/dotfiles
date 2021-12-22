@@ -25,6 +25,11 @@ open_session() {
     tmx start $1
 }
 
+update_repo() {
+    git fetch
+    git rebase
+}
+
 # usage jupy TYPE ENVIRONMENT PORT
 jupy(){
 
