@@ -1,13 +1,10 @@
 # General
-alias jl='jupyter lab'
 alias please='sudo'
-alias jn='jupyter notebook'
 alias v='vim'
 alias nv='nvim'
 alias r='ranger'
 alias lg='lazygit'
 alias ldo='lazydocker'
-alias vault_setup='vault; code obsidian.css'
 
 # Command Shortcuts
 alias tt='tmux attach -t'
@@ -25,8 +22,5 @@ alias menu_show='defaults write NSGlobalDomain _HIHideMenuBar -bool false; killa
 # Shortcuts
 alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'
+alias dev='cd ~/dev'
 
-
-# Ctags
-ctags=/usr/local/bin/ctags
-alias g++='g++ -std=c++11'
