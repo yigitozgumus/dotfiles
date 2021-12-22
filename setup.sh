@@ -38,8 +38,6 @@ mv "${HOME}/.config/alacritty" "${HOME}/.backup"
 
 #Tmux
 rm -f "${HOME}/.tmux.conf"
-rm -f "${HOME}/.tmux/tmux-dark.conf"
-rm -f "${HOME}/.tmux/tmux-light.conf"
 
 #Lazygit
 mkdir -p "${HOME}/.config/lazygit"
@@ -70,8 +68,6 @@ cp "${ALACRITTY_DIR}/color.yml" "${HOME}/.config/alacritty/color.yml"
 
 # Tmux
 mkdir -p "${HOME}/.tmux"
-ln -s "${TMUX_DIR}/tmux-dark.conf" "${HOME}/.tmux"
-ln -s "${TMUX_DIR}/tmux-light.conf" "${HOME}/.tmux"
 cp -f "${TMUX_DIR}/tmux.conf" "${HOME}/.tmux.conf"
 
 # Fish
@@ -81,6 +77,3 @@ cp -R "${CONFIG_DIR}/config.fish" "${HOME}/.config/fish/config.fish"
 # Lazygit
 cp "${LAZYGIT_DIR}/config-dark.yml" "${HOME}/.config/lazygit/config-dark.yml"
 cp "${LAZYGIT_DIR}/config-light.yml" "${HOME}/.config/lazygit/config-light.yml"
-
-# Starship
-ln -sv "${STARSHIP_DIR}/starship.toml" "${HOME}/.config/starship.toml"
