@@ -14,3 +14,6 @@ export PATH=$PATH:$GOROOT/bin
 # Android sdk
 export PATH=~/Library/Android/sdk/tools:$PATH
 export PATH=~/Library/Android/sdk/platform-tools:$PATH
+
+# Flutter
+export PATH="$PATH:~/flutter/bin"
