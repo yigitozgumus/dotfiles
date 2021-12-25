@@ -23,4 +23,5 @@ alias menu_show='defaults write NSGlobalDomain _HIHideMenuBar -bool false; killa
 alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'
 alias dev='cd ~/dev'
+alias demos="cd  ~/Desktop"
 

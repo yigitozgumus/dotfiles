@@ -23,7 +23,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-export PATH="$HOME/.cargo/bin:$PATH"
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
@@ -33,3 +32,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+. "$HOME/.cargo/env"

@@ -17,3 +17,6 @@ export PATH=~/Library/Android/sdk/platform-tools:$PATH
 
 # Flutter
 export PATH="$PATH:~/flutter/bin"
+
+# Gradle
+export PATH="$PATH:~/.sdkman/candidates/gradle/current/bin"
