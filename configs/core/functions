@@ -212,16 +212,16 @@ alacritty_theme(){
     sed -i "" -e "s#^colors: \*.*#colors: *$1#g" $CONFIG_PATH ;
 }
 
-lazygit_theme(){
+lg_theme(){
     if [ -z "~/Library/Application Support/lazygit/config.yml" ]; then
         echo "file doesn't exist."
         return 0
     fi
     CONFIG_PATH="$HOME/Library/Application Support/lazygit/config.yml"
     if [[ "$1" == "light" ]]; then
-        sed -i -e 's/--dark/--light/g' $CONFIG_PATH
+        cp -f "$HOME/.config/lazygit/config-light.yml" $CONFIG_PATH
     else
-        sed -i -e 's/--light/--dark/g' $CONFIG_PATH
+        cp -f "$HOME/.config/lazygit/config-dark.yml" $CONFIG_PATH
     fi
 }
 
