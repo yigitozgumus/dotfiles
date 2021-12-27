@@ -5,6 +5,7 @@ CONFIG_DIR="configs"
 CORE="$DOTFILE_DIR/$CONFIG_DIR/core"
 ALACRITTY_DIR="$DOTFILE_DIR/$CONFIG_DIR/alacritty"
 TMUX_DIR="$DOTFILE_DIR/$CONFIG_DIR/tmux"
+TMUXP_DIR="$DOTFILE_DIR/$CONFIG_DIR/tmuxp"
 FISH_DIR="$DOTFILE_DIR/$CONFIG_DIR/fish"
 LAZYGIT_DIR="$DOTFILE_DIR/$CONFIG_DIR/lazygit"
 STARSHIP_DIR="$DOTFILE_DIR/$CONFIG_DIR/starship"
@@ -37,6 +38,9 @@ mv "${HOME}/.config/alacritty" "${HOME}/.backup"
 
 #Tmux
 rm -f "${HOME}/.tmux.conf"
+
+#Tmux
+rm -rf "${HOME}/.tmuxp"
 
 #Lazygit
 mkdir -p "${HOME}/.config/lazygit"
@@ -71,3 +75,6 @@ cp -R "${CONFIG_DIR}/config.fish" "${HOME}/.config/fish/config.fish"
 # Lazygit
 cp "${LAZYGIT_DIR}/config-dark.yml" "${HOME}/.config/lazygit/config-dark.yml"
 cp "${LAZYGIT_DIR}/config-light.yml" "${HOME}/.config/lazygit/config-light.yml"
+
+# Tmuxp
+ln -s "${TMUXP_DIR}" "${HOME}/.tmuxp"
