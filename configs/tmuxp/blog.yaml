@@ -1,0 +1,19 @@
+session_name: blog
+windows:
+- layout: b5a2,202x52,0,0,5
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/yigitozgumus/dev/admin/personalWebsite
+  window_name: live server
+- focus: 'true'
+  layout: b5a3,202x52,0,0,6
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/yigitozgumus/dev/admin/personalWebsite
+  window_name: commits

@@ -30,6 +30,10 @@ update_repo() {
     git rebase
 }
 
+what_runs_on() {
+    lsof -i tcp:$1
+}
+
 # usage jupy TYPE ENVIRONMENT PORT
 jupy(){
 
@@ -212,7 +216,7 @@ alacritty_theme(){
     sed -i "" -e "s#^colors: \*.*#colors: *$1#g" $CONFIG_PATH ;
 }
 
-lg_theme(){
+lgt(){
     if [ -z "~/Library/Application Support/lazygit/config.yml" ]; then
         echo "file doesn't exist."
         return 0
