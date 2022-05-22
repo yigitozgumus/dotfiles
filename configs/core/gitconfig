@@ -5,7 +5,7 @@
     pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
 
 [user]
-	name = Yigit Ozgumus
+	name = Yiğit Özgümüş
 	email = yigitozgumus1@gmail.com
 
 [includeIf "gitdir/i:~/work/"]
@@ -40,7 +40,7 @@
   add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
 [delta]
-    side-by-side = true
+    side-by-side = false
     line-numbers-left-format = ""
     line-numbers-right-format = "│ "
 

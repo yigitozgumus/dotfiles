@@ -103,6 +103,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_contrast_light = "hard"
+colorscheme gruvbox
 
 " ChangeBackground changes the background mode based on macOS's `Appearance`
 " setting. We also refresh the statusline colors to reflect the new mode.
@@ -122,7 +123,7 @@ function! ChangeBackground()
 endfunction
 
 " initialize the colorscheme for the first run
-call ChangeBackground()
+" call ChangeBackground()
 
 " change the color scheme if we receive a SigUSR1
 " autocmd SigUSR1 * call ChangeBackground()
