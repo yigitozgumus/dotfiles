@@ -6,20 +6,17 @@
 " => Plugin Management
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'derekwyatt/vim-scala'
+
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'junegunn/vim-easy-align'
-Plug 'ambv/black'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
-Plug 'mxw/vim-jsx'
 Plug 'godoctor/godoctor.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-Plug 'dag/vim-fish'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-python/python-syntax'
@@ -36,13 +33,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'morhetz/gruvbox'
 Plug 'tmhedberg/SimpylFold'
 Plug 'udalov/kotlin-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'SirVer/ultisnips'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
 
 call plug#end()
 
@@ -128,31 +120,6 @@ endfunction
 " change the color scheme if we receive a SigUSR1
 " autocmd SigUSR1 * call ChangeBackground()
 
-augroup filetypedetect
-  command! -nargs=* -complete=help Help vertical belowright help <args>
-  autocmd FileType help wincmd L
-  
-  autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
-  autocmd BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
-  autocmd BufNewFile,BufRead *.hcl setf conf
-
-  autocmd BufRead,BufNewFile *.gotmpl set filetype=gotexttmpl
-  
-  autocmd BufNewFile,BufRead *.ino setlocal noet ts=4 sw=4 sts=4
-  autocmd BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
-  autocmd BufNewFile,BufRead *.md setlocal noet ts=4 sw=4
-  autocmd BufNewFile,BufRead *.html setlocal noet ts=4 sw=4
-  autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd BufNewFile,BufRead *.hcl setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd BufNewFile,BufRead *.proto setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd BufNewFile,BufRead *.fish setlocal expandtab shiftwidth=2 tabstop=2
-  
-  autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
-  autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
-augroup END
 
 "=====================================================
 "===================== STATUSLINE ====================
@@ -193,6 +160,16 @@ nnoremap N Nzzzv
 
 " Act like D and C
 nnoremap Y y$
+
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
 
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
@@ -240,9 +217,6 @@ set si "Smart indent
 set wrap "Wrap lines
 
 
-" Python
-let g:python_highlight_all = 1
-let g:pymode_lint_on_write = 0"   " Python mode lint check disable
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -314,19 +288,6 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-
-if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-endif
-
 
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -370,26 +331,6 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
-
-"Ultisnipts 
-"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical""
-" Jedi mode settings
-let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#use_splits_not_buffers = "left"
-let g:pymode_rope = 0
-map <leader>m :Buffers<CR>
-let g:polyglot_disabled = ['latex']
-set tags=tags
-let g:deoplete#enable_at_startup = 1
-
-
-
 " Fast reloading for configuration change 
 map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 
@@ -398,72 +339,6 @@ map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 "      Plugins      "
 """""""""""""""""""""
 
-" vim-go
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
-
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
-
-" Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
-
-
-augroup go
-  autocmd!
-
-  " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-
-  " :GoBuild and :GoTestCompile
-  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-  " :GoTest
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
-  " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
-
-  " :GoDoc
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
-
-  " :GoCoverageToggle
-  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-  " :GoInfo
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
-
-  " :GoMetaLinter
-  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
-
-  " :GoDef but opens in a vertical split
-  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
-  " :GoDef but opens in a horizontal split
-  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
-
-  " :GoAlternate  commands :A, :AV, :AS and :AT
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-augroup END
-
-" build_go_files is a custom function that builds or compiles the test file.
-" It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
 
 " ==================== FZF ====================
 let g:fzf_command_prefix = 'Fzf'
@@ -492,25 +367,6 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 
 
-" Python Settings"
-let g:black_linelength = 100
-let g:python_highlight_all = 1
-
-" Airline theme additions
-let g:jsx_ext_required = 1
-let g:airline_powerline_fonts = 1
-
-" Vim Node 
-" Ulti snips configuration
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Markdown configuration regarding latex
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_new_list_item_indent = 2
 
 " Colorscheme settings
 if (has("nvim"))
@@ -520,56 +376,7 @@ endif
 
 nnoremap <silent>  <leader>b :ls<cr>:b<space>
 nnoremap <silent> <leader>t :TagbarToggle<CR>
-let g:highlighter#syntax_python = [
-      \ { 'hlgroup'       : 'HighlighterPythonFunction',
-      \   'hlgroup_link'  : 'Function',
-      \   'tagkinds'      : 'f',
-      \   'syntax_type'   : 'match',
-      \   'syntax_suffix' : '(\@=',
-      \ },
-      \ { 'hlgroup'       : 'HighlighterPythonMethod',
-      \   'hlgroup_link'  : 'Function',
-      \   'tagkinds'      : 'm',
-      \   'syntax_type'   : 'match',
-      \   'syntax_prefix' : '\.\@<=',
-      \ },
-      \ { 'hlgroup'       : 'HighlighterPythonClass',
-      \   'hlgroup_link'  : 'Type',
-      \   'tagkinds'      : 'c',
-      \ }]
-" COC-VIM
 
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-nnoremap <C-p> :GFiles<CR>
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 " Remap keys for line up and down
 nnoremap <c-j> :m .+1<CR>==
@@ -592,104 +399,4 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-"function! StatusDiagnostic() abort
-"  let info = get(b:, 'coc_diagnostic_info', {})
-"  if empty(info) | return '' | endif
-"  let msgs = []
-"  if get(info, 'error', 0)
-"	call add(msgs, 'E' . info['error'])
-"  endif
-"  if get(info, 'warning', 0)
-"	call add(msgs, 'W' . info['warning'])
-"  endif
-"  return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
-"endfunction
-
-" Add line support, for integration with other plugin, checkout `:h coc-status`
-set statusline=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR><Paste>
-let g:airline#extensions#tabline#enabled = 1
-
-" Vim Go Settings
-" Quick Fix
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-" run and test
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
