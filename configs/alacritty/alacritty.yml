@@ -182,7 +182,7 @@ bell:
   duration: 0
 
 # Background opacity
-background_opacity: 1.0
+window.opacity: 0.9
 
 # Mouse bindings
 #
@@ -259,7 +259,7 @@ live_config_reload: true
 #     - --login
 #
 shell:
-  program: /usr/local/bin/tmux
+  program: /opt/homebrew/bin/tmux
   args:
     - new-session
     - -A

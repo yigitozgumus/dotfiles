@@ -1,10 +1,7 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Management
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Plugin Management "{{{
+" -------------------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'junegunn/vim-easy-align'
@@ -35,10 +32,10 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
 
-""""""""""""""""""""""
-"      Settings      "
-""""""""""""""""""""""
+"}}}
 
+" Settings "{{{
+" ------------------------------------------
 " Enables us Vim specific features
 set nocompatible                
 " Reset filetype detection first ...
@@ -47,6 +44,17 @@ filetype off
 filetype plugin indent on       
 " Indicate fast terminal conn for faster redraw
 set ttyfast                     
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set scrolloff=3
+set wildmenu
+set wildmode=list:longest
+set visualbell
+
 " Show status line always
 set laststatus=2                
 " Set default encoding to UTF-8
@@ -84,7 +92,7 @@ set fileformats=unix,dos,mac
 " Do not show matching brackets by flickering
 set noshowmatch                 
 " We show the mode with airline or lightline
-set noshowmode                  
+set showmode                  
 " Search case insensitive...
 set ignorecase                  
 " ... but not it begins with upper case
@@ -96,7 +104,7 @@ set pumheight=10
 " Do not highlight column (speeds up highlighting)
 set nocursorcolumn              
 " Do not highlight cursor (speeds up highlighting)
-set nocursorline                
+set cursorline                
 " Wait to redraw
 set lazyredraw                 
 
@@ -112,6 +120,8 @@ if has('persistent_undo')
   set undofile
   set undodir=~/.config/vim/tmp/undo//
 endif
+
+"}}}
 
 " Colorscheme
 syntax enable
@@ -413,3 +423,9 @@ vnoremap <c-j> :m '>+1<CR>gv=gv
 vnoremap <c-k> :m '<-2<CR>gv=gv
 
 
+" Extras "{{{
+" ---------------------------------------------------------------------
+set exrc
+"}}}
+
+" vim: set foldmethod=marker foldlevel=0:
