@@ -1,13 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NEOVIM Configuration
+" Vim Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin Management
+" Plugin Management
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
@@ -18,7 +17,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -40,38 +38,67 @@ call plug#end()
 """"""""""""""""""""""
 "      Settings      "
 """"""""""""""""""""""
-set nocompatible                " Enables us Vim specific features
-filetype off                    " Reset filetype detection first ...
-filetype plugin indent on       " ... and enable filetype detection
-set ttyfast                     " Indicate fast terminal conn for faster redraw
-"set ttymouse=xterm2             " Indicate terminal type for mouse codes
-"set ttyscroll=3                 " Speedup scrolling
-set laststatus=2                " Show status line always
-set encoding=utf-8              " Set default encoding to UTF-8
-set autoread                    " Automatically read changed files
-set autoindent                  " Enabile Autoindent
-set backspace=indent,eol,start  " Makes backspace key more powerful.
-set incsearch                   " Shows the match while typing
-set hlsearch                    " Highlight found searches
-set noerrorbells                " No beeps
-set number relativenumber        " Show line numbers
-set showcmd                     " Show me what I'm typing
-set noswapfile                  " Don't use swapfile
-set nobackup                    " Don't create annoying backup files
-set splitright                  " Vertical windows should be split to right
-set splitbelow                  " Horizontal windows should split to bottom
-set autowrite                   " Automatically save before :next, :make etc.
-set hidden                      " Buffer should still exist if window is closed
-set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
-set noshowmatch                 " Do not show matching brackets by flickering
-set noshowmode                  " We show the mode with airline or lightline
-set ignorecase                  " Search case insensitive...
-set smartcase                   " ... but not it begins with upper case
-set completeopt=menu,menuone    " Show popup menu, even if there is one entry
-set pumheight=10                " Completion window max size
-set nocursorcolumn              " Do not highlight column (speeds up highlighting)
-set nocursorline                " Do not highlight cursor (speeds up highlighting)
-set lazyredraw                  " Wait to redraw
+
+" Enables us Vim specific features
+set nocompatible                
+" Reset filetype detection first ...
+filetype off                    
+" Indicate fast terminal conn for faster redraw
+filetype plugin indent on       
+" Indicate fast terminal conn for faster redraw
+set ttyfast                     
+" Show status line always
+set laststatus=2                
+" Set default encoding to UTF-8
+set encoding=utf-8              
+" Automatically read changed files
+set autoread                    
+" Enabile Autoindent
+set autoindent                  
+" Makes backspace key more powerful.
+set backspace=indent,eol,start  
+" Shows the match while typing
+set incsearch                   
+" Highlight found searches
+set hlsearch                    
+" No beeps
+set noerrorbells                
+" Show line numbers
+set number relativenumber        
+" Show me what I'm typing
+set showcmd                     
+" Don't use swapfile
+set noswapfile                  
+" Don't create annoying backup files
+set nobackup                    
+" Vertical windows should be split to right
+set splitright                  
+" Horizontal windows should split to bottom
+set splitbelow                  
+" Automatically save before :next, :make etc.
+set autowrite                   
+" Buffer should still exist if window is closed
+set hidden                      
+" Prefer Unix over Windows over OS 9 formats
+set fileformats=unix,dos,mac    
+" Do not show matching brackets by flickering
+set noshowmatch                 
+" We show the mode with airline or lightline
+set noshowmode                  
+" Search case insensitive...
+set ignorecase                  
+" ... but not it begins with upper case
+set smartcase                   
+" Show popup menu, even if there is one entry
+set completeopt=menu,menuone    
+" Completion window max size
+set pumheight=10                
+" Do not highlight column (speeds up highlighting)
+set nocursorcolumn              
+" Do not highlight cursor (speeds up highlighting)
+set nocursorline                
+" Wait to redraw
+set lazyredraw                 
 
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
@@ -117,7 +144,7 @@ map sl <C-w>l
 
 " Resize window
 "
-nmap <C-w>left> <C-w><
+nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
@@ -153,19 +180,6 @@ endfunction
 " autocmd SigUSR1 * call ChangeBackground()
 
 
-"=====================================================
-"===================== STATUSLINE ====================
-
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '%a',
-      \'y'    : '%Y-%m-%d %H:%M',
-      \'z'    : ' #h',
-      \'options' : {'status-justify' : 'left', 'status-position' : 'top'}}
-
-let g:tmuxline_powerline_separators = 0
 """"""""""""""""""""""
 "      Mappings      "
 """"""""""""""""""""""
