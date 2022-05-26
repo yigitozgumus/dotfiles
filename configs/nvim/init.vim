@@ -46,6 +46,11 @@ set termguicolors
 colorscheme gruvbox
 " }}}
 
+" Statusline "{{{
+let g:airline#extensions#tabline#enabled = 1
+
+"}}}
+
 
 " Extras "{{{
 " ---------------------------------------------------------------------

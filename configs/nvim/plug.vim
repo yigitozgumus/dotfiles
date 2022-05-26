@@ -25,5 +25,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'morhetz/gruvbox'
 Plug 'fatih/vim-go'
 Plug 'mileszs/ack.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
