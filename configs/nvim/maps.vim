@@ -49,8 +49,8 @@ nnoremap ; :
 
 au FocusLost * :wa
 
-":autocmd InsertEnter * set cul
-":autocmd InsertLeave * set nocul
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
@@ -144,7 +144,7 @@ map 0 ^
 " ==================== NerdTree ====================
 " For toggling
 noremap <Leader>n :NERDTreeToggle<cr>
-noremap <Leader>f :NERDTreeFind<cr>
+noremap <Leader>f :FZF<cr>
 
 let NERDTreeShowHidden=1
 
