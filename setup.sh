@@ -22,7 +22,7 @@ STARSHIP_DIR="$DOTFILE_DIR/$CONFIG_DIR/starship"
 # Get the configuration files
 CONFIG_FILES=$(find $CONFIG_DIR/core -type f)
 
-NVIM_CONFIG_FILE="${NVIM}/init.vim"
+NVIM_CONFIG_FILE="${NVIM}/init.lua"
 NVIM_MAPS_FILE="${NVIM}/maps.vim"
 NVIM_MACOS_FILE="${NVIM}/macos.vim"
 NVIM_PLUG_FILE="${NVIM}/plug.vim"
@@ -32,7 +32,7 @@ NVIM_LUA_DIR="${NVIM}/lua/"
 if [[ $1 == '--no-git' ]]; then
     echo "\\nGitconfig file is excluded\\n"
     shopt -s extglob
-    CONFIG_FILES=`echo ${CONFIG_FILES//gitconfig}`
+    CONFIG_FILES=$(echo ${CONFIG_FILES//gitconfig/})
 fi
 
 # Update the backup
@@ -41,16 +41,16 @@ rm -rf "${HOME}/.backup"
 mkdir -p "${HOME}/.backup"
 echo "\\nThe backup is created."
 
-for file in $CONFIG_FILES;do
-    target_file=`echo $file | sed "s/configs\/core\///g"`
+for file in $CONFIG_FILES; do
+    target_file=$(echo $file | sed "s/configs\/core\///g")
     mv "${HOME}/.${target_file}" "${HOME}/.backup"
 done
 
 #Nvim
-mv "${HOME}/.config/nvim/init.vim" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/maps.vim" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/macos.vim" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/plug.vim" "${HOME}/.backup"
+mv "${HOME}/.config/nvim/init.lua" "${HOME}/.backup"
+# mv "${HOME}/.config/nvim/maps.vim" "${HOME}/.backup"
+# mv "${HOME}/.config/nvim/macos.vim" "${HOME}/.backup"
+# mv "${HOME}/.config/nvim/plug.vim" "${HOME}/.backup"
 mv "${HOME}/.config/nvim/lua" "${HOME}/.backup/lua"
 
 #Alacritty
@@ -68,18 +68,18 @@ rm -f "${HOME}/.config/lazygit/config.yml"
 
 echo "\\nAll old configuration files are backed up.\\n"
 
-for file in $CONFIG_FILES;do
-    target_file=`echo $file | sed "s/configs\/core\///g"`
+for file in $CONFIG_FILES; do
+    target_file=$(echo $file | sed "s/configs\/core\///g")
     ln -sv "${DOTFILE_DIR}/${file}" "${HOME}/.${target_file}"
 done
 echo "\\nConfiguration Files are linked.\\n"
 
 # Connect the nvim
 mkdir -p "${HOME}/.config/nvim"
-cp "${NVIM_CONFIG_FILE}" "${HOME}/.config/nvim/init.vim"
-cp "${NVIM_MAPS_FILE}" "${HOME}/.config/nvim/maps.vim"
-cp "${NVIM_PLUG_FILE}" "${HOME}/.config/nvim/plug.vim"
-cp "${NVIM_MACOS_FILE}" "${HOME}/.config/nvim/macos.vim"
+cp "${NVIM_CONFIG_FILE}" "${HOME}/.config/nvim/init.lua"
+# cp "${NVIM_MAPS_FILE}" "${HOME}/.config/nvim/maps.vim"
+# cp "${NVIM_PLUG_FILE}" "${HOME}/.config/nvim/plug.vim"
+# cp "${NVIM_MACOS_FILE}" "${HOME}/.config/nvim/macos.vim"
 cp -Rv "${NVIM_LUA_DIR}" "${HOME}/.config/nvim/lua"
 
 echo "\\nNvim configurations are linked.\\n"

@@ -36,13 +36,19 @@ set undofile
 runtime ./plug.vim
 runtime ./macos.vim
 runtime ./maps.vim
-lua require('basic')
+
 "}}}
 
 " Colorscheme "{{{
 set termguicolors
 syntax on
-colorscheme gruvbox
+let g:onedark_config = {
+  \ 'style': 'warmer',
+  \ 'toggle_style_key': '<leader>ts',
+  \ 'ending_tildes': v:true,
+\ }
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme onedark
 
 " }}}
 

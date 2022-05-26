@@ -16,14 +16,15 @@ endif
 
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
-Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'godoctor/godoctor.vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'navarasu/onedark.nvim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'morhetz/gruvbox'
 Plug 'fatih/vim-go'
 Plug 'mileszs/ack.vim'
 Plug 'vim-airline/vim-airline'
