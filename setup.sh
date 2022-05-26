@@ -26,6 +26,7 @@ NVIM_CONFIG_FILE="${NVIM}/init.vim"
 NVIM_MAPS_FILE="${NVIM}/maps.vim"
 NVIM_MACOS_FILE="${NVIM}/macos.vim"
 NVIM_PLUG_FILE="${NVIM}/plug.vim"
+NVIM_LUA_DIR="${NVIM}/lua/"
 
 # Options
 if [[ $1 == '--no-git' ]]; then
@@ -50,7 +51,7 @@ mv "${HOME}/.config/nvim/init.vim" "${HOME}/.backup"
 mv "${HOME}/.config/nvim/maps.vim" "${HOME}/.backup"
 mv "${HOME}/.config/nvim/macos.vim" "${HOME}/.backup"
 mv "${HOME}/.config/nvim/plug.vim" "${HOME}/.backup"
-
+mv "${HOME}/.config/nvim/lua" "${HOME}/.backup/lua"
 
 #Alacritty
 mv "${HOME}/.config/alacritty" "${HOME}/.backup"
@@ -79,6 +80,7 @@ cp "${NVIM_CONFIG_FILE}" "${HOME}/.config/nvim/init.vim"
 cp "${NVIM_MAPS_FILE}" "${HOME}/.config/nvim/maps.vim"
 cp "${NVIM_PLUG_FILE}" "${HOME}/.config/nvim/plug.vim"
 cp "${NVIM_MACOS_FILE}" "${HOME}/.config/nvim/macos.vim"
+cp -Rv "${NVIM_LUA_DIR}" "${HOME}/.config/nvim/lua"
 
 echo "\\nNvim configurations are linked.\\n"
 
