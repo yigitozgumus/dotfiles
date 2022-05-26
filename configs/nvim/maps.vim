@@ -49,8 +49,8 @@ nnoremap ; :
 
 au FocusLost * :wa
 
-:autocmd InsertEnter * set cul
-:autocmd InsertLeave * set nocul
+":autocmd InsertEnter * set cul
+":autocmd InsertLeave * set nocul
 
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
@@ -65,9 +65,6 @@ map <leader>rr :source ~/.vimrc<CR>"
 " Increment/decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
-
-" Delete a word backwards
-nnoremap dw vb"_d
 
 " Select all
 nmap <C-a> gg<S-v>G
@@ -155,4 +152,3 @@ let NERDTreeShowHidden=1
 map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 
 
-nnoremap <leader>a :Ack

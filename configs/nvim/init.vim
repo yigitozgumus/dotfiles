@@ -45,3 +45,11 @@ syntax enable
 set termguicolors
 colorscheme gruvbox
 " }}}
+
+
+" Extras "{{{
+" ---------------------------------------------------------------------
+set exrc
+"}}}
+
+" vim: set foldmethod=marker foldlevel=0:
