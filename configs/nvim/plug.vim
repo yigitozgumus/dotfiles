@@ -22,6 +22,8 @@ Plug 'ellisonleao/gruvbox.nvim'
 Plug 'godoctor/godoctor.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'navarasu/onedark.nvim'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'tmux-plugins/vim-tmux-focus-events'

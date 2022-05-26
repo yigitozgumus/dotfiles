@@ -6,7 +6,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
-Plug 'flazz/vim-colorschemes'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'godoctor/godoctor.vim'
@@ -30,6 +29,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'udalov/kotlin-vim'
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'navarasu/onedark.nvim'
 
 call plug#end()
 
@@ -38,13 +38,13 @@ call plug#end()
 " Settings "{{{
 " ------------------------------------------
 " Enables us Vim specific features
-set nocompatible                
+set nocompatible
 " Reset filetype detection first ...
-filetype off                    
+filetype off
 " Indicate fast terminal conn for faster redraw
-filetype plugin indent on       
+filetype plugin indent on
 " Indicate fast terminal conn for faster redraw
-set ttyfast                     
+set ttyfast
 
 set tabstop=4
 set shiftwidth=4
@@ -57,57 +57,57 @@ set wildmode=list:longest
 set visualbell
 
 " Show status line always
-set laststatus=2                
+set laststatus=2
 " Set default encoding to UTF-8
-set encoding=utf-8              
+set encoding=utf-8
 " Automatically read changed files
-set autoread                    
+set autoread
 " Enabile Autoindent
-set autoindent                  
+set autoindent
 " Makes backspace key more powerful.
-set backspace=indent,eol,start  
+set backspace=indent,eol,start
 " Shows the match while typing
-set incsearch                   
+set incsearch
 " Highlight found searches
-set hlsearch                    
+set hlsearch
 " No beeps
-set noerrorbells                
+set noerrorbells
 " Show line numbers
-set number relativenumber        
+set number relativenumber
 " Show me what I'm typing
-set showcmd                     
+set showcmd
 " Don't use swapfile
-set noswapfile                  
+set noswapfile
 " Don't create annoying backup files
-set nobackup                    
+set nobackup
 " Vertical windows should be split to right
-set splitright                  
+set splitright
 " Horizontal windows should split to bottom
-set splitbelow                  
+set splitbelow
 " Automatically save before :next, :make etc.
-set autowrite                   
+set autowrite
 " Buffer should still exist if window is closed
-set hidden                      
+set hidden
 " Prefer Unix over Windows over OS 9 formats
-set fileformats=unix,dos,mac    
+set fileformats=unix,dos,mac
 " Do not show matching brackets by flickering
-set noshowmatch                 
+set noshowmatch
 " We show the mode with airline or lightline
-set showmode                  
+set showmode
 " Search case insensitive...
-set ignorecase                  
+set ignorecase
 " ... but not it begins with upper case
-set smartcase                   
+set smartcase
 " Show popup menu, even if there is one entry
-set completeopt=menu,menuone    
+set completeopt=menu,menuone
 " Completion window max size
-set pumheight=10                
+set pumheight=10
 " Do not highlight column (speeds up highlighting)
-set nocursorcolumn              
+set nocursorcolumn
 " Do not highlight cursor (speeds up highlighting)
-set cursorline                
+set cursorline
 " Wait to redraw
-set lazyredraw                 
+set lazyredraw
 
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
@@ -131,8 +131,13 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set background=dark
-let g:gruvbox_contrast_dark = "hard"
-let g:gruvbox_contrast_light = "hard"
+
+let g:onedark_config = {
+  \ 'style': 'darker',
+  \ 'toggle_style_key': '<leader>ts',
+  \ 'ending_tildes': v:true,
+\ }
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme gruvbox
 
 "------------
@@ -235,7 +240,7 @@ autocmd BufEnter * silent! lcd %:p:h
 " Fast saving"
 nmap <leader>w :w!<cr>
 
-" Fast reloading for configuration change 
+" Fast reloading for configuration change
 map <leader>rr :source ~/.vimrc<CR>"
 
 "Always show current position
@@ -246,7 +251,7 @@ set cmdheight=1
 
 
 set ignorecase " Ignore case when searching
-set smartcase " When searching try to be smart about cases 
+set smartcase " When searching try to be smart about cases
 set incsearch " Makes search act like search in modern browsers
 set magic     " For regular expressions turn magic on
 set showmatch         " Show matching brackets when text indicator is over them
@@ -310,8 +315,8 @@ map <leader>ll :tabnext<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext<cr> 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -326,7 +331,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -369,7 +374,7 @@ map <leader>gg :Goyo<cr>
 function! s:goyo_enter()
 ""  silent !tmux set status off
 ""  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  set number 
+  set number
   set noshowmode
   set noshowcmd
   set scrolloff=999
@@ -389,7 +394,7 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
-" Fast reloading for configuration change 
+" Fast reloading for configuration change
 map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 
 
@@ -402,7 +407,7 @@ map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_layout = { 'down': '~20%' }
 
-" search 
+" search
 nmap <C-p> :FzfHistory<cr>
 imap <C-p> <esc>:<C-u>FzfHistory<cr>
 
