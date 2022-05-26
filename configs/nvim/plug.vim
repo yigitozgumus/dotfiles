@@ -11,6 +11,7 @@ Plug 'tpope/vim-rhubarb'
 
 if has("nvim")
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
 Plug 'junegunn/vim-easy-align'
@@ -29,5 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'udalov/kotlin-vim'
+Plug 'sheerun/vim-polygot'
 
 call plug#end()

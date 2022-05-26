@@ -8,6 +8,8 @@ import:
 env:
   # TERM env customization.
   #
+  #
+  
   # If this property is not set, alacritty will set it to xterm-256color.
   #
   # Note that some xterm terminfo databases don't declare support for italics.
@@ -26,8 +28,8 @@ window:
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 6
-    y: 6
+    x: 4
+    y: 4
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -37,7 +39,8 @@ window:
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: Buttonless
+  decorations: Transparent
+  # Buttonless
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -69,7 +72,7 @@ font:
     style: Light Italic
 
   # Point size of the font
-  size: 14.0
+  size: 13.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -121,7 +124,7 @@ bell:
   duration: 0
 
 # Background opacity
-window.opacity: 0.9
+window.opacity: 0.75 
 
 # Mouse bindings
 #
@@ -198,13 +201,16 @@ live_config_reload: true
 #     - --login
 #
 shell:
-  program: /opt/homebrew/bin/tmux
-  args:
-    - new-session
-    - -A
-    - -D
-    - -s
-    - main
+  program: /bin/zsh
+  args: 
+    - --login
+  # program: /opt/homebrew/bin/tmux
+  # args:
+  #   - new-session
+  #   - -A
+  #   - -D
+  #   - -s
+  #   - main
 
 
 # Key bindings
