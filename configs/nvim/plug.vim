@@ -31,6 +31,5 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'udalov/kotlin-vim'
-Plug 'sheerun/vim-polygot'
 
 call plug#end()
