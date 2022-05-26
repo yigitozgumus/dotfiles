@@ -24,5 +24,6 @@ Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'morhetz/gruvbox'
 Plug 'fatih/vim-go'
+Plug 'mileszs/ack.vim'
 
 call plug#end()

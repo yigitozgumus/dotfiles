@@ -154,3 +154,5 @@ let NERDTreeShowHidden=1
 " Fast reloading for configuration change 
 map <leader>rr :source ~/.config/nvim/init.vim<CR>"
 
+
+nnoremap <leader>a :Ack
