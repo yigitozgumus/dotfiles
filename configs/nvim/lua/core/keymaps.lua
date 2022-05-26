@@ -22,8 +22,15 @@ map('', '<up>', '<nop>')
 map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
+map('i', '<up>', '<nop>')
+map('i', '<down>', '<nop>')
+map('i', '<left>', '<nop>')
+map('i','<right>', '<nop>')
 
--- Map Esc to kk
+map('', 'j', 'gj')
+map('', 'k', 'gk')
+
+-- Map Esc to ksh
 map('i', 'kk', '<Esc>')
 
 -- Clear search highlighting with <leader> and c
@@ -48,6 +55,47 @@ map('i', '<leader>s', '<C-c>:w<CR>')
 
 -- Close all windows and exit from Neovim with <leader> and q
 map('n', '<leader>q', ':qa!<CR>')
+
+map('i', '<F1>', '<ESC>')
+map('n', '<F1>', '<ESC>')
+map('v', '<F1>', '<ESC>')
+
+map('',';',':')
+
+map('', '<C-e>', '3<C-e>')
+map('', '<C-y>', '3<C-y>')
+
+-- Open current directory
+map('', 'te',':tabedit')
+map('','<S-Tab>', ':tabprev<Return>')
+map('','<Tab>', ':tabnext<Return>')
+
+-- Windows
+
+map('', 'ss', ':split<Return><C-w>w')
+map('', 'sv', ':vsplit<Return><C-w>w')
+
+-- Move WIndow
+map('','<Space>','<C-w>w')
+map('','s<left>','<C-w>h')
+map('','s<up>','<C-w>h')
+map('','s<down>','<C-w>j')
+map('','s<right>','<c-w>l')
+
+
+-- Resize window
+map('','<C-w><left>','<C-w><')
+map('','<C-w><right>','<C-w>>')
+map('','<C-w><up>','<C-w>+')
+map('','<C-w><down>','<C-w>-')
+
+-- Smart way to move between windows
+
+map('','sh','<C-w>h')
+map('','sk','<C-w>k')
+map('','sj','<C-w>j')
+map('','sl','<C-w>l')
+
 
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
