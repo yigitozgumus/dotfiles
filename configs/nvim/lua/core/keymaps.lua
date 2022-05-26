@@ -103,6 +103,5 @@ map('','sl','<C-w>l')
 
 -- NvimTree
 map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
-map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
 map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
-
+map('','<leader>f',':Telescope find_files<CR>')
