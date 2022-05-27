@@ -33,13 +33,28 @@ set undofile
 
 " Import "{{{
 
+" Plugins
 runtime ./plug.vim
+lua require('packer_init')
+lua require('plugins/nvim-tree')
+lua require('plugins/indent-blankline')
+lua require('plugins/nvim-cmp')
+lua require('plugins/nvim-lspconfig')
+lua require('plugins/nvim-treesitter')
+lua require('plugins/alpha-nvim')
+
 runtime ./macos.vim
 runtime ./maps.vim
 
+lua require('core/options')
+lua require('core/autocmds')
+lua require('core/keymaps')
 "}}}
 
 " Colorscheme "{{{
+
+lua require('core/colors')
+
 set termguicolors
 syntax on
 let g:onedark_config = {
@@ -54,6 +69,7 @@ colorscheme onedark
 
 " Statusline "{{{
 
+lua require('core/statusline')
 
 "}}}
 
