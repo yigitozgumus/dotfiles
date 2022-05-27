@@ -102,6 +102,5 @@ map('','sl','<C-w>l')
 -----------------------------------------------------------
 
 -- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
-map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
+map('n', '<leader>n', ':NvimTreeToggle<CR>')      -- search file
 map('','<leader>f',':Telescope find_files<CR>')

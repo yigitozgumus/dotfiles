@@ -38,6 +38,25 @@ get_linkables() {
     find -H "$DOTFILES" -maxdepth 3 -name '*.symlink'
 }
 
+# clean
+
+clean() {
+
+    warning "Removing setup..."
+
+    for file in $(get_linkables); do
+        filename=".$(basename "$file" '.symlink')"
+        target="$HOME/$filename"
+        info "Deleting $filename from the setup..."
+        rm "$target"
+    done
+
+    for filename in "$HOME/.config/nvim" "$HOME/.vim" "$HOME/.vimrc"; do
+       info "Deleting $filename from the setup..."
+       rm -f "$filename"
+    done
+}
+
 # backup
 
 backup() {
@@ -60,7 +79,7 @@ backup() {
     for filename in "$HOME/.config/nvim" "$HOME/.vim" "$HOME/.vimrc"; do
         if [ ! -L "$filename" ]; then
             echo "backing up $filename"
-            cp "$target" "$BACKUP_DIR"
+            cp -rf "$filename" "$BACKUP_DIR"
         else
             warning "$filename does not exist at this location or is a symlink"
         fi
@@ -257,6 +276,9 @@ terminfo)
 macos)
     setup_macos
     ;;
+purge)
+    clean
+    ;;
 all)
     setup_symlinks
     setup_terminfo
@@ -266,7 +288,7 @@ all)
     setup_macos
     ;;
 *)
-    echo -e $"\nUsage: $(basename "$0") {backup|link|git|homebrew|shell|terminfo|macos|all}\n"
+    echo -e $"\nUsage: $(basename "$0") {purge|backup|link|git|homebrew|shell|terminfo|macos|all}\n"
     exit 1
     ;;
 esac
