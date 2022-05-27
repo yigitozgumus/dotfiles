@@ -1,4 +1,4 @@
-gap "dteoh/devdocs"
+tap "dteoh/devdocs"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"

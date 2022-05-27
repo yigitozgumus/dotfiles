@@ -1,107 +1,275 @@
 #!/bin/sh
-# Declarations
-DOTFILE_DIR=$(pwd)
-CONFIG_DIR="configs"
 
-CORE="$DOTFILE_DIR/$CONFIG_DIR/core"
+# Colors
+DOTFILES="$(pwd)"
+COLOR_GRAY="\033[1;38;5;243m"
+COLOR_BLUE="\033[1;34m"
+COLOR_GREEN="\033[1;32m"
+COLOR_RED="\033[1;31m"
+COLOR_PURPLE="\033[1;35m"
+COLOR_YELLOW="\033[1;33m"
+COLOR_NONE="\033[0m"
 
-NVIM="$DOTFILE_DIR/$CONFIG_DIR/nvim"
+# Prompts
 
-ALACRITTY_DIR="$DOTFILE_DIR/$CONFIG_DIR/alacritty"
+title() {
+    echo -e "\n${COLOR_PURPLE}$1${COLOR_NONE}"
+    echo -e "${COLOR_GRAY}==============================${COLOR_NONE}\n"
+}
 
-TMUX_DIR="$DOTFILE_DIR/$CONFIG_DIR/tmux"
+error() {
+    echo -e "${COLOR_RED}Error: ${COLOR_NONE}$1"
+    exit 1
+}
 
-TMUXP_DIR="$DOTFILE_DIR/$CONFIG_DIR/tmuxp"
+warning() {
+    echo -e "${COLOR_YELLOW}Warning: ${COLOR_NONE}$1"
+}
 
-FISH_DIR="$DOTFILE_DIR/$CONFIG_DIR/fish"
+info() {
+    echo -e "${COLOR_BLUE}Info: ${COLOR_NONE}$1"
+}
 
-LAZYGIT_DIR="$DOTFILE_DIR/$CONFIG_DIR/lazygit"
+success() {
+    echo -e "${COLOR_GREEN}$1${COLOR_NONE}"
+}
 
-STARSHIP_DIR="$DOTFILE_DIR/$CONFIG_DIR/starship"
+get_linkables() {
+    find -H "$DOTFILES" -maxdepth 3 -name '*.symlink'
+}
 
-# Get the configuration files
-CONFIG_FILES=$(find $CONFIG_DIR/core -type f)
+# backup
 
-NVIM_CONFIG_FILE="${NVIM}/init.lua"
-NVIM_MAPS_FILE="${NVIM}/maps.vim"
-NVIM_MACOS_FILE="${NVIM}/macos.vim"
-NVIM_PLUG_FILE="${NVIM}/plug.vim"
-NVIM_LUA_DIR="${NVIM}/lua/"
+backup() {
+    BACKUP_DIR=$HOME/.backup
+    echo "Creating backup directory at $BACKUP_DIR"
+    rm -rf "$BACKUP_DIR"
+    mkdir -p "$BACKUP_DIR"
 
-# Options
-if [[ $1 == '--no-git' ]]; then
-    echo "\\nGitconfig file is excluded\\n"
-    shopt -s extglob
-    CONFIG_FILES=$(echo ${CONFIG_FILES//gitconfig/})
-fi
+    for file in $(get_linkables); do
+        filename=".$(basename "$file" '.symlink')"
+        target="$HOME/$filename"
+        if [ -f "$target" ]; then
+            echo "backing up $filename"
+            cp "$target" "$BACKUP_DIR"
+        else
+            warning "$filename does not exist at this location or is a symlink"
+        fi
+    done
 
-# Update the backup
+    for filename in "$HOME/.config/nvim" "$HOME/.vim" "$HOME/.vimrc"; do
+        if [ ! -L "$filename" ]; then
+            echo "backing up $filename"
+            cp "$target" "$BACKUP_DIR"
+        else
+            warning "$filename does not exist at this location or is a symlink"
+        fi
+    done
+}
 
-rm -rf "${HOME}/.backup"
-mkdir -p "${HOME}/.backup"
-echo "\\nThe backup is created."
+# Symlink setup
 
-for file in $CONFIG_FILES; do
-    target_file=$(echo $file | sed "s/configs\/core\///g")
-    mv "${HOME}/.${target_file}" "${HOME}/.backup"
-done
+setup_symlinks() {
+    title "Creating symlinks"
 
-#Nvim
-mv "${HOME}/.config/nvim/init.lua" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/init.vim" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/maps.vim" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/macos.vim" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/plug.vim" "${HOME}/.backup"
-mv "${HOME}/.config/nvim/lua" "${HOME}/.backup/lua"
+    for file in $(get_linkables); do
+        target="$HOME/.$(basename "$file" '.symlink')"
+        if [ -e "$target" ]; then
+            info "~${target#$HOME} already exists... Skipping."
+        else
+            info "Creating symlink for $file"
+            ln -s "$file" "$target"
+        fi
+    done
 
-#Alacritty
-mv "${HOME}/.config/alacritty" "${HOME}/.backup"
+    echo -e
+    info "installing to ~/.config"
+    if [ ! -d "$HOME/.config" ]; then
+        info "Creating ~/.config"
+        mkdir -p "$HOME/.config"
+    fi
 
-#Tmux
-rm -f "${HOME}/.tmux.conf"
+    config_files=$(find "$DOTFILES/configs" -maxdepth 1 2>/dev/null)
+    for config in $config_files; do
+        target="$HOME/.config/$(basename "$config")"
+        if [ -e "$target" ]; then
+            info "~${target#$HOME} already exists... Skipping."
+        else
+            info "Creating symlink for $config"
+            ln -s "$config" "$target"
+        fi
+    done
+}
 
-#Tmux
-rm -rf "${HOME}/.tmuxp"
+# Git setup
 
-#Lazygit
-mkdir -p "${HOME}/.config/lazygit"
-rm -f "${HOME}/.config/lazygit/config.yml"
+setup_git() {
+    title "Setting up Git"
 
-echo "\\nAll old configuration files are backed up.\\n"
+    defaultName=$(git config user.name)
+    defaultEmail=$(git config user.email)
+    defaultGithub=$(git config github.user)
 
-for file in $CONFIG_FILES; do
-    target_file=$(echo $file | sed "s/configs\/core\///g")
-    ln -sv "${DOTFILE_DIR}/${file}" "${HOME}/.${target_file}"
-done
-echo "\\nConfiguration Files are linked.\\n"
+    info "Type your work credentials"
+    read -rp "Name [$defaultName] " name
+    read -rp "Email [$defaultEmail] " email
+    read -rp "Github username [$defaultGithub] " github
 
-# Connect the nvim
-mkdir -p "${HOME}/.config/nvim"
- cp "${NVIM_CONFIG_FILE}" "${HOME}/.config/nvim/init.lua"
-# cp "${NVIM_CONFIG_FILE}" "${HOME}/.config/nvim/init.vim"
-cp "${NVIM_MAPS_FILE}" "${HOME}/.config/nvim/maps.vim"
-cp "${NVIM_PLUG_FILE}" "${HOME}/.config/nvim/plug.vim"
-cp "${NVIM_MACOS_FILE}" "${HOME}/.config/nvim/macos.vim"
-cp -Rv "${NVIM_LUA_DIR}" "${HOME}/.config/nvim/lua"
+    touch "$HOME/.gitconfig-work"
+    git config -f ~/.gitconfig-work user.name "${name:-$defaultName}"
+    git config -f ~/.gitconfig-work user.email "${email:-$defaultEmail}"
+    git config -f ~/.gitconfig-work github.user "${github:-$defaultGithub}"
+    info "Work Credentials set"
 
-echo "\\nNvim configurations are linked.\\n"
+    git_files=$(find "$DOTFILES/git" -maxdepth 1 2>/dev/null)
+    for git_file in $git_files; do
+        target="$HOME/.$(basename "$git_file")"
+        if [ -e "$target" ]; then
+            info "~${target#$HOME} already exists... Skipping."
+        else
+            info "Creating symlink for $git_file"
+            ln -s "$git_file" "$target"
+        fi
+    done
+}
 
-# Connect alacritty
-mkdir -p "${HOME}/.config/alacritty"
-cp "${ALACRITTY_DIR}/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
-cp "${ALACRITTY_DIR}/color.yml" "${HOME}/.config/alacritty/color.yml"
+# Homebrew setup
 
-# Tmux
-mkdir -p "${HOME}/.tmux"
-cp -f "${TMUX_DIR}/tmux.conf" "${HOME}/.tmux.conf"
+setup_homebrew() {
+    title "Setting up Homebrew"
 
-# Fish
-cp -r "${FISH_DIR}/." "${HOME}/.config/fish/functions"
-cp -R "${CONFIG_DIR}/config.fish" "${HOME}/.config/fish/config.fish"
+    if test ! "$(command -v brew)"; then
+        info "Homebrew not installed. Installing."
+        # Run as a login shell (non-interactive) so that the script doesn't pause for user input
+        curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash --login
+    fi
 
-# Lazygit
-cp "${LAZYGIT_DIR}/config-dark.yml" "${HOME}/.config/lazygit/config-dark.yml"
-cp "${LAZYGIT_DIR}/config-light.yml" "${HOME}/.config/lazygit/config-light.yml"
+    if [ "$(uname)" == "Linux" ]; then
+        test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+        test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+    fi
 
-# Tmuxp
-ln -s "${TMUXP_DIR}" "${HOME}/.tmuxp"
+    # install brew dependencies from Brewfile
+    brew bundle
+
+    # install fzf
+    echo -e
+    info "Installing fzf"
+    "$(brew --prefix)"/opt/fzf/install --key-bindings --completion --no-update-rc --no-bash --no-fish
+}
+
+# Shell setup
+
+setup_shell() {
+    title "Configuring shell"
+
+    [[ -n "$(command -v brew)" ]] && zsh_path="$(brew --prefix)/bin/zsh" || zsh_path="$(which zsh)"
+    if ! grep "$zsh_path" /etc/shells; then
+        info "adding $zsh_path to /etc/shells"
+        echo "$zsh_path" | sudo tee -a /etc/shells
+    fi
+
+    if [[ "$SHELL" != "$zsh_path" ]]; then
+        chsh -s "$zsh_path"
+        info "default shell changed to $zsh_path"
+    fi
+}
+
+# macos setup
+
+setup_macos() {
+    title "Configuring macOS"
+    if [[ "$(uname)" == "Darwin" ]]; then
+
+        echo "Finder: show all filename extensions"
+        defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+        echo "show hidden files by default"
+        defaults write com.apple.Finder AppleShowAllFiles -bool false
+
+        echo "only use UTF-8 in Terminal.app"
+        defaults write com.apple.terminal StringEncodings -array 4
+
+        echo "expand save dialog by default"
+        defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+        echo "show the ~/Library folder in Finder"
+        chflags nohidden ~/Library
+
+        echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
+        defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+        echo "Enable subpixel font rendering on non-Apple LCDs"
+        defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+        echo "Use current directory as default search scope in Finder"
+        defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+        echo "Show Path bar in Finder"
+        defaults write com.apple.finder ShowPathbar -bool true
+
+        echo "Show Status bar in Finder"
+        defaults write com.apple.finder ShowStatusBar -bool true
+
+        echo "Disable press-and-hold for keys in favor of key repeat"
+        defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+        echo "Set a blazingly fast keyboard repeat rate"
+        defaults write NSGlobalDomain KeyRepeat -int 1
+
+        echo "Set a shorter Delay until key repeat"
+        defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+        echo "Enable tap to click (Trackpad)"
+        defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+        echo "Enable Safari’s debug menu"
+        defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+        echo "Kill affected applications"
+
+        for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
+    else
+        warning "macOS not detected. Skipping."
+    fi
+}
+
+case "$1" in
+backup)
+    backup
+    ;;
+link)
+    setup_symlinks
+    ;;
+git)
+    setup_git
+    ;;
+homebrew)
+    setup_homebrew
+    ;;
+shell)
+    setup_shell
+    ;;
+terminfo)
+    setup_terminfo
+    ;;
+macos)
+    setup_macos
+    ;;
+all)
+    setup_symlinks
+    setup_terminfo
+    setup_homebrew
+    setup_shell
+    setup_git
+    setup_macos
+    ;;
+*)
+    echo -e $"\nUsage: $(basename "$0") {backup|link|git|homebrew|shell|terminfo|macos|all}\n"
+    exit 1
+    ;;
+esac
+
+echo -e
+success "Done."
