@@ -58,18 +58,18 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Input Mono Narrow
-    style: Light
+    family: MesloLGS NF 
+    style: Regular
 
   # The bold font face
   bold:
-    family: Input Mono Narrow
+    family: MesloLGS NF
     style: Bold
 
   # The italic font face
   italic:
-    family: Input Mono Narrow
-    style: Light Italic
+    family: MesloLGS NF
+    style: Bold Italic
 
   # Point size of the font
   size: 13.0
