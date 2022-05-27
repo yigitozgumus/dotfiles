@@ -39,7 +39,7 @@ lua require('packer_init')
 lua require('plugins/nvim-tree')
 lua require('plugins/indent-blankline')
 lua require('plugins/nvim-cmp')
-lua require('plugins/nvim-lspconfig')
+" lua require('plugins/nvim-lspconfig')
 lua require('plugins/nvim-treesitter')
 lua require('plugins/alpha-nvim')
 

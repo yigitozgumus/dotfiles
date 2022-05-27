@@ -17,6 +17,7 @@ endif
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/goyo.vim'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'godoctor/godoctor.vim'
