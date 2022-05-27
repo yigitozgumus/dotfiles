@@ -40,6 +40,14 @@ packer.startup(function(use)
       }
 
       use {
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+          require('user.plugins.bufferline')
+        end
+      }
+
+      use {
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
@@ -115,12 +123,12 @@ packer.startup(function(use)
         end,
       }
     
-    --   use {
-    --     'L3MON4D3/LuaSnip',
-    --     config = function()
-    --       require('user.plugins.luasnip')
-    --     end
-    --   }
+      use {
+        'L3MON4D3/LuaSnip',
+        config = function()
+          require('user.plugins.luasnip')
+        end
+      }
     
       use {
         'hrsh7th/nvim-cmp',
