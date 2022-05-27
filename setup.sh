@@ -53,7 +53,7 @@ clean() {
 
     for filename in "$HOME/.config/nvim" "$HOME/.vim" "$HOME/.vimrc"; do
        info "Deleting $filename from the setup..."
-       rm -f "$filename"
+       rm -rf "$filename"
     done
 }
 
