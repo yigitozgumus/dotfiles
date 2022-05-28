@@ -9,6 +9,9 @@ packer.startup(function(use)
     use { 'tpope/vim-commentary' }
     use { 'tpope/vim-repeat' }
     use { 'tpope/vim-surround' }
+    use { 'tpope/vim-eunuch' } -- Adds :Rename, :SudoWrite
+    use { 'tpope/vim-unimpaired' } -- Adds [b and other handy mappings
+    use { 'tpope/vim-sleuth' } -- Indent autodetection with editorconfig support
     use { 'navarasu/onedark.nvim'}
 
     use {
@@ -63,12 +66,20 @@ packer.startup(function(use)
         end
       }
     
-    --   use {
-    --     'karb94/neoscroll.nvim',
-    --     config = function()
-    --       require('user.plugins.neoscroll')
-    --     end
-    --   }
+      use {
+        'karb94/neoscroll.nvim',
+        config = function()
+          require('user.plugins.neoscroll')
+        end
+      }
+
+      use {
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+          require('gitsigns').setup { sign_priority = 20 }
+        end,
+      }
 
       use {
         'nvim-telescope/telescope.nvim',

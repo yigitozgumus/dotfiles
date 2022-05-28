@@ -110,5 +110,19 @@ keymap('','sk','<C-w>k')
 keymap('','sj','<C-w>j')
 keymap('','sl','<C-w>l')
 
+--- Searching and Moving
+keymap('n', '/', '/\v')
+keymap('v', '/', '/\v')
+keymap('','<leader><space>', ':noh<cr>')
+keymap('n', '<tab>', '%')
+keymap('v', '<tab>', '%')
 
+--- Close the current buffer
+keymap('', '<leader>bd', ':Bclose<cr>:tabclose<cr>gT')
+
+-- Close all buffers
+keymap('', '<leader>ba', ':bufdo bd<cr>')
+
+-- Show all buffers
+keymap('', '<leader>bb', ':ls<cr>:buffer<Space>')
 
