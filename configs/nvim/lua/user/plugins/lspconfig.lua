@@ -47,40 +47,6 @@ end
 -- nvim-cmp supports additional completion capabilities
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require'lspconfig'.bashls.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
-
-require'lspconfig'.dockerls.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
-
-require'lspconfig'.efm.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  init_options = { documentFormatting = true },
-  filetypes = { 'php' },
-  settings = {
-    rootMarkers = { '.git/' },
-    languages = {
-      php = {
-        lintCommand = './vendor/bin/phpstan analyze --error-format raw --no-progress'
-      },
-    },
-  },
-}
-
 require'lspconfig'.emmet_ls.setup{
   on_attach = on_attach,
   capabilities = capabilities,
@@ -90,14 +56,6 @@ require'lspconfig'.emmet_ls.setup{
 }
 
 require'lspconfig'.html.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
-
-require'lspconfig'.intelephense.setup{
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -127,15 +85,6 @@ require'lspconfig'.jsonls.setup{
       schemas = require('schemastore').json.schemas()
     }
   }
-}
-
-require'lspconfig'.solang.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  cmd = { 'solang', '--language-server', '--target', 'ewasm', '--importpath', 'node_modules' },
 }
 
 require'lspconfig'.sqls.setup{
