@@ -13,6 +13,7 @@ packer.startup(function(use)
     use { 'tpope/vim-unimpaired' } -- Adds [b and other handy mappings
     use { 'tpope/vim-sleuth' } -- Indent autodetection with editorconfig support
     use { 'navarasu/onedark.nvim'}
+    use { 'Mofiqul/vscode.nvim'}
 
     use {
         'sickill/vim-pasta',
@@ -27,14 +28,14 @@ packer.startup(function(use)
           require('user.plugins.sayonara')
         end
       }
-    
+
       use {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
           require('user.plugins.indent-blankline')
         end
       }
-    
+
       use {
         'AndrewRadev/splitjoin.vim',
         config = function()
@@ -57,7 +58,7 @@ packer.startup(function(use)
           require('user.plugins.lualine')
         end
       }
-    
+
       use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
@@ -65,7 +66,7 @@ packer.startup(function(use)
           require('user.plugins.nvim-tree')
         end
       }
-    
+
       use {
         'karb94/neoscroll.nvim',
         config = function()
@@ -93,7 +94,7 @@ packer.startup(function(use)
           require('user.plugins.telescope')
         end
       }
-    
+
       use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
@@ -108,7 +109,7 @@ packer.startup(function(use)
           require('spellsitter').setup()
         end
       }
-    
+
       use {
         'tpope/vim-fugitive',
         requires = 'tpope/vim-rhubarb',
@@ -126,21 +127,21 @@ packer.startup(function(use)
           require('user.plugins.lspconfig')
         end
       }
-    
+
       use {
         'j-hui/fidget.nvim',
         config = function()
           require('fidget').setup{}
         end,
       }
-    
+
       use {
         'L3MON4D3/LuaSnip',
         config = function()
           require('user.plugins.luasnip')
         end
       }
-    
+
       use {
         'hrsh7th/nvim-cmp',
         requires = {
