@@ -198,6 +198,19 @@ setup_shell() {
     fi
 }
 
+# Term info
+function setup_terminfo() {
+    title "Configuring terminfo"
+
+    info "adding tmux.terminfo"
+    tic -x "$DOTFILES/resources/tmux.terminfo"
+
+    info "adding xterm-256color-italic.terminfo"
+    tic -x "$DOTFILES/resources/xterm-256color-italic.terminfo"
+}
+
+
+
 # macos setup
 
 setup_macos() {
@@ -289,6 +302,7 @@ all)
     setup_shell
     setup_git
     setup_macos
+    setup_terminfo
     ;;
 *)
     echo -e $"\nUsage: $(basename "$0") {purge|backup|link|git|homebrew|shell|terminfo|macos|all}\n"

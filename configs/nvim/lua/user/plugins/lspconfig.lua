@@ -41,7 +41,7 @@ local on_attach = function(_, bufnr)
   buf_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
   -- buf_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
   -- buf_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -80,7 +80,19 @@ require'lspconfig'.emmet_ls.setup{
 require'lspconfig'.tailwindcss.setup{}
 
 require'lspconfig'.tsserver.setup{
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+   client.resolved_capabilities.document_formatting = false
+   client.resolved_capabilities.document_range_formatting = false
+
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup({})
+    ts_utils.setup_client(client)
+    buf_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+    buf_keymap(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+    buf_keymap(bufnr, "n", "go", ":TSLspImportAll<CR>")
+
+    on_attach(client, bufnr)
+  end,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,

@@ -94,11 +94,11 @@ packer.startup(function(use)
     use {'tpope/vim-fugitive', requires = 'tpope/vim-rhubarb', cmd = 'G'}
 
     use {
-        "williamboman/nvim-lsp-installer", 
+        "williamboman/nvim-lsp-installer",
         {
             'neovim/nvim-lspconfig',
             requires = {
-                'b0o/schemastore.nvim', 
+                'b0o/schemastore.nvim',
                 'folke/lsp-colors.nvim',
                 'weilbith/nvim-code-action-menu'
             },
@@ -108,6 +108,10 @@ packer.startup(function(use)
             end
         }
     }
+    use { "jose-elias-alvarez/null-ls.nvim" ,
+    config = function() require('user.plugins.null-ls') end
+    }
+    use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use {'folke/tokyonight.nvim'}
     use {'EdenEast/nightfox.nvim'}
 
