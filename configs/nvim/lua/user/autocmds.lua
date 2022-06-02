@@ -17,6 +17,16 @@ autocmd('TextYankPost', {
   end
 })
 
+autocmd('BufNewFile', {
+  pattern = { '*.tsx, *.jsx' },
+  command = 'set filetype=typescriptreact'
+})
+
+autocmd('BufRead', {
+  pattern = { '*.tsx, *.jsx' },
+  command = 'set filetype=typescriptreact'
+})
+
 -- Remove whitespace on save
 autocmd('BufWritePre', {
   pattern = '*',

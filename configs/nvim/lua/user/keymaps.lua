@@ -78,8 +78,6 @@ keymap('i', '<F1>', '<ESC>')
 keymap('n', '<F1>', '<ESC>')
 keymap('v', '<F1>', '<ESC>')
 
-keymap('',';',':')
-
 keymap('', '<C-e>', '3<C-e>')
 keymap('', '<C-y>', '3<C-y>')
 
@@ -114,9 +112,9 @@ keymap('', '<leader>ba', ':bufdo bd<cr>')
 keymap('', '<leader>bb', ':ls<cr>:buffer<Space>')
 
 -- Move between buffers
-keymap('', '{', ':bprev<cr>')
-keymap('','}', ':bnext<cr>')
+keymap('', '“', ':bprev<cr>')
+keymap('','‘', ':bnext<cr>')
 
 -- Move between tabs
-keymap('n', '<C-[>',':tabprev<cr>')
-keymap('n', '<C-]>', ':tabnext<cr>')
+keymap('n', '<C-S-Tab>',':tabprev<cr>')
+keymap('n', '<C-Tab>', ':tabnext<cr>')

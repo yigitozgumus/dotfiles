@@ -135,5 +135,7 @@ packer.startup(function(use)
         },
         config = function() require('user.plugins.cmp') end
     }
-
+    use { "leafgarland/typescript-vim" }
+    use { "maxmellon/vim-jsx-pretty" }
+    use { "HerringtonDarkholme/yats.vim" }
 end)
