@@ -15,10 +15,14 @@ vim.o.background = "dark"
 -- jjvim.o.background = "light"
 -- Enable transparent background
 vim.g.vscode_transparent = 1
+
+-- vim.g.tokyonight_transparent = 1
+
 -- Enable italic comment
 vim.g.vscode_italic_comment = 1
 -- Disable nvim-tree background color
 vim.g.vscode_disable_nvimtree_bg = true
-vim.cmd([[colorscheme vscode]])
+-- Potential colorschemes: vscode onedark
+vim.cmd([[colorscheme tokyonight]])
 
 -- vim: nospell

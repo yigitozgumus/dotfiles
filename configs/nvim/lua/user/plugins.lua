@@ -116,7 +116,8 @@ packer.startup(function(use)
         cmd = 'G',
       }
 
-use { "williamboman/nvim-lsp-installer" }
+    use { "williamboman/nvim-lsp-installer" }
+    use { 'folke/tokyonight.nvim' }
 
       use {
         'neovim/nvim-lspconfig',
