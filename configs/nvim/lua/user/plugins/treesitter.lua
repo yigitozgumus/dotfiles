@@ -1,7 +1,7 @@
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs();
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = 'maintained',
+  ensure_installed = {'lua', 'typescript' },
   indent = {
     enable = { 'html', 'kotlin', 'javascript', 'typescript', 'go' },
   },

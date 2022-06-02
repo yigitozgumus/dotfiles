@@ -116,6 +116,8 @@ packer.startup(function(use)
         cmd = 'G',
       }
 
+use { "williamboman/nvim-lsp-installer" }
+
       use {
         'neovim/nvim-lspconfig',
         requires = {

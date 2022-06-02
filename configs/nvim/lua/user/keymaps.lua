@@ -84,17 +84,14 @@ keymap('', '<C-e>', '3<C-e>')
 keymap('', '<C-y>', '3<C-y>')
 
 -- Open current directory
-keymap('', 'te',':tabedit')
-keymap('','<S-Tab>', ':tabprev<Return>')
-keymap('','<Tab>', ':tabnext<Return>')
+keymap('', 'te',':tabedit<cr>')
 
 -- Windows
 
 keymap('n', 'ss', ':split<Return><C-w>w')
 keymap('n', 'sv', ':vsplit<Return><C-w>w')
 
--- Move WIndow
-keymap('','<Space>','<C-w>w')
+keymap('', '<Space>', '/')
 
 -- Resize window
 keymap('','<C-w><left>','<C-w><')
@@ -103,11 +100,9 @@ keymap('','<C-w><up>','<C-w>+')
 keymap('','<C-w><down>','<C-w>-')
 
 --- Searching and Moving
-keymap('n', '/', '/\v')
-keymap('v', '/', '/\v')
+-- keymap('n', '/', '/\v')
+-- keymap('v', '/', '/\v')
 keymap('','<leader><space>', ':noh<cr>')
-keymap('n', '<tab>', '%')
-keymap('v', '<tab>', '%')
 
 --- Close the current buffer
 keymap('', '<leader>bd', ':Bclose<cr>:tabclose<cr>gT')
@@ -118,3 +113,10 @@ keymap('', '<leader>ba', ':bufdo bd<cr>')
 -- Show all buffers
 keymap('', '<leader>bb', ':ls<cr>:buffer<Space>')
 
+-- Move between buffers
+keymap('', '{', ':bprev<cr>')
+keymap('','}', ':bnext<cr>')
+
+-- Move between tabs
+keymap('n', '<C-[>',':tabprev<cr>')
+keymap('n', '<C-]>', ':tabnext<cr>')
