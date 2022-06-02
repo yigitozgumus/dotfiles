@@ -51,9 +51,9 @@ clean() {
         rm "$target"
     done
 
-    for filename in "$HOME/.config/nvim" "$HOME/.vim" "$HOME/.vimrc"; do
-       info "Deleting $filename from the setup..."
-       rm -rf "$filename"
+    for filename in "$HOME/.config/nvim" "$HOME/.vim" "$HOME/.vimrc" "$HOME/.config/alacritty"; do
+        info "Deleting $filename from the setup..."
+        rm -rf "$filename"
     done
 }
 

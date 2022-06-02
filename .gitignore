@@ -1,0 +1,3 @@
+configs/nvim/plugin/**.lua
+configs/nvim/.DS_Store
+.DS_Store
