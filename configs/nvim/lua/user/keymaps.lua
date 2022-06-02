@@ -118,3 +118,17 @@ keymap('','‘', ':bnext<cr>')
 -- Move between tabs
 keymap('n', '<C-S-Tab>',':tabprev<cr>')
 keymap('n', '<C-Tab>', ':tabnext<cr>')
+
+
+-- Telescope
+keymap('n', '<leader>ff' , '<cmd>Telescope find_files<cr>')
+keymap('n', '<leader>fg' , '<cmd>Telescope live_grep<cr>')
+keymap('n', '<leader>fb' , '<cmd>Telescope buffers<cr>')
+keymap('n', '<leader>fh' , '<cmd>Telescope help_tags<cr>')
+
+-- FZF
+keymap('n', '<leader>p' , '<cmd>Files<cr>')
+
+
+-- Move between two files
+keymap('n', '<leader><Space>', '<C-^>')

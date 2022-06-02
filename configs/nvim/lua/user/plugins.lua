@@ -138,4 +138,6 @@ packer.startup(function(use)
     use { "leafgarland/typescript-vim" }
     use { "maxmellon/vim-jsx-pretty" }
     use { "HerringtonDarkholme/yats.vim" }
+    use { 'junegunn/fzf.vim' }
+    use { 'junegunn/fzf' }
 end)
