@@ -1,6 +1,6 @@
-vim.cmd [[
-  augroup FileTypeOverrides
-    autocmd!
-    autocmd TermOpen * setlocal nospell
-  augroup END
-]]
+ vim.cmd [[
+   augroup FileTypeOverrides
+     autocmd!
+     autocmd TermOpen * setlocal nospell
+   augroup END
+ ]]

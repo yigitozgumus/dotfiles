@@ -47,6 +47,10 @@ keymap('', 'k', 'gk')
 -- Map Esc to ksh
 keymap('i', 'kk', '<Esc>')
 
+-- Map jj to exiting insert mode
+keymap('i', 'jj', '<Esc>')
+
+
 -- Clear search highlighting with <leader> and c
 keymap('n', '<leader>c', ':nohl<CR>')
 
@@ -86,29 +90,17 @@ keymap('','<Tab>', ':tabnext<Return>')
 
 -- Windows
 
-keymap('', 'ss', ':split<Return><C-w>w')
-keymap('', 'sv', ':vsplit<Return><C-w>w')
+keymap('n', 'ss', ':split<Return><C-w>w')
+keymap('n', 'sv', ':vsplit<Return><C-w>w')
 
 -- Move WIndow
 keymap('','<Space>','<C-w>w')
-keymap('','s<left>','<C-w>h')
-keymap('','s<up>','<C-w>h')
-keymap('','s<down>','<C-w>j')
-keymap('','s<right>','<c-w>l')
-
 
 -- Resize window
 keymap('','<C-w><left>','<C-w><')
 keymap('','<C-w><right>','<C-w>>')
 keymap('','<C-w><up>','<C-w>+')
 keymap('','<C-w><down>','<C-w>-')
-
--- Smart way to move between windows
-
-keymap('','sh','<C-w>h')
-keymap('','sk','<C-w>k')
-keymap('','sj','<C-w>j')
-keymap('','sl','<C-w>l')
 
 --- Searching and Moving
 keymap('n', '/', '/\v')
