@@ -3,10 +3,10 @@ require('nvim-tree').setup {
   git = {
     ignore = false,
   },
-  rendered = {
+  renderer = {
     indent_markers = {
       enable = true,
-    }
+    },
     highlight_opened_files = 'icon',
     group_empty = true,
   }

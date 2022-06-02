@@ -118,6 +118,7 @@ packer.startup(function(use)
 
     use { "williamboman/nvim-lsp-installer" }
     use { 'folke/tokyonight.nvim' }
+    use { 'EdenEast/nightfox.nvim' }
 
       use {
         'neovim/nvim-lspconfig',
