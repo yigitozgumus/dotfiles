@@ -47,7 +47,47 @@ end
 -- nvim-cmp supports additional completion capabilities
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+require'lspconfig'.kotlin_language_server.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+require'lspconfig'.gopls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+require'lspconfig'.gradle_ls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+
 require'lspconfig'.emmet_ls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+
+require'lspconfig'.tailwindcss.setup{}
+
+require'lspconfig'.tsserver.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+
+require'lspconfig'.vimls.setup{
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -63,14 +103,11 @@ require'lspconfig'.html.setup{
   },
 }
 
-require'lspconfig'.eslint.setup{
+require'lspconfig'.cssls.setup{
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,
-  },
-  handlers = {
-    ['window/showMessageRequest'] = function(_, result, _) return result end,
   },
 }
 
@@ -87,63 +124,32 @@ require'lspconfig'.jsonls.setup{
   }
 }
 
-require'lspconfig'.sqls.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
+require'lspconfig'.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
   },
 }
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
-require'lspconfig'.sumneko_lua.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  cmd = { '/home/jess/bin/lua-language-server', '-E', '/home/jess/bin/main.lua' },
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-        path = runtime_path,
-      },
-    },
-    diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = { 'vim' },
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      -- library = vim.api.nvim_get_runtime_file('', true),
-    },
-    telemetry = {
-      enable = false,
-    },
-  },
-}
-
-require'lspconfig'.tailwindcss.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-}
-
-require'lspconfig'.volar.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  -- Enable "Take Over Mode" where volar will provide all TS LSP services
-  -- This drastically improves the responsiveness of diagnostic updates on change
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-}
 
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
