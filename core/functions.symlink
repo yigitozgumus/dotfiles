@@ -246,18 +246,18 @@ change_background(){
         fi
     fi
 
-    local TMUX_WINS=`/usr/local/bin/tmux list-windows -t main`
-    local W_LIST=($(/usr/local/bin/tmux list-windows -t main -F 'main:#{window_index}'))
-    # for WIX in ${W_LIST}
-    # do
-    #     local P_LIST=($(/usr/local/bin/tmux list-panes -F 'main:#{window_index}.#{pane_index}' -t $WIX))
-    #     for PIX in ${P_LIST}
-    #         do
-    #             local IS_VIM=`ps -o state= -o comm= -t '#{pane_tty}'  | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?\$'`
-    #             /usr/local/bin/tmux if-shell -t "$PIX" "$IS_VIM" "send-keys -t $PIX escape ENTER"
-    #             /usr/local/bin/tmux if-shell -t "$PIX" "$IS_VIM" "send-keys -t $PIX ':call ChangeBackground()' ENTER"
-    #         done
-    # done
+    local TMUX_WINS=`/opt/homebrew/bin/tmux list-windows -t main`
+    local W_LIST=($(/opt/homebrew/bin/tmux list-windows -t main -F 'main:#{window_index}'))
+    for WIX in ${W_LIST}
+    do
+        local P_LIST=($(/opt/homebrew/bin/tmux list-panes -F 'main:#{window_index}.#{pane_index}' -t $WIX))
+        for PIX in ${P_LIST}
+            do
+                local IS_VIM=`ps -o state= -o comm= -t '#{pane_tty}'  | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?\$'`
+                /opt/homebrew/bin/tmux if-shell -t "$PIX" "$IS_VIM" "send-keys -t $PIX escape ENTER"
+                /opt/homebrew/bin/tmux if-shell -t "$PIX" "$IS_VIM" "send-keys -t $PIX ':call ChangeBackground()' ENTER"
+            done
+    done
 
     #if [[ "$MODE" == "dark" ]]; then
     #    tmux source-file ~/.tmux/tmux-dark.conf
