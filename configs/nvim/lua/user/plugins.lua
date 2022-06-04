@@ -140,4 +140,5 @@ packer.startup(function(use)
     use { "HerringtonDarkholme/yats.vim" }
     use { 'junegunn/fzf.vim' }
     use { 'junegunn/fzf' }
+    use { "voldikss/vim-floaterm" }
 end)
