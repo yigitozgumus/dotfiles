@@ -113,7 +113,10 @@ packer.startup(function(use)
     }
     use "jose-elias-alvarez/nvim-lsp-ts-utils"
     use {'folke/tokyonight.nvim'}
-    use {'EdenEast/nightfox.nvim'}
+    use {
+        'EdenEast/nightfox.nvim',
+        config = function() require('user.plugins.nightfox') end
+    }
 
     use {
         'j-hui/fidget.nvim',
@@ -145,5 +148,6 @@ packer.startup(function(use)
         "cormacrelf/dark-notify" ,
     config = function() require('user.plugins.dark-notify') end
     }
+    use {  'junegunn/goyo.vim' }
 
 end)
