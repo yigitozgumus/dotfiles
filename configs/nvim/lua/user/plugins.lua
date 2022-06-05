@@ -141,4 +141,9 @@ packer.startup(function(use)
     use { 'junegunn/fzf.vim' }
     use { 'junegunn/fzf' }
     use { "voldikss/vim-floaterm" }
+    use {
+        "cormacrelf/dark-notify" ,
+    config = function() require('user.plugins.dark-notify') end
+    }
+
 end)

@@ -33,12 +33,12 @@ function cb --argument mode_setting
   end
 
   # change tmux
-    switch $mode
-      case dark
-        tmux source-file ~/.tmux/tmux-dark.conf
-      case light
-        tmux source-file ~/.tmux/tmux-light.conf
-    end
+ #     switch $mode
+ #       case dark
+ #         tmux source-file ~/.tmux/tmux-dark.conf
+ #       case light
+ #         tmux source-file ~/.tmux/tmux-light.conf
+ #     end
 
   # change alacritty
   switch $mode

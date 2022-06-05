@@ -191,7 +191,7 @@ function! ChangeBackground()
 endfunction
 
 " initialize the colorscheme for the first run
-" call ChangeBackground()
+call ChangeBackground()
 
 " change the color scheme if we receive a SigUSR1
  autocmd SigUSR1 * call ChangeBackground()

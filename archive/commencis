@@ -1,0 +1,119 @@
+
+change_to_local_version() {
+    branch=$(git branch --show-current)
+    local="_local"
+    local_branch="$branch$local"
+    printf "${FORMAT_INFO}Switching to local copy\n${FORMAT_END}"
+    git checkout -b $local_branch
+    if [ -z "$@"]; then
+        printf "${FORMAT_INFO}Operation completed.\n${FORMAT_END}"
+    else
+        printf "${FORMAT_INFO}Cherry picking commits..\n${FORMAT_END}"
+        for i in "$@"; do
+            git fetch $PROJECT_NAME $i
+            git cherry-pick FETCH_HEAD # add web hook line to here
+            echo "\n"
+        done
+        printf "${FORMAT_INFO}Operation completed.\n${FORMAT_END}"
+    fi
+
+}
+
+bto() {
+    back_to_original $@
+}
+
+back_to_original() {
+    # get the original branch name
+    echo "Patching things to original branch...\n"
+    local_branch=$(git branch --show-current)
+    length=$(expr ${#local_branch} - 6)
+    original_branch=$(echo $local_branch | cut -c-$length)
+    echo "Original branch is $original_branch\n"
+
+    echo "Switched to original branch\n"
+    author=$(git config user.name)
+    commits=$(git log $original_branch..$local_branch --pretty=format:'%H' --author $author)
+    if [ ! -z $commits ]; then
+        echo "Commits from the local branches are:\n"
+        commits=($(echo $commits | tr '\n' ' '))
+        for ((idx = ${#commits[@]}; idx >= 0; idx--)); do
+            echo "${commits[idx]}"
+        done
+    fi
+
+    echo "Switching to original branch\n"
+
+    git checkout $original_branch
+    if [ ! -z $commits ]; then
+        echo "\nCommits will be applied.\n"
+    fi
+    for ((idx = ${#commits[@]}; idx >= 0; idx--)); do
+        commit="${commits[idx]}"
+        cherry=$(echo $commit | tr -d " ")
+        if [ -z $cherry ]; then
+            echo "Commits are transferred.\n"
+        else
+            git cherry-pick $cherry
+            echo "\n"
+        fi
+    done
+    if [ ! -z $1 ]; then
+        change=$1
+        if [ $change = '-d' ]; then
+            echo "Deleting Local branch\n"
+            git branch -D $local_branch
+        fi
+    fi
+}
+
+# This function gathers all the remote branches in the project, stores them and finds if any of
+# are merged into one of the version branches. and creates an output table.
+
+branch_management() {
+    if [ -z $1 ]; then
+        echo "Version branch folder should not be null."
+    else
+        echo "version branch folder is: $1."
+        folder=$1
+    fi
+    if [ -z $2 ]; then
+        echo "Current live version should not be null."
+    else
+        echo "Current live version is: $2."
+        version=$2
+    fi
+    # Save current branch
+    local_branch=$(git branch --show-current)
+    # Create files
+    version_branch_file="/tmp/version_branches"
+    other_branch_file="/tmp/other_branches"
+    commit_dump="/tmp/commit_dump"
+    touch $version_branch_file
+    touch $other_branch_file
+    touch $commit_dump
+    version_branches=$(git branch --list --remote | sed "/origin\//s///" | grep $folder | awk '{$1=$1};1')
+    echo $version_branches >>$version_branch_file
+    other_branches=$(git branch --list --remote | sed "/origin\//s///" | sed -n '1!p' | grep -v $folder | awk '{$1=$1};1')
+    echo $other_branches >>$other_branch_file
+
+    while IFS= read -r line; do
+        git checkout $line
+        # while IFS= read -r branch; do
+        info=$(git --no-pager log --oneline --merges -n 10)
+        if [ ! -z $info ]; then
+            echo $line >>$commit_dump
+            echo $info >>$commit_dump
+        fi
+        # done <"$other_branch_file"
+        #git --no-pager log --oneline --merges -n 1 >>$commit_dump
+    done <"$version_branch_file"
+
+    # We are done
+    rm -f $version_branch_file
+    rm -f $other_branch_file
+    #rm -f $commit_dump
+    # Return to local branch
+    git checkout $local_branch
+}
+
