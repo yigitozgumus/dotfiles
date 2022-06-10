@@ -2,11 +2,15 @@
 alias please='sudo'
 alias v='vim'
 alias nv='nvim'
+alias vim='nvim'
 alias r='ranger'
 alias lg='lazygit'
 alias ldo='lazydocker'
 alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
+
+# Vim
+alias uv='nvim ~/dev/admin/dotfiles'
 
 # Command Shortcuts
 alias tt='tmux attach -t'
@@ -28,7 +32,7 @@ alias dev='cd ~/dev'
 alias demos="cd  ~/Desktop"
 alias vault='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents'
 
-# dev
+# dev shortcuts / personal
 alias dotfiles='cd ~/dev/admin/dotfiles'
 alias android='cd ~/dev/android'
 alias react="cd ~/dev/react"

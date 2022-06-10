@@ -9,7 +9,7 @@ env:
   # TERM env customization.
   #
   #
-  
+
   # If this property is not set, alacritty will set it to xterm-256color.
   #
   # Note that some xterm terminfo databases don't declare support for italics.
@@ -58,7 +58,7 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: MesloLGS NF 
+    family: MesloLGS NF
     style: Regular
 
   # The bold font face
@@ -124,7 +124,7 @@ bell:
   duration: 0
 
 # Background opacity
-window.opacity: 0.75 
+window.opacity: 0.9
 
 # Mouse bindings
 #
@@ -202,7 +202,7 @@ live_config_reload: true
 #
 shell:
   program: /bin/zsh
-  args: 
+  args:
     - --login
   # program: /opt/homebrew/bin/tmux
   # args:
@@ -351,7 +351,7 @@ key_bindings:
   - { key: F10,      mods: Command, chars: "\x1b[21;3~"                  }
   - { key: F11,      mods: Command, chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Command, chars: "\x1b[24;3~"                  }
-  - { key: D,        mods: Command,       chars: "\x06\x76" } 
+  - { key: D,        mods: Command,       chars: "\x06\x76" }
   - { key: D,        mods: Command|Shift, chars: "\x06\x73" }
   - { key: W,        mods: Command,       chars: "\x06\x78" }
   - { key: H,        mods: Command,       chars: "\x06\x68" }
