@@ -65,6 +65,11 @@ send_to_review() {
     git push origin HEAD:refs/for/$branch
 }
 
+push_to_remote() {
+    branch=$(git branch --show-current)
+    git push -u origin $branch
+}
+
 rebase() {
     var=$1
     git rebase -i @~$var
