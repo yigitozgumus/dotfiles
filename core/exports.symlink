@@ -1,6 +1,5 @@
 export EDITOR='nvim'
 export PATH="$HOME/.cargo/bin:$PATH"
-export TERM=screen-256color
 
 #Flutter path
 export PATH="$PATH:$HOME/flutter/bin"
