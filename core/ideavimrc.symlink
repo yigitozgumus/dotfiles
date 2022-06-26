@@ -26,13 +26,11 @@ set NERDTree
 set ideajoin
 set ideastatusicon=gray
 
-map <leader>f <Plug>(easymotion-sv
+map <leader>f <Plug>(easymotion-s)
 map <leader>e <Plug>(easymotion-f)
 
 map sv <Action>(SplitVertically)
 map ss <Action>(SplitHorizontally)
-
-map kk <ESC>
 
 map <C-h> <C-W>h
 map <C-j> <C-W>j
