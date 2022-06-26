@@ -2,8 +2,6 @@
 
 schemes:
   gruvbox_light: &gruvbox_light
-    # Default colors
-# Default Colors
     primary:
       background: "#f1efee"
       foreground: "#68615e"
@@ -55,5 +53,5 @@ schemes:
       cyan: "#87ceeb"
       white: "#fdfdfd"
 
-colors: *gruvbox_dark
+colors: *gruvbox_light
 
