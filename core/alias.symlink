@@ -2,7 +2,7 @@
 alias please='sudo'
 alias v='vim'
 alias nv='nvim'
-alias vim='nvim'
+# alias vim='nvim'
 alias r='ranger'
 alias lg='lazygit'
 alias ldo='lazydocker'
