@@ -34,6 +34,13 @@ what_runs_on() {
     lsof -i tcp:$1
 }
 
+
+run_processing() {
+    rm -rf /tmp/processing
+    mkdir /tmp/processing
+    /usr/local/bin/processing-java --output=/tmp/processing/ --force --sketch=`pwd` --run
+}
+
 # usage jupy TYPE ENVIRONMENT PORT
 jupy(){
 
