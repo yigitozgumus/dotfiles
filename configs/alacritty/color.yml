@@ -53,5 +53,5 @@ schemes:
       cyan: "#87ceeb"
       white: "#fdfdfd"
 
-colors: *gruvbox_light
+colors: *gruvbox_dark
 

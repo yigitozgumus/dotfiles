@@ -6,8 +6,7 @@ export PATH="$PATH:$HOME/flutter/bin"
 
 
 # Go Installation
-# export GOROOT=/opt/homebrew/bin
-#export PATH=$PATH:$GOROOT/bin
+#export PATH=$PATH:$GOPATH/bin
 
 # Android sdk
 export ANDROID_HOME="$HOME/Library/Android/sdk"

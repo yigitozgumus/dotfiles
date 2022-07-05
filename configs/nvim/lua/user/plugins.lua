@@ -6,6 +6,7 @@ packer.startup(function(use)
     use {'airblade/vim-rooter'}
     use {'christoomey/vim-tmux-navigator'}
     use {'farmergreg/vim-lastplace'}
+    use { "ellisonleao/gruvbox.nvim" }
     use {'tpope/vim-commentary'}
     use {'tpope/vim-repeat'}
     use {'tpope/vim-surround'}
@@ -149,5 +150,11 @@ packer.startup(function(use)
     -- config = function() require('user.plugins.dark-notify') end
     -- }
     use {  'junegunn/goyo.vim' }
+    use {
+    	"windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+    use 'ray-x/go.nvim'
+    use 'ray-x/guihua.lua' -- recommanded if need floating window support
 
 end)

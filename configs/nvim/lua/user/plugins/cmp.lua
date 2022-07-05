@@ -5,10 +5,10 @@ local has_words_before = function()
   local luasnip = require 'luasnip'
   local cmp = require 'cmp'
   local lspkind = require 'lspkind'
-  
+
   -- Set completeopt to have a better completion experience
   vim.o.completeopt = 'menuone,longest,preview'
-  
+
   cmp.setup {
     experimental = {
       ghost_text = true,
@@ -39,17 +39,17 @@ local has_words_before = function()
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
       },
-      ['<Tab>'] = cmp.mapping(function(fallback)
-        if luasnip.jumpable(1) then
-          luasnip.jump(1)
-        elseif cmp.visible() then
-          cmp.select_next_item()
-        elseif has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
-  
+     -- ['<Tab>'] = cmp.mapping(function(fallback)
+     --   if luasnip.jumpable(1) then
+     --     luasnip.jump(1)
+     --   elseif cmp.visible() then
+     --     cmp.select_next_item()
+     --   elseif has_words_before() then
+     --     cmp.complete()
+     --   else
+     --     fallback()
+     --   end
+
         -- if cmp.visible() then
         --   cmp.select_next_item()
         -- elseif luasnip.expand_or_jumpable() then
@@ -59,16 +59,16 @@ local has_words_before = function()
         -- else
         --   fallback()
         -- end
-      end, { 'i', 's' }),
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        elseif cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-  
+--      end, { 'i', 's' }),
+--       ['<S-Tab>'] = cmp.mapping(function(fallback)
+--         if luasnip.jumpable(-1) then
+--           luasnip.jump(-1)
+--         elseif cmp.visible() then
+--           cmp.select_prev_item()
+--         else
+--           fallback()
+--         end
+
         -- if cmp.visible() then
         --   cmp.select_prev_item()
         -- elseif luasnip.jumpable(-1) then
@@ -76,7 +76,7 @@ local has_words_before = function()
         -- else
         --   fallback()
         -- end
-      end, { 'i', 's' }),
+--       end, { 'i', 's' }),
     },
     sources = {
       { name = 'nvim_lsp' },

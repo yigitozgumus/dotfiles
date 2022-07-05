@@ -1,14 +1,14 @@
 # General
 alias please='sudo'
-alias v='vim'
+alias v='nvim'
 alias nv='nvim'
-# alias vim='nvim'
+alias vim='nvim'
 alias r='ranger'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias lg='lazygit'
 alias ldo='lazydocker'
 alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
-
 # Vim
 alias uv='nvim ~/dev/admin/dotfiles'
 
@@ -18,12 +18,6 @@ alias ttt='tmux new-session -s'
 alias tls='tmux ls'
 alias tmx='tmuxinator'
 alias tkill='tmux kill-session -t'
-
-# Mac
-alias show_all='defaults write com.apple.finder AppleShowAllFiles YES ; killall Finder'
-alias hide_all='defaults write com.apple.finder AppleShowAllFiles NO;  killall Finder'
-alias menu_hide='defaults write NSGlobalDomain _HIHideMenuBar -bool true; killall -KILL SystemUIServer'
-alias menu_show='defaults write NSGlobalDomain _HIHideMenuBar -bool false; killall -KILL SystemUIServer'
 
 # Shortcuts
 alias slive='bundle exec jekyll serve'
