@@ -156,5 +156,8 @@ packer.startup(function(use)
     }
     use 'ray-x/go.nvim'
     use 'ray-x/guihua.lua' -- recommanded if need floating window support
+    use { 'fatih/vim-go',
+        config = function() require('user.plugins.vim-go') end
+    }
 
 end)
