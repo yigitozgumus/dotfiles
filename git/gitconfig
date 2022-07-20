@@ -14,7 +14,7 @@
 [includeIf "gitdir/i:~/personal/"]
 	path = .gitconfig-personal
 
-[includeIf "gitdir/i:~"]
+[includeIf "gitdir/i:~/dev/"]
     path = .gitconfig-signin
 
 [alias]
@@ -100,7 +100,7 @@ lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 lg = !"git lg1"
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
