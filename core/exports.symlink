@@ -9,7 +9,7 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH=~/Library/Android/sdk/tools:$PATH
 export PATH=$ANDROID_HOME/emulator:$PATH
 export PATH=~/Library/Android/sdk/platform-tools:$PATH
-export JAVA_HOME="/Users/yigit.ozgumus/Library/Java/JavaVirtualMachines/azul-11.0.15/Contents/Home"
+export JAVA_HOME="/Applications/Android Studio Preview.app/Contents/jbr/Contents/Home"
 
 # Gradle
 export PATH="$PATH:~/.sdkman/candidates/gradle/current/bin"
