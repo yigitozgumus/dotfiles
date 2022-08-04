@@ -17,3 +17,6 @@ export PATH="$PATH:~/.sdkman/candidates/gradle/current/bin"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_BASE='/opt/homebrew/bin/fzf'
 export PATH=/opt/homebrew/bin:$PATH
+
+# local bin
+export PATH="$PATH:$HOME/.local/bin"
