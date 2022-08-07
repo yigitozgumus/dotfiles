@@ -48,6 +48,14 @@ end
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require'lspconfig'.kotlin_language_server.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+
+require'lspconfig'.gopls.setup{
   cmd = {'gopls'},
   settings = {
     gopls = {
@@ -64,13 +72,6 @@ require'lspconfig'.kotlin_language_server.setup{
     },
   },
 	on_attach = on_attach,
-}
-require'lspconfig'.gopls.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
 }
 require'lspconfig'.gradle_ls.setup{
   on_attach = on_attach,

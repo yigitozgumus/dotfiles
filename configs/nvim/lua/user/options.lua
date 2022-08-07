@@ -17,7 +17,9 @@ vim.o.completeopt = 'menuone,noinsert,noselect'
 -----------------------------------------------------------
 vim.o.number = true
 vim.o.showmatch = true
-vim.o.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
+vim.o.foldmethod='indent'
+vim.o.foldnestmax=10
+vim.o.foldlevel=2
 -- vim.o.colorcolumn = '80'      -- Line lenght marker at 80 columnsoption
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -53,7 +55,6 @@ vim.o.updatetime = 700        -- ms to wait for trigger an event
 -----------------------------------------------------------
 vim.o.signcolumn = 'yes:2'
 vim.o.undofile = true
--- vim.o.spell = true
 vim.o.title = true
 vim.o.wildmode = 'longest:full,full'
 vim.o.wrap = false

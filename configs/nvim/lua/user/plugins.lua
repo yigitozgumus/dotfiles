@@ -21,7 +21,7 @@ packer.startup(function(use)
     use { 'fatih/vim-go',
         config = function() require('user.plugins.vim-go') end
     }
-     use {'tpope/vim-surround'}
+    use {'tpope/vim-surround'}
     use {'airblade/vim-rooter'}
     use {'christoomey/vim-tmux-navigator'}
     use {'farmergreg/vim-lastplace'}

@@ -125,6 +125,7 @@ keymap('n', '<leader>ff' , '<cmd>Telescope find_files<cr>')
 keymap('n', '<leader>fg' , '<cmd>Telescope live_grep<cr>')
 keymap('n', '<leader>fb' , '<cmd>Telescope buffers<cr>')
 keymap('n', '<leader>fh' , '<cmd>Telescope help_tags<cr>')
+keymap('n', '<leader>tt', '<cmd>Telescope<cr>')
 
 -- FZF
 keymap('n', '<leader>p' , '<cmd>Files<cr>')
