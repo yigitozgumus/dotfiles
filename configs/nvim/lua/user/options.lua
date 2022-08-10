@@ -29,14 +29,19 @@ vim.o.linebreak = true
 vim.o.relativenumber = true
 vim.o.termguicolors = true    -- Enable 24-bit RGB colors
 vim.o.laststatus=2            -- Set global statusline
-
+vim.o.cmdheight = 1
+vim.o.backup = false
+vim.opt.backupskip = '/tmp/*./private/tmp/*'
+vim.opt.backspace = 'start,eol,indent'
+vim.opt.path:append { '**' } -- finding files Search down into subfolders
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
 vim.o.expandtab = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 vim.o.smartindent = true
+vim.o.autoindent = true
 
 -----------------------------------------------------------
 -- Memory, CPU
@@ -61,7 +66,6 @@ vim.o.wrap = false
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
 vim.o.confirm = true
-vim.o.backup = true
 vim.o.backupdir = vim.fn.stdpath 'data' .. '/backup//'
 vim.o.showmode = false
 vim.o.fillchars = 'eob: '
