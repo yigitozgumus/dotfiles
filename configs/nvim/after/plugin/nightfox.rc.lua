@@ -3,8 +3,8 @@ if (not status) then return end
 
 nightfox.setup({
   options = {
-    transparent = true,
+    transparent = false,
   }
 })
 
-vim.cmd("colorscheme duskfox")
+-- vim.cmd("colorscheme duskfox")
