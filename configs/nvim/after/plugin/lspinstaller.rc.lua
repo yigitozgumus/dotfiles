@@ -1,4 +1,6 @@
-require("nvim-lsp-installer").setup({
+local status, lspinstaller = pcall(require, "nvim-lsp-installer")
+if (not status) then return end
+lspinstaller.setup({
     automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
     ui = {
         icons = {
