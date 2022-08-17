@@ -1,4 +1,4 @@
-local keymap = vim.keymap 
+local keymap = vim.keymap
 
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
@@ -39,7 +39,7 @@ keymap.set('', '<right>', '<nop>')
 keymap.set('i', '<up>', '<nop>')
 keymap.set('i', '<down>', '<nop>')
 keymap.set('i', '<left>', '<nop>')
-keymap.set('i','<right>', '<nop>')
+keymap.set('i', '<right>', '<nop>')
 
 keymap.set('', 'j', 'gj')
 keymap.set('', 'k', 'gk')
@@ -82,7 +82,7 @@ keymap.set('', '<C-e>', '3<C-e>')
 keymap.set('', '<C-y>', '3<C-y>')
 
 -- Open current directory
-keymap.set('', 'te',':tabedit<cr>')
+keymap.set('', 'te', ':tabedit<cr>')
 
 -- Windows
 
@@ -92,15 +92,15 @@ keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
 keymap.set('', '<Space>', '/')
 
 -- Resize window
-keymap.set('','<C-w><left>','<C-w><')
-keymap.set('','<C-w><right>','<C-w>>')
-keymap.set('','<C-w><up>','<C-w>+')
-keymap.set('','<C-w><down>','<C-w>-')
+keymap.set('', '<C-w><left>', '<C-w><')
+keymap.set('', '<C-w><right>', '<C-w>>')
+keymap.set('', '<C-w><up>', '<C-w>+')
+keymap.set('', '<C-w><down>', '<C-w>-')
 
 --- Searching and Moving
 -- keymap('n', '/', '/\v')
 -- keymap('v', '/', '/\v')
-keymap.set('','<leader><space>', ':noh<cr>')
+keymap.set('', '<leader><space>', ':noh<cr>')
 
 --- Close the current buffer
 keymap.set('', '<leader>bd', ':Bclose<cr>:tabclose<cr>gT')
@@ -113,22 +113,23 @@ keymap.set('', '<leader>bb', ':ls<cr>:buffer<Space>')
 
 -- Move between buffers
 keymap.set('', '“', ':bprev<cr>')
-keymap.set('','‘', ':bnext<cr>')
+keymap.set('', '‘', ':bnext<cr>')
 
 -- Move between tabs
-keymap.set('n', '<C-S-Tab>',':tabprev<cr>')
+keymap.set('n', '<C-S-Tab>', ':tabprev<cr>')
 keymap.set('n', '<C-Tab>', ':tabnext<cr>')
+keymap.set('n', '<leader>tn', ':tabnew<cr>')
 
 
 -- Telescope
-keymap.set('n', '<leader>ff' , '<cmd>Telescope find_files<cr>')
-keymap.set('n', '<leader>fg' , '<cmd>Telescope live_grep<cr>')
-keymap.set('n', '<leader>fb' , '<cmd>Telescope buffers<cr>')
-keymap.set('n', '<leader>fh' , '<cmd>Telescope help_tags<cr>')
+keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 keymap.set('n', '<leader>tt', '<cmd>Telescope<cr>')
 
 -- FZF
-keymap.set('n', '<leader>p' , '<cmd>Files<cr>')
+keymap.set('n', '<leader>p', '<cmd>Files<cr>')
 
 
 -- Move between two files
