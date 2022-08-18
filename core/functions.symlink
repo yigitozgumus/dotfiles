@@ -77,6 +77,10 @@ push_to_remote() {
     git push -u origin $branch
 }
 
+get_to_conflict() {
+  git pull origin develop
+}
+
 rebase() {
     var=$1
     git rebase -i @~$var
