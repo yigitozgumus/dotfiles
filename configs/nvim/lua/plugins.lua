@@ -55,5 +55,6 @@ packer.startup(function(use)
   use 'dinhhuy258/git.nvim' -- For git blame & browse
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
+  use { "ellisonleao/gruvbox.nvim" }
 
 end)
