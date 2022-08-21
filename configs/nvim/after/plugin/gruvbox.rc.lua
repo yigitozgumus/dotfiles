@@ -1,4 +1,6 @@
-require("gruvbox").setup({
+local status, gruvbox = pcall(require, "gruvbox")
+if (not status) then return end
+gruvbox.setup({
   undercurl = true,
   underline = true,
   bold = true,
@@ -12,4 +14,5 @@ require("gruvbox").setup({
   contrast = "hard", -- can be "hard", "soft" or empty string
   overrides = {},
 })
+
 vim.cmd("colorscheme gruvbox")
