@@ -8,10 +8,10 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
   use { 'wbthomason/packer.nvim' } -- Let packer manage itself
-  use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
-  }
+  --  use {
+  --    'svrana/neosolarized.nvim',
+  --    requires = { 'tjdevries/colorbuddy.nvim' }
+  --  }
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
@@ -56,5 +56,7 @@ packer.startup(function(use)
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
   use { "ellisonleao/gruvbox.nvim" }
+  use { 'navarasu/onedark.nvim' }
+  use { 'Mofiqul/vscode.nvim' }
 
 end)

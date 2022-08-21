@@ -14,5 +14,3 @@ gruvbox.setup({
   contrast = "hard", -- can be "hard", "soft" or empty string
   overrides = {},
 })
-
-vim.cmd("colorscheme gruvbox")
