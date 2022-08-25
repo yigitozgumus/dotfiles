@@ -67,6 +67,13 @@ jupy(){
 
 # Git based functions
 
+get_commit_list() {
+  userName=$(git config user.name)
+  branchName=$(git branch --show-current)
+  branchPrefix=$(echo $branchName | grep -Eo '^[A-Z0-9\-]+')
+  git log --author=$userName --grep=$branchPrefix --oneline --no-merges
+}
+
 send_to_review() {
     branch=$(git branch --show-current)
     git push origin HEAD:refs/for/$branch
