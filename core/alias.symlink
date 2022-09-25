@@ -10,7 +10,7 @@ alias ldo='lazydocker'
 alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
 # Vim
-alias uv='nvim ~/dev/admin/dotfiles'
+alias uv='nvim ~/Admin/dotfiles'
 
 # Command Shortcuts
 alias tt='tmux attach -t'
@@ -22,12 +22,10 @@ alias tkill='tmux kill-session -t'
 # Shortcuts
 alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'
-alias dev='cd ~/dev'
+alias dev='cd ~/Projects'
 alias demos="cd  ~/Desktop"
 alias vault='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents'
 
 # dev shortcuts / personal
-alias dotfiles='cd ~/dev/admin/dotfiles'
-alias android='cd ~/dev/android'
-alias react="cd ~/dev/react"
-alias rn="cd ~/dev/rn"
+alias dotfiles='cd ~/Admin/dotfiles'
+alias android='cd ~/Playground/android'
