@@ -67,11 +67,26 @@ jupy(){
 
 # Git based functions
 
-get_commit_list() {
+get_commit_list_for() {
   userName=$(git config user.name)
   branchName=$(git branch --show-current)
+  total_args="$#"
+  if [ $total_args -eq "1" ]; then
+    userName=$1
+  elif [ $total_args -eq "2" ]; then
+    userName=$1
+    branchName=$2
+  fi
   branchPrefix=$(echo $branchName | grep -Eo '^[A-Z0-9\-]+')
   git log --author=$userName --grep=$branchPrefix --oneline --no-merges
+}
+
+force_ktlint() {
+  fileList=$(git diff --name-only HEAD)
+  for file in $fileList
+  do
+    ktlint -F $file
+  done
 }
 
 send_to_review() {
