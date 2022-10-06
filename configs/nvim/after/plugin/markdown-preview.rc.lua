@@ -77,7 +77,7 @@ vim.g.mkdp_page_title = '「${name}」'
 
 -- recognized filetypes
 -- these filetypes will have MarkdownPreview... commands
-vim.g.mkdp_filetypes = { 'markdown' }
+vim.g.mkdp_filetypes = { 'markdown', 'md' }
 
 -- set default theme (dark or light)
 -- By default the theme is define according to the preferences of the system
