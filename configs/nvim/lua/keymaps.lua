@@ -134,3 +134,6 @@ keymap.set('n', '<leader>p', '<cmd>Files<cr>')
 
 -- Move between two files
 keymap.set('n', '<leader><Space>', '<C-^>')
+
+-- Markdown preview
+keymap.set('n', '<leader>md', ':MarkdownPreview<cr>')
