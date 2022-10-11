@@ -24,7 +24,8 @@ alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'
 alias dev='cd ~/Projects'
 alias demos="cd  ~/Desktop"
-alias vault='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents'
+alias vault_cloud='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents'
+alias vault_local='cd ~/Documents/2-Areas/notes/'
 
 # dev shortcuts / personal
 alias dotfiles='cd ~/Admin/dotfiles'
