@@ -10,7 +10,7 @@ alias ldo='lazydocker'
 alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
 # Vim
-alias uv='nvim ~/Admin/dotfiles'
+alias uv='nvim ~/Personal/dotfiles'
 
 # Command Shortcuts
 alias tt='tmux attach -t'
@@ -28,5 +28,5 @@ alias vault_cloud='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents'
 alias vault_local='cd ~/Documents/2-Areas/notes/'
 
 # dev shortcuts / personal
-alias dotfiles='cd ~/Admin/dotfiles'
+alias dotfiles='cd ~/Personal/dotfiles'
 alias android='cd ~/Playground/android'
