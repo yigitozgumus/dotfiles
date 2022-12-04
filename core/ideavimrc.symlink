@@ -56,3 +56,6 @@ map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
 map <leader>J Ji <ESC>
 
+" Vertical movement updates
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
