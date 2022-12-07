@@ -57,7 +57,8 @@ packer.startup(function(use)
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
   use { "ellisonleao/gruvbox.nvim" }
   use { 'navarasu/onedark.nvim' }
-  use { 'Mofiqul/vscode.nvim' }
   use { "catppuccin/nvim", as = "catppuccin" }
+  --  use { 'Mofiqul/vscode.nvim' }
+  use 'junegunn/goyo.vim'
 
 end)
