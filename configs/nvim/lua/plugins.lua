@@ -58,5 +58,6 @@ packer.startup(function(use)
   use { "ellisonleao/gruvbox.nvim" }
   use { 'navarasu/onedark.nvim' }
   use { 'Mofiqul/vscode.nvim' }
+  use { "catppuccin/nvim", as = "catppuccin" }
 
 end)
