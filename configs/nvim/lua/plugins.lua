@@ -1,29 +1,32 @@
-local status, packer = pcall(require, "packer")
-if (not status) then
-  print("Packer is not installed")
-  return
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
 
-vim.cmd [[packadd packer.nvim]]
+local packer_bootstrap = ensure_packer()
 
-packer.startup(function(use)
+return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' } -- Let packer manage itself
-  --  use {
-  --    'svrana/neosolarized.nvim',
-  --    requires = { 'tjdevries/colorbuddy.nvim' }
-  --  }
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/nvim-cmp' -- Completion
-  use 'neovim/nvim-lspconfig' -- LSP
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  use {
+    'neovim/nvim-lspconfig', -- LSP
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim'
+  }
   use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
-  use 'williamboman/mason.nvim'
   use 'folke/tokyonight.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use { 'EdenEast/nightfox.nvim' }
@@ -42,7 +45,6 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'windwp/nvim-autopairs'
-  use 'windwp/nvim-ts-autotag'
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/zen-mode.nvim'
   use({
@@ -58,7 +60,8 @@ packer.startup(function(use)
   use { "ellisonleao/gruvbox.nvim" }
   use { 'navarasu/onedark.nvim' }
   use { "catppuccin/nvim", as = "catppuccin" }
-  --  use { 'Mofiqul/vscode.nvim' }
   use 'junegunn/goyo.vim'
-
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)

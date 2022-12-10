@@ -4,12 +4,24 @@ nvimtree.setup {
   git = {
     ignore = false,
   },
+  view = {
+    adaptive_size = true,
+    side = "right",
+    mappings = {
+      list = {
+      { key = "u", action = "dir_up" },
+      },
+    },
+  },
   renderer = {
     indent_markers = {
       enable = true,
     },
     highlight_opened_files = 'icon',
     group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
   }
 }
 
