@@ -1,7 +1,0 @@
-# ~/.config/starship.toml
-
-[aws]
-disabled = true
-
-[gcloud]
-disabled = true
