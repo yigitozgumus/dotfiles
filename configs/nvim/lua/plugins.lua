@@ -14,22 +14,9 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' } -- Let packer manage itself
   use 'nvim-lualine/lualine.nvim' -- Statusline
-  use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
-  use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp' -- Completion
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  use {
-    'neovim/nvim-lspconfig', -- LSP
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim'
-  }
-  use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
-  use 'folke/tokyonight.nvim'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use 'L3MON4D3/LuaSnip'
-  use { 'EdenEast/nightfox.nvim' }
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -44,8 +31,6 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'windwp/nvim-autopairs'
-  use 'norcalli/nvim-colorizer.lua'
   use 'folke/zen-mode.nvim'
   use({
     "iamcco/markdown-preview.nvim",
@@ -54,13 +39,32 @@ return require('packer').startup(function(use)
   use 'akinsho/nvim-bufferline.lua'
 
   use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim' -- For git blame & browse
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
-  use { "ellisonleao/gruvbox.nvim" }
-  use { 'navarasu/onedark.nvim' }
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'junegunn/goyo.vim'
+  -- Language Server Protocol
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
+
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+	  }
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
