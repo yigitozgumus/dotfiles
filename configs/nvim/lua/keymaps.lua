@@ -121,12 +121,6 @@ keymap.set('n', '<C-Tab>', ':tabnext<cr>')
 keymap.set('n', '<leader>tn', ':tabnew<cr>')
 
 
--- Telescope
-keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
-keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
-keymap.set('n', '<leader>tt', '<cmd>Telescope<cr>')
 
 -- FZF
 keymap.set('n', '<leader>p', '<cmd>Files<cr>')
