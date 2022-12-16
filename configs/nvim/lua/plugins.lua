@@ -29,7 +29,11 @@ return require('packer').startup(function(use)
     run = ':TSUpdate'
   }
   use 'kyazdani42/nvim-web-devicons' -- File icons
-  use 'nvim-telescope/telescope.nvim'
+  use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  -- or                            , branch = '0.1.x',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'folke/zen-mode.nvim'
   use({
@@ -43,6 +47,8 @@ return require('packer').startup(function(use)
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'junegunn/goyo.vim'
+  use('mbbill/undotree')
+  use('tpope/vim-fugitive')
   -- Language Server Protocol
   use {
 	  'VonHeikemen/lsp-zero.nvim',
