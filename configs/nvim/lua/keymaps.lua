@@ -120,12 +120,6 @@ keymap.set('n', '<C-S-Tab>', ':tabprev<cr>')
 keymap.set('n', '<C-Tab>', ':tabnext<cr>')
 keymap.set('n', '<leader>tn', ':tabnew<cr>')
 
-
-
--- FZF
-keymap.set('n', '<leader>p', '<cmd>Files<cr>')
-
-
 -- Move between two files
 keymap.set('n', '<leader><Space>', '<C-^>')
 

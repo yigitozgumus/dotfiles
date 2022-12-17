@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -44,6 +43,7 @@ return require('packer').startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
   use 'ray-x/go.nvim'
+  use('theprimeagen/harpoon')
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'junegunn/goyo.vim'
@@ -66,17 +66,19 @@ return require('packer').startup(function(use)
 		  {'hrsh7th/cmp-nvim-lsp'},
 		  {'hrsh7th/cmp-nvim-lua'},
 
-      -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
     }
-  }
-  use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
-  }
-  use('MunifTanjim/prettier.nvim')
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+    use('MunifTanjim/prettier.nvim')
+    use 'Mofiqul/vscode.nvim'
+
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)

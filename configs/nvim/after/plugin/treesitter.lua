@@ -18,6 +18,7 @@ ts.setup {
     "swift",
     "css",
     "html",
+    "vim",
     "lua",
     "rust",
     "typescript",
