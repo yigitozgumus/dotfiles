@@ -32,11 +32,17 @@ lsp.setup_nvim_cmp({
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
+        error = '✘',
+        warn = '▲',
+        hint = '⚑',
+        info = ''
     }
+    --     sign_icons = {
+    --         error = 'E',
+    --         warn = 'W',
+    --         hint = 'H',
+    --         info = 'I'
+    --     }
 })
 
 vim.diagnostic.config({
@@ -62,5 +68,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
 
 lsp.setup()
