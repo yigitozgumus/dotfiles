@@ -33,6 +33,10 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+    use { -- Additional text objects via treesitter
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        after = 'nvim-treesitter',
+    }
 
     use 'kyazdani42/nvim-web-devicons' -- File icons
     -- Fuzzy Finder (files, lsp, etc)
