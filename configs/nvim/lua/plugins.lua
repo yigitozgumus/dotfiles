@@ -12,10 +12,15 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+
     use { 'wbthomason/packer.nvim' } -- Let packer manage itself
+
     use 'nvim-lualine/lualine.nvim' -- Statusline
+
     use 'onsails/lspkind-nvim' -- vscode-like pictograms
+
     use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -23,16 +28,18 @@ return require('packer').startup(function(use)
         },
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
+
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+
     use 'kyazdani42/nvim-web-devicons' -- File icons
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    -- Fuzzy Finder (files, lsp, etc)
+    use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+
+    -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
     use 'nvim-telescope/telescope-file-browser.nvim'
     use 'folke/zen-mode.nvim'
     use({
