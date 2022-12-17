@@ -77,7 +77,7 @@ return require('packer').startup(function(use)
     }
     use('MunifTanjim/prettier.nvim')
     use 'Mofiqul/vscode.nvim'
-
+    use { "ellisonleao/gruvbox.nvim" }
     if packer_bootstrap then
         require('packer').sync()
     end
