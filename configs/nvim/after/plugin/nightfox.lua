@@ -3,7 +3,7 @@ if (not status) then return end
 
 nightfox.setup({
   options = {
-    transparent = false,
+    transparent = true,
   }
 })
 

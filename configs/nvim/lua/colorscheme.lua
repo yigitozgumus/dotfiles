@@ -1,2 +1,2 @@
-vim.cmd("colorscheme vscode")
+vim.cmd("colorscheme duskfox")
 -- vim.cmd.colorscheme = "catppuccin"

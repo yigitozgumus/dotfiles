@@ -12,14 +12,14 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-
-    use { 'wbthomason/packer.nvim' } -- Let packer manage itself
-
-    use 'nvim-lualine/lualine.nvim' -- Statusline
-
-    use 'onsails/lspkind-nvim' -- vscode-like pictograms
-
-    use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+    -- Let packer manage itself
+    use { 'wbthomason/packer.nvim' }
+    -- Statusline
+    use 'nvim-lualine/lualine.nvim'
+    -- vscode-like pictograms
+    use 'onsails/lspkind-nvim'
+    -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+    use 'jose-elias-alvarez/null-ls.nvim'
 
     use {
         'kyazdani42/nvim-tree.lua',
@@ -92,8 +92,13 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
     use('MunifTanjim/prettier.nvim')
-    use 'Mofiqul/vscode.nvim'
+    -- Colorschemes
     use { "ellisonleao/gruvbox.nvim" }
+    use 'folke/tokyonight.nvim'
+    use 'navarasu/onedark.nvim'
+    use "EdenEast/nightfox.nvim" -- Packer
+    use 'martinsione/darkplus.nvim'
+
     if packer_bootstrap then
         require('packer').sync()
     end

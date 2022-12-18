@@ -30,3 +30,8 @@ alias vault_local='cd ~/Documents/2-Areas/notes/'
 # dev shortcuts / personal
 alias dotfiles='cd ~/Personal/dotfiles'
 alias android='cd ~/Playground/android'
+
+# Rust related
+nrp() {
+    cargo new $1; cd $1; nvim
+}
