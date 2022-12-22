@@ -27,16 +27,6 @@ autocmd('BufRead', {
   command = 'set filetype=typescriptreact'
 })
 
--- Rust autoformat
-local format_sync_grp = vim.api.nvim_create_augroup("Format", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.rs",
-  callback = function()
-    vim.lsp.buf.format({ timeout_ms = 200 })
-  end,
-  group = format_sync_grp,
-})
-
 -- Remove whitespace on save
 
 autocmd('BufWritePre', {
@@ -51,29 +41,15 @@ autocmd('BufEnter', {
   command = 'set fo-=c fo-=r fo-=o'
 })
 
--- Settings for filetypes:
--- Disable line length marker
- augroup('setLineLength', { clear = true })
- autocmd('Filetype', {
-   group = 'setLineLength',
-   pattern = { 'text', 'markdown', 'html', 'xhtml', 'javascript', 'typescript' },
-   command = 'setlocal cc=0'
- })
-
--- Set indentation to 2 spaces
--- augroup('setIndent', { clear = true })
--- autocmd('Filetype', {
---   group = 'setIndent',
---   pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'javascript', 'typescript',
---     'yaml', 'lua'
---   },
---   command = 'setlocal shiftwidth=4 tabstop=4'
--- })
-
+vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
+    local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
+    pcall(vim.diagnostic.reset, ns)
+    return true
+end
 -- Terminal settings:
 -- Open a Terminal on the right tab
 autocmd('CmdlineEnter', {
-  command = 'command! Term :botright vsplit term://$SHELL'
+    command = 'command! Term :botright vsplit term://$SHELL'
 })
 
 -- Enter insert mode when switching to terminal

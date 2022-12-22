@@ -81,10 +81,6 @@ vim.diagnostic.config({ virtual_text = true, })
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
-    if client.name == "eslint" then
-        vim.cmd [[ LspStop eslint ]]
-        return
-    end
     local nmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
