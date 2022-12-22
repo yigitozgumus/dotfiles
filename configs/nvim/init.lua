@@ -26,6 +26,7 @@ require("plugins.go")
 require("plugins.nvim-cmp")
 require("plugins.lspkind")
 require("plugins.rust-tools")
+require("plugins.comment")
 
 -- LSP Related Plugins
 require("plugins.lsp.mason")
