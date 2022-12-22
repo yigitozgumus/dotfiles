@@ -1,4 +1,4 @@
-local pluginActive = true
+local pluginActive = false
 if (not pluginActive) then return end
 
 local lsp = require("lsp-zero")

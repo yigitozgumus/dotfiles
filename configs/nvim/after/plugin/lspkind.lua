@@ -1,4 +1,4 @@
-local pluginActive = true
+local pluginActive = false
 if (not pluginActive) then return end
 
 local status, lspkind = pcall(require, "lspkind")

@@ -1,4 +1,4 @@
-local pluginActive = true
+local pluginActive = false
 if (not pluginActive) then return end
 
 require("lsp-format").setup {}
