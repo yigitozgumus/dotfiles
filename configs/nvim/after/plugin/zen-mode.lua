@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, zenMode = pcall(require, "zen-mode")
 if (not status) then return end
 

@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local prettier = require("prettier")
 
 prettier.setup({

@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, lualine = pcall(require, "lualine")
 if (not status) then return end
 

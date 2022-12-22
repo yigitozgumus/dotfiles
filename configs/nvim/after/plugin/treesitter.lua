@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 

@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local function on_attach(client, buffer)
 
     local nmap = function(keys, func, desc)

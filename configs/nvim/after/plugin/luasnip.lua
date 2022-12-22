@@ -1,5 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
 
-   
 local ls = require "luasnip"
 
 ls.config.set_config {

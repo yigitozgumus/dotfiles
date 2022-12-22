@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, go = pcall(require, "go")
 if (not status) then return end
 go.setup()

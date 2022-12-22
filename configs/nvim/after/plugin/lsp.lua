@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")

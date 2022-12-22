@@ -10,6 +10,9 @@
 
 -- Thanks to ibhagwan for the example to follow:
 -- https://github.com/ibhagwan/nvim-lua
+local pluginActive = true
+if (not pluginActive) then return end
+
 
 local status_ok, feline = pcall(require, 'feline')
 if not status_ok then

@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, git = pcall(require, "git")
 if (not status) then return end
 

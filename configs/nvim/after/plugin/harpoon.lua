@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 

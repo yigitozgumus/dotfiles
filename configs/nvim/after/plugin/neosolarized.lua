@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, n = pcall(require, "neosolarized")
 if (not status) then return end
 

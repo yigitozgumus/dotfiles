@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, nvimtree = pcall(require, "nvim-tree")
 if (not status) then return end
 nvimtree.setup {

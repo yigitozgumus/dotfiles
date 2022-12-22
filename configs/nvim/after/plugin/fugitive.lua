@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 
 local fugitive = vim.api.nvim_create_augroup("yigitozgumus_fugitive", {})

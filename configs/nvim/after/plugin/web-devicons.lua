@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, icons = pcall(require, "nvim-web-devicons")
 if (not status) then return end
 

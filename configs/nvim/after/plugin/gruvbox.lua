@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, gruvbox = pcall(require, "gruvbox")
 if (not status) then return end
 gruvbox.setup({

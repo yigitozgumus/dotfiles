@@ -109,6 +109,7 @@ setup_symlinks() {
     fi
 
     config_files=$(find "$DOTFILES/configs" -maxdepth 1 2>/dev/null)
+    info "Installing Config Files: $config_files\n"
     for config in $config_files; do
         target="$HOME/.config/$(basename "$config")"
         if [ -e "$target" ]; then
@@ -118,9 +119,6 @@ setup_symlinks() {
             ln -s "$config" "$target"
         fi
     done
-
-    info "Installing Plugin Manager for Vim\n"
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 # Git setup
@@ -208,8 +206,6 @@ function setup_terminfo() {
     info "adding xterm-256color-italic.terminfo"
     tic -x "$DOTFILES/resources/xterm-256color-italic.terminfo"
 }
-
-
 
 # macos setup
 

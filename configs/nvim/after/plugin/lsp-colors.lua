@@ -1,3 +1,6 @@
+local pluginActive = true
+if (not pluginActive) then return end
+
 local status, colors = pcall(require, "lsp-colors")
 if (not status) then return end
 
