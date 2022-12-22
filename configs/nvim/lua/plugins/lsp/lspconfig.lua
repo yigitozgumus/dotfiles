@@ -82,6 +82,11 @@ lspconfig["cssls"].setup({
 	on_attach = on_attach,
 })
 
+-- lspconfig["rust_analyzer"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+
 lspconfig["kotlin_language_server"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -120,3 +125,6 @@ lspconfig["sumneko_lua"].setup({
 		},
 	},
 })
+
+-- Return on attach
+return { onAttach = on_attach }

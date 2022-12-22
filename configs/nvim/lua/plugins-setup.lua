@@ -132,6 +132,9 @@ return require("packer").startup(function(use)
 	use("EdenEast/nightfox.nvim") -- Packer
 	use("martinsione/darkplus.nvim")
 
+	-- Make neovim faster
+	use("lewis6991/impatient.nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

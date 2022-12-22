@@ -7,6 +7,7 @@ end
 rt.setup({
 	server = {
 		on_attach = function(_, bufnr)
+			require("plugins.lsp.lspconfig").onAttach(_, bufnr)
 			-- Hover actions
 			vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
 			-- Code action groups

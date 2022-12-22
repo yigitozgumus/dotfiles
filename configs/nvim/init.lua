@@ -1,4 +1,5 @@
 -- Personal vim configuration
+require("impatient")
 
 require("plugins-setup")
 
@@ -6,7 +7,6 @@ require("core.base")
 require("core.keymaps")
 require("core.colors")
 require("core.autocmds")
-require("core.colorscheme")
 
 -- Plugins
 require("plugins.autopairs")
@@ -25,7 +25,6 @@ require("plugins.harpoon")
 require("plugins.go")
 require("plugins.nvim-cmp")
 require("plugins.lspkind")
-require("plugins.rust-tools")
 require("plugins.comment")
 
 -- LSP Related Plugins
@@ -33,6 +32,7 @@ require("plugins.lsp.mason")
 require("plugins.lsp.lspsaga")
 require("plugins.lsp.lspconfig")
 require("plugins.lsp.null-ls")
+require("plugins.rust-tools")
 
 -- Themes
 require("plugins.neosolarized")
@@ -40,3 +40,6 @@ require("plugins.nightfox")
 require("plugins.gruvbox")
 require("plugins.catppuccin")
 require("plugins.tokyonight")
+
+-- Colorscheme
+require("core.colorscheme")
