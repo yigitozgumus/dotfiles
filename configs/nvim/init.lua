@@ -1,8 +1,11 @@
 -- Personal vim configuration
 
-require('base')
-require('keymaps')
-require('colors')
-require('autocmds')
-require('plugins')
-require('colorscheme')
+require('plugins-setup')
+
+require('core.base')
+require('core.keymaps')
+require('core.colors')
+require('core.autocmds')
+require('core.colorscheme')
+
+-- Plugins
