@@ -1,7 +1,10 @@
 -- Personal vim configuration
-require("impatient")
 
+-- Plugin setup
 require("plugins-setup")
+
+-- Impatient plugin to speed up the opening
+require("impatient")
 
 require("core.base")
 require("core.keymaps")
