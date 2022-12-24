@@ -87,6 +87,11 @@ lspconfig["kotlin_language_server"].setup({
 	on_attach = on_attach,
 })
 
+lspconfig["gopls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 -- configure tailwindcss server
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,

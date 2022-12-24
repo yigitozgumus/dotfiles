@@ -78,6 +78,7 @@ treesitter.setup({
 		"swift",
 		"css",
 		"html",
+		"go",
 		"vim",
 		"lua",
 		"rust",

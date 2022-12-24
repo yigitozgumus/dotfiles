@@ -1,7 +1,6 @@
 # General
 alias please='sudo'
-alias v='nvim'
-alias nv='nvim'
+alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
 alias vim='nvim'
 alias r='ranger'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
@@ -15,7 +14,10 @@ alias uv='nvim ~/Personal/dotfiles'
 # Command Shortcuts
 alias tt='tmux attach -t'
 alias ttt='tmux new-session -s'
-alias tls='tmux ls'
+tls() {
+    target=`tmux ls -F "#{session_name}" | fzf-tmux -p --reverse`
+    tmux attach -t $target
+}
 alias tmx='tmuxinator'
 alias tkill='tmux kill-session -t'
 
