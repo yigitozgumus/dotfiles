@@ -121,6 +121,17 @@ setup_symlinks() {
     done
 }
 
+## setup astronvim
+
+setup_astronvim() {
+    mv ~/.config/nvim ~/.config/nvim.bak
+    mv ~/.local/share/nvim ~/.local/share/nvim.bak
+    mv ~/.local/state/nvim ~/.local/state/nvim.bak
+    mv ~/.cache/nvim ~/.cache/nvim.bak
+    git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+    ln -sf "$DOTFILES/astronvim/yigitozgumus/" ~/.config/nvim/lua/user
+}
+
 # Git setup
 
 setup_git() {
@@ -278,6 +289,9 @@ git)
     ;;
 homebrew)
     setup_homebrew
+    ;;
+astronvim)
+    setup_astronvim
     ;;
 shell)
     setup_shell

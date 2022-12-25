@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 keymap.set("n", "<leader>k", ":nohlsearch<CR>")
 keymap.set("n", "<leader>Q", ":bufdo bdelete<CR>")
@@ -88,7 +88,7 @@ keymap.set("", "te", ":tabedit<cr>")
 keymap.set("n", "ss", ":split<Return><C-w>w")
 keymap.set("n", "sv", ":vsplit<Return><C-w>w")
 
-keymap.set("", "<Space>", "/")
+-- keymap.set("", "<Space>", "/")
 
 -- Resize window
 keymap.set("", "<C-w><left>", "<C-w><")

@@ -10,6 +10,7 @@ alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
 # Vim
 alias uv='nvim ~/Personal/dotfiles'
+alias nvd='neovide'
 
 # Command Shortcuts
 alias tt='tmux attach -t'
