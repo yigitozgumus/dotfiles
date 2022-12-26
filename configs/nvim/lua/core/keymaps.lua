@@ -133,3 +133,4 @@ keymap.set("n", "N", "Nzzzv")
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
+vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFileToggle<CR>", { silent = true, noremap = true })

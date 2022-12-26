@@ -1,2 +1,1 @@
-vim.cmd("colorscheme duskfox")
--- vim.cmd.colorscheme = "catppuccin"
+vim.cmd.colorscheme = "catppuccin"
