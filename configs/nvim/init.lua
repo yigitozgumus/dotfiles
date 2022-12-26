@@ -6,7 +6,7 @@ require("core.colors")
 require("core.autocmds")
 
 -- Plugin setup
-require("plugins")
+require("plugins").setup()
 
 -- Impatient plugin to speed up the opening
 require("impatient")
