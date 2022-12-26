@@ -1,35 +1,36 @@
 local M = {}
 
 function M.setup()
-	local status, bufferline = pcall(require, "bufferline")
-	if not status then
-		return
-	end
-
-	bufferline.setup({
+	require("bufferline").setup({
 		options = {
-			mode = "tabs",
-			separator_style = "slant",
-			always_show_bufferline = false,
+			mode = "tabs", -- tabs or buffers
+			numbers = "buffer_id",
+			diagnostics = "nvim_lsp",
+			separator_style = "slant" or "padded_slant",
+			show_tab_indicators = true,
 			show_buffer_close_icons = false,
 			show_close_icon = false,
 			color_icons = true,
-		},
-		highlights = {
-			separator = {
-				fg = "#073642",
-				bg = "#002b36",
-			},
-			separator_selected = {
-				fg = "#073642",
-			},
-			background = {
-				fg = "#657b83",
-				bg = "#002b36",
-			},
-			fill = {
-				bg = "#073642",
-			},
+			enforce_regular_tabs = false,
+			custom_filter = function(buf_number, buf_numbers)
+				local tab_num = 0
+				for _ in pairs(vim.api.nvim_list_tabpages()) do
+					tab_num = tab_num + 1
+				end
+
+				if tab_num > 1 then
+					if not not vim.api.nvim_buf_get_name(buf_number):find(vim.fn.getcwd(), 0, true) then
+						return true
+					end
+				else
+					return true
+				end
+			end,
+			sort_by = function(buffer_a, buffer_b)
+				local mod_a = ((vim.loop.fs_stat(buffer_a.path) or {}).mtime or {}).sec or 0
+				local mod_b = ((vim.loop.fs_stat(buffer_b.path) or {}).mtime or {}).sec or 0
+				return mod_a > mod_b
+			end,
 		},
 	})
 end

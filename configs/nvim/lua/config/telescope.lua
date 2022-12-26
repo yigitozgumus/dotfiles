@@ -1,75 +1,200 @@
--- import telescope plugin safely
-local telescope_setup, telescope = pcall(require, "telescope")
-if not telescope_setup then
-  return
+local M = {}
+
+-- Custom actions
+local transform_mod = require("telescope.actions.mt").transform_mod
+local nvb_actions = transform_mod({
+	file_path = function(prompt_bufnr)
+		-- Get selected entry and the file full path
+		local content = require("telescope.actions.state").get_selected_entry()
+		local full_path = content.cwd .. require("plenary.path").path.sep .. content.value
+
+		-- Yank the path to unnamed and clipboard registers
+		vim.fn.setreg('"', full_path)
+		vim.fn.setreg("+", full_path)
+
+		-- Close the popup
+		require("utils").info("File path is yanked ")
+		require("telescope.actions").close(prompt_bufnr)
+	end,
+
+	-- VisiData
+	visidata = function(prompt_bufnr)
+		-- Get the full path
+		local content = require("telescope.actions.state").get_selected_entry()
+		local full_path = content.cwd .. require("plenary.path").path.sep .. content.value
+
+		-- Close the Telescope window
+		require("telescope.actions").close(prompt_bufnr)
+
+		-- Open the file with VisiData
+		local term = require("utils.term")
+		term.open_term("vd " .. full_path, { direction = "float" })
+	end,
+})
+
+-- trouble.nvim
+local trouble = require("trouble.providers.telescope")
+local icons = require("config.icons")
+
+function M.setup()
+	local actions = require("telescope.actions")
+	local actions_layout = require("telescope.actions.layout")
+	local telescope = require("telescope")
+
+	-- Custom previewer
+	local previewers = require("telescope.previewers")
+	local Job = require("plenary.job")
+	local preview_maker = function(filepath, bufnr, opts)
+		filepath = vim.fn.expand(filepath)
+		Job:new({
+			command = "file",
+			args = { "--mime-type", "-b", filepath },
+			on_exit = function(j)
+				local mime_type = vim.split(j:result()[1], "/")[1]
+
+				if mime_type == "text" then
+					-- Check file size
+					vim.loop.fs_stat(filepath, function(_, stat)
+						if not stat then
+							return
+						end
+						if stat.size > 500000 then
+							return
+						else
+							previewers.buffer_previewer_maker(filepath, bufnr, opts)
+						end
+					end)
+				else
+					vim.schedule(function()
+						vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY FILE" })
+					end)
+				end
+			end,
+		}):sync()
+	end
+
+	telescope.setup({
+		defaults = {
+			prompt_prefix = icons.ui.Telescope .. " ",
+			selection_caret = " ",
+			-- path_display = { "smart" },
+			buffer_previewer_maker = preview_maker,
+			mappings = {
+				i = {
+					["<C-j>"] = actions.move_selection_next,
+					["<C-k>"] = actions.move_selection_previous,
+					["<C-n>"] = actions.cycle_history_next,
+					["<C-p>"] = actions.cycle_history_prev,
+					["<c-z>"] = trouble.open_with_trouble,
+					["?"] = actions_layout.toggle_preview,
+				},
+			},
+			history = {
+				path = vim.fn.stdpath("data") .. "/telescope_history.sqlite3",
+				limit = 100,
+			},
+			border = {},
+			borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+			color_devicons = true,
+		},
+		pickers = {
+			find_files = {
+				theme = "ivy",
+				previewer = false,
+				mappings = {
+					n = {
+						["y"] = nvb_actions.file_path,
+						["s"] = nvb_actions.visidata,
+					},
+					i = {
+						["<C-y>"] = nvb_actions.file_path,
+						["<C-s>"] = nvb_actions.visidata,
+					},
+				},
+				hidden = true,
+				find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+			},
+			git_files = {
+				theme = "dropdown",
+				previewer = false,
+				mappings = {
+					n = {
+						["y"] = nvb_actions.file_path,
+						["s"] = nvb_actions.visidata,
+					},
+					i = {
+						["<C-y>"] = nvb_actions.file_path,
+						["<C-s>"] = nvb_actions.visidata,
+					},
+				},
+			},
+			buffers = {
+				theme = "dropdown",
+				previewer = false,
+				mappings = {
+					n = {
+						["y"] = nvb_actions.file_path,
+						["s"] = nvb_actions.visidata,
+					},
+					i = {
+						["<C-y>"] = nvb_actions.file_path,
+						["<C-s>"] = nvb_actions.visidata,
+					},
+				},
+			},
+		},
+		extensions = {
+			arecibo = {
+				["selected_engine"] = "google",
+				["url_open_command"] = "xdg-open",
+				["show_http_headers"] = false,
+				["show_domain_icons"] = false,
+			},
+			media_files = {
+				filetypes = { "png", "webp", "jpg", "jpeg", "pdf", "mp4", "webm" },
+				find_cmd = "fd",
+			},
+			bookmarks = {
+				selected_browser = "brave",
+				url_open_command = nil,
+				url_open_plugin = "open_browser",
+				full_path = true,
+				firefox_profile_name = nil,
+			},
+			project = {
+				hidden_files = false,
+				theme = "dropdown",
+			},
+			-- aerial = {
+			--   show_nesting = true,
+			-- },
+		},
+	})
+
+	require("neoclip").setup() -- https://github.com/AckslD/nvim-neoclip.lua/issues/5
+
+	telescope.load_extension("fzf")
+	telescope.load_extension("project") -- telescope-project.nvim
+	telescope.load_extension("repo")
+	telescope.load_extension("file_browser")
+	telescope.load_extension("projects") -- project.nvim
+	-- telescope.load_extension "dap"
+	telescope.load_extension("frecency")
+	telescope.load_extension("neoclip")
+	telescope.load_extension("smart_history")
+	-- telescope.load_extension("arecibo")
+	telescope.load_extension("media_files")
+	telescope.load_extension("bookmarks")
+	telescope.load_extension("aerial")
+	telescope.load_extension("gh")
+	telescope.load_extension("zoxide")
+	telescope.load_extension("cder")
+	telescope.load_extension("harpoon")
+	vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
+	vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
+	vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
+	vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+	vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 end
 
--- import telescope actions safely
-local actions_setup, actions = pcall(require, "telescope.actions")
-if not actions_setup then
-  return
-end
-local builtin = require("telescope.builtin")
-
-local function telescope_buffer_dir()
-  return vim.fn.expand('%:p:h')
-end
-
-local fb_actions = require "telescope".extensions.file_browser.actions
-
-telescope.setup {
-    defaults = {
-        mappings = {
-            n = {
-                ["q"] = actions.close
-            },
-            i = {
-                ['<C-u>'] = false,
-                ['<C-d>'] = false,
-            },
-        },
-    },
-    extensions = {
-        file_browser = {
-            theme = "dropdown",
-            -- disables netrw and use telescope-file-browser in its place
-            hijack_netrw = true,
-            mappings = {
-                -- your custom insert mode mappings
-                ["i"] = {
-                    ["<C-w>"] = function() vim.cmd('normal vbd') end,
-                },
-                ["n"] = {
-                    -- your custom normal mode mappings
-                    ["N"] = fb_actions.create,
-                    ["h"] = fb_actions.goto_parent_dir,
-                    ["/"] = function()
-                        vim.cmd('startinsert')
-                    end
-                },
-            },
-        },
-    },
-}
-
-telescope.load_extension("file_browser")
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer]' })
-
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+return M
