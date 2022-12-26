@@ -200,3 +200,18 @@ change_background(){
         `lazygit_theme dark`
     fi
 }
+
+pnvim() {
+    mkdir -p  "$HOME/.config/nvim-profiles"
+    mkdir -p "$HOME/.config/nvim-profiles/yigitozgumus"
+    ln -sf "$HOME/personal/dotfiles/configs/nvim" "$HOME/.config/nvim-profiles/yigitozgumu/nvim"
+    NVIM_PROFILE_NAME="yigitozgumus"
+    NVIM_INIT_FILE="init.lua"
+    NVIM_COMMAND="nvim"
+
+exec env XDG_CONFIG_HOME="$HOME/.config/nvim-profiles/${NVIM_PROFILE_NAME}" \
+         XDG_DATA_HOME="$HOME/.local/share/nvim-profiles/${NVIM_PROFILE_NAME}" \
+         XDG_CACHE_HOME="$HOME/.cache/nvim-profiles/${NVIM_PROFILE_NAME}" \
+         ${NVIM_COMMAND} -u "$HOME/.config/nvim-profiles/${NVIM_PROFILE_NAME}/nvim/${NVIM_INIT_FILE}"\
+         "$@"
+}

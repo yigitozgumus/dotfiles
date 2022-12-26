@@ -1,15 +1,15 @@
 -- Personal vim configuration
 
+require("core.base")
+require("core.keymaps")
+require("core.colors")
+require("core.autocmds")
+
 -- Plugin setup
 require("plugins-setup")
 
 -- Impatient plugin to speed up the opening
 require("impatient")
-
-require("core.base")
-require("core.keymaps")
-require("core.colors")
-require("core.autocmds")
 
 -- Plugins
 require("plugins.autopairs")
