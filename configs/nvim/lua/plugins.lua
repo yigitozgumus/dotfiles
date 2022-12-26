@@ -48,6 +48,13 @@ return require("packer").startup(function(use)
 
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
+	--  Nvim dashboard
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	})
 
 	-- vs-code like icons
 	use("nvim-tree/nvim-web-devicons")
@@ -100,6 +107,15 @@ return require("packer").startup(function(use)
 	use({ -- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
+	})
+
+	-- WhichKey
+	use({
+		"folke/which-key.nvim",
+		event = "VimEnter",
+		config = function()
+			require("config.which-key").setup()
+		end,
 	})
 
 	-- auto closing
