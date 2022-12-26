@@ -16,6 +16,7 @@ if not typescript_setup then
 	return
 end
 
+local keymap = vim.keymap
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
 	-- keybind options
@@ -57,7 +58,7 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
 	-- Configure key mappings
-	require("config.lsp.keymaps").setup(client, bufnr)
+	-- require("config.lsp.keymaps").setup(client, bufnr)
 end
 
 -- used to enable autocompletion (assign to every lsp server config)

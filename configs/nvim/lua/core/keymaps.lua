@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 keymap.set("n", "<leader>k", ":nohlsearch<CR>")
 keymap.set("n", "<leader>Q", ":bufdo bdelete<CR>")
