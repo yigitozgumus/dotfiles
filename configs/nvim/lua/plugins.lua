@@ -107,6 +107,9 @@ return require("packer").startup(function(use)
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
+		config = function()
+			require("config.treesitter").setup()
+		end,
 	})
 
 	use({ -- Additional text objects via treesitter
@@ -119,7 +122,15 @@ return require("packer").startup(function(use)
 		"folke/which-key.nvim",
 		event = "VimEnter",
 		config = function()
-			require("config.which-key").setup()
+			require("config.whichkey").setup()
+		end,
+	})
+
+	use({
+		"ggandor/lightspeed.nvim",
+		keys = { "s", "S", "f", "F", "t", "T" },
+		config = function()
+			require("lightspeed").setup({})
 		end,
 	})
 

@@ -16,8 +16,6 @@ if not typescript_setup then
 	return
 end
 
-local keymap = vim.keymap -- for conciseness
-
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
 	-- keybind options
@@ -50,6 +48,16 @@ local on_attach = function(client, bufnr)
 		keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
 		keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
 	end
+	-- Enable completion triggered by <C-X><C-O>
+	-- See `:help omnifunc` and `:help ins-completion` for more information.
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+	-- Use LSP as the handler for formatexpr.
+	-- See `:help formatexpr` for more information.
+	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+
+	-- Configure key mappings
+	require("config.lsp.keymaps").setup(client, bufnr)
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
