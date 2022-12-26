@@ -12,12 +12,9 @@ require("plugins")
 require("impatient")
 
 -- Plugins
-require("config.autopairs")
-require("config.bufferline")
 require("config.git")
 require("config.gitsigns")
 require("config.fugitive")
-require("config.lualine")
 require("config.nvim-tree")
 require("config.undotree")
 require("config.telescope")

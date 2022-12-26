@@ -41,7 +41,12 @@ return require("packer").startup(function(use)
 	use("numToStr/Comment.nvim")
 
 	-- Statusline
-	use("nvim-lualine/lualine.nvim")
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("config.lualine").setup()
+		end,
+	})
 
 	-- vscode-like pictograms
 	use("onsails/lspkind-nvim")
@@ -119,7 +124,12 @@ return require("packer").startup(function(use)
 	})
 
 	-- auto closing
-	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("config.autopairs").setup()
+		end,
+	})
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	-- git integration
@@ -134,7 +144,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("akinsho/nvim-bufferline.lua")
+	use({
+		"akinsho/nvim-bufferline.lua",
+		config = function()
+			require("config.bufferline").setup()
+		end,
+	})
 
 	use("ray-x/go.nvim")
 	use("theprimeagen/harpoon")
