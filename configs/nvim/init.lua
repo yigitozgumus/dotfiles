@@ -29,6 +29,7 @@ require("config.go")
 require("config.nvim-cmp")
 require("config.lspkind")
 require("config.comment")
+require("config.toggleterm")
 
 -- LSP Related Plugins
 require("config.lsp.mason")
