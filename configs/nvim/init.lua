@@ -1,9 +1,2 @@
--- Personal vim configuration
-
-require("config")
-require("utils")
-
--- Plugin setup
-require("plugins").setup()
-
-vim.cmd("colorscheme gruvbox-material")
+-- Personal Neovim Configuration
+vim.g.mapleader=","
