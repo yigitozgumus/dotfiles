@@ -1,7 +1,10 @@
-vim.cmd("autocmd!")
+-- Base Configuration
 
+-- Specify the character encoding in script
 vim.scriptencoding = 'utf-8'
+-- Output Encoding that is shown on the terminal
 vim.opt.encoding = 'utf-8'
+-- Output Encoding of that file that is written
 vim.opt.fileencoding = 'utf-8'
 
 vim.o.mouse = 'a'
@@ -13,7 +16,9 @@ vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1
-vim.opt.laststatus=2            -- Set global statusline
+
+-- Set global statusline
+vim.opt.laststatus=2   
 
 vim.wo.number = true
 vim.o.showmatch = true
@@ -28,30 +33,40 @@ vim.o.linebreak = true
 vim.opt.inccommand = 'split'
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.backspace = { 'start', 'eol', 'indent' }
-vim.opt.path:append { '**' } -- finding files Search down into subfolders
+
+-- finding files Search down into subfolders
+vim.opt.path:append { '**' } 
 vim.opt.wildignore:append { '*/node_modules/*' }
+
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
+
 vim.o.expandtab = true
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 -- vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.wrap = false
+
 -----------------------------------------------------------
 -- Memory, CPU
 -----------------------------------------------------------
-
-vim.o.hidden = true           -- Enable background buffers
-vim.o.history = 10000           -- Remember N lines in history
-vim.o.lazyredraw = true       -- Faster scrolling
-vim.o.synmaxcol = 240         -- Max column for syntax highlight
-vim.o.updatetime = 700        -- ms to wait for trigger an event
+-- Enable background buffers
+vim.o.hidden = true           
+-- Remember N lines in history
+vim.o.history = 10000           
+-- Faster scrolling
+vim.o.lazyredraw = true       
+-- Max column for syntax highlight
+vim.o.synmaxcol = 240         
+-- ms to wait for trigger an event
+vim.o.updatetime = 700        
 
 -----------------------------------------------------------
 -- Misc
 -----------------------------------------------------------
+
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.winblend = 0
@@ -67,18 +82,12 @@ vim.o.sidescrolloff = 10
 vim.o.confirm = true
 vim.o.fillchars = 'eob: '
 
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = '*',
   command = "set nopaste"
 })
-
--- Add asterisks in block comments
-vim.opt.formatoptions:append { 'r' }
 
 
 -- Disable builtins plugins
@@ -106,3 +115,4 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
   vim.g["loaded_" .. plugin] = 1
 end
+
