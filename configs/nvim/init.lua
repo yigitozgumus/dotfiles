@@ -8,4 +8,4 @@ require("core.autocmds")
 -- Plugin setup
 require("plugins").setup()
 
-require("core.colorscheme")
+vim.cmd("colorscheme catppuccin")

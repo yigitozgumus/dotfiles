@@ -64,6 +64,7 @@ function M.setup()
 			end,
 			disable = false,
 		})
+
 		use({
 			"simrat39/desktop-notify.nvim",
 			config = function()
@@ -71,6 +72,7 @@ function M.setup()
 			end,
 			disable = true,
 		})
+
 		use({
 			"vigoux/notifier.nvim",
 			config = function()
@@ -92,28 +94,31 @@ function M.setup()
 		use({
 			"folke/tokyonight.nvim",
 			config = function()
-				vim.cmd.colorscheme([[tokyonight]])
+				-- vim.cmd.colorscheme([[tokyonight]])
 			end,
 			disable = true,
 		})
+
 		use({
 			"sainnhe/everforest",
 			config = function()
 				vim.g.everforest_better_performance = 1
-				vim.cmd.colorscheme([[everforest]])
+				-- vim.cmd.colorscheme([[everforest]])
 			end,
 			disable = true,
 		})
+
 		use({
 			"projekt0n/github-nvim-theme",
 			disable = true,
 		})
+
 		use({
 			"sainnhe/gruvbox-material",
 			config = function()
-				vim.cmd("colorscheme gruvbox-material")
+				-- vim.cmd("colorscheme gruvbox-material")
 			end,
-			disable = true,
+			disable = false,
 		})
 		use({
 			"arcticicestudio/nord-vim",
@@ -164,16 +169,16 @@ function M.setup()
 			disable = true,
 		})
 
-    use {
-      "anuvyklack/hydra.nvim",
-      config = function()
-        require("config.hydra").setup()
-      end,
-      requires = "anuvyklack/keymap-layer.nvim",
-      module = { "hydra" },
-      event = { "BufReadPre" },
-      disable = true,
-    }
+		use({
+			"anuvyklack/hydra.nvim",
+			config = function()
+				require("config.hydra").setup()
+			end,
+			requires = "anuvyklack/keymap-layer.nvim",
+			module = { "hydra" },
+			event = { "BufReadPre" },
+			disable = true,
+		})
 
 		use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
@@ -676,6 +681,12 @@ function M.setup()
 			},
 		})
 
+		use({
+			"ibhagwan/fzf-lua",
+			-- optional for icon support
+			requires = { "nvim-tree/nvim-web-devicons" },
+		})
+
 		-- Kotlin
 		use({ "udalov/kotlin-vim", ft = { "kotlin" }, disable = true })
 
@@ -831,7 +842,7 @@ function M.setup()
 			config = function()
 				require("config.dap").setup()
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		use("junegunn/goyo.vim")
@@ -851,6 +862,7 @@ function M.setup()
 			end,
 		})
 		use("martinsione/darkplus.nvim")
+
 		if is_boostrap then
 			print("Neovim restart is required after installation!")
 			require("packer").sync()
