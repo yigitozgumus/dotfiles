@@ -9,7 +9,7 @@ alias ldo='lazydocker'
 alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
 # Vim
-alias uv='nvim ~/Personal/dotfiles'
+alias uv='nvim ~/personal/dotfiles'
 alias nvd='neovide'
 
 # Command Shortcuts

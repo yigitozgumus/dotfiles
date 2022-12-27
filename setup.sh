@@ -13,25 +13,29 @@ COLOR_NONE="\033[0m"
 # Prompts
 
 title() {
-    echo -e "\n${COLOR_PURPLE}$1${COLOR_NONE}"
-    echo -e "${COLOR_GRAY}==============================${COLOR_NONE}\n"
+    echo "\n${COLOR_PURPLE}$1${COLOR_NONE}"
+    echo  "${COLOR_GRAY}==============================${COLOR_NONE}\n"
 }
 
 error() {
-    echo -e "${COLOR_RED}Error: ${COLOR_NONE}$1"
+    echo  "${COLOR_RED}Error: ${COLOR_NONE}$1"
     exit 1
 }
 
 warning() {
-    echo -e "${COLOR_YELLOW}Warning: ${COLOR_NONE}$1"
+    echo  "${COLOR_YELLOW}Warning: ${COLOR_NONE}$1"
 }
 
 info() {
-    echo -e "${COLOR_BLUE}Info: ${COLOR_NONE}$1"
+    echo  "${COLOR_BLUE}Info: ${COLOR_NONE}$1"
 }
 
 success() {
-    echo -e "${COLOR_GREEN}$1${COLOR_NONE}"
+    echo  "${COLOR_GREEN}$1${COLOR_NONE}"
+}
+
+blank_line() {
+  echo ""
 }
 
 get_linkables() {
@@ -101,7 +105,7 @@ setup_symlinks() {
         fi
     done
 
-    echo -e
+    echo ""
     info "installing to ~/.config"
     if [ ! -d "$HOME/.config" ]; then
         info "Creating ~/.config"
@@ -130,6 +134,18 @@ setup_astronvim() {
     mv ~/.cache/nvim ~/.cache/nvim.bak
     git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
     ln -sf "$DOTFILES/astronvim/yigitozgumus/" ~/.config/nvim/lua/user
+}
+
+## setup neovim
+setup_neovim() {
+    blank_line
+    info "Deleting current configuration."
+    rm -rf ~/.config/nvim
+    rm -rf ~/.local/share/nvim
+    rm -rf ~/.local/state/nvim
+    rm -rf ~/.cache/nvim
+    info "Linking the Neovim Configuration."
+    ln -sf "$DOTFILES/configs/nvim/" "$HOME/.config/nvim"
 }
 
 # Git setup
@@ -287,6 +303,9 @@ link)
 git)
     setup_git
     ;;
+nvim)
+    setup_neovim
+    ;;
 homebrew)
     setup_homebrew
     ;;
@@ -315,10 +334,9 @@ all)
     setup_terminfo
     ;;
 *)
-    echo -e $"\nUsage: $(basename "$0") {purge|backup|link|git|homebrew|shell|terminfo|macos|all}\n"
+    echo $"\nUsage: $(basename "$0") {purge|backup|link|git|homebrew|shell|terminfo|macos|all}\n"
     exit 1
     ;;
 esac
 
-echo -e
 success "Done."
