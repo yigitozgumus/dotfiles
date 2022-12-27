@@ -1,69 +1,57 @@
------------------------------------------------------------
--- Autocommand functions
------------------------------------------------------------
-
--- Define autocommands with Lua APIs
--- See: h:api-autocmd, h:augroup
-
-local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+local api = vim.api
 
 -- Highlight on yank
-augroup('YankHighlight', { clear = true })
-autocmd('TextYankPost', {
-  group = 'YankHighlight',
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
-  end
+local yankGrp = api.nvim_create_augroup("YankHighlight", {clear = true})
+api.nvim_create_autocmd("TextYankPost", {
+    command = "silent! lua vim.highlight.on_yank()",
+    group = yankGrp
 })
 
-autocmd('BufNewFile', {
-  pattern = { '*.tsx, *.jsx' },
-  command = 'set filetype=typescriptreact'
+-- show cursor line only in active window
+local cursorGrp = api.nvim_create_augroup("CursorLine", {clear = true})
+api.nvim_create_autocmd({"InsertLeave", "WinEnter"}, {
+    pattern = "*",
+    command = "set cursorline",
+    group = cursorGrp
+})
+api.nvim_create_autocmd({"InsertEnter", "WinLeave"}, {
+    pattern = "*",
+    command = "set nocursorline",
+    group = cursorGrp
 })
 
-autocmd('BufRead', {
-  pattern = { '*.tsx, *.jsx' },
-  command = 'set filetype=typescriptreact'
+-- go to last loc when opening a buffer
+api.nvim_create_autocmd("BufReadPost", {
+    command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]]
 })
 
--- Remove whitespace on save
+-- Check if we need to reload the file when it changed
+api.nvim_create_autocmd("FocusGained", {command = [[:checktime]]})
 
-autocmd('BufWritePre', {
-  pattern = '*',
-  command = ":%s/\\s\\+$//e"
+-- windows to close
+api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "help", "startuptime", "qf", "lspinfo", "vim", "OverseerList",
+        "OverseerForm", "fugitive", "toggleterm", "floggraph", "git",
+        "neotest-summary", "query", "tsplayground", "neotest-output",
+        "spectre_panel"
+    },
+    command = [[nnoremap <buffer><silent> q :close<CR>]]
+})
+api.nvim_create_autocmd("FileType", {
+    pattern = "man",
+    command = [[nnoremap <buffer><silent> q :quit<CR>]]
+})
+api.nvim_create_autocmd("FileType", {
+    pattern = "cheat",
+    command = [[nnoremap <buffer><silent> q :bdelete!<CR>]]
 })
 
--- Don't auto commenting new lines
+-- don't auto comment new line
+api.nvim_create_autocmd("BufEnter", {command = [[set formatoptions-=cro]]})
 
-autocmd('BufEnter', {
-  pattern = '*',
-  command = 'set fo-=c fo-=r fo-=o'
-})
-
-vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
-    local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
-    pcall(vim.diagnostic.reset, ns)
-    return true
-end
--- Terminal settings:
--- Open a Terminal on the right tab
-autocmd('CmdlineEnter', {
-    command = 'command! Term :botright vsplit term://$SHELL'
-})
-
--- Enter insert mode when switching to terminal
-autocmd('TermOpen', {
-  command = 'setlocal listchars= nonumber norelativenumber nocursorline',
-})
-
-autocmd('TermOpen', {
-  pattern = '*',
-  command = 'startinsert'
-})
-
--- Close terminal buffer on process exit
-autocmd('BufLeave', {
-  pattern = 'term://*',
-  command = 'stopinsert'
+-- create directories when needed, when saving a file
+api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("auto_create_dir", {clear = true}),
+    command = [[call mkdir(expand('<afile>:p:h'), 'p')]]
 })
