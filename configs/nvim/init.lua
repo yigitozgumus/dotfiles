@@ -1,8 +1,17 @@
 -- Personal Neovim Configuration
+
 vim.g.mapleader=","
+vim.g.maplocalleader=","
 
-require("config")
+require("config.lazy")
+require("config.base")
 
--- Plugin setup
-require("plugins").setup()
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    require("config.keymaps")
+    require("config.autocommands")
+  end
+})
+
 
