@@ -195,7 +195,7 @@ function M.setup()
 			config = function()
 				require("config.surroundfunk").setup()
 			end,
-			disable = true,
+			disable = false,
 		})
 		use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
@@ -230,7 +230,7 @@ function M.setup()
 			config = function()
 				require("config.neoscroll").setup()
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		use({
@@ -253,7 +253,7 @@ function M.setup()
 			config = function()
 				require("focus").setup({ hybridnumber = true })
 			end,
-			disable = true,
+			disable = false,
 		})
 		-- Better Comment
 		use({
@@ -518,7 +518,7 @@ function M.setup()
 					config = function()
 						require("config.neodim").setup()
 					end,
-					disable = true,
+					disable = false,
 				},
 				{
 					"theHamsta/nvim-semantic-tokens",
@@ -534,7 +534,7 @@ function M.setup()
 					config = function()
 						require("symbols-outline").setup()
 					end,
-					disable = true,
+					disable = false,
 				},
 				-- {
 				--   "weilbith/nvim-code-action-menu",
@@ -616,7 +616,7 @@ function M.setup()
 			config = function()
 				require("config.legendary").setup()
 			end,
-			disable = false,
+			disable = true,
 		})
 
 		use({
@@ -671,7 +671,7 @@ function M.setup()
 				{
 					"nvim-treesitter/nvim-treesitter-context",
 					event = "BufReadPre",
-					disable = true,
+					disable = false,
 				},
 				{
 					"mfussenegger/nvim-treehopper",
@@ -693,7 +693,7 @@ function M.setup()
 					ft = { "markdown" },
 					cmd = { "Femaco" },
 					module = { "femaco_edit" },
-					disable = true,
+					disable = false,
 				},
 			},
 		})
@@ -730,7 +730,6 @@ function M.setup()
 		-- WhichKey
 		use({
 			"folke/which-key.nvim",
-			event = "VimEnter",
 			config = function()
 				require("config.whichkey").setup()
 			end,
@@ -774,7 +773,7 @@ function M.setup()
 			config = function()
 				require("suit").setup({})
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		-- Auto pairs
@@ -820,7 +819,7 @@ function M.setup()
 			end,
 			ft = "markdown",
 			cmd = { "MarkdownPreview" },
-			disable = true,
+			disable = false,
 		})
 
 		-- Harpoon
@@ -837,7 +836,7 @@ function M.setup()
 			config = function()
 				require("config.harpoon").setup()
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		-- Debugging
