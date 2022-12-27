@@ -165,6 +165,10 @@ function M.setup()
 				hidden_files = false,
 				theme = "dropdown",
 			},
+            file_browser = {
+                theme = "dropdown",
+                hijack_netrw = true,
+            }
 			-- aerial = {
 			--   show_nesting = true,
 			-- },

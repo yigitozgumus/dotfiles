@@ -7,54 +7,51 @@ function M.setup()
 	end
 
 	toggleterm.setup()
+end
 
-	local Terminal = require("toggleterm.terminal").Terminal
-	local lazygit = Terminal:new({
-		cmd = "lazygit",
-		dir = "git_dir",
-		direction = "float",
-		float_opts = {
-			border = "double",
-		},
-		-- function to run on opening the terminal
-		on_open = function(term)
-			vim.cmd("startinsert!")
-			vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-		end,
-		-- function to run on closing the terminal
-		on_close = function(term)
-			vim.cmd("startinsert!")
-		end,
-	})
+M.Terminal = require("toggleterm.terminal").Terminal
+M.lazygit = M.Terminal:new({
+	cmd = "lazygit",
+	dir = "git_dir",
+	direction = "float",
+	float_opts = {
+		border = "double",
+	},
+	-- function to run on opening the terminal
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+	-- function to run on closing the terminal
+	on_close = function(term)
+		vim.cmd("startinsert!")
+	end,
+})
 
-	local FloatingTerm = Terminal:new({
-		cmd = "zsh --login",
-		dir = "git_dir",
-		direction = "float",
-		float_opts = {
-			border = "double",
-		},
-		-- function to run on opening the terminal
-		on_open = function(term)
-			vim.cmd("startinsert!")
-			vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-		end,
-		-- function to run on closing the terminal
-		on_close = function(term)
-			vim.cmd("startinsert!")
-		end,
-	})
+M.FloatingTerm = M.Terminal:new({
+	cmd = "zsh --login",
+	dir = "git_dir",
+	direction = "float",
+	float_opts = {
+		border = "double",
+	},
+	-- function to run on opening the terminal
+	on_open = function(term)
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+	end,
+	-- function to run on closing the terminal
+	on_close = function(term)
+		vim.cmd("startinsert!")
+	end,
+})
 
-	function _floatingterm_toggle()
-		FloatingTerm:toggle()
-	end
+function M.floatingterm_toggle()
+	M.FloatingTerm:toggle()
+end
 
-	function _lazygit_toggle()
-		lazygit:toggle()
-	end
-
-	vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua _floatingterm_toggle()<CR>", { noremap = true, silent = true })
+function M.lazygit_toggle()
+	M.lazygit:toggle()
 end
 
 return M

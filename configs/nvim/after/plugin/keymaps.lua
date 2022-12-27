@@ -152,3 +152,6 @@ keymap("x", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
 
 -- focus.nvim
 keymap("n", "<C-w>z", "<Cmd>FocusMaxOrEqual<CR>", default_opts)
+
+keymap("n", "<leader>gg", "<cmd>lua require('config.toggleterm').lazygit_toggle()<CR>", default_opts)
+keymap("n", "<leader>tt", "<cmd>lua require('config.toggleterm').floatingterm_toggle()<CR>", default_opts)
