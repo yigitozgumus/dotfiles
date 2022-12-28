@@ -8,7 +8,7 @@ return {
   config = {
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the table
     window = {
-      position = "right",
+      position = "left",
     },
     filesystem = {
       follow_current_file = true,
