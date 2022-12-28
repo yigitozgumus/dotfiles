@@ -78,7 +78,7 @@ function mini.config()
   mini.ai()
   mini.pairs()
   mini.comment()
-  mini.animate()
+  --   mini.animate()
 end
 
 function mini.animate()

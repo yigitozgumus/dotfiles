@@ -13,7 +13,7 @@ return {
     config = function()
       vim.g.startuptime_tries = 10
     end,
-    enabled = false,
+    enabled = true,
   },
   -- Colorscheme
   {
@@ -43,7 +43,6 @@ return {
 
   {
     "sainnhe/gruvbox-material",
-    config = function() end,
   },
   -- Better surround
   { "tpope/vim-surround", event = "BufReadPre" },
@@ -89,6 +88,7 @@ return {
 
   {
     "ThePrimeagen/refactoring.nvim",
+    enabled = false,
     keys = {
       {
         "<leader>r",
