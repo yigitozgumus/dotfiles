@@ -93,7 +93,7 @@ local function lsp_client(msg)
 	return "[" .. table.concat(client_names, ", ") .. "]"
 end
 
-local winbar = require("config.winbar")
+-- local winbar = require("config.winbar")
 
 local config = {
 	options = {
@@ -103,26 +103,26 @@ local config = {
 		section_separators = {},
 		disabled_filetypes = {
 			statusline = {},
-			winbar = {
-				"help",
-				"startify",
-				"dashboard",
-				"packer",
-				"neogitstatus",
-				"NvimTree",
-				"Trouble",
-				"alpha",
-				"lir",
-				"Outline",
-				"spectre_panel",
-				"toggleterm",
-				"dap-repl",
-				"dapui_console",
-				"dapui_watches",
-				"dapui_stacks",
-				"dapui_breakpoints",
-				"dapui_scopes",
-			},
+			-- winbar = {
+			-- 	"help",
+			-- 	"startify",
+			-- 	"dashboard",
+			-- 	"packer",
+			-- 	"neogitstatus",
+			-- 	"NvimTree",
+			-- 	"Trouble",
+			-- 	"alpha",
+			-- 	"lir",
+			-- 	"Outline",
+			-- 	"spectre_panel",
+			-- 	"toggleterm",
+			-- 	"dap-repl",
+			-- 	"dapui_console",
+			-- 	"dapui_watches",
+			-- 	"dapui_stacks",
+			-- 	"dapui_breakpoints",
+			-- 	"dapui_scopes",
+			-- },
 		},
 		always_divide_middle = true,
 		globalstatus = true,
@@ -192,18 +192,10 @@ local config = {
 		lualine_c = {},
 		lualine_x = {
 			{
-				winbar.get_winbar,
+				-- winbar.get_winbar,
 				color = { fg = colors.violet, gui = "bold" },
 			},
 		},
-		lualine_y = {},
-		lualine_z = {},
-	},
-	inactive_winbar = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = {},
-		lualine_x = {},
 		lualine_y = {},
 		lualine_z = {},
 	},

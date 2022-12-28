@@ -229,14 +229,14 @@ function M.setup()
 		-- })
 		--
 		-- -- Statusline
-		-- use({
-		-- 	"nvim-lualine/lualine.nvim",
-		-- 	event = "BufReadPre",
-		-- 	config = function()
-		-- 		require("config.lualine").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
+		use({
+			"nvim-lualine/lualine.nvim",
+			event = "BufReadPre",
+			config = function()
+				require("config.lualine").setup()
+			end,
+			disable = false,
+		})
   --       use { "MunifTanjim/nui.nvim", disable = false }
 		-- use({
 		-- 	"folke/noice.nvim",
@@ -281,13 +281,13 @@ function M.setup()
 		-- use("onsails/lspkind-nvim")
 		--
 		-- --  Nvim dashboard
-		-- use({
-		-- 	"goolord/alpha-nvim",
-		-- 	config = function()
-		-- 		require("config.alpha").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
+		use({
+			"goolord/alpha-nvim",
+			config = function()
+				require("config.alpha").setup()
+			end,
+			disable = false,
+		})
 		--
 		-- -- Telescope
 		use({
@@ -635,14 +635,14 @@ function M.setup()
 		-- use({ "udalov/kotlin-vim", ft = { "kotlin" }, disable = false })
 		--
 		-- -- nvim-tree
-		-- use({
-		-- 	"nvim-tree/nvim-tree.lua",
-		-- 	opt = true,
-		-- 	cmd = { "NvimTreeToggle", "NvimTreeClose" },
-		-- 	config = function()
-		-- 		require("config.nvimtree").setup()
-		-- 	end,
-		-- })
+		use({
+			"nvim-tree/nvim-tree.lua",
+			opt = true,
+			cmd = { "NvimTreeToggle", "NvimTreeClose" },
+			config = function()
+				require("config.nvimtree").setup()
+			end,
+		})
 		--
 		-- -- Buffer line
 		-- use({
