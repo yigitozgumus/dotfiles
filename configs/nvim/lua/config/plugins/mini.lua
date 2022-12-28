@@ -76,7 +76,7 @@ end
 function mini.config()
   -- M.jump()
   mini.surround()
-  -- mini.ai()
+  mini.ai()
   mini.pairs()
   mini.comment()
   --   mini.animate()

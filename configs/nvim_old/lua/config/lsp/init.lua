@@ -61,7 +61,7 @@ local servers = {
 				},
 				diagnostics = {
 					-- Get the language server to recognize the `vim` global
-					globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins", "MiniTest" },
+					globals = { "vim" },
 					-- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
 				},
 				workspace = {
@@ -150,7 +150,6 @@ local servers = {
 
 function M.on_attach(client, bufnr)
 	local caps = client.server_capabilities
-
 	-- Enable completion triggered by <C-X><C-O>
 	-- See `:help omnifunc` and `:help ins-completion` for more information.
 	if caps.completionProvider then
