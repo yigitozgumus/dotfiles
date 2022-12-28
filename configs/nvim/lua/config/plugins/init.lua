@@ -14,6 +14,7 @@ return {
       vim.g.startuptime_tries = 10
     end,
     cond = false,
+    enabled = false,
   },
   -- Colorscheme
   {
@@ -21,7 +22,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme catppuccin]])
+      -- vim.cmd([[colorscheme catppuccin]])
     end,
   },
 
@@ -43,6 +44,10 @@ return {
 
   {
     "sainnhe/gruvbox-material",
+    config = function()
+      vim.cmd([[colorscheme gruvbox-material]])
+    end,
+    lazy = false,
   },
   -- Better surround
   { "tpope/vim-surround", event = "BufReadPre" },
@@ -68,6 +73,7 @@ return {
       require("Comment").setup({})
     end,
     cond = false,
+    enabled = false,
   },
   -- Theme: icons
   {
@@ -81,6 +87,7 @@ return {
       require("nvim-navic").setup({ separator = " ", highlight = true, depth_limit = 5 })
     end,
     cond = false,
+    enabled = true,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -91,6 +98,7 @@ return {
   {
     "ThePrimeagen/refactoring.nvim",
     cond = false,
+    enabled = false,
     keys = {
       {
         "<leader>r",
@@ -131,6 +139,7 @@ return {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
     cond = false,
+    enabled = false,
     config = {
       excluded_argnames = {
         usages = {

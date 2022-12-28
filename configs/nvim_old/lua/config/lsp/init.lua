@@ -190,10 +190,10 @@ function M.on_attach(client, bufnr)
 	end
 
 	-- nvim-navic
-	if caps.documentSymbolProvider then
-		local navic = require("nvim-navic")
-		navic.attach(client, bufnr)
-	end
+	-- if caps.documentSymbolProvider then
+	-- 	local navic = require("nvim-navic")
+	-- 	navic.attach(client, bufnr)
+	-- end
 
 	if client.name ~= "null-ls" then
 		-- inlay-hints

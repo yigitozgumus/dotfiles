@@ -77,7 +77,3 @@ keymap("n", "<C-u>", "<C-u>zz", default_opts)
 keymap("n", "<C-d>", "<C-d>zz", default_opts)
 keymap("n", "n", "nzzzv", default_opts)
 keymap("n", "N", "Nzzzv", default_opts)
-
-
-
-
