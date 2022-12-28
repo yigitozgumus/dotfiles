@@ -56,7 +56,6 @@ function M.setup()
 		use({ "lewis6991/impatient.nvim", disable = false })
 
 		use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
-
 		-- -- Notification
 		use({
 			"rcarriga/nvim-notify",
@@ -281,7 +280,7 @@ function M.setup()
 			},
 		})
 		--
-		-- -- trouble.nvim
+		-- trouble.nvim
 		use({
 			"folke/trouble.nvim",
 			cmd = { "TroubleToggle", "Trouble" },
@@ -312,15 +311,15 @@ function M.setup()
 		-- 	disable = false,
 		-- })
 		--
-		-- -- Go
-		-- use({
-		-- 	"ray-x/go.nvim",
-		-- 	ft = { "go" },
-		-- 	config = function()
-		-- 		require("go").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
+		-- Go
+		use({
+			"ray-x/go.nvim",
+			ft = { "go" },
+			config = function()
+				require("go").setup()
+			end,
+			disable = false,
+		})
 		-- Better icons
 		use({
 			"kyazdani42/nvim-web-devicons",
@@ -332,55 +331,55 @@ function M.setup()
 		})
 
 		use({ "segeljakt/vim-silicon", cmd = { "Silicon" } })
-		-- use({
-		-- 	"stevearc/aerial.nvim",
-		-- 	config = function()
-		-- 		require("aerial").setup({
-		-- 			backends = { "treesitter", "lsp" },
-		-- 			on_attach = function(bufnr)
-		-- 				vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-		-- 				vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-		-- 			end,
-		-- 		})
-		-- 	end,
-		-- 	module = { "aerial", "telescope._extensions.aerial" },
-		-- 	cmd = { "AerialToggle" },
-		-- 	disable = false,
-		-- })
-		--
-		-- -- Completion
-		-- use({
-		-- 	"hrsh7th/nvim-cmp",
-		-- 	event = "InsertEnter",
-		-- 	opt = true,
-		-- 	config = function()
-		-- 		require("config.cmp").setup()
-		-- 	end,
-		-- 	requires = {
-		-- 		"hrsh7th/cmp-buffer",
-		-- 		"hrsh7th/cmp-path",
-		-- 		"hrsh7th/cmp-nvim-lua",
-		-- 		"ray-x/cmp-treesitter",
-		-- 		"hrsh7th/cmp-cmdline",
-		-- 		"saadparwaiz1/cmp_luasnip",
-		-- 		{ "hrsh7th/cmp-nvim-lsp", module = { "cmp_nvim_lsp" } },
-		-- 		"hrsh7th/cmp-nvim-lsp-signature-help",
-		-- 		"lukas-reineke/cmp-rg",
-		-- 		"davidsierradz/cmp-conventionalcommits",
-		-- 		{ "onsails/lspkind-nvim", module = { "lspkind" } },
-		-- 		{
-		-- 			"L3MON4D3/LuaSnip",
-		-- 			-- config = function()
-		-- 			--     require("config.snip").setup()
-		-- 			-- end,
-		-- 			module = { "luasnip" },
-		-- 		},
-		-- 		"rafamadriz/friendly-snippets",
-		-- 		"honza/vim-snippets",
-		-- 		{ "tzachar/cmp-tabnine", run = "./install.sh", disable = true },
-		-- 	},
-		-- 	disable = false,
-		-- })
+		use({
+			"stevearc/aerial.nvim",
+			config = function()
+				require("aerial").setup({
+					backends = { "treesitter", "lsp" },
+					on_attach = function(bufnr)
+						vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+						vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+					end,
+				})
+			end,
+			module = { "aerial", "telescope._extensions.aerial" },
+			cmd = { "AerialToggle" },
+			disable = false,
+		})
+
+		-- Completion
+		use({
+			"hrsh7th/nvim-cmp",
+			event = "InsertEnter",
+			opt = true,
+			config = function()
+				require("config.cmp").setup()
+			end,
+			requires = {
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-nvim-lua",
+				"ray-x/cmp-treesitter",
+				"hrsh7th/cmp-cmdline",
+				"saadparwaiz1/cmp_luasnip",
+				{ "hrsh7th/cmp-nvim-lsp", module = { "cmp_nvim_lsp" } },
+				"hrsh7th/cmp-nvim-lsp-signature-help",
+				"lukas-reineke/cmp-rg",
+				"davidsierradz/cmp-conventionalcommits",
+				{ "onsails/lspkind-nvim", module = { "lspkind" } },
+				{
+					"L3MON4D3/LuaSnip",
+					-- config = function()
+					--     require("config.snip").setup()
+					-- end,
+					module = { "luasnip" },
+				},
+				"rafamadriz/friendly-snippets",
+				"honza/vim-snippets",
+				{ "tzachar/cmp-tabnine", run = "./install.sh", disable = true },
+			},
+			disable = false,
+		})
 		--
 		-- -- LSP
 		-- use({
@@ -526,25 +525,25 @@ function M.setup()
 		-- 	disable = true,
 		-- })
 		--
-		-- use({
-		-- 	"akinsho/toggleterm.nvim",
-		-- 	tag = "*",
-		-- 	config = function()
-		-- 		require("config.toggleterm").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
-		-- -- lspsaga.nvim
-		-- use({
-		-- 	"glepnir/lspsaga.nvim",
-		-- 	cmd = { "Lspsaga" },
-		-- 	config = function()
-		-- 		require("config.lspsaga").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
+		use({
+			"akinsho/toggleterm.nvim",
+			tag = "*",
+			config = function()
+				require("config.toggleterm").setup()
+			end,
+			disable = false,
+		})
+
+		-- lspsaga.nvim
+		use({
+			"glepnir/lspsaga.nvim",
+			cmd = { "Lspsaga" },
+			config = function()
+				require("config.lspsaga").setup()
+			end,
+			disable = false,
+		})
+
 		-- renamer.nvim
 		use({
 			"filipdutescu/renamer.nvim",

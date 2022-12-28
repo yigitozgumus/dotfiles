@@ -15,7 +15,6 @@ local source_mapping = {
 	path = "[Path]",
 	rg = "[Rg]",
 	nvim_lsp_signature_help = "[Sig]",
-	-- cmp_tabnine = "[TNine]",
 }
 
 -- local kind_icons = {
@@ -51,7 +50,6 @@ function M.setup()
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
-
 	local luasnip = require("luasnip")
 	local neogen = require("neogen")
 	local cmp = require("cmp")
@@ -65,7 +63,6 @@ function M.setup()
 		sorting = {
 			priority_weight = 2,
 			comparators = {
-				-- require "cmp_tabnine.compare",
 				compare.score,
 				compare.recently_used,
 				compare.offset,
@@ -88,14 +85,7 @@ function M.setup()
 
 				before = function(entry, vim_item)
 					vim_item.kind = lspkind.presets.default[vim_item.kind]
-
 					local menu = source_mapping[entry.source.name]
-					-- if entry.source.name == "cmp_tabnine" then
-					--   if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-					--     menu = entry.completion_item.data.detail .. " " .. menu
-					--   end
-					--   vim_item.kind = ""
-					-- end
 					vim_item.menu = menu
 					return vim_item
 				end,
@@ -192,9 +182,8 @@ function M.setup()
 		},
 		sources = {
 			{ name = "nvim_lsp", max_item_count = 15 },
-			{ name = "nvim_lsp_signature_help", max_item_count = 5 },
+			-- { name = "nvim_lsp_signature_help", max_item_count = 5 },
 			{ name = "luasnip", max_item_count = 5 },
-			-- { name = "cmp_tabnine" },
 			{ name = "treesitter", max_item_count = 5 },
 			{ name = "rg", max_item_count = 2 },
 			{ name = "buffer", max_item_count = 5 },
@@ -220,14 +209,14 @@ function M.setup()
 		},
 	})
 
-	-- Use cmdline & path source for ':'
-	cmp.setup.cmdline(":", {
-		sources = cmp.config.sources({
-			{ name = "path" },
-		}, {
-			{ name = "cmdline" },
-		}),
-	})
+	-- -- Use cmdline & path source for ':'
+	-- cmp.setup.cmdline(":", {
+	-- 	sources = cmp.config.sources({
+	-- 		{ name = "path" },
+	-- 	}, {
+	-- 		{ name = "cmdline" },
+	-- 	}),
+	-- })
 
 	-- Auto pairs
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
