@@ -41,44 +41,12 @@ function M.setup()
 	local actions_layout = require("telescope.actions.layout")
 	local telescope = require("telescope")
 
-	-- Custom previewer
-	local previewers = require("telescope.previewers")
-	local Job = require("plenary.job")
-	local preview_maker = function(filepath, bufnr, opts)
-		filepath = vim.fn.expand(filepath)
-		Job:new({
-			command = "file",
-			args = { "--mime-type", "-b", filepath },
-			on_exit = function(j)
-				local mime_type = vim.split(j:result()[1], "/")[1]
-
-				if mime_type == "text" then
-					-- Check file size
-					vim.loop.fs_stat(filepath, function(_, stat)
-						if not stat then
-							return
-						end
-						if stat.size > 500000 then
-							return
-						else
-							previewers.buffer_previewer_maker(filepath, bufnr, opts)
-						end
-					end)
-				else
-					vim.schedule(function()
-						vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY FILE" })
-					end)
-				end
-			end,
-		}):sync()
-	end
 
 	telescope.setup({
 		defaults = {
 			prompt_prefix = icons.ui.Telescope .. " ",
 			selection_caret = " ",
 			-- path_display = { "smart" },
-			buffer_previewer_maker = preview_maker,
 			mappings = {
 				i = {
 					["<C-j>"] = actions.move_selection_next,
@@ -169,9 +137,6 @@ function M.setup()
 				theme = "dropdown",
 				hijack_netrw = true,
 			},
-			-- aerial = {
-			--   show_nesting = true,
-			-- },
 		},
 	})
 
@@ -181,19 +146,6 @@ function M.setup()
 	telescope.load_extension("project") -- telescope-project.nvim
 	telescope.load_extension("repo")
 	telescope.load_extension("file_browser")
-	telescope.load_extension("projects") -- project.nvim
-	-- telescope.load_extension "dap"
-	telescope.load_extension("frecency")
-	telescope.load_extension("neoclip")
-	telescope.load_extension("smart_history")
-	-- telescope.load_extension("arecibo")
-	telescope.load_extension("media_files")
-	telescope.load_extension("bookmarks")
-	telescope.load_extension("aerial")
-	telescope.load_extension("gh")
-	telescope.load_extension("zoxide")
-	telescope.load_extension("cder")
-	telescope.load_extension("harpoon")
 
 	-- Telescope
 	vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })

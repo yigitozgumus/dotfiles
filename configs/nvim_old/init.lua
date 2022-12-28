@@ -6,4 +6,4 @@ require("utils")
 -- Plugin setup
 require("plugins").setup()
 
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd("colorscheme catppuccin")
