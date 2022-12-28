@@ -12,7 +12,7 @@ vim.opt.title = true
 vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.laststatus = 2 -- Set global statusline
 
 vim.wo.number = true

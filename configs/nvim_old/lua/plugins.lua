@@ -55,55 +55,62 @@ function M.setup()
 		-- Make neovim faster
 		use({ "lewis6991/impatient.nvim", disable = false })
 
-		use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
-		-- -- Notification
-		use({
-			"rcarriga/nvim-notify",
-			event = "BufReadPre",
-			config = function()
-				require("config.notify").setup()
-			end,
-			disable = false,
-		})
-		use({
-			"vigoux/notifier.nvim",
-			config = function()
-				require("notifier").setup({})
-			end,
-			disable = true,
-		})
-		--
-		-- Colorscheme
-		 use({
-		 	"catppuccin/nvim",
-		 	as = "catppuccin",
-		 	config = function()
-		 		require("config.catppuccin").setup()
-		 	end,
-		 	disable = false,
-		 })
-		--
-		 use({
-		 	"folke/tokyonight.nvim",
-		 	disable = false,
-		 })
-		--
-		use({ "projekt0n/github-nvim-theme", disable = false })
-		--
-		use({
-			"sainnhe/gruvbox-material",
-			disable = false,
-		})
-		 -- Code documentation
-		use({
-			"danymat/neogen",
-			config = function()
-				require("config.neogen").setup()
-			end,
-			cmd = { "Neogen" },
-			module = "neogen",
-			disable = false,
-		})
+        use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
+        -- -- Notification
+        use({
+            "rcarriga/nvim-notify",
+            event = "BufReadPre",
+            config = function()
+                require("config.notify").setup()
+            end,
+            disable = false,
+        })
+        use({
+            "vigoux/notifier.nvim",
+            config = function()
+                require("notifier").setup({})
+            end,
+            disable = true,
+        })
+        --
+        -- Colorscheme
+        use({
+            "catppuccin/nvim",
+            as = "catppuccin",
+            config = function()
+                require("config.catppuccin").setup()
+            end,
+            disable = false,
+        })
+        --
+        use({
+            "folke/tokyonight.nvim",
+            disable = false,
+        })
+        --
+        use({ "projekt0n/github-nvim-theme", disable = false })
+        --
+        use({
+            "sainnhe/gruvbox-material",
+            disable = false,
+        })
+        -- Code documentation
+        use({
+            "danymat/neogen",
+            config = function()
+                require("config.neogen").setup()
+            end,
+            cmd = { "Neogen" },
+            module = "neogen",
+            disable = false,
+        })
+        use {
+            'VonHeikemen/fine-cmdline.nvim',
+            requires = {
+                {'MunifTanjim/nui.nvim'}
+            },
+            config = function() require("config.cmdline").setup() end,
+        }
 
 		use({
 			"anuvyklack/hydra.nvim",

@@ -15,7 +15,7 @@ vim.opt.title = true
 vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 
 -- Set global statusline
 vim.opt.laststatus = 2
