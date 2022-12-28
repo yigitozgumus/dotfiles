@@ -91,40 +91,21 @@ function M.setup()
 		--
 		use({ "projekt0n/github-nvim-theme", disable = false })
 		--
-		-- use({
-		-- 	"sainnhe/gruvbox-material",
-		-- 	disable = false,
-		-- })
-		-- use({
-		-- 	"arcticicestudio/nord-vim",
-		-- 	config = function()
-		-- 		vim.cmd("colorscheme nord")
-		-- 	end,
-		-- 	disable = true,
-		-- })
-		-- -- For creating colorschemes
-		-- use({
-		-- 	"rktjmp/lush.nvim",
-		-- 	cmd = {
-		-- 		"LushRunQuickstart",
-		-- 		"LushRunTutorial",
-		-- 		"Lushify",
-		-- 		"LushImport",
-		-- 	},
-		-- 	disable = true,
-		-- })
-		--
-		-- -- Code documentation
-		-- use({
-		-- 	"danymat/neogen",
-		-- 	config = function()
-		-- 		require("config.neogen").setup()
-		-- 	end,
-		-- 	cmd = { "Neogen" },
-		-- 	module = "neogen",
-		-- 	disable = false,
-		-- })
-		--
+		use({
+			"sainnhe/gruvbox-material",
+			disable = false,
+		})
+		 -- Code documentation
+		use({
+			"danymat/neogen",
+			config = function()
+				require("config.neogen").setup()
+			end,
+			cmd = { "Neogen" },
+			module = "neogen",
+			disable = false,
+		})
+
 		-- use({
 		-- 	"anuvyklack/hydra.nvim",
 		-- 	config = function()
@@ -136,33 +117,34 @@ function M.setup()
 		-- 	disable = true,
 		-- })
 		--
-		-- use({ "christoomey/vim-tmux-navigator", disable = true }) -- tmux & split window navigation
+        -- tmux & split window navigation
+		use({ "christoomey/vim-tmux-navigator", disable = true }) 
 		--
-		-- use("szw/vim-maximizer") -- maximizes and restores current window
+		use("szw/vim-maximizer") -- maximizes and restores current window
 		--
-		-- -- Better surround
-		-- use({ "tpope/vim-surround", event = "BufReadPre" })
-		-- use({
-		-- 	"Matt-A-Bennett/vim-surround-funk",
-		-- 	event = "BufReadPre",
-		-- 	config = function()
-		-- 		require("config.surroundfunk").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
+		-- Better surround
+		use({ "tpope/vim-surround", event = "BufReadPre" })
+		use({
+			"Matt-A-Bennett/vim-surround-funk",
+			event = "BufReadPre",
+			config = function()
+				require("config.surroundfunk").setup()
+			end,
+			disable = false,
+		})
 		-- use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 		--
-		-- -- Motions
-		-- use({ "andymass/vim-matchup", event = "CursorMoved" })
-		-- use({ "wellle/targets.vim", event = "CursorMoved", disable = false })
-		-- use({
-		-- 	"unblevable/quick-scope",
-		-- 	keys = { "F", "f", "T", "t" },
-		-- 	-- config = function()
-		-- 	--   vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
-		-- 	-- end,
-		-- 	disable = false,
-		-- })
+		-- Motions
+		use({ "andymass/vim-matchup", event = "CursorMoved" })
+		use({ "wellle/targets.vim", event = "CursorMoved", disable = false })
+		use({
+			"unblevable/quick-scope",
+			keys = { "F", "f", "T", "t" },
+			-- config = function()
+			--   vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+			-- end,
+			disable = false,
+		})
 		--
 		-- -- IDE
 		-- use({
@@ -186,28 +168,28 @@ function M.setup()
 		-- 	disable = false,
 		-- })
 		--
-		-- use({
-		-- 	"anuvyklack/windows.nvim",
-		-- 	requires = { "anuvyklack/middleclass", "anuvyklack/animation.nvim" },
-		-- 	cmd = { "WindowsToggleAutowidth", "WindowsMaximize" },
-		-- 	config = function()
-		-- 		vim.o.winwidth = 10
-		-- 		vim.o.winminwidth = 10
-		-- 		vim.o.equalalways = false
-		-- 		require("windows").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
+		use({
+			"anuvyklack/windows.nvim",
+			requires = { "anuvyklack/middleclass", "anuvyklack/animation.nvim" },
+			cmd = { "WindowsToggleAutowidth", "WindowsMaximize" },
+			config = function()
+				vim.o.winwidth = 10
+				vim.o.winminwidth = 10
+				vim.o.equalalways = false
+				require("windows").setup()
+			end,
+			disable = false,
+		})
 		--
-		-- use({
-		-- 	"beauwilliams/focus.nvim",
-		-- 	cmd = { "FocusToggle", "FocusMaxOrEqual" },
-		-- 	module = "focus",
-		-- 	config = function()
-		-- 		require("focus").setup({ hybridnumber = true })
-		-- 	end,
-		-- 	disable = false,
-		-- })
+		use({
+			"beauwilliams/focus.nvim",
+			cmd = { "FocusToggle", "FocusMaxOrEqual" },
+			module = "focus",
+			config = function()
+				require("focus").setup({ hybridnumber = true })
+			end,
+			disable = false,
+		})
 		-- -- Better Comment
 		 use({
 		 	"numToStr/Comment.nvim",
@@ -238,15 +220,15 @@ function M.setup()
 			disable = false,
 		})
   --       use { "MunifTanjim/nui.nvim", disable = false }
-		-- use({
-		-- 	"folke/noice.nvim",
-		-- 	event = { "VimEnter" },
-		-- 	config = function()
-		-- 		require("config.noice").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
+		use({
+			"folke/noice.nvim",
+			event = { "VimEnter" },
+			config = function()
+				require("config.noice").setup()
+			end,
+			disable = false,
+		})
+
 		-- -- Jumps
 		-- use({
 		-- 	"phaazon/hop.nvim",
@@ -654,12 +636,12 @@ function M.setup()
 		-- })
 		--
 		-- -- WhichKey
-		-- use({
-		-- 	"folke/which-key.nvim",
-		-- 	config = function()
-		-- 		require("config.whichkey").setup()
-		-- 	end,
-		-- })
+		use({
+			"folke/which-key.nvim",
+			config = function()
+				require("config.whichkey").setup()
+			end,
+		})
 		--
 		-- -- IndentLine
 		-- use({

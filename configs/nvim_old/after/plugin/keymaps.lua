@@ -2,9 +2,6 @@ local keymap = vim.keymap.set
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-
 keymap("n", "<leader>k", ":nohlsearch<CR>")
 keymap("n", "<leader>Q", ":bufdo bdelete<CR>")
 
