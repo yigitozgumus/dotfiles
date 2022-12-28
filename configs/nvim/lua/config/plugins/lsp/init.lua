@@ -89,6 +89,7 @@ function M.config()
           },
           diagnostics = {
             -- enable = false,
+            globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins", "MiniTest" },
             groupSeverity = {
               strong = "Warning",
               strict = "Warning",
