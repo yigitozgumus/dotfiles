@@ -132,8 +132,7 @@ function M.setup()
 			end,
 			disable = false,
 		})
-		-- use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
-		--
+        --
 		-- Motions
 		use({ "andymass/vim-matchup", event = "CursorMoved" })
 		use({ "wellle/targets.vim", event = "CursorMoved", disable = false })
@@ -145,29 +144,28 @@ function M.setup()
 			-- end,
 			disable = false,
 		})
-		--
-		-- -- IDE
-		-- use({
-		-- 	"max397574/better-escape.nvim",
-		-- 	event = { "InsertEnter" },
-		-- 	config = function()
-		-- 		require("better_escape").setup({
-		-- 			mapping = { "jk" },
-		-- 			timeout = vim.o.timeoutlen,
-		-- 			keys = "<ESC>",
-		-- 		})
-		-- 	end,
-		-- })
-		--
-		-- use({
-		-- 	"karb94/neoscroll.nvim",
-		-- 	event = "BufReadPre",
-		-- 	config = function()
-		-- 		require("config.neoscroll").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
+		-- IDE
+		use({
+			"max397574/better-escape.nvim",
+			event = { "InsertEnter" },
+			config = function()
+				require("better_escape").setup({
+					mapping = { "jk" },
+					timeout = vim.o.timeoutlen,
+					keys = "<ESC>",
+				})
+			end,
+		})
+
+		use({
+			"karb94/neoscroll.nvim",
+			event = "BufReadPre",
+			config = function()
+				require("config.neoscroll").setup()
+			end,
+			disable = true,
+		})
+
 		use({
 			"anuvyklack/windows.nvim",
 			requires = { "anuvyklack/middleclass", "anuvyklack/animation.nvim" },
@@ -200,17 +198,17 @@ function M.setup()
 		 	end,
 		 	disable = false,
 		 })
-		--
-		-- use({
-		-- 	"echasnovski/mini.nvim",
-		-- 	event = { "BufReadPre" },
-		-- 	config = function()
-		-- 		require("config.mini").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
-		-- -- Statusline
+
+		use({
+			"echasnovski/mini.nvim",
+			event = { "BufReadPre" },
+			config = function()
+				require("config.mini").setup()
+			end,
+			disable = false,
+		})
+
+		-- Statusline
 		use({
 			"nvim-lualine/lualine.nvim",
 			event = "BufReadPre",
@@ -219,40 +217,30 @@ function M.setup()
 			end,
 			disable = false,
 		})
-		-- -- Jumps
-		-- use({
-		-- 	"phaazon/hop.nvim",
-		-- 	cmd = "HopWord",
-		-- 	module = "hop",
-		-- 	keys = { "f", "F", "t", "T" },
-		-- 	config = function()
-		-- 		require("config.hop").setup()
-		-- 	end,
-		-- 	disable = true,
-		-- })
-		-- use({
-		-- 	"ggandor/leap.nvim",
-		-- 	keys = { "s", "S" },
-		-- 	config = function()
-		-- 		local leap = require("leap")
-		-- 		leap.add_default_mappings()
-		-- 	end,
-		-- 	disable = true,
-		-- })
-		-- use({
-		-- 	"abecodes/tabout.nvim",
-		-- 	after = { "nvim-cmp" },
-		-- 	config = function()
-		-- 		require("tabout").setup({
-		-- 			completion = false,
-		-- 			ignore_beginning = true,
-		-- 		})
-		-- 	end,
-		-- })
-		-- -- vscode-like pictograms
-		-- use("onsails/lspkind-nvim")
+		-- Jumps
+		use({
+			"phaazon/hop.nvim",
+			cmd = "HopWord",
+			module = "hop",
+			keys = { "f", "F", "t", "T" },
+			config = function()
+				require("config.hop").setup()
+			end,
+			disable = true,
+		})
+		use({
+			"ggandor/leap.nvim",
+			keys = { "s", "S" },
+			config = function()
+				local leap = require("leap")
+				leap.add_default_mappings()
+			end,
+			disable = true,
+		})
+		-- vscode-like pictograms
+		use("onsails/lspkind-nvim")
 		--
-		-- --  Nvim dashboard
+		--  Nvim dashboard
 		use({
 			"goolord/alpha-nvim",
 			config = function()
@@ -261,7 +249,7 @@ function M.setup()
 			disable = false,
 		})
 		--
-		-- -- Telescope
+		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
 			event = { "VimEnter" },
@@ -333,17 +321,17 @@ function M.setup()
 		-- 	end,
 		-- 	disable = false,
 		-- })
-		-- -- Better icons
-		-- use({
-		-- 	"kyazdani42/nvim-web-devicons",
-		-- 	module = "nvim-web-devicons",
-		-- 	config = function()
-		-- 		require("nvim-web-devicons").setup({ default = true })
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
-		-- use({ "segeljakt/vim-silicon", cmd = { "Silicon" } })
+		-- Better icons
+		use({
+			"kyazdani42/nvim-web-devicons",
+			module = "nvim-web-devicons",
+			config = function()
+				require("nvim-web-devicons").setup({ default = true })
+			end,
+			disable = false,
+		})
+
+		use({ "segeljakt/vim-silicon", cmd = { "Silicon" } })
 		-- use({
 		-- 	"stevearc/aerial.nvim",
 		-- 	config = function()
@@ -666,14 +654,14 @@ function M.setup()
 		-- 	disable = false,
 		-- })
 		-- use({ "ray-x/guihua.lua", run = "cd lua/fzy && make", disable = true })
-		-- use({
-		-- 	"doums/suit.nvim",
-		-- 	config = function()
-		-- 		require("suit").setup({})
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
+		use({
+			"doums/suit.nvim",
+			config = function()
+				require("suit").setup({})
+			end,
+			disable = false,
+		})
+
 		-- Auto pairs
 		use({
 			"windwp/nvim-autopairs",
@@ -684,26 +672,6 @@ function M.setup()
 				require("config.autopairs").setup()
 			end,
 		})
-		--
-		-- -- Auto tag
-		-- use({
-		-- 	"windwp/nvim-ts-autotag",
-		-- 	opt = true,
-		-- 	event = "InsertEnter",
-		-- 	config = function()
-		-- 		require("nvim-ts-autotag").setup({ enable = true })
-		-- 	end,
-		-- 	disable = true,
-		-- })
-		--
-		-- -- End wise
-		-- use({
-		-- 	"RRethy/nvim-treesitter-endwise",
-		-- 	opt = true,
-		-- 	event = "InsertEnter",
-		-- 	disable = false,
-		-- })
-		--
 		-- git integration
 		use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 		--
