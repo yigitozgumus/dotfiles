@@ -1,6 +1,7 @@
 local M = {
   "akinsho/nvim-bufferline.lua",
   event = "BufAdd",
+  cond = false,
 }
 
 function M.config()

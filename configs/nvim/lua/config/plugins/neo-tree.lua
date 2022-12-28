@@ -6,6 +6,9 @@ return {
     { "<leader>n", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
   },
   config = {
+    window = {
+      position = "right",
+    },
     filesystem = {
       follow_current_file = true,
       hijack_netrw_behavior = "open_current",

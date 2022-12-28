@@ -1,5 +1,4 @@
 local M = {
-  enabled = true,
   "anuvyklack/windows.nvim",
   event = "WinNew",
   dependencies = {

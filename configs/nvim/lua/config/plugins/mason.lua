@@ -5,14 +5,9 @@ local M = {
 M.tools = {
   "prettierd",
   "stylua",
-  "selene",
   "luacheck",
-  "eslint_d",
-  "shellcheck",
-  "deno",
-  "shfmt",
-  "black",
-  "isort",
+  "rustfmt",
+  "gopls",
 }
 
 function M.check()

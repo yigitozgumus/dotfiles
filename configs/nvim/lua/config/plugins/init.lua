@@ -13,7 +13,7 @@ return {
     config = function()
       vim.g.startuptime_tries = 10
     end,
-    enabled = true,
+    cond = false,
   },
   -- Colorscheme
   {
@@ -67,6 +67,7 @@ return {
     config = function()
       require("Comment").setup({})
     end,
+    cond = false,
   },
   -- Theme: icons
   {
@@ -79,6 +80,7 @@ return {
       vim.g.navic_silence = true
       require("nvim-navic").setup({ separator = " ", highlight = true, depth_limit = 5 })
     end,
+    cond = false,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -88,7 +90,7 @@ return {
 
   {
     "ThePrimeagen/refactoring.nvim",
-    enabled = false,
+    cond = false,
     keys = {
       {
         "<leader>r",
@@ -112,6 +114,7 @@ return {
 
   {
     "danymat/neogen",
+    cond = false,
     keys = {
       {
         "<leader>cc",
@@ -127,7 +130,7 @@ return {
   {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
-    enabled = false,
+    cond = false,
     config = {
       excluded_argnames = {
         usages = {

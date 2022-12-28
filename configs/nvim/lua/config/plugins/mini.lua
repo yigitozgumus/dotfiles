@@ -1,6 +1,7 @@
 local mini = {
   "echasnovski/mini.nvim",
   event = "VeryLazy",
+  cond = false,
 }
 
 local specs = { mini, "JoosepAlviste/nvim-ts-context-commentstring" }
@@ -75,7 +76,7 @@ end
 function mini.config()
   -- M.jump()
   mini.surround()
-  mini.ai()
+  -- mini.ai()
   mini.pairs()
   mini.comment()
   --   mini.animate()
