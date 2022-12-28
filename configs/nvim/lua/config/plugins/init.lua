@@ -5,6 +5,7 @@ return {
   "williamboman/mason-lspconfig.nvim",
   "nvim-lua/plenary.nvim",
   "windwp/nvim-spectre",
+  "folke/twilight.nvim",
   "folke/which-key.nvim",
   { "ellisonleao/gruvbox.nvim" },
   {
@@ -63,6 +64,21 @@ return {
       })
     end,
   },
+  {
+    "stevearc/dressing.nvim",
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
+  },
 
   -- Better Comment
   {
@@ -73,7 +89,6 @@ return {
       require("Comment").setup({})
     end,
     cond = false,
-    enabled = false,
   },
   -- Theme: icons
   {
@@ -98,7 +113,6 @@ return {
   {
     "ThePrimeagen/refactoring.nvim",
     cond = false,
-    enabled = false,
     keys = {
       {
         "<leader>r",
@@ -133,6 +147,14 @@ return {
       },
     },
     config = { snippet_engine = "luasnip" },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown", "md" },
+    cmd = "MarkdownPreview",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 
   {

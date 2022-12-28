@@ -56,8 +56,6 @@ vim.opt.wrap = false
 vim.o.hidden = true
 -- Remember N lines in history
 vim.o.history = 10000
--- Faster scrolling
-vim.o.lazyredraw = false
 -- Max column for syntax highlight
 vim.o.synmaxcol = 240
 -- ms to wait for trigger an event

@@ -56,11 +56,11 @@ return {
             node_decremental = "<C-bs>",
           },
         },
-        query_linter = {
-          enable = true,
-          use_virtual_text = true,
-          lint_events = { "BufWrite", "CursorHold" },
-        },
+        -- query_linter = {
+        --   enable = true,
+        --   use_virtual_text = true,
+        --   lint_events = { "BufWrite", "CursorHold" },
+        -- },
         textsubjects = {
           enable = true,
           keymaps = {

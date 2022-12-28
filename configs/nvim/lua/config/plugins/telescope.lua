@@ -21,7 +21,7 @@ return {
   },
   keys = {
     { "<leader>ff", project_files, desc = "Find File" },
-    -- { "<leader>sh", ":Telescope help_tags<CR>", desc = "Help Tags" },
+    { "<leader>sh", ":Telescope help_tags<CR>", desc = "Help Tags" },
     -- { "<leader>sw", require("telescope.builtin").grep_string, desc = "[S]earch current [W]ord" },
     -- { "<leader>sg", require("telescope.builtin").live_grep, desc = "[S]earch by [G]rep" },
     -- { "<leader>sd", require("telescope.builtin").diagnostics, desc = "[S]earch [D]iagnostics" },
