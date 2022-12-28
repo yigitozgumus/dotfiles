@@ -53,7 +53,7 @@ function M.setup()
 		use({ "wbthomason/packer.nvim" })
 
 		-- Make neovim faster
-		use({ "lewis6991/impatient.nvim", disable = true })
+		use({ "lewis6991/impatient.nvim", disable = false })
 
 		use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
 
@@ -64,7 +64,7 @@ function M.setup()
 			config = function()
 				require("config.notify").setup()
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		use({
@@ -80,7 +80,7 @@ function M.setup()
 			config = function()
 				require("notifier").setup({})
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		-- Colorscheme
@@ -95,15 +95,7 @@ function M.setup()
 
 		use({
 			"folke/tokyonight.nvim",
-			disable = true,
-		})
-
-		use({
-			"sainnhe/everforest",
-			config = function()
-				vim.g.everforest_better_performance = 1
-			end,
-			disable = true,
+			disable = false,
 		})
 
 		use({ "projekt0n/github-nvim-theme", disable = false })
@@ -139,7 +131,7 @@ function M.setup()
 			end,
 			cmd = { "Neogen" },
 			module = "neogen",
-			disable = true,
+			disable = false,
 		})
 
 		use({
@@ -178,7 +170,7 @@ function M.setup()
 			-- config = function()
 			--   vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
 			-- end,
-			disable = true,
+			disable = false,
 		})
 
 		-- IDE
@@ -242,7 +234,7 @@ function M.setup()
 			config = function()
 				require("config.mini").setup()
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		-- Statusline
@@ -254,13 +246,14 @@ function M.setup()
 			end,
 			disable = false,
 		})
+        use { "MunifTanjim/nui.nvim", disable = false }
 		use({
 			"folke/noice.nvim",
 			event = { "VimEnter" },
 			config = function()
 				require("config.noice").setup()
 			end,
-			disable = true,
+			disable = false,
 		})
 
 		-- Jumps
@@ -838,7 +831,7 @@ function M.setup()
 
 		use({
 			"epwalsh/obsidian.nvim",
-			disable = false,
+			disable = true,
 			config = function()
 				require("obsidian").setup({
 					dir = "~/personal/notes/Notes-Collection/",
