@@ -12,6 +12,8 @@ function M.setup(options)
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.shfmt,
       nls.builtins.diagnostics.markdownlint,
+      nls.builtins.formatting.gofmt,
+      nls.builtins.formatting.rustfmt,
       -- nls.builtins.diagnostics.luacheck,
       nls.builtins.formatting.prettierd.with({
         filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
