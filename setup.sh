@@ -148,6 +148,18 @@ setup_neovim() {
     ln -sf "$DOTFILES/configs/nvim/" "$HOME/.config/nvim"
 }
 
+## setup old neovim
+setup_old_neovim() {
+    blank_line
+    info "Deleting current configuration."
+    rm -rf ~/.config/nvim
+    rm -rf ~/.local/share/nvim
+    rm -rf ~/.local/state/nvim
+    rm -rf ~/.cache/nvim
+    info "Linking the Neovim Configuration."
+    ln -sf "$DOTFILES/configs/nvim_old/" "$HOME/.config/nvim"
+}
+
 # Git setup
 
 setup_git() {
@@ -303,8 +315,11 @@ link)
 git)
     setup_git
     ;;
-nvim)
+nvim-lazy)
     setup_neovim
+    ;;
+nvim-packer)
+    setup_old_neovim
     ;;
 homebrew)
     setup_homebrew

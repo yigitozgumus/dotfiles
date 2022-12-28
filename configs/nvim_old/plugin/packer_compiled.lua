@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/yigitozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/yigitozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/yigitozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/yigitozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/yigitozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/yigit.ozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/yigit.ozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/yigit.ozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/yigit.ozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/yigit.ozgumus/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -80,7 +80,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/Comment.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
   LuaSnip = {
@@ -90,7 +90,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/LuaSnip",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["aerial.nvim"] = {
@@ -99,18 +99,18 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/aerial.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/aerial.nvim",
     url = "https://github.com/stevearc/aerial.nvim"
   },
   ["alpha-nvim"] = {
     config = { "\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17config.alpha\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
   ["animation.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/animation.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/animation.nvim",
     url = "https://github.com/anuvyklack/animation.nvim"
   },
   ["better-escape.nvim"] = {
@@ -118,38 +118,38 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/better-escape.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/better-escape.nvim",
     url = "https://github.com/max397574/better-escape.nvim"
   },
   catppuccin = {
     config = { "\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config.catppuccin\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/catppuccin",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
   ["cder.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/cder.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/cder.nvim",
     url = "https://github.com/Zane-/cder.nvim"
   },
   ["cmp-buffer"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-cmdline/after/plugin/cmp_cmdline.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-cmdline/after/plugin/cmp_cmdline.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-cmdline",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-conventionalcommits"] = {
@@ -158,92 +158,92 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-conventionalcommits",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-conventionalcommits",
     url = "https://github.com/davidsierradz/cmp-conventionalcommits"
   },
   ["cmp-nvim-lsp"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lsp-signature-help"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp-signature-help/after/plugin/cmp_nvim_lsp_signature_help.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp-signature-help/after/plugin/cmp_nvim_lsp_signature_help.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp-signature-help",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp-signature-help",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
   },
   ["cmp-nvim-lua"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua/after/plugin/cmp_nvim_lua.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua/after/plugin/cmp_nvim_lua.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua",
     url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-path",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-rg"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-rg/after/plugin/cmp-rg.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-rg/after/plugin/cmp-rg.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-rg",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-rg",
     url = "https://github.com/lukas-reineke/cmp-rg"
   },
   ["cmp-treesitter"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-treesitter/after/plugin/cmp_treesitter.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-treesitter/after/plugin/cmp_treesitter.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp-treesitter",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp-treesitter",
     url = "https://github.com/ray-x/cmp-treesitter"
   },
   cmp_luasnip = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["crates.nvim"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/crates.nvim/after/plugin/cmp_crates.lua" },
-    config = { "\27LJ\2\nh\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\fnull_ls\1\0\0\1\0\2\fenabled\2\tname\16crates.nvim\nsetup\vcrates\frequire\0" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/crates.nvim/after/plugin/cmp_crates.lua" },
+    config = { "\27LJ\2\nh\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\fnull_ls\1\0\0\1\0\2\tname\16crates.nvim\fenabled\2\nsetup\vcrates\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/crates.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/crates.nvim",
     url = "https://github.com/saecki/crates.nvim"
   },
   ["darkplus.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/martinsione/darkplus.nvim"
   },
   ["dressing.nvim"] = {
@@ -251,13 +251,13 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/dressing.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/dressing.nvim",
     url = "https://github.com/stevearc/dressing.nvim"
   },
   ["fidget.nvim"] = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
   },
   ["focus.nvim"] = {
@@ -266,7 +266,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/focus.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/focus.nvim",
     url = "https://github.com/beauwilliams/focus.nvim"
   },
   ["friendly-snippets"] = {
@@ -275,17 +275,17 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/friendly-snippets",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["fzf-lua"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/fzf-lua",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/fzf-lua",
     url = "https://github.com/ibhagwan/fzf-lua"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["go.nvim"] = {
@@ -293,18 +293,18 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
   },
   ["goyo.vim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/goyo.vim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/goyo.vim",
     url = "https://github.com/junegunn/goyo.vim"
   },
   ["gruvbox-material"] = {
     config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/gruvbox-material",
     url = "https://github.com/sainnhe/gruvbox-material"
   },
   harpoon = {
@@ -312,18 +312,18 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/harpoon",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["hlargs.nvim"] = {
     config = { "\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18config.hlargs\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/hlargs.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/hlargs.nvim",
     url = "https://github.com/m-demare/hlargs.nvim"
   },
   ["impatient.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
   ["indent-blankline.nvim"] = {
@@ -331,20 +331,20 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["inlay-hints.nvim"] = {
     config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16inlay-hints\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/inlay-hints.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/inlay-hints.nvim",
     url = "https://github.com/simrat39/inlay-hints.nvim"
   },
   ["kotlin-vim"] = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim",
     url = "https://github.com/udalov/kotlin-vim"
   },
   ["lightspeed.nvim"] = {
@@ -353,12 +353,12 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/lightspeed.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/lightspeed.nvim",
     url = "https://github.com/ggandor/lightspeed.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
@@ -367,7 +367,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
@@ -375,14 +375,14 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["luv-vimdocs"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/luv-vimdocs",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/luv-vimdocs",
     url = "https://github.com/nanotee/luv-vimdocs"
   },
   ["markdown-preview.nvim"] = {
@@ -390,37 +390,37 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason-null-ls.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
     url = "https://github.com/jayp0521/mason-null-ls.nvim"
   },
   ["mason-tool-installer.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/mason-tool-installer.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/mason-tool-installer.nvim",
     url = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
   middleclass = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/middleclass",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/middleclass",
     url = "https://github.com/anuvyklack/middleclass"
   },
   ["neodev.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
   neodim = {
@@ -428,7 +428,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neodim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neodim",
     url = "https://github.com/zbirenbaum/neodim"
   },
   neogen = {
@@ -437,7 +437,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neogen",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neogen",
     url = "https://github.com/danymat/neogen"
   },
   ["neoscroll.nvim"] = {
@@ -445,7 +445,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neoscroll.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neoscroll.nvim",
     url = "https://github.com/karb94/neoscroll.nvim"
   },
   neotest = {
@@ -453,54 +453,54 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neotest",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neotest",
     url = "https://github.com/nvim-neotest/neotest"
   },
   ["neotest-go"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neotest-go",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neotest-go",
     url = "https://github.com/nvim-neotest/neotest-go"
   },
   ["neotest-jest"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neotest-jest",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neotest-jest",
     url = "https://github.com/haydenmeade/neotest-jest"
   },
   ["neotest-plenary"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neotest-plenary",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neotest-plenary",
     url = "https://github.com/nvim-neotest/neotest-plenary"
   },
   ["neotest-python"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neotest-python",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neotest-python",
     url = "https://github.com/nvim-neotest/neotest-python"
   },
   ["neotest-rust"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neotest-rust",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neotest-rust",
     url = "https://github.com/rouge8/neotest-rust"
   },
   ["neotest-vim-test"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/neotest-vim-test",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/neotest-vim-test",
     url = "https://github.com/nvim-neotest/neotest-vim-test"
   },
   ["null-ls.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-FeMaco.lua"] = {
@@ -509,7 +509,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-FeMaco.lua",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-FeMaco.lua",
     url = "https://github.com/AckslD/nvim-FeMaco.lua"
   },
   ["nvim-autopairs"] = {
@@ -517,7 +517,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-bufferline.lua"] = {
@@ -525,29 +525,29 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-bufferline.lua",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-bufferline.lua",
     url = "https://github.com/akinsho/nvim-bufferline.lua"
   },
   ["nvim-cmp"] = {
-    after = { "tabout.nvim", "cmp_luasnip", "LuaSnip", "cmp-rg", "cmp-buffer", "cmp-cmdline", "cmp-conventionalcommits", "cmp-nvim-lsp-signature-help", "cmp-path", "cmp-nvim-lua", "cmp-treesitter", "cmp-nvim-lsp", "friendly-snippets", "vim-snippets" },
+    after = { "cmp-buffer", "cmp-path", "cmp-nvim-lua", "cmp-treesitter", "cmp-cmdline", "cmp_luasnip", "cmp-nvim-lsp", "tabout.nvim", "cmp-nvim-lsp-signature-help", "cmp-conventionalcommits", "cmp-rg", "LuaSnip", "friendly-snippets", "vim-snippets" },
     config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config.cmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config.lsp\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-luaref"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-luaref",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-luaref",
     url = "https://github.com/milisims/nvim-luaref"
   },
   ["nvim-navic"] = {
@@ -555,12 +555,12 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-navic",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-navic",
     url = "https://github.com/SmiteshP/nvim-navic"
   },
   ["nvim-neoclip.lua"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
     url = "https://github.com/AckslD/nvim-neoclip.lua"
   },
   ["nvim-notify"] = {
@@ -568,13 +568,13 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-notify",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-semantic-tokens"] = {
     config = { "\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\26config.semantictokens\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/nvim-semantic-tokens",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/nvim-semantic-tokens",
     url = "https://github.com/theHamsta/nvim-semantic-tokens"
   },
   ["nvim-tree.lua"] = {
@@ -583,55 +583,55 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     config = { "\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config.treesitter\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-treesitter-context"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-treesitter-endwise"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-endwise",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-endwise",
     url = "https://github.com/RRethy/nvim-treesitter-endwise"
   },
   ["nvim-treesitter-textobjects"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-treesitter-textsubjects"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textsubjects",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textsubjects",
     url = "https://github.com/RRethy/nvim-treesitter-textsubjects"
   },
   ["nvim-ts-context-commentstring"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-ts-context-commentstring",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-ts-context-commentstring",
     url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-ts-rainbow"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow",
     url = "https://github.com/p00f/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
@@ -639,18 +639,18 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["obsidian.nvim"] = {
     config = { "\27LJ\2\n„\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15completion\1\0\1\rnvim_cmp\2\1\0\1\bdir'~/personal/notes/Notes-Collection/\nsetup\robsidian\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/obsidian.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/obsidian.nvim",
     url = "https://github.com/epwalsh/obsidian.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   playground = {
@@ -658,25 +658,25 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/playground",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/playground",
     url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["project.nvim"] = {
     config = { "\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19config.project\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/project.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
   },
   ["renamer.nvim"] = {
@@ -684,7 +684,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/renamer.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/renamer.nvim",
     url = "https://github.com/filipdutescu/renamer.nvim"
   },
   ["rust-tools.nvim"] = {
@@ -692,7 +692,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/rust-tools.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/rust-tools.nvim",
     url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["rust.vim"] = {
@@ -701,25 +701,25 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/rust.vim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
   },
   ["schemastore.nvim"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/schemastore.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/schemastore.nvim",
     url = "https://github.com/b0o/schemastore.nvim"
   },
   ["sqlite.lua"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/sqlite.lua",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/sqlite.lua",
     url = "https://github.com/tami5/sqlite.lua"
   },
   ["suit.nvim"] = {
     config = { "\27LJ\2\n6\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\tsuit\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/suit.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/suit.nvim",
     url = "https://github.com/doums/suit.nvim"
   },
   ["symbols-outline.nvim"] = {
@@ -728,7 +728,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/symbols-outline.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
   ["tabout.nvim"] = {
@@ -738,74 +738,74 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/tabout.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/tabout.nvim",
     url = "https://github.com/abecodes/tabout.nvim"
   },
   ["targets.vim"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/targets.vim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/targets.vim",
     url = "https://github.com/wellle/targets.vim"
   },
   ["telescope-bookmarks.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-bookmarks.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-bookmarks.nvim",
     url = "https://github.com/dhruvmanila/telescope-bookmarks.nvim"
   },
   ["telescope-dap.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
     url = "https://github.com/nvim-telescope/telescope-dap.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope-frecency.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-frecency.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-frecency.nvim",
     url = "https://github.com/nvim-telescope/telescope-frecency.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope-github.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-github.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-github.nvim",
     url = "https://github.com/nvim-telescope/telescope-github.nvim"
   },
   ["telescope-media-files.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
     url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
   },
   ["telescope-project.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
     url = "https://github.com/nvim-telescope/telescope-project.nvim"
   },
   ["telescope-repo.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-repo.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-repo.nvim",
     url = "https://github.com/cljoly/telescope-repo.nvim"
   },
   ["telescope-smart-history.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-smart-history.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-smart-history.nvim",
     url = "https://github.com/nvim-telescope/telescope-smart-history.nvim"
   },
   ["telescope-symbols.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-symbols.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-symbols.nvim",
     url = "https://github.com/nvim-telescope/telescope-symbols.nvim"
   },
   ["telescope-zoxide"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/telescope-zoxide",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/telescope-zoxide",
     url = "https://github.com/jvgrootveld/telescope-zoxide"
   },
   ["telescope.nvim"] = {
@@ -813,13 +813,13 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/telescope.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["toggleterm.nvim"] = {
     config = { "\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config.toggleterm\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["trouble.nvim"] = {
@@ -828,54 +828,54 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/trouble.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
   ["typescript.nvim"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/typescript.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
   undotree = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/undotree",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
   ["vim-ReplaceWithRegister"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/vim-ReplaceWithRegister",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/vim-ReplaceWithRegister",
     url = "https://github.com/inkarkat/vim-ReplaceWithRegister"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-illuminate"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
   },
   ["vim-matchup"] = {
-    after_files = { "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
+    after_files = { "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-matchup",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-matchup",
     url = "https://github.com/andymass/vim-matchup"
   },
   ["vim-maximizer"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/vim-maximizer",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/vim-maximizer",
     url = "https://github.com/szw/vim-maximizer"
   },
   ["vim-rest-console"] = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console",
     url = "https://github.com/diepm/vim-rest-console"
   },
   ["vim-silicon"] = {
@@ -883,7 +883,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-silicon",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-silicon",
     url = "https://github.com/segeljakt/vim-silicon"
   },
   ["vim-snippets"] = {
@@ -892,14 +892,14 @@ _G.packer_plugins = {
     },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-snippets",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-snippets",
     url = "https://github.com/honza/vim-snippets"
   },
   ["vim-surround"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-surround",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
   ["vim-surround-funk"] = {
@@ -907,7 +907,7 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-surround-funk",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-surround-funk",
     url = "https://github.com/Matt-A-Bennett/vim-surround-funk"
   },
   ["vim-test"] = {
@@ -915,12 +915,12 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-test",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-test",
     url = "https://github.com/vim-test/vim-test"
   },
   ["vim-tmux-navigator"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
   },
   vimspector = {
@@ -929,13 +929,13 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vimspector",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vimspector",
     url = "https://github.com/puremourning/vimspector"
   },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config.whichkey\frequire\0" },
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
   },
   ["windows.nvim"] = {
@@ -944,12 +944,12 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/windows.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/windows.nvim",
     url = "https://github.com/anuvyklack/windows.nvim"
   },
   ["zen-mode.nvim"] = {
     loaded = true,
-    path = "/Users/yigitozgumus/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    path = "/Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
     url = "https://github.com/folke/zen-mode.nvim"
   }
 }
@@ -1013,38 +1013,18 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19config.project\frequire\0", "config", "project.nvim")
-time([[Config for project.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config.lsp\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
--- Config for: alpha-nvim
-time([[Config for alpha-nvim]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17config.alpha\frequire\0", "config", "alpha-nvim")
-time([[Config for alpha-nvim]], false)
--- Config for: suit.nvim
-time([[Config for suit.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\tsuit\frequire\0", "config", "suit.nvim")
-time([[Config for suit.nvim]], false)
--- Config for: fidget.nvim
-time([[Config for fidget.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
-time([[Config for fidget.nvim]], false)
--- Config for: nvim-semantic-tokens
-time([[Config for nvim-semantic-tokens]], true)
-try_loadstring("\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\26config.semantictokens\frequire\0", "config", "nvim-semantic-tokens")
-time([[Config for nvim-semantic-tokens]], false)
--- Config for: gruvbox-material
-time([[Config for gruvbox-material]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "gruvbox-material")
-time([[Config for gruvbox-material]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config.whichkey\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
 -- Config for: hlargs.nvim
 time([[Config for hlargs.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18config.hlargs\frequire\0", "config", "hlargs.nvim")
 time([[Config for hlargs.nvim]], false)
+-- Config for: nvim-semantic-tokens
+time([[Config for nvim-semantic-tokens]], true)
+try_loadstring("\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\26config.semantictokens\frequire\0", "config", "nvim-semantic-tokens")
+time([[Config for nvim-semantic-tokens]], false)
 -- Config for: obsidian.nvim
 time([[Config for obsidian.nvim]], true)
 try_loadstring("\27LJ\2\n„\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15completion\1\0\1\rnvim_cmp\2\1\0\1\bdir'~/personal/notes/Notes-Collection/\nsetup\robsidian\frequire\0", "config", "obsidian.nvim")
@@ -1053,22 +1033,42 @@ time([[Config for obsidian.nvim]], false)
 time([[Config for inlay-hints.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16inlay-hints\frequire\0", "config", "inlay-hints.nvim")
 time([[Config for inlay-hints.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config.toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20config.whichkey\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
+-- Config for: suit.nvim
+time([[Config for suit.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\tsuit\frequire\0", "config", "suit.nvim")
+time([[Config for suit.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config.treesitter\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config.toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
+-- Config for: fidget.nvim
+time([[Config for fidget.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
+time([[Config for fidget.nvim]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19config.project\frequire\0", "config", "project.nvim")
+time([[Config for project.nvim]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17config.alpha\frequire\0", "config", "alpha-nvim")
+time([[Config for alpha-nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15config.lsp\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22config.catppuccin\frequire\0", "config", "catppuccin")
 time([[Config for catppuccin]], false)
+-- Config for: gruvbox-material
+time([[Config for gruvbox-material]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "gruvbox-material")
+time([[Config for gruvbox-material]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -1078,62 +1078,6 @@ pcall(vim.api.nvim_create_user_command, 'VimspectorUpdate', function(cmdargs)
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'vimspector'}, { cmd = 'VimspectorUpdate' }, _G.packer_plugins)
           return vim.fn.getcompletion('VimspectorUpdate ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'TSPlaygroundToggle', function(cmdargs)
-          require('packer.load')({'playground'}, { cmd = 'TSPlaygroundToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'playground'}, { cmd = 'TSPlaygroundToggle' }, _G.packer_plugins)
-          return vim.fn.getcompletion('TSPlaygroundToggle ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'TroubleToggle', function(cmdargs)
-          require('packer.load')({'trouble.nvim'}, { cmd = 'TroubleToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'trouble.nvim'}, { cmd = 'TroubleToggle' }, _G.packer_plugins)
-          return vim.fn.getcompletion('TroubleToggle ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'Trouble', function(cmdargs)
-          require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble' }, _G.packer_plugins)
-          return vim.fn.getcompletion('Trouble ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'WindowsToggleAutowidth', function(cmdargs)
-          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsToggleAutowidth', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsToggleAutowidth' }, _G.packer_plugins)
-          return vim.fn.getcompletion('WindowsToggleAutowidth ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'WindowsMaximize', function(cmdargs)
-          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsMaximize', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsMaximize' }, _G.packer_plugins)
-          return vim.fn.getcompletion('WindowsMaximize ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'Femaco', function(cmdargs)
-          require('packer.load')({'nvim-FeMaco.lua'}, { cmd = 'Femaco', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-FeMaco.lua'}, { cmd = 'Femaco' }, _G.packer_plugins)
-          return vim.fn.getcompletion('Femaco ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'FocusToggle', function(cmdargs)
-          require('packer.load')({'focus.nvim'}, { cmd = 'FocusToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'focus.nvim'}, { cmd = 'FocusToggle' }, _G.packer_plugins)
-          return vim.fn.getcompletion('FocusToggle ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'FocusMaxOrEqual', function(cmdargs)
-          require('packer.load')({'focus.nvim'}, { cmd = 'FocusMaxOrEqual', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'focus.nvim'}, { cmd = 'FocusMaxOrEqual' }, _G.packer_plugins)
-          return vim.fn.getcompletion('FocusMaxOrEqual ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
           require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1149,6 +1093,13 @@ pcall(vim.api.nvim_create_user_command, 'NvimTreeClose', function(cmdargs)
           require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeClose' }, _G.packer_plugins)
           return vim.fn.getcompletion('NvimTreeClose ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'Neogen', function(cmdargs)
+          require('packer.load')({'neogen'}, { cmd = 'Neogen', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'neogen'}, { cmd = 'Neogen' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Neogen ', 'cmdline')
+      end})
 pcall(vim.api.nvim_create_user_command, 'MarkdownPreview', function(cmdargs)
           require('packer.load')({'markdown-preview.nvim'}, { cmd = 'MarkdownPreview', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -1163,12 +1114,68 @@ pcall(vim.api.nvim_create_user_command, 'Lspsaga', function(cmdargs)
           require('packer.load')({'lspsaga.nvim'}, { cmd = 'Lspsaga' }, _G.packer_plugins)
           return vim.fn.getcompletion('Lspsaga ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'Silicon', function(cmdargs)
-          require('packer.load')({'vim-silicon'}, { cmd = 'Silicon', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'WindowsToggleAutowidth', function(cmdargs)
+          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsToggleAutowidth', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-silicon'}, { cmd = 'Silicon' }, _G.packer_plugins)
-          return vim.fn.getcompletion('Silicon ', 'cmdline')
+          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsToggleAutowidth' }, _G.packer_plugins)
+          return vim.fn.getcompletion('WindowsToggleAutowidth ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'WindowsMaximize', function(cmdargs)
+          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsMaximize', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'windows.nvim'}, { cmd = 'WindowsMaximize' }, _G.packer_plugins)
+          return vim.fn.getcompletion('WindowsMaximize ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'AerialToggle', function(cmdargs)
+          require('packer.load')({'aerial.nvim'}, { cmd = 'AerialToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'aerial.nvim'}, { cmd = 'AerialToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('AerialToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TroubleToggle', function(cmdargs)
+          require('packer.load')({'trouble.nvim'}, { cmd = 'TroubleToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'trouble.nvim'}, { cmd = 'TroubleToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('TroubleToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Trouble', function(cmdargs)
+          require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Trouble ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'FocusToggle', function(cmdargs)
+          require('packer.load')({'focus.nvim'}, { cmd = 'FocusToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'focus.nvim'}, { cmd = 'FocusToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('FocusToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'FocusMaxOrEqual', function(cmdargs)
+          require('packer.load')({'focus.nvim'}, { cmd = 'FocusMaxOrEqual', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'focus.nvim'}, { cmd = 'FocusMaxOrEqual' }, _G.packer_plugins)
+          return vim.fn.getcompletion('FocusMaxOrEqual ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TSPlaygroundToggle', function(cmdargs)
+          require('packer.load')({'playground'}, { cmd = 'TSPlaygroundToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'playground'}, { cmd = 'TSPlaygroundToggle' }, _G.packer_plugins)
+          return vim.fn.getcompletion('TSPlaygroundToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Femaco', function(cmdargs)
+          require('packer.load')({'nvim-FeMaco.lua'}, { cmd = 'Femaco', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-FeMaco.lua'}, { cmd = 'Femaco' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Femaco ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'SymbolsOutline', function(cmdargs)
           require('packer.load')({'symbols-outline.nvim'}, { cmd = 'SymbolsOutline', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1177,19 +1184,12 @@ pcall(vim.api.nvim_create_user_command, 'SymbolsOutline', function(cmdargs)
           require('packer.load')({'symbols-outline.nvim'}, { cmd = 'SymbolsOutline' }, _G.packer_plugins)
           return vim.fn.getcompletion('SymbolsOutline ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'Neogen', function(cmdargs)
-          require('packer.load')({'neogen'}, { cmd = 'Neogen', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'Silicon', function(cmdargs)
+          require('packer.load')({'vim-silicon'}, { cmd = 'Silicon', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'neogen'}, { cmd = 'Neogen' }, _G.packer_plugins)
-          return vim.fn.getcompletion('Neogen ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'AerialToggle', function(cmdargs)
-          require('packer.load')({'aerial.nvim'}, { cmd = 'AerialToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'aerial.nvim'}, { cmd = 'AerialToggle' }, _G.packer_plugins)
-          return vim.fn.getcompletion('AerialToggle ', 'cmdline')
+          require('packer.load')({'vim-silicon'}, { cmd = 'Silicon' }, _G.packer_plugins)
+          return vim.fn.getcompletion('Silicon ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'VimspectorInstall', function(cmdargs)
           require('packer.load')({'vimspector'}, { cmd = 'VimspectorInstall', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1202,15 +1202,15 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> gcc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gcc", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> gbc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gbc", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> f <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "f", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> s <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "s", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> t <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "t", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> S <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "S", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> F <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "F", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gcc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gcc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> S <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "S", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> T <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "T", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> F <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "F", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gbc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gbc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> t <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "t", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> f <cmd>lua require("packer.load")({'lightspeed.nvim'}, { keys = "f", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -1220,17 +1220,17 @@ time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType kotlin ++once lua require("packer.load")({'kotlin-vim'}, { ft = "kotlin" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'nvim-FeMaco.lua', 'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType go ++once lua require("packer.load")({'go.nvim'}, { ft = "go" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust-tools.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rest ++once lua require("packer.load")({'vim-rest-console'}, { ft = "rest" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust-tools.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufRead Cargo.toml ++once lua require("packer.load")({'crates.nvim'}, { event = "BufRead Cargo.toml" }, _G.packer_plugins)]]
+vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'targets.vim', 'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'better-escape.nvim', 'nvim-cmp', 'nvim-treesitter-endwise'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au LspAttach * ++once lua require("packer.load")({'neodim'}, { event = "LspAttach *" }, _G.packer_plugins)]]
-vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup', 'targets.vim'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'luv-vimdocs', 'lualine.nvim', 'indent-blankline.nvim', 'dressing.nvim', 'nvim-treesitter-textobjects', 'nvim-treesitter-context', 'neoscroll.nvim', 'nvim-treesitter-textsubjects', 'nvim-ts-rainbow', 'nvim-ts-context-commentstring', 'vim-surround-funk', 'nvim-notify', 'nvim-luaref', 'nvim-bufferline.lua', 'vim-test', 'vim-surround'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'nvim-treesitter-textobjects', 'nvim-ts-context-commentstring', 'nvim-ts-rainbow', 'vim-surround-funk', 'nvim-treesitter-textsubjects', 'nvim-notify', 'indent-blankline.nvim', 'nvim-luaref', 'dressing.nvim', 'lualine.nvim', 'nvim-bufferline.lua', 'vim-surround', 'nvim-treesitter-context', 'neoscroll.nvim', 'vim-test', 'luv-vimdocs'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'telescope.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.nvim', 'nvim-cmp', 'nvim-treesitter-endwise', 'nvim-autopairs'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
   -- Function lazy-loads
 time([[Defining lazy-load function autocommands]], true)
@@ -1240,18 +1240,18 @@ vim.cmd[[au FuncUndefined vimspector#Continue ++once lua require("packer.load")(
 time([[Defining lazy-load function autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console/ftdetect/rest.vim]], true)
-vim.cmd [[source /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console/ftdetect/rest.vim]]
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console/ftdetect/rest.vim]], false)
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], true)
-vim.cmd [[source /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]]
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], false)
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], true)
-vim.cmd [[source /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]]
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], false)
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]], true)
-vim.cmd [[source /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]]
-time([[Sourcing ftdetect script at: /Users/yigitozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]], false)
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]], true)
+vim.cmd [[source /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]]
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/kotlin-vim/ftdetect/kotlin.vim]], false)
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], true)
+vim.cmd [[source /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]]
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/go.vim]], false)
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], true)
+vim.cmd [[source /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]]
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/go.nvim/ftdetect/gomod.vim]], false)
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console/ftdetect/rest.vim]], true)
+vim.cmd [[source /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console/ftdetect/rest.vim]]
+time([[Sourcing ftdetect script at: /Users/yigit.ozgumus/.local/share/nvim/site/pack/packer/opt/vim-rest-console/ftdetect/rest.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

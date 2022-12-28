@@ -46,13 +46,14 @@ function M.setup()
 			group = packer_grp,
 		})
 	end
+
 	-- Plugins
 	local function plugins(use)
 		-- Let packer manage itself
 		use({ "wbthomason/packer.nvim" })
 
 		-- Make neovim faster
-		use("lewis6991/impatient.nvim")
+		use({ "lewis6991/impatient.nvim", disable = true })
 
 		use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
 
@@ -63,7 +64,7 @@ function M.setup()
 			config = function()
 				require("config.notify").setup()
 			end,
-			disable = false,
+			disable = true,
 		})
 
 		use({
@@ -94,9 +95,6 @@ function M.setup()
 
 		use({
 			"folke/tokyonight.nvim",
-			config = function()
-				-- vim.cmd.colorscheme([[tokyonight]])
-			end,
 			disable = true,
 		})
 
@@ -104,18 +102,14 @@ function M.setup()
 			"sainnhe/everforest",
 			config = function()
 				vim.g.everforest_better_performance = 1
-				-- vim.cmd.colorscheme([[everforest]])
 			end,
 			disable = true,
 		})
 
-		use({ "projekt0n/github-nvim-theme", disable = true })
+		use({ "projekt0n/github-nvim-theme", disable = false })
 
 		use({
 			"sainnhe/gruvbox-material",
-			config = function()
-				-- vim.cmd("colorscheme gruvbox-material")
-			end,
 			disable = false,
 		})
 		use({
@@ -125,14 +119,7 @@ function M.setup()
 			end,
 			disable = true,
 		})
-		use({
-			"nvchad/nvim-colorizer.lua",
-			cmd = "ColorizerToggle",
-			config = function()
-				require("colorizer").setup()
-			end,
-			disable = true,
-		})
+		-- For creating colorschemes
 		use({
 			"rktjmp/lush.nvim",
 			cmd = {
@@ -141,14 +128,6 @@ function M.setup()
 				"Lushify",
 				"LushImport",
 			},
-			disable = true,
-		})
-		use({
-			"max397574/colortils.nvim",
-			cmd = "Colortils",
-			config = function()
-				require("colortils").setup()
-			end,
 			disable = true,
 		})
 
@@ -160,17 +139,8 @@ function M.setup()
 			end,
 			cmd = { "Neogen" },
 			module = "neogen",
-			disable = false,
-		})
-		use({
-			"ziontee113/color-picker.nvim",
-			cmd = { "PickColor", "PickColorInsert" },
-			config = function()
-				require("color-picker")
-			end,
 			disable = true,
 		})
-		use({ "lifepillar/vim-colortemplate", disable = true })
 
 		use({
 			"anuvyklack/hydra.nvim",
@@ -183,7 +153,7 @@ function M.setup()
 			disable = true,
 		})
 
-		use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
+		use({ "christoomey/vim-tmux-navigator", disable = true }) -- tmux & split window navigation
 
 		use("szw/vim-maximizer") -- maximizes and restores current window
 
