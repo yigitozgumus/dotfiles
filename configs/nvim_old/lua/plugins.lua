@@ -106,16 +106,16 @@ function M.setup()
 			disable = false,
 		})
 
-		-- use({
-		-- 	"anuvyklack/hydra.nvim",
-		-- 	config = function()
-		-- 		require("config.hydra").setup()
-		-- 	end,
-		-- 	requires = "anuvyklack/keymap-layer.nvim",
-		-- 	module = { "hydra" },
-		-- 	event = { "BufReadPre" },
-		-- 	disable = true,
-		-- })
+		use({
+			"anuvyklack/hydra.nvim",
+			config = function()
+				require("config.hydra").setup()
+			end,
+			requires = "anuvyklack/keymap-layer.nvim",
+			module = { "hydra" },
+			event = { "BufReadPre" },
+			disable = true,
+		})
 		--
         -- tmux & split window navigation
 		use({ "christoomey/vim-tmux-navigator", disable = true }) 
@@ -219,16 +219,6 @@ function M.setup()
 			end,
 			disable = false,
 		})
-  --       use { "MunifTanjim/nui.nvim", disable = false }
-		use({
-			"folke/noice.nvim",
-			event = { "VimEnter" },
-			config = function()
-				require("config.noice").setup()
-			end,
-			disable = false,
-		})
-
 		-- -- Jumps
 		-- use({
 		-- 	"phaazon/hop.nvim",
@@ -567,17 +557,17 @@ function M.setup()
 		-- 	disable = false,
 		-- })
 		--
-		-- -- renamer.nvim
-		-- use({
-		-- 	"filipdutescu/renamer.nvim",
-		-- 	module = { "renamer" },
-		-- 	config = function()
-		-- 		require("renamer").setup({})
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
-		-- -- Treesitter
+		-- renamer.nvim
+		use({
+			"filipdutescu/renamer.nvim",
+			modulm = { "renamer" },
+			config = function()
+				require("renamer").setup({})
+			end,
+			disable = false,
+		})
+
+		-- Treesitter
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = ":TSUpdate",
@@ -605,14 +595,14 @@ function M.setup()
 				},
 			},
 		})
-		--
-		-- use({
-		-- 	"ibhagwan/fzf-lua",
-		-- 	-- optional for icon support
-		-- 	requires = { "nvim-tree/nvim-web-devicons" },
-		-- 	disable = false,
-		-- })
-		--
+
+		use({
+			"ibhagwan/fzf-lua",
+			-- optional for icon support
+			requires = { "nvim-tree/nvim-web-devicons" },
+			disable = false,
+		})
+
 		-- -- Kotlin
 		-- use({ "udalov/kotlin-vim", ft = { "kotlin" }, disable = false })
 		--
@@ -625,33 +615,33 @@ function M.setup()
 				require("config.nvimtree").setup()
 			end,
 		})
-		--
-		-- -- Buffer line
-		-- use({
-		-- 	"akinsho/nvim-bufferline.lua",
-		-- 	event = "BufReadPre",
-		-- 	config = function()
-		-- 		require("config.bufferline").setup()
-		-- 	end,
-		-- })
-		--
-		-- -- WhichKey
+
+		-- Buffer line
+		use({
+			"akinsho/nvim-bufferline.lua",
+			event = "BufReadPre",
+			config = function()
+				require("config.bufferline").setup()
+			end,
+		})
+
+		-- WhichKey
 		use({
 			"folke/which-key.nvim",
 			config = function()
 				require("config.whichkey").setup()
 			end,
 		})
-		--
-		-- -- IndentLine
-		-- use({
-		-- 	"lukas-reineke/indent-blankline.nvim",
-		-- 	event = "BufReadPre",
-		-- 	config = function()
-		-- 		require("config.indentblankline").setup()
-		-- 	end,
-		-- })
-		--
+
+		-- IndentLine
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			event = "BufReadPre",
+			config = function()
+				require("config.indentblankline").setup()
+			end,
+		})
+
 		-- use({
 		-- 	"ggandor/lightspeed.nvim",
 		-- 	keys = { "s", "S", "f", "F", "t", "T" },
@@ -684,16 +674,16 @@ function M.setup()
 		-- 	disable = false,
 		-- })
 		--
-		-- -- Auto pairs
-		-- use({
-		-- 	"windwp/nvim-autopairs",
-		-- 	opt = true,
-		-- 	event = "InsertEnter",
-		-- 	module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
-		-- 	config = function()
-		-- 		require("config.autopairs").setup()
-		-- 	end,
-		-- })
+		-- Auto pairs
+		use({
+			"windwp/nvim-autopairs",
+			opt = true,
+			event = "InsertEnter",
+			module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+			config = function()
+				require("config.autopairs").setup()
+			end,
+		})
 		--
 		-- -- Auto tag
 		-- use({
@@ -714,38 +704,38 @@ function M.setup()
 		-- 	disable = false,
 		-- })
 		--
-		-- -- git integration
-		-- use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+		-- git integration
+		use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 		--
 		-- use("folke/zen-mode.nvim")
-		--
-		-- -- Markdown
-		-- use({
-		-- 	"iamcco/markdown-preview.nvim",
-		-- 	run = function()
-		-- 		vim.fn["mkdp#util#install"]()
-		-- 	end,
-		-- 	ft = "markdown",
-		-- 	cmd = { "MarkdownPreview" },
-		-- 	disable = false,
-		-- })
-		--
-		-- -- Harpoon
-		-- use({
-		-- 	"ThePrimeagen/harpoon",
-		-- 	module = {
-		-- 		"harpoon",
-		-- 		"harpoon.cmd-ui",
-		-- 		"harpoon.mark",
-		-- 		"harpoon.ui",
-		-- 		"harpoon.term",
-		-- 		"telescope._extensions.harpoon",
-		-- 	},
-		-- 	config = function()
-		-- 		require("config.harpoon").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
+
+		-- Markdown
+		use({
+			"iamcco/markdown-preview.nvim",
+			run = function()
+				vim.fn["mkdp#util#install"]()
+			end,
+			ft = "markdown",
+			cmd = { "MarkdownPreview" },
+			disable = false,
+		})
+
+		-- Harpoon
+		use({
+			"ThePrimeagen/harpoon",
+			module = {
+				"harpoon",
+				"harpoon.cmd-ui",
+				"harpoon.mark",
+				"harpoon.ui",
+				"harpoon.term",
+				"telescope._extensions.harpoon",
+			},
+			config = function()
+				require("config.harpoon").setup()
+			end,
+			disable = false,
+		})
 		--
 		-- -- Debugging
 		-- use({
@@ -770,9 +760,9 @@ function M.setup()
 		-- 	disable = true,
 		-- })
 		--
-		-- use("junegunn/goyo.vim")
-		-- use("mbbill/undotree")
-		-- use("tpope/vim-fugitive")
+		use({"junegunn/goyo.vim"})
+		use({"mbbill/undotree"})
+		use({"tpope/vim-fugitive"})
 		--
 		-- use({
 		-- 	"epwalsh/obsidian.nvim",
@@ -786,7 +776,7 @@ function M.setup()
 		-- 		})
 		-- 	end,
 		-- })
-		-- use("martinsione/darkplus.nvim")
+		use("martinsione/darkplus.nvim")
 
 		if is_boostrap then
 			print("Neovim restart is required after installation!")
