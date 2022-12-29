@@ -6,7 +6,6 @@ return {
   "nvim-lua/plenary.nvim",
   "windwp/nvim-spectre",
   "folke/twilight.nvim",
-  "folke/which-key.nvim",
   "folke/tokyonight.nvim",
   { "ellisonleao/gruvbox.nvim" },
   {
