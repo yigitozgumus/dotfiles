@@ -409,7 +409,6 @@ function M.setup()
 				require("config.lsp").setup()
 			end,
 			requires = {
-				-- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
 				"williamboman/mason.nvim",
 				"williamboman/mason-lspconfig.nvim",
 				"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -427,7 +426,6 @@ function M.setup()
 				{ "jose-elias-alvarez/typescript.nvim", module = { "typescript" } },
 				{
 					"SmiteshP/nvim-navic",
-					-- "alpha2phi/nvim-navic",
 					config = function()
 						require("nvim-navic").setup({})
 					end,
@@ -452,9 +450,8 @@ function M.setup()
 					config = function()
 						require("config.semantictokens").setup()
 					end,
-					disable = false,
+					disable = true,
 				},
-				{ "David-Kunz/markid", disable = true },
 				{
 					"simrat39/symbols-outline.nvim",
 					cmd = { "SymbolsOutline" },
@@ -463,24 +460,18 @@ function M.setup()
 					end,
 					disable = false,
 				},
-				-- {
-				--   "weilbith/nvim-code-action-menu",
-				--   cmd = "CodeActionMenu",
-				-- },
-				-- {
-				--   "rmagatti/goto-preview",
-				--   config = function()
-				--     require("goto-preview").setup {}
-				--   end,
-				-- },
-				-- {
-				--   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-				--   config = function()
-				--     require("lsp_lines").setup()
-				--   end,
-				-- },
+				{
+					"weilbith/nvim-code-action-menu",
+					cmd = "CodeActionMenu",
+				},
+				{
+					"rmagatti/goto-preview",
+					config = function()
+						require("goto-preview").setup({})
+					end,
+				},
 			},
-			disable = true,
+			disable = false,
 		})
 
 		-- vimspector
