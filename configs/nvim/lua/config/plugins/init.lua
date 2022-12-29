@@ -7,6 +7,7 @@ return {
   "windwp/nvim-spectre",
   "folke/twilight.nvim",
   "folke/which-key.nvim",
+  "folke/tokyonight.nvim",
   { "ellisonleao/gruvbox.nvim" },
   {
     "dstein64/vim-startuptime",
@@ -26,11 +27,6 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
   },
-
-  {
-    "folke/tokyonight.nvim",
-    config = function() end,
-  },
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
@@ -42,7 +38,6 @@ return {
       },
     },
   },
-
   {
     "sainnhe/gruvbox-material",
     config = function()

@@ -31,12 +31,8 @@ function M.config()
 
   local function footer()
     -- Number of plugins
-    local total_plugins = #vim.tbl_keys(lazy_plugins)
     local datetime = os.date("%d-%m-%Y %H:%M:%S")
     local plugins_text = "   "
-      .. total_plugins
-      .. " plugins"
-      .. "   v"
       .. vim.version().major
       .. "."
       .. vim.version().minor
