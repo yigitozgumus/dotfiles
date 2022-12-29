@@ -22,7 +22,9 @@ return {
     "catppuccin/nvim",
     lazy = false,
     priority = 1000,
-    config = function() end,
+    config = function()
+      vim.cmd.colorscheme("catppuccin")
+    end,
   },
 
   {
@@ -44,7 +46,7 @@ return {
   {
     "sainnhe/gruvbox-material",
     config = function()
-      vim.cmd.colorscheme("gruvbox-material")
+      --  vim.cmd.colorscheme("gruvbox-material")
     end,
     lazy = false,
   },
@@ -86,22 +88,21 @@ return {
     config = function()
       require("Comment").setup({})
     end,
-    cond = false,
   },
   -- Theme: icons
   {
     "nvim-tree/nvim-web-devicons",
     config = { default = true },
   },
-    {
-      "SmiteshP/nvim-navic",
-      config = function()
-        vim.g.navic_silence = true
-        require("nvim-navic").setup({ separator = " ", highlight = true, depth_limit = 5 })
-      end,
-      cond = false,
-      enabled = true,
-    },
+  {
+    "SmiteshP/nvim-navic",
+    config = function()
+      vim.g.navic_silence = true
+      require("nvim-navic").setup({ separator = " ", highlight = true, depth_limit = 5 })
+    end,
+    cond = false,
+    enabled = true,
+  },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPre",
