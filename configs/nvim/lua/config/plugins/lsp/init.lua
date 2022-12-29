@@ -7,7 +7,7 @@ local M = {
     {
       "folke/neodev.nvim",
       config = {
-        debug = true,
+        debug = false,
         experimental = {
           pathStrict = true,
         },

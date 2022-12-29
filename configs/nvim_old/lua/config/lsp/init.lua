@@ -124,28 +124,7 @@ local servers = {
 			},
 		},
 	},
-	-- jdtls = {},
-	-- dockerls = {},
-	-- graphql = {},
 	bashls = {},
-	-- taplo = {},
-	-- omnisharp = {},
-	-- kotlin_language_server = {},
-	-- emmet_ls = {},
-	-- marksman = {},
-	-- angularls = {},
-	-- sqls = {
-	-- settings = {
-	--   sqls = {
-	--     connections = {
-	--       {
-	--         driver = "sqlite3",
-	--         dataSourceName = os.getenv "HOME" .. "/workspace/db/chinook.db",
-	--       },
-	--     },
-	--   },
-	-- },
-	-- },
 }
 
 function M.on_attach(client, bufnr)
@@ -197,20 +176,6 @@ function M.on_attach(client, bufnr)
 	if client.name ~= "null-ls" then -- inlay-hints
 		local ih = require("inlay-hints")
 		ih.on_attach(client, bufnr)
-
-		-- -- semantic highlighting
-		-- if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-		-- 	local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
-		-- 	vim.api.nvim_create_autocmd("TextChanged", {
-		-- 		group = augroup,
-		-- 		buffer = bufnr,
-		-- 		callback = function()
-		-- 			vim.lsp.buf.semantic_tokens_full()
-		-- 		end,
-		-- 	})
-		-- 	-- fire it first time on load as well
-		-- 	vim.lsp.buf.semantic_tokens_full()
-		-- end
 	end
 end
 

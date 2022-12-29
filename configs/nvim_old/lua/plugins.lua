@@ -434,7 +434,9 @@ function M.setup()
 				{
 					"simrat39/inlay-hints.nvim",
 					config = function()
-						require("inlay-hints").setup()
+						require("inlay-hints").setup({
+							only_current_line = true,
+						})
 					end,
 				},
 				{
@@ -660,7 +662,6 @@ function M.setup()
 					select = { backend = { "telescope", "fzf", "builtin" } },
 				})
 			end,
-			disable = false,
 		})
 		use({ "ray-x/guihua.lua", run = "cd lua/fzy && make", disable = true })
 		use({

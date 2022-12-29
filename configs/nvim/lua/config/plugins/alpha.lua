@@ -1,8 +1,6 @@
 local M = {
   "goolord/alpha-nvim",
   lazy = false,
-  cond = false,
-  config = true,
 }
 
 function M.config()
@@ -33,7 +31,7 @@ function M.config()
 
   local function footer()
     -- Number of plugins
-    local total_plugins = #vim.tbl_keys(packer_plugins)
+    local total_plugins = #vim.tbl_keys(lazy_plugins)
     local datetime = os.date("%d-%m-%Y %H:%M:%S")
     local plugins_text = "   "
       .. total_plugins
@@ -55,7 +53,6 @@ function M.config()
   end
 
   dashboard.section.footer.val = footer()
-
   dashboard.section.footer.opts.hl = "Constant"
   dashboard.section.header.opts.hl = "Include"
   dashboard.section.buttons.opts.hl = "Function"
