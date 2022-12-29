@@ -77,7 +77,7 @@ local servers = {
 				completion = { callSnippet = "Replace" },
 				telemetry = { enable = false },
 				hint = {
-					enable = false,
+					enable = true,
 				},
 			},
 		},
@@ -194,8 +194,7 @@ function M.on_attach(client, bufnr)
 		navic.attach(client, bufnr)
 	end
 
-	if client.name ~= "null-ls" then
-		-- inlay-hints
+	if client.name ~= "null-ls" then -- inlay-hints
 		local ih = require("inlay-hints")
 		ih.on_attach(client, bufnr)
 
