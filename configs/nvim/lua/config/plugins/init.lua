@@ -10,6 +10,10 @@ return {
   "folke/tokyonight.nvim",
   { "ellisonleao/gruvbox.nvim" },
   {
+    "martinsione/darkplus.nvim",
+    lazy = false,
+  },
+  {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
     config = function()
