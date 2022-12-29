@@ -1,4 +1,7 @@
-local M = {}
+local M = {
+
+	"goolord/alpha-nvim",
+}
 
 function M.setup()
 	-- Indicate first time installation
@@ -55,62 +58,64 @@ function M.setup()
 		-- Make neovim faster
 		use({ "lewis6991/impatient.nvim", disable = false })
 
-        use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
-        -- -- Notification
-        use({
-            "rcarriga/nvim-notify",
-            event = "BufReadPre",
-            config = function()
-                require("config.notify").setup()
-            end,
-            disable = false,
-        })
-        use({
-            "vigoux/notifier.nvim",
-            config = function()
-                require("notifier").setup({})
-            end,
-            disable = true,
-        })
-        --
-        -- Colorscheme
-        use({
-            "catppuccin/nvim",
-            as = "catppuccin",
-            config = function()
-                require("config.catppuccin").setup()
-            end,
-            disable = false,
-        })
-        --
-        use({
-            "folke/tokyonight.nvim",
-            disable = false,
-        })
-        --
-        use({ "projekt0n/github-nvim-theme", disable = false })
-        --
-        use({
-            "sainnhe/gruvbox-material",
-            disable = false,
-        })
-        -- Code documentation
-        use({
-            "danymat/neogen",
-            config = function()
-                require("config.neogen").setup()
-            end,
-            cmd = { "Neogen" },
-            module = "neogen",
-            disable = false,
-        })
-        use {
-            'VonHeikemen/fine-cmdline.nvim',
-            requires = {
-                {'MunifTanjim/nui.nvim'}
-            },
-            config = function() require("config.cmdline").setup() end,
-        }
+		use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
+		-- -- Notification
+		use({
+			"rcarriga/nvim-notify",
+			event = "BufReadPre",
+			config = function()
+				require("config.notify").setup()
+			end,
+			disable = false,
+		})
+		use({
+			"vigoux/notifier.nvim",
+			config = function()
+				require("notifier").setup({})
+			end,
+			disable = true,
+		})
+		--
+		-- Colorscheme
+		use({
+			"catppuccin/nvim",
+			as = "catppuccin",
+			config = function()
+				require("config.catppuccin").setup()
+			end,
+			disable = false,
+		})
+		--
+		use({
+			"folke/tokyonight.nvim",
+			disable = false,
+		})
+		--
+		use({ "projekt0n/github-nvim-theme", disable = false })
+		--
+		use({
+			"sainnhe/gruvbox-material",
+			disable = false,
+		})
+		-- Code documentation
+		use({
+			"danymat/neogen",
+			config = function()
+				require("config.neogen").setup()
+			end,
+			cmd = { "Neogen" },
+			module = "neogen",
+			disable = false,
+		})
+		use({
+			"VonHeikemen/fine-cmdline.nvim",
+			requires = {
+				{ "MunifTanjim/nui.nvim" },
+			},
+			config = function()
+				require("config.cmdline").setup()
+			end,
+		})
 
 		use({
 			"anuvyklack/hydra.nvim",
@@ -123,8 +128,8 @@ function M.setup()
 			disable = true,
 		})
 		--
-        -- tmux & split window navigation
-		use({ "christoomey/vim-tmux-navigator", disable = true }) 
+		-- tmux & split window navigation
+		use({ "christoomey/vim-tmux-navigator", disable = true })
 		--
 		use("szw/vim-maximizer") -- maximizes and restores current window
 		--
@@ -138,7 +143,7 @@ function M.setup()
 			end,
 			disable = false,
 		})
-        --
+		--
 		-- Motions
 		use({ "andymass/vim-matchup", event = "CursorMoved" })
 		use({ "wellle/targets.vim", event = "CursorMoved", disable = false })
@@ -195,15 +200,15 @@ function M.setup()
 			disable = false,
 		})
 		-- -- Better Comment
-		 use({
-		 	"numToStr/Comment.nvim",
-		 	opt = true,
-		 	keys = { "gc", "gcc", "gbc" },
-		 	config = function()
-		 		require("Comment").setup({})
-		 	end,
-		 	disable = false,
-		 })
+		use({
+			"numToStr/Comment.nvim",
+			opt = true,
+			keys = { "gc", "gcc", "gbc" },
+			config = function()
+				require("Comment").setup({})
+			end,
+			disable = false,
+		})
 
 		use({
 			"echasnovski/mini.nvim",
@@ -214,139 +219,139 @@ function M.setup()
 			disable = false,
 		})
 
-        -- Statusline
-        use({
-            "nvim-lualine/lualine.nvim",
-            event = "BufReadPre",
-            config = function()
-                require("config.lualine").setup()
-            end,
-            disable = false,
-        })
-        -- Jumps
-        use({
-            "phaazon/hop.nvim",
-            cmd = "HopWord",
-            module = "hop",
-            keys = { "f", "F", "t", "T" },
-            config = function()
-                require("config.hop").setup()
-            end,
-            disable = true,
-        })
-        use({
-            "folke/noice.nvim",
-            config = function()
-                require("config.noice").setup()
-            end,
-            requires = {
-                "MunifTanjim/nui.nvim",
-                "rcarriga/nvim-notify",
-            },
-            disable = true,
-        })
-        use({
-            "ggandor/leap.nvim",
-            keys = { "s", "S" },
-            config = function()
-                local leap = require("leap")
-                leap.add_default_mappings()
-            end,
-            disable = true,
-        })
-        -- vscode-like pictograms
-        use("onsails/lspkind-nvim")
-        --
-        --  Nvim dashboard
-        use({
-            "goolord/alpha-nvim",
-            config = function()
-                require("config.alpha").setup()
-            end,
-            disable = false,
-        })
-        --
-        -- Telescope
-        use({
-            "nvim-telescope/telescope.nvim",
-            event = { "VimEnter" },
-            config = function()
-                require("config.telescope").setup()
-            end,
-            requires = {
-                "nvim-lua/popup.nvim",
-                "nvim-lua/plenary.nvim",
-                { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-                { "nvim-telescope/telescope-project.nvim" },
-                { "cljoly/telescope-repo.nvim" },
-                { "nvim-telescope/telescope-file-browser.nvim" },
-                {
-                    "ahmedkhalf/project.nvim",
-                    config = function()
-                        require("config.project").setup()
-                    end,
-                },
-                { "nvim-telescope/telescope-dap.nvim" },
-                {
-                    "AckslD/nvim-neoclip.lua",
-                    requires = { { "tami5/sqlite.lua", module = "sqlite" } },
-                },
-                { "nvim-telescope/telescope-smart-history.nvim" },
-                { "dhruvmanila/telescope-bookmarks.nvim" },
-                { "nvim-telescope/telescope-github.nvim" },
-                "nvim-telescope/telescope-symbols.nvim",
-            },
-        })
-        --
-        -- trouble.nvim
-        use({
-            "folke/trouble.nvim",
-            cmd = { "TroubleToggle", "Trouble" },
-            module = { "trouble.providers.telescope" },
-            config = function()
-                require("trouble").setup({ use_diagnostic_signs = true })
-            end,
-            disable = false,
-        })
+		-- Statusline
+		use({
+			"nvim-lualine/lualine.nvim",
+			event = "BufReadPre",
+			config = function()
+				require("config.lualine").setup()
+			end,
+			disable = false,
+		})
+		-- Jumps
+		use({
+			"phaazon/hop.nvim",
+			cmd = "HopWord",
+			module = "hop",
+			keys = { "f", "F", "t", "T" },
+			config = function()
+				require("config.hop").setup()
+			end,
+			disable = true,
+		})
+		use({
+			"folke/noice.nvim",
+			config = function()
+				require("config.noice").setup()
+			end,
+			requires = {
+				"MunifTanjim/nui.nvim",
+				"rcarriga/nvim-notify",
+			},
+			disable = true,
+		})
+		use({
+			"ggandor/leap.nvim",
+			keys = { "s", "S" },
+			config = function()
+				local leap = require("leap")
+				leap.add_default_mappings()
+			end,
+			disable = true,
+		})
+		-- vscode-like pictograms
+		use("onsails/lspkind-nvim")
+		--
+		--  Nvim dashboard
+		use({
+			"goolord/alpha-nvim",
+			config = function()
+				require("config.alpha").setup()
+			end,
+			disable = false,
+		})
+		--
+		-- Telescope
+		use({
+			"nvim-telescope/telescope.nvim",
+			event = { "VimEnter" },
+			config = function()
+				require("config.telescope").setup()
+			end,
+			requires = {
+				"nvim-lua/popup.nvim",
+				"nvim-lua/plenary.nvim",
+				{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+				{ "nvim-telescope/telescope-project.nvim" },
+				{ "cljoly/telescope-repo.nvim" },
+				{ "nvim-telescope/telescope-file-browser.nvim" },
+				{
+					"ahmedkhalf/project.nvim",
+					config = function()
+						require("config.project").setup()
+					end,
+				},
+				{ "nvim-telescope/telescope-dap.nvim" },
+				{
+					"AckslD/nvim-neoclip.lua",
+					requires = { { "tami5/sqlite.lua", module = "sqlite" } },
+				},
+				{ "nvim-telescope/telescope-smart-history.nvim" },
+				{ "dhruvmanila/telescope-bookmarks.nvim" },
+				{ "nvim-telescope/telescope-github.nvim" },
+				"nvim-telescope/telescope-symbols.nvim",
+			},
+		})
+		--
+		-- trouble.nvim
+		use({
+			"folke/trouble.nvim",
+			cmd = { "TroubleToggle", "Trouble" },
+			module = { "trouble.providers.telescope" },
+			config = function()
+				require("trouble").setup({ use_diagnostic_signs = true })
+			end,
+			disable = false,
+		})
 
-        -- Rust
-        use({
-        	"simrat39/rust-tools.nvim",
-        	requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
-        	opt = true,
-        	module = "rust-tools",
-        	ft = { "rust" },
-        })
-        use({
-        	"saecki/crates.nvim",
-        	event = { "BufRead Cargo.toml" },
-        	requires = { { "nvim-lua/plenary.nvim" } },
-        	config = function()
-        		require("crates").setup({
-        			null_ls = { enabled = true, name = "crates.nvim" },
-        		})
-        	end,
-        	disable = false,
-        })
+		-- Rust
+		use({
+			"simrat39/rust-tools.nvim",
+			requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+			opt = true,
+			module = "rust-tools",
+			ft = { "rust" },
+		})
+		use({
+			"saecki/crates.nvim",
+			event = { "BufRead Cargo.toml" },
+			requires = { { "nvim-lua/plenary.nvim" } },
+			config = function()
+				require("crates").setup({
+					null_ls = { enabled = true, name = "crates.nvim" },
+				})
+			end,
+			disable = false,
+		})
 
-        -- Go
-        use({
-            "ray-x/go.nvim",
-            ft = { "go" },
-            config = function()
-            require("go").setup()
-            end,
-            disable = false,
-        })
-        -- Better icons
-        use({
-            "kyazdani42/nvim-web-devicons",
-            module = "nvim-web-devicons",
-            config = function()
-                require("nvim-web-devicons").setup({ default = true })
-            end,
-            disable = false,
-        })
+		-- Go
+		use({
+			"ray-x/go.nvim",
+			ft = { "go" },
+			config = function()
+				require("go").setup()
+			end,
+			disable = false,
+		})
+		-- Better icons
+		use({
+			"kyazdani42/nvim-web-devicons",
+			module = "nvim-web-devicons",
+			config = function()
+				require("nvim-web-devicons").setup({ default = true })
+			end,
+			disable = false,
+		})
 
 		use({ "segeljakt/vim-silicon", cmd = { "Silicon" } })
 
@@ -475,7 +480,7 @@ function M.setup()
 				--   end,
 				-- },
 			},
-            disable = true
+			disable = true,
 		})
 
 		-- vimspector
@@ -654,7 +659,6 @@ function M.setup()
 		-- use({ "nanotee/luv-vimdocs", event = "BufReadPre" })
 		-- use({ "milisims/nvim-luaref", event = "BufReadPre" })
 
-
 		-- User interface
 		use({
 			"stevearc/dressing.nvim",
@@ -742,9 +746,9 @@ function M.setup()
 			disable = false,
 		})
 
-		use({"junegunn/goyo.vim"})
-		use({"mbbill/undotree"})
-		use({"tpope/vim-fugitive"})
+		use({ "junegunn/goyo.vim" })
+		use({ "mbbill/undotree" })
+		use({ "tpope/vim-fugitive" })
 		--
 		-- use({
 		-- 	"epwalsh/obsidian.nvim",
