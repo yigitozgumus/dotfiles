@@ -349,6 +349,7 @@ function M.setup()
         })
 
 		use({ "segeljakt/vim-silicon", cmd = { "Silicon" } })
+
 		use({
 			"stevearc/aerial.nvim",
 			config = function()
@@ -387,9 +388,6 @@ function M.setup()
 				{ "onsails/lspkind-nvim", module = { "lspkind" } },
 				{
 					"L3MON4D3/LuaSnip",
-					-- config = function()
-					--     require("config.snip").setup()
-					-- end,
 					module = { "luasnip" },
 				},
 				"rafamadriz/friendly-snippets",
@@ -398,102 +396,103 @@ function M.setup()
 			},
 			disable = false,
 		})
-		--
-		-- -- LSP
-		-- use({
-		-- 	"neovim/nvim-lspconfig",
-		-- 	config = function()
-		-- 		require("config.lsp").setup()
-		-- 	end,
-		-- 	requires = {
-		-- 		-- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
-		-- 		"williamboman/mason.nvim",
-		-- 		"williamboman/mason-lspconfig.nvim",
-		-- 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		-- 		{ "jayp0521/mason-null-ls.nvim" },
-		-- 		"folke/neodev.nvim",
-		-- 		"RRethy/vim-illuminate",
-		-- 		"jose-elias-alvarez/null-ls.nvim",
-		-- 		{
-		-- 			"j-hui/fidget.nvim",
-		-- 			config = function()
-		-- 				require("fidget").setup({})
-		-- 			end,
-		-- 		},
-		-- 		{ "b0o/schemastore.nvim", module = { "schemastore" } },
-		-- 		{ "jose-elias-alvarez/typescript.nvim", module = { "typescript" } },
-		-- 		{
-		-- 			"SmiteshP/nvim-navic",
-		-- 			-- "alpha2phi/nvim-navic",
-		-- 			config = function()
-		-- 				require("nvim-navic").setup({})
-		-- 			end,
-		-- 			module = { "nvim-navic" },
-		-- 		},
-		-- 		{
-		-- 			"simrat39/inlay-hints.nvim",
-		-- 			config = function()
-		-- 				require("inlay-hints").setup()
-		-- 			end,
-		-- 		},
-		-- 		{
-		-- 			"zbirenbaum/neodim",
-		-- 			event = "LspAttach",
-		-- 			config = function()
-		-- 				require("config.neodim").setup()
-		-- 			end,
-		-- 			disable = false,
-		-- 		},
-		-- 		{
-		-- 			"theHamsta/nvim-semantic-tokens",
-		-- 			config = function()
-		-- 				require("config.semantictokens").setup()
-		-- 			end,
-		-- 			disable = false,
-		-- 		},
-		-- 		{ "David-Kunz/markid", disable = true },
-		-- 		{
-		-- 			"simrat39/symbols-outline.nvim",
-		-- 			cmd = { "SymbolsOutline" },
-		-- 			config = function()
-		-- 				require("symbols-outline").setup()
-		-- 			end,
-		-- 			disable = false,
-		-- 		},
-		-- 		-- {
-		-- 		--   "weilbith/nvim-code-action-menu",
-		-- 		--   cmd = "CodeActionMenu",
-		-- 		-- },
-		-- 		-- {
-		-- 		--   "rmagatti/goto-preview",
-		-- 		--   config = function()
-		-- 		--     require("goto-preview").setup {}
-		-- 		--   end,
-		-- 		-- },
-		-- 		-- {
-		-- 		--   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		-- 		--   config = function()
-		-- 		--     require("lsp_lines").setup()
-		-- 		--   end,
-		-- 		-- },
-		-- 	},
-		-- })
-		--
-		-- -- vimspector
-		-- use({
-		-- 	"puremourning/vimspector",
-		-- 	cmd = { "VimspectorInstall", "VimspectorUpdate" },
-		-- 	fn = {
-		-- 		"vimspector#Launch()",
-		-- 		"vimspector#ToggleBreakpoint",
-		-- 		"vimspector#Continue",
-		-- 	},
-		-- 	config = function()
-		-- 		require("config.vimspector").setup()
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		--
+
+		-- LSP
+		use({
+			"neovim/nvim-lspconfig",
+			config = function()
+				require("config.lsp").setup()
+			end,
+			requires = {
+				-- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
+				"williamboman/mason.nvim",
+				"williamboman/mason-lspconfig.nvim",
+				"WhoIsSethDaniel/mason-tool-installer.nvim",
+				{ "jayp0521/mason-null-ls.nvim" },
+				"folke/neodev.nvim",
+				"RRethy/vim-illuminate",
+				"jose-elias-alvarez/null-ls.nvim",
+				{
+					"j-hui/fidget.nvim",
+					config = function()
+						require("fidget").setup({})
+					end,
+				},
+				{ "b0o/schemastore.nvim", module = { "schemastore" } },
+				{ "jose-elias-alvarez/typescript.nvim", module = { "typescript" } },
+				{
+					"SmiteshP/nvim-navic",
+					-- "alpha2phi/nvim-navic",
+					config = function()
+						require("nvim-navic").setup({})
+					end,
+					module = { "nvim-navic" },
+				},
+				{
+					"simrat39/inlay-hints.nvim",
+					config = function()
+						require("inlay-hints").setup()
+					end,
+				},
+				{
+					"zbirenbaum/neodim",
+					event = "LspAttach",
+					config = function()
+						require("config.neodim").setup()
+					end,
+					disable = false,
+				},
+				{
+					"theHamsta/nvim-semantic-tokens",
+					config = function()
+						require("config.semantictokens").setup()
+					end,
+					disable = false,
+				},
+				{ "David-Kunz/markid", disable = true },
+				{
+					"simrat39/symbols-outline.nvim",
+					cmd = { "SymbolsOutline" },
+					config = function()
+						require("symbols-outline").setup()
+					end,
+					disable = false,
+				},
+				-- {
+				--   "weilbith/nvim-code-action-menu",
+				--   cmd = "CodeActionMenu",
+				-- },
+				-- {
+				--   "rmagatti/goto-preview",
+				--   config = function()
+				--     require("goto-preview").setup {}
+				--   end,
+				-- },
+				-- {
+				--   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+				--   config = function()
+				--     require("lsp_lines").setup()
+				--   end,
+				-- },
+			},
+            disable = true
+		})
+
+		-- vimspector
+		use({
+			"puremourning/vimspector",
+			cmd = { "VimspectorInstall", "VimspectorUpdate" },
+			fn = {
+				"vimspector#Launch()",
+				"vimspector#ToggleBreakpoint",
+				"vimspector#Continue",
+			},
+			config = function()
+				require("config.vimspector").setup()
+			end,
+			disable = false,
+		})
+
 		-- -- Test
 		-- use({
 		-- 	"nvim-neotest/neotest",
@@ -608,10 +607,7 @@ function M.setup()
 			disable = false,
 		})
 
-		-- -- Kotlin
-		-- use({ "udalov/kotlin-vim", ft = { "kotlin" }, disable = false })
-		--
-		-- -- nvim-tree
+		-- nvim-tree
 		use({
 			"nvim-tree/nvim-tree.lua",
 			opt = true,
@@ -657,20 +653,21 @@ function M.setup()
 		-- -- Doc
 		-- use({ "nanotee/luv-vimdocs", event = "BufReadPre" })
 		-- use({ "milisims/nvim-luaref", event = "BufReadPre" })
-		--
-		-- -- User interface
-		-- use({
-		-- 	"stevearc/dressing.nvim",
-		-- 	event = "BufReadPre",
-		-- 	config = function()
-		-- 		require("dressing").setup({
-		-- 			input = { relative = "editor" },
-		-- 			select = { backend = { "telescope", "fzf", "builtin" } },
-		-- 		})
-		-- 	end,
-		-- 	disable = false,
-		-- })
-		-- use({ "ray-x/guihua.lua", run = "cd lua/fzy && make", disable = true })
+
+
+		-- User interface
+		use({
+			"stevearc/dressing.nvim",
+			event = "BufReadPre",
+			config = function()
+				require("dressing").setup({
+					input = { relative = "editor" },
+					select = { backend = { "telescope", "fzf", "builtin" } },
+				})
+			end,
+			disable = false,
+		})
+		use({ "ray-x/guihua.lua", run = "cd lua/fzy && make", disable = true })
 		use({
 			"doums/suit.nvim",
 			config = function()
