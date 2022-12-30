@@ -34,7 +34,6 @@ function M.config()
 
   ---@type lspconfig.options
   local servers = {
-    bashls = {},
     cssls = {},
     tsserver = {},
     eslint = {},
@@ -55,7 +54,6 @@ function M.config()
     },
     gopls = {},
     marksman = {},
-    pyright = {},
     rust_analyzer = {
       settings = {
         ["rust-analyzer"] = {
@@ -119,7 +117,6 @@ function M.config()
         },
       },
     },
-    teal_ls = {},
     vimls = {},
     tailwindcss = {},
   }
