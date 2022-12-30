@@ -34,13 +34,9 @@ function M.config()
 
   ---@type lspconfig.options
   local servers = {
-    ansiblels = {},
     bashls = {},
-    clangd = {},
     cssls = {},
-    dockerls = {},
     tsserver = {},
-    svelte = {},
     eslint = {},
     html = {},
     jsonls = {
@@ -125,7 +121,7 @@ function M.config()
     },
     teal_ls = {},
     vimls = {},
-    -- tailwindcss = {},
+    tailwindcss = {},
   }
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
