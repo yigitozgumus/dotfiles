@@ -10,7 +10,6 @@ return {
   { "ellisonleao/gruvbox.nvim" },
   {
     "martinsione/darkplus.nvim",
-    lazy = false,
   },
   {
     "dstein64/vim-startuptime",
@@ -64,7 +63,6 @@ return {
     config = function()
       -- vim.cmd.colorscheme("gruvbox-material")
     end,
-    lazy = false,
   },
   -- Better surround
   { "tpope/vim-surround", event = "BufReadPre" },
