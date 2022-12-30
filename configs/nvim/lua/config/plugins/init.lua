@@ -27,7 +27,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      -- vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
@@ -41,10 +41,28 @@ return {
       },
     },
   },
+
+  {
+    "doums/suit.nvim",
+    config = function()
+      require("suit").setup({})
+    end,
+  },
+
+  {
+    "stevearc/dressing.nvim",
+    event = "BufReadPre",
+    config = function()
+      require("dressing").setup({
+        input = { relative = "editor" },
+        select = { backend = { "telescope", "fzf", "builtin" } },
+      })
+    end,
+  },
   {
     "sainnhe/gruvbox-material",
     config = function()
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
     lazy = false,
   },
