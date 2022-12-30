@@ -58,6 +58,7 @@ function M.config()
       settings = {
         ["rust-analyzer"] = {
           cargo = { allFeatures = true },
+          inlayHints = { locationLinks = false },
           checkOnSave = {
             command = "clippy",
             extraArgs = { "--no-deps" },
@@ -85,7 +86,7 @@ function M.config()
           },
           diagnostics = {
             -- enable = false,
-            globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins", "MiniTest" },
+            globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins", "MiniTest", "require" },
             groupSeverity = {
               strong = "Warning",
               strict = "Warning",
@@ -141,6 +142,8 @@ function M.config()
     opts = vim.tbl_deep_extend("force", {}, options, opts or {})
     if server == "tsserver" then
       require("typescript").setup({ server = opts })
+    elseif server == "rust_analyzer" then
+      require("rust-tools").setup(opts)
     else
       require("lspconfig")[server].setup(opts)
     end

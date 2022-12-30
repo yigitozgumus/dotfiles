@@ -6,8 +6,8 @@ local M = {
   keys = {
     { "<leader>n", ":NvimTreeToggle<CR>", desc = "NvimTree" },
   },
-  cond = false,
-  enabled = false,
+  cond = true,
+  enabled = true,
   config = function()
     require("nvim-tree").setup({
       disable_netrw = false,

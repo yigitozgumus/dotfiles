@@ -1,5 +1,6 @@
 local M = {
   "goolord/alpha-nvim",
+  lazy = false,
 }
 
 function M.config()
