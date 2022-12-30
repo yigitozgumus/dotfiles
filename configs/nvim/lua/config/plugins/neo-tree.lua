@@ -5,10 +5,10 @@ return {
   keys = {
     { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
   },
-  cond = false,
-  enabled = false,
+  cond = true,
+  enabled = true,
   config = {
-    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the table
+    close_if_last_window = true, -- Close Neo-tree if it is the last window left in the table
     window = {
       position = "left",
     },

@@ -1,5 +1,6 @@
 return {
   "folke/which-key.nvim",
+  event = "BufEnter",
   config = function()
     local whichkey = require("which-key")
     local conf = {
