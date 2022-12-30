@@ -49,7 +49,7 @@ end
 
 return {
   "akinsho/toggleterm.nvim",
-  event = "BufEnter",
+  event = "VeryLazy",
   keys = {
     { "<leader>gg", toggle_lazygit, desc = "Lazygit" },
     { "<leader>tt", toggle_terminal, desc = "Terminal" },
