@@ -31,6 +31,11 @@ local M = {
         enable = true,
         update_root = true,
       },
+      actions = {
+        open_file = {
+          resize_window = true,
+        },
+      },
     })
   end,
 }

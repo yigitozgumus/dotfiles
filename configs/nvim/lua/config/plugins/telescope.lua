@@ -34,6 +34,7 @@ return {
     local actions = require("telescope.actions")
     local actions_layout = require("telescope.actions.layout")
     local telescope = require("telescope")
+    local trouble = require("trouble.providers.telescope")
     local borderless = true
     telescope.setup({
       defaults = {
@@ -55,8 +56,12 @@ return {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-n>"] = actions.cycle_history_next,
             ["<C-p>"] = actions.cycle_history_prev,
+            ["<c-t>"] = trouble.open_with_trouble,
             -- ["<c-z>"] = trouble.open_with_trouble,
             ["?"] = actions_layout.toggle_preview,
+          },
+          n = {
+            ["<c-t>"] = trouble.open_with_trouble,
           },
         },
         --  prompt_prefix = " ",

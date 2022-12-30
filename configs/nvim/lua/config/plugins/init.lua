@@ -27,7 +27,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
@@ -44,7 +44,7 @@ return {
   {
     "sainnhe/gruvbox-material",
     config = function()
-      --  vim.cmd.colorscheme("gruvbox-material")
+      vim.cmd.colorscheme("gruvbox-material")
     end,
     lazy = false,
   },
@@ -156,11 +156,7 @@ return {
   {
     "folke/trouble.nvim",
     config = function()
-      require("trouble").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("trouble").setup({})
     end,
   },
 

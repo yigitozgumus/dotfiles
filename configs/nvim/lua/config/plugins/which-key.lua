@@ -28,7 +28,7 @@ return {
     }
     local keymap = {
       ["w"] = { "<cmd>update!<CR>", "Save" },
-      ["q"] = { "<cmd>lua require('utils').quit()<CR>", "Quit" },
+      ["q"] = { "<cmd>lua require('util').quit()<CR>", "Quit" },
       p = {
         name = "Project",
         p = { "<cmd>lua require'telescope'.extensions.project.project{display_type = 'full'}<cr>", "List" },
