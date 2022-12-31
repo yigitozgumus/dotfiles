@@ -1,17 +1,5 @@
 return {
   { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-
-  -- {
-  --   "mfussenegger/nvim-treehopper",
-  --   keys = { { "m", mode = { "o", "x" } } },
-  --   config = function()
-  --     vim.cmd([[
-  --       omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
-  --       xnoremap <silent> m :lua require('tsht').nodes()<CR>
-  --     ]])
-  --   end,
-  -- },
-
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -56,11 +44,6 @@ return {
             node_decremental = "<C-bs>",
           },
         },
-        -- query_linter = {
-        --   enable = true,
-        --   use_virtual_text = true,
-        --   lint_events = { "BufWrite", "CursorHold" },
-        -- },
         textsubjects = {
           enable = true,
           keymaps = {
@@ -86,9 +69,18 @@ return {
             show_help = "?",
           },
         },
+        swap = {
+          enable = true,
+          swap_next = {
+            ["<leader>rx"] = "@parameter.inner",
+          },
+          swap_previous = {
+            ["<leader>rX"] = "@parameter.inner",
+          },
+        },
         textobjects = {
           select = {
-            enable = false,
+            enable = true,
             lookahead = true,
             keymaps = {
               -- You can use the capture groups defined in textobjects.scm
@@ -99,7 +91,7 @@ return {
             },
           },
           move = {
-            enable = false,
+            enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
             goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
@@ -107,9 +99,10 @@ return {
             goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
           },
           lsp_interop = {
-            enable = false,
+            enable = true,
             peek_definition_code = {
-              ["gD"] = "@function.outer",
+              ["<leader>df"] = "@function.outer",
+              ["<leader>dF"] = "@class.outer",
             },
           },
         },

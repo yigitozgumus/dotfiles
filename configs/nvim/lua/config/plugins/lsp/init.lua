@@ -28,13 +28,13 @@ function M.config()
     if client.server_capabilities.documentSymbolProvider then
       require("nvim-navic").attach(client, bufnr)
     end
+    -- require("lsp-inlayhints").on_attach(client, bufnr)
     require("config.plugins.lsp.formatting").setup(client, bufnr)
     require("config.plugins.lsp.keys").setup(client, bufnr)
   end
 
   ---@type lspconfig.options
   local servers = {
-    cssls = {},
     tsserver = {},
     eslint = {},
     html = {},
@@ -74,6 +74,9 @@ function M.config()
         Lua = {
           workspace = {
             checkThirdParty = false,
+          },
+          hint = {
+            enable = true,
           },
           completion = {
             workspaceWord = true,

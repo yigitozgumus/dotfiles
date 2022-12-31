@@ -17,8 +17,8 @@ return {
     config = function()
       vim.g.startuptime_tries = 10
     end,
-    cond = false,
-    enabled = false,
+    cond = true,
+    enabled = true,
   },
   -- Colorscheme
   {

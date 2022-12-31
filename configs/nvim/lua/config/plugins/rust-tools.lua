@@ -7,11 +7,12 @@ function M.setup(options)
     tools = { -- rust-tools options
       --   -- Automatically set inlay hints (type hints)
       --   autoSetHints = true,
-
       --   -- Whether to show hover actions inside the hover window
       --   -- This overrides the default hover handler
       --   hover_with_actions = true,
-
+      -- on_initialized = function()
+      --   require("inlay-hints").set_all()
+      -- end,
       --   -- how to execute terminal commands
       --   -- options right now: termopen / quickfix
       --   executor = require("rust-tools/executors").termopen,
@@ -35,7 +36,7 @@ function M.setup(options)
 
         --     -- Only show inlay hints for the current line
         --     only_current_line = false,
-
+        auto = false,
         --     -- Event which triggers a refersh of the inlay hints.
         --     -- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
         --     -- not that this may cause  higher CPU usage.
@@ -44,7 +45,7 @@ function M.setup(options)
         --     only_current_line_autocmd = "CursorHold",
 
         --     -- wheter to show parameter hints with the inlay hints or not
-        --     show_parameter_hints = true,
+        show_parameter_hints = true,
 
         --     -- prefix for parameter hints
         parameter_hints_prefix = "  <-  ",
