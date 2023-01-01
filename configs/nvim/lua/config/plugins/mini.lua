@@ -1,7 +1,5 @@
 local mini = {
   "echasnovski/mini.nvim",
-  event = "VeryLazy",
-  cond = false,
 }
 
 local specs = { mini, "JoosepAlviste/nvim-ts-context-commentstring" }

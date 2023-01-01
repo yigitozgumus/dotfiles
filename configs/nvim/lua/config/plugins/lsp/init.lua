@@ -28,7 +28,10 @@ function M.config()
     if client.server_capabilities.documentSymbolProvider then
       require("nvim-navic").attach(client, bufnr)
     end
-    -- require("lsp-inlayhints").on_attach(client, bufnr)
+    -- if client ~= "rust-analyzer" then
+    --   require("lsp-inlayhints").on_attach(client, bufnr)
+    -- end
+    -- require("inlay-hints").on_attach(client, bufnr)
     require("config.plugins.lsp.formatting").setup(client, bufnr)
     require("config.plugins.lsp.keys").setup(client, bufnr)
   end
@@ -58,7 +61,9 @@ function M.config()
       settings = {
         ["rust-analyzer"] = {
           cargo = { allFeatures = true },
-          inlayHints = { locationLinks = false },
+          inlayHints = {
+            locationLinks = false,
+          },
           checkOnSave = {
             command = "clippy",
             extraArgs = { "--no-deps" },
