@@ -1,84 +1,69 @@
 -- Base Configuration
+local options = {
+  encoding = "utf-8", -- Output Encoding that is shown on the terminal
+  fileencoding = "utf-8", -- Output Encoding of that file that is written
+  mouse = "a", -- allow mouse to be used in neovim
+  swapfile = false, -- creates a swapfile
+  timeoutlen = 1000, -- time towait for a mapped sequence to complete
+  undofile = true, -- enable persistent undo
+  title = true,
+  hlsearch = true, -- highlight all matches on previous search pattern
+  backup = false, -- Creates a backup file
+  showcmd = true,
+  cmdheight = 1, -- more space in the neovim command line
+  laststatus = 2, -- Set global statusline
+  number = true,
+  showmatch = true,
+  relativenumber = true,
+  splitright = true, -- force all vertical splits to go to the right
+  splitbelow = true, -- force all horizontal splits to go below current
+  ignorecase = true, -- ignore case in search patterns
+  smartcase = true, -- Smart case
+  linebreak = true,
+  showmode = false, -- No need to see mode
+  showtabline = 2, -- always show tabs
+  completeopt = { "menuone", "noselect" }, -- Used for cmp
+  conceallevel = 0, -- Backticks are visible in markdown
+  inccommand = "split",
+  backupskip = { "/tmp/*", "/private/tmp/*" },
+  backspace = { "start", "eol", "indent" },
+  writebackup = false, -- if a file is being edited by another program
+  expandtab = true, -- convert tabs to spaces
+  shiftwidth = 4, -- the number of spaces inserted for each indentation
+  tabstop = 4, -- insert 2 spaces for a tab
+  smartindent = true, -- make indenting smarter
+  autoindent = true,
+  wrap = false,
+  hidden = true, -- Enable background buffers
+  history = 10000, -- Remember N lines in history
+  synmaxcol = 240, -- Max column for syntax highlight
+  updatetime = 400, -- ms to wait for trigger an event
+  cursorline = true, -- highlight the current line
+  termguicolors = true,
+  winblend = 0,
+  wildoptions = "pum",
+  pumblend = 5,
+  pumheight = 10, -- pop up menu height
+  background = "dark",
+  signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
+  wildmode = "longest:full,full",
+  scrolloff = 10,
+  sidescrolloff = 10,
+  confirm = true,
+  fillchars = "eob: ",
+}
 
--- Specify the character encoding in script
-vim.scriptencoding = "utf-8"
--- Output Encoding that is shown on the terminal
-vim.opt.encoding = "utf-8"
--- Output Encoding of that file that is written
-vim.opt.fileencoding = "utf-8"
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
 
-vim.o.mouse = "a"
+-- allows neovim to access to system clipboard
 vim.opt.clipboard:append({ "unnamedplus" })
-vim.o.swapfile = false
-
-vim.opt.title = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-
--- Set global statusline
-vim.opt.laststatus = 2
-
-vim.wo.number = true
-vim.o.showmatch = true
-vim.o.relativenumber = true
-
-vim.o.splitright = true
-vim.o.splitbelow = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.linebreak = true
-
-vim.opt.inccommand = "split"
-vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
-vim.opt.backspace = { "start", "eol", "indent" }
 
 -- finding files Search down into subfolders
 vim.opt.path:append({ "**" })
+
 vim.opt.wildignore:append({ "*/node_modules/*" })
-
------------------------------------------------------------
--- Tabs, indent
------------------------------------------------------------
-
-vim.o.expandtab = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
--- vim.opt.smartindent = true
-vim.opt.autoindent = true
-vim.opt.wrap = false
-
------------------------------------------------------------
--- Memory, CPU
------------------------------------------------------------
--- Enable background buffers
-vim.o.hidden = true
--- Remember N lines in history
-vim.o.history = 10000
--- Max column for syntax highlight
-vim.o.synmaxcol = 240
--- ms to wait for trigger an event
-vim.o.updatetime = 700
-
------------------------------------------------------------
--- Misc
------------------------------------------------------------
-
-vim.opt.cursorline = true
-vim.opt.termguicolors = true
-vim.opt.winblend = 0
-vim.opt.wildoptions = "pum"
-vim.opt.pumblend = 5
-vim.opt.background = "dark"
-
-vim.o.signcolumn = "yes:2"
-vim.o.wildmode = "longest:full,full"
-vim.o.wrap = false
-vim.o.scrolloff = 10
-vim.o.sidescrolloff = 10
-vim.o.confirm = true
-vim.o.fillchars = "eob: "
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {

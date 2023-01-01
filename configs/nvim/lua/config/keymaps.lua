@@ -1,4 +1,4 @@
-local keymap = vim.keymap.set
+local keymap = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
@@ -8,11 +8,6 @@ keymap("n", "<leader>Q", ":bufdo bdelete<CR>", default_opts)
 -- Reselect visual selection after indenting
 keymap("v", "<", "<gv", default_opts)
 keymap("v", ">", ">gv", default_opts)
-
--- Maintain the cursor position when yanking a visual selection
--- http://ddrscott.github.io/blog/2016/yank-without-jank/
-keymap("v", "y", "myy`hay", default_opts)
-keymap("v", "Y", "myY`y", default_opts)
 
 -- Easy insertion of a trailing ; or , from insert mode
 keymap("i", ";;", "<Esc>A;<Esc>", default_opts)
@@ -37,11 +32,24 @@ keymap("i", "<down>", "<nop>", default_opts)
 keymap("i", "<left>", "<nop>", default_opts)
 keymap("i", "<right>", "<nop>", default_opts)
 
+-- Navigate buffers
+keymap("n", "<S-l>", ":bnext<CR>", default_opts)
+keymap("n", "<S-h>", ":bprevious<CR>", default_opts)
+
+-- Stay in indent mode
+keymap("v", "<", "<gv", default_opts)
+keymap("v", ">", ">gv", default_opts)
+
 keymap("n", "j", "gj", default_opts)
 keymap("n", "k", "gk", default_opts)
 
 -- Clear search highlighting with <leader> and c
 keymap("n", "<leader>c", ":nohl<CR>", default_opts)
+
+-- Move text up and down
+keymap("v", "<A-j>", ":m .+1<CR>==", default_opts)
+keymap("v", "<A-k>", ":m .-2<CR>==", default_opts)
+keymap("v", "p", '"_dP', default_opts)
 
 -- Change split orientation
 keymap("n", "<leader>tk", "<C-w>t<C-w>K", default_opts) -- change vertical to horizontal

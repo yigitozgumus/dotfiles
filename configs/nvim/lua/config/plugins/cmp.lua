@@ -1,4 +1,4 @@
-local cmdline = false
+local cmdline = true
 
 local M = {
   "hrsh7th/nvim-cmp",
@@ -15,7 +15,7 @@ local M = {
 }
 
 function M.config()
-  vim.o.completeopt = "menuone,noselect"
+  vim.opt.completeopt = "menuone,noselect"
 
   -- Setup nvim-cmp.
   local cmp = require("cmp")
@@ -86,12 +86,6 @@ function M.config()
       ["<C-y>"] = {
         i = cmp.mapping.confirm({ select = false }),
       },
-      -- ["<C-n>"] = {
-      --   i = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
-      -- },
-      -- ["<C-p>"] = {
-      --   i = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
-      -- },
     }),
     sources = {
       { name = "nvim_lsp", max_item_count = 15 },
@@ -104,18 +98,7 @@ function M.config()
       { name = "nvim_lua" },
       { name = "path" },
       { name = "crates" },
-      -- { name = "spell" },
-      -- { name = "emoji" },
-      -- { name = "calc" },
     },
-    -- sources = cmp.config.sources({
-    --   { name = "nvim_lsp" },
-    --   { name = "luasnip" },
-    --   { name = "buffer" },
-    --   { name = "path" },
-    --   { name = "emoji" },
-    --   { name = "neorg" },
-    -- }),
     window = {
       documentation = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -125,26 +108,11 @@ function M.config()
     formatting = {
       format = require("config.plugins.lsp.kind").cmp_format(),
     },
-    -- documentation = {
-    --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    --   winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-    -- },
     experimental = {
       ghost_text = {
         hl_group = "LspCodeLens",
       },
     },
-    -- sorting = {
-    --   comparators = {
-    --     cmp.config.compare.sort_text,
-    --     cmp.config.compare.offset,
-    --     -- cmp.config.compare.exact,
-    --     cmp.config.compare.score,
-    --     -- cmp.config.compare.kind,
-    --     -- cmp.config.compare.length,
-    --     cmp.config.compare.order,
-    --   },
-    -- },
   })
   if cmdline then
     cmp.setup.cmdline(":", {

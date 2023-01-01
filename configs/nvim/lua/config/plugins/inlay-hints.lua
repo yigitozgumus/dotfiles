@@ -1,15 +1,11 @@
 return {
   "simrat39/inlay-hints.nvim",
   config = function()
-    require("inlay-hints").setup({
-      eol = {
-        right_align = true,
-      },
-    })
+    require("inlay-hints").setup({})
   end,
-  lazy = false,
-  cond = false,
-  enabled = false,
+  event = "BufEnter",
+  cond = true,
+  enabled = true,
 }
 
 -- return {

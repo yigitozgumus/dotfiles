@@ -43,7 +43,7 @@ function M.setup(client, buffer)
         },
         d = { vim.diagnostic.open_float, "Line Diagnostics" },
         l = {
-          name = "+lsp",
+          name = "Lsp",
           i = { "<cmd>LspInfo<cr>", "Lsp Info" },
           a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder" },
           r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder" },
