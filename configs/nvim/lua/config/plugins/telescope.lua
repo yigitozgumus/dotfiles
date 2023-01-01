@@ -15,7 +15,6 @@ return {
     { "<leader>sg", ":Telescope live_grep<CR>", desc = "[S]earch by [G]rep" },
     { "<leader>sd", ":Telescope diagnostics<CR>", desc = "[S]earch [D]iagnostics" },
   },
-  event = "InsertEnter",
   config = function()
     -- Custom actions
     local transform_mod = require("telescope.actions.mt").transform_mod
