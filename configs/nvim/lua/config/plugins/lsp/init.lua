@@ -92,6 +92,12 @@ function M.config()
               "--log-level=trace",
             },
           },
+          workspace = {
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
+            },
+          },
           diagnostics = {
             -- enable = false,
             globals = {

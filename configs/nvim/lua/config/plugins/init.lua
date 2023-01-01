@@ -26,6 +26,16 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      require("catppuccin").setup({
+
+        transparent_background = true,
+        term_colors = false,
+        dim_inactive = {
+          enabled = false,
+          shade = "dark",
+          percentage = 0.15,
+        },
+      })
       vim.cmd.colorscheme("catppuccin")
     end,
   },
