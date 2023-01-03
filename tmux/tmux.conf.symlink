@@ -6,7 +6,7 @@
 unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
-
+set-environment -g PATH "/usr/local/bin:/bin:/usr/bin:/opt/homebrew/bin"
 # Automatically set window title
 set-window-option -g automatic-rename on
 set-option -g set-titles on
