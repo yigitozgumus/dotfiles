@@ -107,7 +107,6 @@ return {
   -- Better Comment
   {
     "numToStr/Comment.nvim",
-    event = "VeryLazy",
     keys = { "gc", "gcc", "gbc" },
     config = function()
       require("Comment").setup({})
@@ -181,7 +180,6 @@ return {
   },
   {
     "folke/trouble.nvim",
-    event = "VeryLazy",
     config = function()
       require("trouble").setup({})
     end,
