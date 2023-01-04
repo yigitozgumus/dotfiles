@@ -28,8 +28,8 @@ return {
     config = function()
       require("catppuccin").setup({
 
-        transparent_background = true,
-        term_colors = false,
+        transparent_background = false,
+        -- term_colors = false,
         dim_inactive = {
           enabled = false,
           shade = "dark",
@@ -70,6 +70,7 @@ return {
   },
   {
     "sainnhe/gruvbox-material",
+    event = "VeryLazy",
     config = function()
       -- vim.cmd.colorscheme("gruvbox-material")
     end,
