@@ -99,8 +99,7 @@ function M.setup()
 		})
 		-- Code documentation
 		use({
-			"danymat/neogen",
-			config = function()
+			"danymat/neogen", config = function()
 				require("config.neogen").setup()
 			end,
 			cmd = { "Neogen" },

@@ -108,6 +108,7 @@ return {
   -- Better Comment
   {
     "numToStr/Comment.nvim",
+    event = "VeryLazy",
     keys = { "gc", "gcc", "gbc" },
     config = function()
       require("Comment").setup({})

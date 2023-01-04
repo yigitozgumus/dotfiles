@@ -1,6 +1,5 @@
 local M = {}
 
--- local util = require "lspconfig.util"
 
 local servers = {
 	gopls = {
@@ -38,7 +37,6 @@ local servers = {
 			},
 		},
 	},
-	-- pylsp = {}, -- Integration with rope for refactoring - https://github.com/python-rope/pylsp-rope
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {
@@ -61,7 +59,7 @@ local servers = {
 				},
 				diagnostics = {
 					-- Get the language server to recognize the `vim` global
-					globals = { "vim" },
+					globals = { "vim", "require" },
 					-- disable = { "lowercase-global", "undefined-global", "unused-local", "unused-vararg", "trailing-space" },
 				},
 				workspace = {

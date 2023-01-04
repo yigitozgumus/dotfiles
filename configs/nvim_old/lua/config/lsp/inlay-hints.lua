@@ -25,7 +25,7 @@ function M.setup()
 	hints.setup({
 		inlay_hints = {
 			parameter_hints = {
-				show = false,
+				show = true,
 				-- prefix = "<- ",
 				separator = ", ",
 			},
@@ -51,7 +51,7 @@ function M.setup()
 			-- highlight group
 			highlight = "Comment",
 		},
-		debug_mode = false,
+		debug_mode = true,
 	})
 end
 
