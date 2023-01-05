@@ -137,7 +137,7 @@ setup_astronvim() {
 }
 
 ## setup neovim
-setup_neovim() {
+setup_neovim_lazy() {
     blank_line
     info "Deleting current configuration."
     rm -rf ~/.config/nvim
@@ -145,11 +145,11 @@ setup_neovim() {
     rm -rf ~/.local/state/nvim
     rm -rf ~/.cache/nvim
     info "Linking the Neovim Configuration."
-    ln -sf "$DOTFILES/configs/nvim/" "$HOME/.config/nvim"
+    ln -sf "$DOTFILES/configs/nvim_lazy/" "$HOME/.config/nvim"
 }
 
 ## setup old neovim
-setup_old_neovim() {
+setup_neovim_packer() {
     blank_line
     info "Deleting current configuration."
     rm -rf ~/.config/nvim
@@ -157,7 +157,7 @@ setup_old_neovim() {
     rm -rf ~/.local/state/nvim
     rm -rf ~/.cache/nvim
     info "Linking the Neovim Configuration."
-    ln -sf "$DOTFILES/configs/nvim_old/" "$HOME/.config/nvim"
+    ln -sf "$DOTFILES/configs/nvim_packer/" "$HOME/.config/nvim"
 }
 
 # Git setup
@@ -316,10 +316,10 @@ git)
     setup_git
     ;;
 nvim-lazy)
-    setup_neovim
+    setup_neovim_lazy
     ;;
 nvim-packer)
-    setup_old_neovim
+    setup_neovim_packer
     ;;
 homebrew)
     setup_homebrew
