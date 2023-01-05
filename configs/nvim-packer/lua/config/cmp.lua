@@ -22,9 +22,6 @@ function M.install_plugin()
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		opt = true,
-		config = function()
-			require("config.cmp").setup()
-		end,
 		requires = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
