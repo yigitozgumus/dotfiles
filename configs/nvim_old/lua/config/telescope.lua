@@ -67,8 +67,7 @@ function M.setup()
 		},
 		pickers = {
 			find_files = {
-				theme = "ivy",
-				previewer = false,
+				theme = "dropdown",
 				mappings = {
 					n = {
 						["y"] = nvb_actions.file_path,

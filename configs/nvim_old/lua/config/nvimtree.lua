@@ -16,6 +16,11 @@ function M.setup()
 			custom = { ".git" },
 		},
 		sync_root_with_cwd = true,
+        actions = {
+            open_file = {
+                resize_window = true,
+            },
+        },
 		update_focused_file = {
 			enable = true,
 			update_root = true,
