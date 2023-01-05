@@ -44,13 +44,11 @@ function M.setup()
 	telescope.setup({
 		defaults = {
 			prompt_prefix = icons.ui.Telescope .. " ",
+            previewer = true,
 			layout_config = {
 				prompt_position = "top",
 				vertical = { width = 0.5 },
 			},
-			border = {},
-			borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-			color_devicons = true,
 			selection_caret = " ",
 			-- path_display = { "smart" },
 			mappings = {
@@ -72,49 +70,49 @@ function M.setup()
 			color_devicons = true,
 		},
 		pickers = {
-			find_files = {
-				theme = "dropdown",
-				mappings = {
-					n = {
-						["y"] = nvb_actions.file_path,
-						["s"] = nvb_actions.visidata,
-					},
-					i = {
-						["<C-y>"] = nvb_actions.file_path,
-						["<C-s>"] = nvb_actions.visidata,
-					},
-				},
-				hidden = true,
-				find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-			},
-			git_files = {
-				theme = "dropdown",
-				previewer = false,
-				mappings = {
-					n = {
-						["y"] = nvb_actions.file_path,
-						["s"] = nvb_actions.visidata,
-					},
-					i = {
-						["<C-y>"] = nvb_actions.file_path,
-						["<C-s>"] = nvb_actions.visidata,
-					},
-				},
-			},
-			buffers = {
-				theme = "dropdown",
-				previewer = false,
-				mappings = {
-					n = {
-						["y"] = nvb_actions.file_path,
-						["s"] = nvb_actions.visidata,
-					},
-					i = {
-						["<C-y>"] = nvb_actions.file_path,
-						["<C-s>"] = nvb_actions.visidata,
-					},
-				},
-			},
+			-- find_files = {
+			-- 	theme = "dropdown",
+			-- 	mappings = {
+			-- 		n = {
+			-- 			["y"] = nvb_actions.file_path,
+			-- 			["s"] = nvb_actions.visidata,
+			-- 		},
+			-- 		i = {
+			-- 			["<C-y>"] = nvb_actions.file_path,
+			-- 			["<C-s>"] = nvb_actions.visidata,
+			-- 		},
+			-- 	},
+			-- 	hidden = true,
+			-- 	find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+			-- },
+			-- git_files = {
+			-- 	theme = "dropdown",
+			-- 	previewer = false,
+			-- 	mappings = {
+			-- 		n = {
+			-- 			["y"] = nvb_actions.file_path,
+			-- 			["s"] = nvb_actions.visidata,
+			-- 		},
+			-- 		i = {
+			-- 			["<C-y>"] = nvb_actions.file_path,
+			-- 			["<C-s>"] = nvb_actions.visidata,
+			-- 		},
+			-- 	},
+			-- },
+			-- buffers = {
+			-- 	theme = "dropdown",
+			-- 	previewer = false,
+			-- 	mappings = {
+			-- 		n = {
+			-- 			["y"] = nvb_actions.file_path,
+			-- 			["s"] = nvb_actions.visidata,
+			-- 		},
+			-- 		i = {
+			-- 			["<C-y>"] = nvb_actions.file_path,
+			-- 			["<C-s>"] = nvb_actions.visidata,
+			-- 		},
+			-- 	},
+			-- },
 		},
 		extensions = {
 			arecibo = {
