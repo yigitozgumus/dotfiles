@@ -1,5 +1,15 @@
 local M = {}
 
+function M.install_plugin()
+	return {
+		"goolord/alpha-nvim",
+		config = function()
+			M.setup()
+		end,
+		disable = false,
+	}
+end
+
 function M.setup()
 	local status_ok, alpha = pcall(require, "alpha")
 	if not status_ok then

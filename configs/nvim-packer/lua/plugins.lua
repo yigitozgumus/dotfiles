@@ -59,61 +59,25 @@ function M.setup()
 		use({ "lewis6991/impatient.nvim", disable = false })
 
 		use({ "nvim-lua/plenary.nvim", module = "plenary" }) -- lua functions that many plugins use
-		-- -- Notification
-		use({
-			"rcarriga/nvim-notify",
-			event = "BufReadPre",
-			config = function()
-				require("config.notify").setup()
-			end,
-			disable = false,
-		})
-		use({
-			"vigoux/notifier.nvim",
-			config = function()
-				require("notifier").setup({})
-			end,
-			disable = true,
-		})
-		--
-		-- Colorscheme
-		use({
-			"catppuccin/nvim",
-			as = "catppuccin",
-			config = function()
-				require("config.catppuccin").setup()
-			end,
-			disable = false,
-		})
-		--
-		use({
-			"folke/tokyonight.nvim",
-			disable = false,
-		})
-		--
+		use(require("config.notify").install_plugin())
+		use(require("config.notifier").install_plugin())
+		use(require("config.catppuccin").install_plugin())
+		use(require("config.tokyonight").install_plugin())
 		use({ "projekt0n/github-nvim-theme", disable = false })
-		--
-		use({
-			"sainnhe/gruvbox-material",
-			disable = false,
-		})
+		use(require("config.gruvbox").install_plugin())
+		use(require("config.cmdline").install_plugin())
+		use(require("config.alpha").install_plugin())
+		use(require("config.cmp").install_plugin())
+		use(require("config.autopairs").install_plugin())
 		-- Code documentation
 		use({
-			"danymat/neogen", config = function()
+			"danymat/neogen",
+			config = function()
 				require("config.neogen").setup()
 			end,
 			cmd = { "Neogen" },
 			module = "neogen",
 			disable = false,
-		})
-		use({
-			"VonHeikemen/fine-cmdline.nvim",
-			requires = {
-				{ "MunifTanjim/nui.nvim" },
-			},
-			config = function()
-				require("config.cmdline").setup()
-			end,
 		})
 
 		use({
@@ -260,17 +224,6 @@ function M.setup()
 		})
 		-- vscode-like pictograms
 		use("onsails/lspkind-nvim")
-		--
-		--  Nvim dashboard
-		use({
-			"goolord/alpha-nvim",
-			config = function()
-				require("config.alpha").setup()
-			end,
-			disable = false,
-		})
-		--
-		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
 			event = { "VimEnter" },
@@ -367,37 +320,6 @@ function M.setup()
 			end,
 			module = { "aerial", "telescope._extensions.aerial" },
 			cmd = { "AerialToggle" },
-			disable = false,
-		})
-
-		-- Completion
-		use({
-			"hrsh7th/nvim-cmp",
-			event = "InsertEnter",
-			opt = true,
-			config = function()
-				require("config.cmp").setup()
-			end,
-			requires = {
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-nvim-lua",
-				"ray-x/cmp-treesitter",
-				"hrsh7th/cmp-cmdline",
-				"saadparwaiz1/cmp_luasnip",
-				{ "hrsh7th/cmp-nvim-lsp", module = { "cmp_nvim_lsp" } },
-				"hrsh7th/cmp-nvim-lsp-signature-help",
-				"lukas-reineke/cmp-rg",
-				"davidsierradz/cmp-conventionalcommits",
-				{ "onsails/lspkind-nvim", module = { "lspkind" } },
-				{
-					"L3MON4D3/LuaSnip",
-					module = { "luasnip" },
-				},
-				"rafamadriz/friendly-snippets",
-				"honza/vim-snippets",
-				{ "tzachar/cmp-tabnine", run = "./install.sh", disable = true },
-			},
 			disable = false,
 		})
 
@@ -614,14 +536,7 @@ function M.setup()
 			end,
 		})
 
-		-- Buffer line
-		use({
-			"akinsho/nvim-bufferline.lua",
-			event = "BufReadPre",
-			config = function()
-				require("config.bufferline").setup()
-			end,
-		})
+		use(require("config.bufferline").install_plugin())
 
 		-- WhichKey
 		use({
@@ -672,15 +587,6 @@ function M.setup()
 		})
 
 		-- Auto pairs
-		use({
-			"windwp/nvim-autopairs",
-			opt = true,
-			event = "InsertEnter",
-			module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
-			config = function()
-				require("config.autopairs").setup()
-			end,
-		})
 		-- git integration
 		use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 		--

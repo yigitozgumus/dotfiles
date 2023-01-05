@@ -2,6 +2,17 @@ local M = {}
 
 local icons = require("config.icons")
 
+function M.install_plugin()
+    return {
+        "rcarriga/nvim-notify",
+        event = "BufReadPre",
+        config = function()
+            M.setup()
+        end,
+        disable = false,
+    }
+end
+
 function M.setup()
 	local notify = require("notify")
 	notify.setup({

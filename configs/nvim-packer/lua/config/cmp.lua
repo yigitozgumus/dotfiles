@@ -17,33 +17,40 @@ local source_mapping = {
 	nvim_lsp_signature_help = "[Sig]",
 }
 
--- local kind_icons = {
---   Text = "",
---   Method = "",
---   Function = "",
---   Constructor = "",
---   Field = "",
---   Variable = "",
---   Class = "ﴯ",
---   Interface = "",
---   Module = "",
---   Property = "ﰠ",
---   Unit = "",
---   Value = "",
---   Enum = "",
---   Keyword = "",
---   Snippet = "",
---   Color = "",
---   File = "",
---   Reference = "",
---   Folder = "",
---   EnumMember = "",
---   Constant = "",
---   Struct = "",
---   Event = "",
---   Operator = "",
---   TypeParameter = "",
--- }
+function M.install_plugin()
+	return {
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		opt = true,
+		config = function()
+			require("config.cmp").setup()
+		end,
+		requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lua",
+			"ray-x/cmp-treesitter",
+			"hrsh7th/cmp-cmdline",
+			"saadparwaiz1/cmp_luasnip",
+			{ "hrsh7th/cmp-nvim-lsp", module = { "cmp_nvim_lsp" } },
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"lukas-reineke/cmp-rg",
+			"davidsierradz/cmp-conventionalcommits",
+			{ "onsails/lspkind-nvim", module = { "lspkind" } },
+			{
+				"L3MON4D3/LuaSnip",
+				module = { "luasnip" },
+			},
+			"rafamadriz/friendly-snippets",
+			"honza/vim-snippets",
+			{ "tzachar/cmp-tabnine", run = "./install.sh", disable = true },
+		},
+		disable = false,
+		config = function()
+			M.setup()
+		end,
+	}
+end
 
 function M.setup()
 	local has_words_before = function()
@@ -128,7 +135,7 @@ function M.setup()
 				"s",
 				"c",
 			}),
-			["<CR>"] = cmp.mapping.confirm({ select = true}),
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-j>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()

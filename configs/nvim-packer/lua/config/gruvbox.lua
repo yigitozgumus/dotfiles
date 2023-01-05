@@ -1,9 +1,19 @@
-local pluginActive = true
-if (not pluginActive) then return end
+local M =  {}
 
-local status, gruvbox = pcall(require, "gruvbox")
-if (not status) then return end
-gruvbox.setup({
+function M.install_plugin()
+    return {
+
+		"sainnhe/gruvbox-material",
+			disable = false,
+        config = function() 
+        M.setup()
+        end,
+    }
+end
+
+function M.setup()
+
+require("gruvbox").setup({
   undercurl = true,
   underline = true,
   bold = true,
@@ -20,3 +30,6 @@ gruvbox.setup({
   dim_inactive = false,
   transparent_mode = true,
 })
+end
+
+return M

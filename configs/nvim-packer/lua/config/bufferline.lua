@@ -1,5 +1,15 @@
 local M = {}
 
+function M.install_plugin()
+	return {
+		"akinsho/nvim-bufferline.lua",
+		event = "BufReadPre",
+		config = function()
+			M.setup()
+		end,
+	}
+end
+
 function M.setup()
 	require("bufferline").setup({
 		options = {

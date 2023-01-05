@@ -1,5 +1,17 @@
 local M = {}
 
+function M.install_plugin()
+    return {
+        "windwp/nvim-autopairs",
+        opt = true,
+        event = "InsertEnter",
+        module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+        config = function()
+            M.setup()
+        end,
+    }
+end
+
 function M.setup()
 	-- import nvim-autopairs safely
 	local autopairs_setup, autopairs = pcall(require, "nvim-autopairs")

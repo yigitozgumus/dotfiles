@@ -1,5 +1,15 @@
 local M = {}
 
+function M.install_plugin()
+	return {
+		"catppuccin/nvim",
+		as = "catppuccin",
+		config = function()
+			M.setup()
+		end,
+	}
+end
+
 function M.setup()
 	local status, catppuccin = pcall(require, "catppuccin")
 	if not status then
@@ -46,7 +56,6 @@ function M.setup()
 			-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 		},
 	})
-
 end
 
 return M
