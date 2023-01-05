@@ -41,10 +41,16 @@ function M.setup()
 	local actions_layout = require("telescope.actions.layout")
 	local telescope = require("telescope")
 
-
 	telescope.setup({
 		defaults = {
 			prompt_prefix = icons.ui.Telescope .. " ",
+			layout_config = {
+				prompt_position = "top",
+				vertical = { width = 0.5 },
+			},
+			border = {},
+			borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+			color_devicons = true,
 			selection_caret = " ",
 			-- path_display = { "smart" },
 			mappings = {
