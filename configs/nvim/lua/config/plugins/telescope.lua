@@ -10,6 +10,7 @@ return {
   keys = {
     { "<leader>ff", ":Telescope find_files<CR>", desc = "Find File" },
     { "<leader>fp", ":Telescope git_files<CR>", desc = "Project files" },
+    { "<leader>fb", ":Telescope buffers<CR>", desc = "Buffers" },
     { "<leader>sh", ":Telescope help_tags<CR>", desc = "Help Tags" },
     { "<leader>sw", ":Telescope grep_string<CR>", desc = "[S]earch current [W]ord" },
     { "<leader>sg", ":Telescope live_grep<CR>", desc = "[S]earch by [G]rep" },
