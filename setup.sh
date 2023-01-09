@@ -145,7 +145,7 @@ setup_neovim_lazy() {
     rm -rf ~/.local/state/nvim
     rm -rf ~/.cache/nvim
     info "Linking the Neovim Configuration."
-    ln -sf "$DOTFILES/configs/nvim-lazy/" "$HOME/.config/nvim"
+    ln -sf "$DOTFILES/configs/nvim/" "$HOME/.config/nvim"
 }
 
 ## setup old neovim
@@ -315,11 +315,8 @@ link)
 git)
     setup_git
     ;;
-nvim-lazy)
+nvim)
     setup_neovim_lazy
-    ;;
-nvim-packer)
-    setup_neovim_packer
     ;;
 homebrew)
     setup_homebrew

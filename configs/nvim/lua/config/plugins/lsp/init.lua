@@ -28,10 +28,7 @@ function M.config()
     if client.server_capabilities.documentSymbolProvider then
       require("nvim-navic").attach(client, bufnr)
     end
-    -- if client ~= "rust-analyzer" then
-    --   require("lsp-inlayhints").on_attach(client, bufnr)
-    -- end
-    require("inlay-hints").on_attach(client, bufnr)
+    -- require("inlay-hints").on_attach(client, bufnr)
     require("config.plugins.lsp.formatting").setup(client, bufnr)
     require("config.plugins.lsp.keys").setup(client, bufnr)
   end
@@ -73,7 +70,6 @@ function M.config()
     },
     yamlls = {},
     sumneko_lua = {
-      -- cmd = { "/home/folke/projects/lua-language-server/bin/lua-language-server" },
       single_file_support = true,
       settings = {
         Lua = {
@@ -166,8 +162,6 @@ function M.config()
     opts = vim.tbl_deep_extend("force", {}, options, opts or {})
     if server == "tsserver" then
       require("typescript").setup({ server = opts })
-    -- elseif server == "rust_analyzer" then
-    --   require("rust-tools").setup(opts)
     else
       require("lspconfig")[server].setup(opts)
     end

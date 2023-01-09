@@ -44,10 +44,6 @@ function M.config()
         },
       },
       lualine_x = {
-        -- {
-        --   require("noice").api.status.message.get_hl,
-        --   cond = require("noice").api.status.message.has,
-        -- },
         {
           function()
             return require("noice").api.status.command.get()
@@ -105,23 +101,6 @@ function M.config()
       lualine_y = {},
       lualine_z = {},
     },
-    -- winbar = {
-    --   lualine_a = {},
-    --   lualine_b = {},
-    --   lualine_c = { "filename" },
-    --   lualine_x = {},
-    --   lualine_y = {},
-    --   lualine_z = {},
-    -- },
-    --
-    -- inactive_winbar = {
-    --   lualine_a = {},
-    --   lualine_b = {},
-    --   lualine_c = { "filename" },
-    --   lualine_x = {},
-    --   lualine_y = {},
-    --   lualine_z = {},
-    -- },
     extensions = { "nvim-tree" },
   })
 end
