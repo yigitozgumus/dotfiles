@@ -8,6 +8,7 @@ alias lg='lazygit'
 alias ldo='lazydocker'
 alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
+alias ll="exa -lhi"
 # Vim
 alias uv='nvim ~/personal/dotfiles'
 alias nvd='neovide'

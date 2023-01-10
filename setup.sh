@@ -246,6 +246,12 @@ function setup_terminfo() {
     tic -x "$DOTFILES/resources/xterm-256color-italic.terminfo"
 }
 
+setup_lazydraft () {
+   rm -rf "$HOME/.local/bin/lazydraft" 
+   chmod +x "./scripts/lazydraft.sh"
+   ln -sf "$DOTFILES/scripts/lazydraft.sh" "$HOME/.local/bin/lazydraft"
+}
+
 # macos setup
 
 setup_macos() {
@@ -332,6 +338,9 @@ terminfo)
     ;;
 macos)
     setup_macos
+    ;;
+lazydraft)
+    setup_lazydraft
     ;;
 purge)
     clean
