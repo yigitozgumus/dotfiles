@@ -14,7 +14,13 @@
 [includeIf "gitdir/i:~/personal/"]
 	path = .gitconfig-personal
 
-[includeIf "gitdir/i:~/dev/"]
+[includeIf "gitdir/i:~/projects/"]
+    path = .gitconfig-signin
+
+[includeIf "gitdir/i:~/code/"]
+    path = .gitconfig-signin
+
+[includeIf "gitdir/i:~/personal/"]
     path = .gitconfig-signin
 
 [alias]
@@ -103,3 +109,5 @@ lg = !"git lg1"
 	path =
 [init]
 	defaultBranch = main
+[commit]
+	gpgsign = true
