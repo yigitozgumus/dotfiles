@@ -35,3 +35,29 @@ api.nvim_create_autocmd("BufWritePre", {
   group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
   command = [[call mkdir(expand('<afile>:p:h'), 'p')]],
 })
+
+-- windows to close
+api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "help",
+    "startuptime",
+    "qf",
+    "lspinfo",
+    "vim",
+    "OverseerList",
+    "OverseerForm",
+    "fugitive",
+    "toggleterm",
+    "floggraph",
+    "git",
+    "neotest-summary",
+    "query",
+    "tsplayground",
+    "neotest-output",
+    "spectre_panel",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})

@@ -54,6 +54,12 @@ return {
     local trouble = require("trouble.providers.telescope")
     local borderless = true
     telescope.setup({
+      extensions = {
+        file_browser = {
+          theme = "ivy",
+          hijack_netrw = true,
+        },
+      },
       defaults = {
         pickers = {
           find_files = {

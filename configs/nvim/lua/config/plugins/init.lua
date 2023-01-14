@@ -11,6 +11,7 @@ return {
   {
     "martinsione/darkplus.nvim",
   },
+  { "elihunter173/dirbuf.nvim", cmd = { "Dirbuf" } },
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
@@ -36,13 +37,13 @@ return {
           percentage = 0.15,
         },
       })
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
-    config = {
+    opts = {
       plugins = {
         gitsigns = true,
         tmux = true,
@@ -73,7 +74,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      -- vim.cmd.colorscheme("gruvbox-material")
+      vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   -- Better surround
@@ -118,7 +119,7 @@ return {
   -- Theme: icons
   {
     "nvim-tree/nvim-web-devicons",
-    config = { default = true },
+    opts = { default = true },
   },
   {
     "SmiteshP/nvim-navic",
@@ -150,7 +151,7 @@ return {
         expr = false,
       },
     },
-    config = {},
+    opts = {},
   },
 
   {
@@ -171,13 +172,13 @@ return {
         desc = "Neogen Comment",
       },
     },
-    config = { snippet_engine = "luasnip" },
+    opts = { snippet_engine = "luasnip" },
   },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown", "md" },
     cmd = "MarkdownPreview",
-    run = function()
+    build = function()
       vim.fn["mkdp#util#install"]()
     end,
   },
@@ -193,7 +194,7 @@ return {
     event = "VeryLazy",
     cond = false,
     enabled = false,
-    config = {
+    opts = {
       excluded_argnames = {
         usages = {
           lua = { "self", "use" },

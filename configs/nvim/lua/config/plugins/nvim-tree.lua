@@ -4,22 +4,31 @@ local M = {
     "nvim-tree/nvim-web-devicons",
   },
   keys = {
-    { "<leader>n", ":NvimTreeToggle<CR>", desc = "NvimTree" },
+    { "<leader>e", ":NvimTreeToggle<CR>", desc = "NvimTree" },
   },
   cond = false,
   enabled = false,
   config = function()
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
     require("nvim-tree").setup({
-      disable_netrw = false,
+      disable_netrw = true,
       hijack_netrw = true,
+      hijack_unnamed_buffer_when_opening = true,
       respect_buf_cwd = true,
       view = {
         side = "left",
         adaptive_size = true,
         number = true,
         relativenumber = true,
+        mappings = {
+          list = {
+            { key = "u", action = "dir_up" },
+          },
+        },
       },
       filters = {
+        dotfiles = true,
         custom = { ".git" },
       },
       git = {
@@ -29,11 +38,6 @@ local M = {
       update_focused_file = {
         enable = true,
         update_root = true,
-      },
-      actions = {
-        open_file = {
-          resize_window = true,
-        },
       },
     })
   end,

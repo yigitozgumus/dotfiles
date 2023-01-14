@@ -54,6 +54,14 @@ keymap("v", "p", '"_dP', default_opts)
 -- Change split orientation
 keymap("n", "<leader>tk", "<C-w>t<C-w>K", default_opts) -- change vertical to horizontal
 keymap("n", "<leader>th", "<C-w>t<C-w>H", default_opts) -- change horizontal to vertical
+keymap("n", "<leader>se", "<C-w>=", default_opts) -- make split windows equal width & height
+keymap("n", "<leader>sx", ":close<CR>", default_opts) -- close current split window
+
+-- Tab Management
+keymap("n", "<leader>to", ":tabnew<CR>", default_opts) -- open new tab
+keymap("n", "<leader>tx", ":tabclose<CR>", default_opts) -- close current tab
+keymap("n", "<leader>tn", ":tabn<CR>", default_opts) --  go to next tab
+keymap("n", "<leader>tp", ":tabp<CR>", default_opts) --  go to previous tab
 
 -- Move around splits using Ctrl + {h,j,k,l}
 keymap("n", "<C-h>", "<C-w>h", default_opts)
@@ -85,3 +93,6 @@ keymap("n", "<C-u>", "<C-u>zz", default_opts)
 keymap("n", "<C-d>", "<C-d>zz", default_opts)
 keymap("n", "n", "nzzzv", default_opts)
 keymap("n", "N", "Nzzzv", default_opts)
+
+-- restart lsp server
+keymap("n", "<leader>rs", ":LspRestart<CR>", default_opts) -- mapping to restart lsp if necessary
