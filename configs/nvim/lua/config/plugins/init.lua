@@ -41,6 +41,15 @@ return {
     end,
   },
   {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("kanagawa")
+    end,
+  },
+
+  {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
     opts = {
@@ -74,7 +83,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("gruvbox-material")
+      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   -- Better surround

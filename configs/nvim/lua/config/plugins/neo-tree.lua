@@ -7,7 +7,7 @@ return {
   },
   cond = true,
   enabled = true,
-  config = {
+  opts = {
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the table
     window = {
       position = "left",
