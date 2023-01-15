@@ -86,8 +86,6 @@ return {
       -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
-  -- Better surround
-  { "tpope/vim-surround", event = "BufReadPre" },
   -- IDE
   {
     "max397574/better-escape.nvim",

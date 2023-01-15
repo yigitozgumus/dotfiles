@@ -61,3 +61,11 @@ api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
+
+-- Use internal formatting for bindings like gq.
+vim.api.nvim_create_autocmd("LspAttach", {
+  pattern = "*.md",
+  callback = function(args)
+    vim.bo[args.buf].formatexpr = nil
+  end,
+})
