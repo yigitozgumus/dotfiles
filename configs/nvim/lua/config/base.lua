@@ -20,6 +20,7 @@ local options = {
   ignorecase = true, -- ignore case in search patterns
   smartcase = true, -- Smart case
   linebreak = true,
+  nrformats = "",
   showmode = false, -- No need to see mode
   showtabline = 2, -- always show tabs
   completeopt = { "menuone", "noselect" }, -- Used for cmp
