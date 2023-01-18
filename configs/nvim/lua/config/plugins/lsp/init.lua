@@ -72,9 +72,6 @@ function M.config()
       single_file_support = true,
       settings = {
         Lua = {
-          workspace = {
-            checkThirdParty = false,
-          },
           hint = {
             enable = true,
           },
@@ -88,6 +85,7 @@ function M.config()
             },
           },
           workspace = {
+            checkThirdParty = false,
             library = {
               [vim.fn.expand("$VIMRUNTIME/lua")] = true,
               [vim.fn.stdpath("config") .. "/lua"] = true,
