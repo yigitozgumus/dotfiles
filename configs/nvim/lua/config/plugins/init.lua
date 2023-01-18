@@ -5,8 +5,8 @@ return {
   "williamboman/mason-lspconfig.nvim",
   "nvim-lua/plenary.nvim",
   "windwp/nvim-spectre",
-  "folke/twilight.nvim",
   "folke/tokyonight.nvim",
+  "mfussenegger/nvim-dap",
   { "ellisonleao/gruvbox.nvim" },
   {
     "martinsione/darkplus.nvim",

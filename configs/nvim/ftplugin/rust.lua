@@ -16,6 +16,7 @@ local mappings = {
   C = {
     name = "Rust",
     r = { "<cmd>RustRunnables<Cr>", "Runnables" },
+    a = { "<cmd>lua require('rust-tools').code_action_group.code_action_group()<CR>" },
     t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
     m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
     c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
@@ -29,6 +30,7 @@ local mappings = {
     },
     o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
   },
+  ["K"] = { require("rust-tools").hover_actions.hover_actions(), "Hover Actions for Rust" },
 }
 
 which_key.register(mappings, opts)

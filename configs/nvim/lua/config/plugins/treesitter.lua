@@ -31,9 +31,14 @@ return {
           "json",
         },
         sync_install = false,
-        auto_install = false,
+        auto_install = true,
         highlight = { enable = true, additional_vim_regex_highlighting = { "markdown" } },
-        indent = { enable = false },
+        indent = { enable = true },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+          max_file_lines = nil,
+        },
         context_commentstring = { enable = true, enable_autocmd = false },
         incremental_selection = {
           enable = true,
