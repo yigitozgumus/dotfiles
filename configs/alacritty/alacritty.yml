@@ -9,7 +9,7 @@ window:
   dimensions:
     columns: 160
     lines: 48
-  opacity: 0.92
+  opacity: 0.87
 
   padding:
     x: 8
@@ -34,12 +34,12 @@ font:
 
   # The bold font face
   bold:
-    family: MesloLGS NF
+    family: MesloLGM Nerd Font
     style: Bold
 
   # The italic font face
   italic:
-    family: MesloLGS NF
+    family: MesloLGM Nerd Font
     style: Bold Italic
 
   # Point size of the font
