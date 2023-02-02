@@ -2,16 +2,6 @@
 
 source ./setup/util.sh
 
-## setup astronvim
-
-setup_astronvim() {
-	mv ~/.config/nvim ~/.config/nvim.bak
-	mv ~/.local/share/nvim ~/.local/share/nvim.bak
-	mv ~/.local/state/nvim ~/.local/state/nvim.bak
-	mv ~/.cache/nvim ~/.cache/nvim.bak
-	git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-	ln -sf "$DOTFILES/astronvim/yigitozgumus/" ~/.config/nvim/lua/user
-}
 
 case "$1" in
 backup)
@@ -27,10 +17,10 @@ nvim)
 	source ./setup/setup-neovim.sh
 	;;
 homebrew)
-	souce ./setup/setup-homebrew.sh
+	source ./setup/setup-homebrew.sh
 	;;
 astronvim)
-	setup_astronvim
+    source ./setup/setup-astronvim.sh
 	;;
 shell)
 	source ./setup/setup-shell.sh
@@ -48,13 +38,14 @@ scripts)
 	source ./setup/setup-scripts.sh
 	;;
 all)
-	setup_symlinks
-	setup_terminfo
-	setup_homebrew
-	setup_shell
-	setup_git
-	setup_macos
-	setup_terminfo
+	source ./setup/setup-symlinks.sh
+	source ./setup/setup-terminfo.sh
+	source ./setup/setup-homebrew.sh
+	source ./setup/setup-shell.sh
+	source ./setup/setup-git.sh
+	source ./setup/setup-macos.sh
+	source ./setup/setup-scripts.sh
+	source ./setup/setup-neovim.sh
 	;;
 *)
 	echo $"\nUsage: $(basename "$0") {purge|backup|link|git|homebrew|shell|terminfo|macos|all}\n"
