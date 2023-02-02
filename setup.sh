@@ -44,6 +44,9 @@ macos)
 purge)
 	source ./setup/clean-setup.sh
 	;;
+scripts)
+	source ./setup/setup-scripts.sh
+	;;
 all)
 	setup_symlinks
 	setup_terminfo

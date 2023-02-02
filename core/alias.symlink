@@ -39,3 +39,17 @@ alias android='cd ~/Playground/android'
 nrp() {
     cargo new $1; cd $1; nvim
 }
+
+# Work
+
+alias demoOn='sh /Users/$(whoami)/.local/bin/adb-demo.sh on'
+alias demoOff='sh /Users/$(whoami)/.local/bin/adb-demo.sh off'
+
+# region Android aliases
+alias screen="scrcpy --stay-awake --encoder OMX.google.h264.encoder -m 1024 --window-title 'Android' --window-height 800"
+alias startApp='adb shell am start -n trendyol.com.stage/com.trendyol.common.splash.impl.ui.SplashActivity'
+# endregion
+
+# region Gradle aliases
+alias gw="./gradlew $@"
+# endregion

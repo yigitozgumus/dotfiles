@@ -41,3 +41,7 @@ blank_line() {
 get_linkables() {
 	find -H "$DOTFILES" -maxdepth 3 -name '*.symlink'
 }
+
+get_scripts() {
+	find -H "$DOTFILES/scripts" -maxdepth 1 -name "*.sh"
+}
