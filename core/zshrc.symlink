@@ -45,8 +45,6 @@ precmd_functions+=(hotreload-alias)
    export EDITOR='nvim'
  fi
 
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -61,18 +59,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 eval $(thefuck --alias)
 export GPG_TTY=$(tty)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/yigitozgumus/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/yigitozgumus/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/yigitozgumus/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/yigitozgumus/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Pyenv
 
+PATH="$PATH:$HOME/.pyenv/bin"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
