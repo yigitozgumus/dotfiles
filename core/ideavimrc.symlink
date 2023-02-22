@@ -1,4 +1,4 @@
-let mapleader=" "
+let mapleader="\ "
 
 """ Plugins -----------------
 
@@ -29,7 +29,7 @@ set ideastatusicon=gray
 
 map sv <Action>(SplitVertically)
 map ss <Action>(SplitHorizontally)
-map <leader>t <Action>(ActivateTerminalToolWindow)
+""" map <leader>tt <Action>(ActivateTerminalToolWindow)
 
 map <C-h> <C-W>h
 map <C-j> <C-W>j
@@ -47,6 +47,8 @@ map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 map <S-Space> <Action>(GotoNextError)
 map <leader>ed <Action>(ShowErrorDescription)
 map <leader>qq <Action>(QuickImplementations)
+map <leader>th <Action>(ToggleInlayHintsGloballyAction)
+map <leader>mb <Action>(ShowTypeBookmarks)
 
 " Reformat the current line only
 map <leader>l V<Action>(ReformatCode)
