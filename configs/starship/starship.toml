@@ -14,3 +14,11 @@ disabled = true
 
 [aws]
 disabled = true
+
+[git_metrics]
+disabled = false
+added_style = 'bold blue'
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[kotlin]
+disabled = true
