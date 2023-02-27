@@ -22,3 +22,6 @@ format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [kotlin]
 disabled = true
+
+[ruby]
+disabled = true
