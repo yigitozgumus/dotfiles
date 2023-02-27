@@ -22,6 +22,9 @@ tls() {
 }
 alias tmx='tmuxinator'
 alias tkill='tmux kill-session -t'
+tkill-all() {
+    for i in `tmux ls -F "#{session_name}"`; do tmux kill-session -t $i ; done;
+}
 
 # Shortcuts
 alias slive='bundle exec jekyll serve'
