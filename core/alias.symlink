@@ -44,6 +44,7 @@ alias vault_writing='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents
 alias dotfiles='cd ~/personal/dotfiles'
 alias android='cd ~/code/android'
 alias notebooks='cd ~/code/notebooks'
+alias see-git-config='vim ~/.gitconfig'
 
 # Rust related
 nrp() {
@@ -51,7 +52,7 @@ nrp() {
 }
 
 # Work
-
+alias activate-doc='source /Users/yigit.ozgumus/mkdocs/bin/activate'
 alias demoOn='sh /Users/$(whoami)/.local/bin/adb-demo.sh on'
 alias demoOff='sh /Users/$(whoami)/.local/bin/adb-demo.sh off'
 
