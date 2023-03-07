@@ -52,6 +52,7 @@ nrp() {
 }
 
 # Work
+alias emulator='$HOME/Library/Android/sdk/emulator/emulator'
 alias activate-doc='source /Users/yigit.ozgumus/mkdocs/bin/activate'
 alias demoOn='sh /Users/$(whoami)/.local/bin/adb-demo.sh on'
 alias demoOff='sh /Users/$(whoami)/.local/bin/adb-demo.sh off'
