@@ -34,11 +34,10 @@ alias demos="cd  ~/Desktop"
 
 # Obsidian Vaults
 
-alias vault_thinking='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Thinking'
-alias vault_work='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Work'
-alias vault_personal='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Personal'
-alias vault_capture='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Capture'
-alias vault_writing='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Writing'
+alias vault-thinking='cd ~/Documents/Notes/Thinking'
+alias vault-work='cd ~/Documents/Notes/Work'
+alias vault-personal='cd ~/Documents/Notes/Personal'
+alias vault-writing='cd ~/Documents/Notes/Writing'
 
 # dev shortcuts / personal
 alias dotfiles='cd ~/personal/dotfiles'
