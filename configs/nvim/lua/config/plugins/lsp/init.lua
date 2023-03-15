@@ -68,7 +68,7 @@ function M.config()
       },
     },
     yamlls = {},
-    sumneko_lua = {
+    lua_ls = {
       single_file_support = true,
       settings = {
         Lua = {
