@@ -17,6 +17,12 @@ unbind %
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
 
+# Vim Mode
+set-window-option -g mode-keys vi
+bind-key -T copy-mode-vi v send -X begin-selection
+bind-key -T copy-mode-vi V send -X select-line
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+
 # Open ~/.tmux.conf in vim and reload settings on quit
 unbind e
 bind e new-window -n '~/.tmux.conf' "sh -c 'nvim ~/.tmux.conf && tmux source ~/.tmux.conf'"
