@@ -1,5 +1,13 @@
 #!/bin/bash
+# Update the Repository
+echo "The Repo is being fetched..."
+git fetch
+# Read the worktree location
 read -p "Worktree Path (Without /, base is your Home Directory): " worktree
-read -p "Source Branch Name: " branch
+# Get source branch from the Repository
+sourceBranch=$(git branch -r | fzf --reverse)
+echo "Source Branch is $sourceBranch"
+#read -p "Source Branch Name: " branch
 read -p "Target Branch Name: " target
-$(git worktree add -b $target --checkout $HOME/$worktree $branch)
+# Create the worktree
+$(git worktree add -b $target --checkout $HOME/$worktree $sourceBranch)
