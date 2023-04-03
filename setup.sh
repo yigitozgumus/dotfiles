@@ -37,6 +37,9 @@ purge)
 scripts)
 	source ./setup/setup-scripts.sh
 	;;
+nvchad)
+  source ./setup/setup-nvchad.sh
+  ;;
 all)
 	source ./setup/setup-symlinks.sh
 	source ./setup/setup-terminfo.sh
