@@ -6,6 +6,7 @@ return {
   "nvim-lua/plenary.nvim",
   "windwp/nvim-spectre",
   "folke/tokyonight.nvim",
+  { "segeljakt/vim-silicon", lazy = false },
   "mfussenegger/nvim-dap",
   { "ellisonleao/gruvbox.nvim" },
   {

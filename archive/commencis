@@ -23,6 +23,11 @@ bto() {
     back_to_original $@
 }
 
+send-to-review() {
+    branch=$(git branch --show-current)
+    git push origin HEAD:refs/for/$branch
+}
+
 back_to_original() {
     # get the original branch name
     echo "Patching things to original branch...\n"

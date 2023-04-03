@@ -8,37 +8,30 @@ FORMAT_INSTALL='\e[36m >> \e[92m\e[1m'
 FORMAT_END='\e[0m'
 FORMAT_WARNING='\e[36m >> \e[91m'
 
-remove_dmg() {
+remove-dmg() {
     cd ~/Downloads/
     rm -rf *.dmg
     cd
 }
 
-clean_trash() {
+clean-trash() {
     cd ~/.Trash
     rm -rf *
     cd
 }
 
 # Tmux session functions
-open_session() {
+open-session() {
     tmx start $1
 }
 
-update_repo() {
+update-repo() {
     git fetch
     git rebase
 }
 
-what_runs_on() {
+what-runs-on() {
     lsof -i tcp:$1
-}
-
-
-run_processing() {
-    rm -rf /tmp/processing
-    mkdir /tmp/processing
-    /usr/local/bin/processing-java --output=/tmp/processing/ --force --sketch=`pwd` --run
 }
 
 # usage jupy TYPE ENVIRONMENT PORT
@@ -67,7 +60,7 @@ jupy(){
 
 # Git based functions
 
-get_commit_list_for() {
+get-commit-list-for() {
   userName=$(git config user.name)
   branchName=$(git branch --show-current)
   total_args="$#"
@@ -81,7 +74,7 @@ get_commit_list_for() {
   git log --author=$userName --grep=$branchPrefix --oneline --no-merges
 }
 
-force_ktlint() {
+force-ktlint() {
   fileList=$(git diff --name-only HEAD)
   for file in $fileList
   do
@@ -89,18 +82,17 @@ force_ktlint() {
   done
 }
 
-send_to_review() {
-    branch=$(git branch --show-current)
-    git push origin HEAD:refs/for/$branch
-}
-
-push_to_remote() {
+push-to-remote() {
     branch=$(git branch --show-current)
     git push -u origin $branch
 }
 
-get_to_conflict() {
-  git pull origin develop
+get-to-conflict() {
+  local branchToPull = "develop"
+  if [[ ! -z "$1" ]]; then
+    branchToPull = $1
+  fi
+  git pull origin $branchToPull
 }
 
 rebase() {
@@ -113,7 +105,7 @@ change() {
     git commit --amend
 }
 
-step_forward() {
+step-forward() {
     git rebase --continue
 }
 
