@@ -2,7 +2,6 @@
 
 source ./setup/util.sh
 
-
 case "$1" in
 backup)
 	source ./setup/backup.sh
@@ -20,7 +19,7 @@ homebrew)
 	source ./setup/setup-homebrew.sh
 	;;
 astronvim)
-    source ./setup/setup-astronvim.sh
+	source ./setup/setup-astronvim.sh
 	;;
 shell)
 	source ./setup/setup-shell.sh
@@ -38,8 +37,8 @@ scripts)
 	source ./setup/setup-scripts.sh
 	;;
 nvchad)
-  source ./setup/setup-nvchad.sh
-  ;;
+	source ./setup/setup-nvchad.sh
+	;;
 all)
 	source ./setup/setup-symlinks.sh
 	source ./setup/setup-terminfo.sh
@@ -51,7 +50,7 @@ all)
 	source ./setup/setup-neovim.sh
 	;;
 *)
-	echo $"\nUsage: $(basename "$0") {purge|backup|link|git|homebrew|shell|terminfo|macos|all}\n"
+	echo $"\nUsage: $(basename "$0") {backup|link|git|nvim|homebrew|astronvim|shell|terminfo|macos|nvchad|scripts|purge|all}\n"
 	exit 1
 	;;
 esac
