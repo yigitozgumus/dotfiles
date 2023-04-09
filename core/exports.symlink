@@ -20,4 +20,4 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/miniconda/bin
 
 source ~/.exports.work
-
+source ~/.private-env
