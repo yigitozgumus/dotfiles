@@ -15,7 +15,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=$HOME/.task
+data.location=$HOME/Documents/Tasks/task-tracking/data/work
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
@@ -40,7 +40,5 @@ include dark-256.theme
 #include no-color.theme
 
 news.version=2.6.0
-context.work.read=project.left=work\/
-context.personal.read=+personal project.left=personal\/
-context=work
 regex=on
+verbose=no

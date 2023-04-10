@@ -70,3 +70,16 @@ select-env() {
     target=`conda env list | awk '/^[a-z]/{print $1}' | fzf-tmux -p --reverse`
     conda activate $target
 }
+
+# Taskwarrior
+tw() {
+  ln -sf "$HOME/.taskrc-work" "$HOME/.taskrc"
+  task
+}
+
+tp() {
+  ln -sf "$HOME/.taskrc-personal" "$HOME/.taskrc"
+  task
+}
+
+alias task-location="cd $HOME/Documents/Tasks/task-tracking"
