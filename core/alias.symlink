@@ -74,12 +74,12 @@ select-env() {
 # Taskwarrior
 tw() {
   ln -sf "$HOME/.taskrc-work" "$HOME/.taskrc"
-  task
+  task "$@"
 }
 
 tp() {
   ln -sf "$HOME/.taskrc-personal" "$HOME/.taskrc"
-  task
+  task "$@"
 }
 
-alias task-location="cd $HOME/Documents/Tasks/task-tracking"
+alias tasks-location="cd $HOME/Documents/Tasks/task-tracking"
