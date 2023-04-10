@@ -57,10 +57,13 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 eval $(thefuck --alias)
 export GPG_TTY=$(tty)
 
+
+source $HOME/.cargo/env
 # Pyenv
 
 PATH="$PATH:$HOME/.pyenv/bin"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-source $HOME/.cargo/env
+if pyenv --version >/dev/null 2>&1; then 
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
 
