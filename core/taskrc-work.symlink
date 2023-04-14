@@ -16,8 +16,6 @@
 data.location=$HOME/Documents/Tasks/task-tracking/data/work
 hooks.location=$HOME/Documents/Tasks/task-tracking/data/hooks
 
-#data.location=~/.local/share/task
-#hooks.location=~/.config/task/hooks
 
 # Color theme (uncomment one to use)
 include dark-256.theme
