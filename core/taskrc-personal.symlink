@@ -16,29 +16,35 @@
 
 # Files
 data.location=$HOME/Documents/Tasks/task-tracking/data/personal
-
+hooks.location=$HOME/Documents/Tasks/task-tracking/data/hooks
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
 
-#data.location=~/.local/share/task
-#hooks.location=~/.config/task/hooks
 
 # Color theme (uncomment one to use)
-#include light-16.theme
-#include light-256.theme
-#include dark-16.theme
 include dark-256.theme
-#include dark-red-256.theme
-#include dark-green-256.theme
-#include dark-blue-256.theme
-#include dark-violets-256.theme
-#include dark-yellow-green.theme
-#include dark-gray-256.theme
-#include dark-gray-blue-256.theme
-#include solarized-dark-256.theme
-#include solarized-light-256.theme
-#include no-color.theme
 
 news.version=2.6.0
 regex=on
 verbose=no
+
+uda.effort.type=string
+uda.effort.label=Effort
+uda.effort.values=s,m,l,xl,xxl
+urgency.uda.effort.s.coefficient=1.5
+urgency.uda.effort.m.coefficient=1.1
+urgency.uda.effort.l.coefficient=1
+urgency.uda.effort.xl.coefficient=0
+urgency.uda.effort.xxl.coefficient=-0.2
+color.uda.effort.s=color180
+color.uda.effort.m=color210
+color.uda.effort.l=color255
+color.uda.effort.xl=color255
+color.uda.effort.xxl=color255
+
+uda.score.type=numeric
+uda.score.label=Score 🏆
+urgency.uda.score.coefficient=2
+# Add effor and score in reports
+report.next.labels = ID,Active,Age,Deps,P,🦾,Project,Tag,Recur,S,Due,Until,Description,Urg,🏆
+report.next.columns=id,start.age,entry.age,depends,priority,effort,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency,score
