@@ -13,8 +13,8 @@
 #   variable=$VALUE
 
 # Files
-data.location=$HOME/Documents/Tasks/task-tracking/data/work
-hooks.location=$HOME/Documents/Tasks/task-tracking/data/hooks
+data.location=$HOME/Documents/Tasks/task-tracking/task-data/work
+hooks.location=$HOME/Documents/Tasks/task-tracking/task-data/hooks
 
 
 # Color theme (uncomment one to use)

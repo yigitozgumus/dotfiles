@@ -15,8 +15,8 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=$HOME/Documents/Tasks/task-tracking/data/personal
-hooks.location=$HOME/Documents/Tasks/task-tracking/data/hooks
+data.location=$HOME/Documents/Tasks/task-tracking/task-data/personal
+hooks.location=$HOME/Documents/Tasks/task-tracking/task-data/hooks
 
 # Color theme (uncomment one to use)
 include dark-256.theme
