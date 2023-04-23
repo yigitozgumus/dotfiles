@@ -16,6 +16,7 @@
   "dressing.nvim": { "branch": "master", "commit": "f5d7fa1fa5ce6bcebc8f07922f39b1eda4d01e37" },
   "friendly-snippets": { "branch": "main", "commit": "b1b78a6433268fc172adb5a843e165035e83861e" },
   "gitsigns.nvim": { "branch": "main", "commit": "7dfe4be94b4f84a9931098f0f0f618d055e50bd5" },
+  "goyo.vim": { "branch": "master", "commit": "fa0263d456dd43f5926484d1c4c7022dfcb21ba9" },
   "gruvbox-material": { "branch": "master", "commit": "5fd0f0e4133d2416b0d69c26c87189fced9060ec" },
   "gruvbox.nvim": { "branch": "main", "commit": "487598d979868224aff92cf8818195c1a60e5dfe" },
   "inc-rename.nvim": { "branch": "main", "commit": "fb1b7468f27d874feb209eac46be5205e20b7fd3" },

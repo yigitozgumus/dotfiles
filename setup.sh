@@ -18,8 +18,8 @@ nvim)
 homebrew)
 	source ./setup/setup-homebrew.sh
 	;;
-astronvim)
-	source ./setup/setup-astronvim.sh
+lazyvim)
+	source ./setup/setup-lazyvim.sh
 	;;
 shell)
 	source ./setup/setup-shell.sh
