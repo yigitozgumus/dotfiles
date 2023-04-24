@@ -183,14 +183,6 @@ return {
     opts = { snippet_engine = "luasnip" },
   },
   {
-    "iamcco/markdown-preview.nvim",
-    ft = { "markdown", "md" },
-    cmd = "MarkdownPreview",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-  {
     "folke/trouble.nvim",
     config = function()
       require("trouble").setup({})
