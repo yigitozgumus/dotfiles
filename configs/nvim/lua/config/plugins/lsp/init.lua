@@ -52,7 +52,6 @@ function M.config()
       },
     },
     gopls = {},
-    marksman = {},
     rust_analyzer = {
       settings = {
         ["rust-analyzer"] = {
