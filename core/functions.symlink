@@ -88,9 +88,9 @@ push-to-remote() {
 }
 
 get-to-conflict() {
-  local branchToPull = "develop"
+  branchToPull="develop"
   if [[ ! -z "$1" ]]; then
-    branchToPull = $1
+    $branchToPull = $1
   fi
   git pull origin $branchToPull
 }

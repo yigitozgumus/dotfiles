@@ -26,6 +26,12 @@ tkill-all() {
     for i in `tmux ls -F "#{session_name}"`; do tmux kill-session -t $i ; done;
 }
 
+# Configuration
+alias A='nvim ~/.alias'
+alias F='nvim ~/.functions'
+alias E='nvim ~/.exports'
+alias Z='nvim ~/.zshrc'
+
 # Shortcuts
 alias slive='bundle exec jekyll serve'
 alias ccd='cd ;exa -i'
