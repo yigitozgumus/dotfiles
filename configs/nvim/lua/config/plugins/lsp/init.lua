@@ -35,7 +35,6 @@ function M.config()
 
   local servers = {
     tsserver = {},
-    eslint = {},
     html = {},
     jsonls = {
       on_new_config = function(new_config)
