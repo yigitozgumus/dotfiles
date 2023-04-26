@@ -1,7 +1,7 @@
 local M = {
   "simrat39/rust-tools.nvim",
-  cond = false,
-  enabled = false,
+  -- cond = false,
+  -- enabled = false,
 }
 
 function M.setup(options)
