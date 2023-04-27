@@ -1,4 +1,7 @@
--- Base Configuration
+---------------------
+--- Base Configuration
+---------------------
+
 local options = {
   encoding = "utf-8", -- Output Encoding that is shown on the terminal
   fileencoding = "utf-8", -- Output Encoding of that file that is written
@@ -52,8 +55,6 @@ local options = {
   sidescrolloff = 10,
   confirm = true,
   fillchars = "eob: ",
-  -- foldmethod = "expr",
-  -- foldexpr = "nvim_treesitter#foldexpr"
 }
 
 for k, v in pairs(options) do

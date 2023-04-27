@@ -1,3 +1,7 @@
+---------------------
+--- Autocommands ---
+---------------------
+
 local api = vim.api
 
 -- Highlight on yank
@@ -6,6 +10,7 @@ api.nvim_create_autocmd("TextYankPost", {
   command = "silent! lua vim.highlight.on_yank()",
   group = yankGrp,
 })
+
 -- show cursor line only in active window
 local cursorGrp = api.nvim_create_augroup("CursorLine", { clear = true })
 api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {

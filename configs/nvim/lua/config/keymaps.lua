@@ -1,3 +1,7 @@
+---------------------
+--- Keymaps ---
+---------------------
+
 local keymap = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
@@ -84,9 +88,6 @@ keymap("", "<C-w><left>", "<C-w><", default_opts)
 keymap("", "<C-w><right>", "<C-w>>", default_opts)
 keymap("", "<C-w><up>", "<C-w>+", default_opts)
 keymap("", "<C-w><down>", "<C-w>-", default_opts)
-
--- Markdown preview
-keymap("n", "<leader>md", ":MarkdownPreview<cr>", default_opts)
 
 -- Move for half page
 keymap("n", "<C-u>", "<C-u>zz", default_opts)
