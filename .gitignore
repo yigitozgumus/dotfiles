@@ -1,3 +1,5 @@
 configs/nvim/plugin/packer_compiled.lua
 configs/nvim/.DS_Store
 .DS_Store
+
+configs/tmux/plugins
