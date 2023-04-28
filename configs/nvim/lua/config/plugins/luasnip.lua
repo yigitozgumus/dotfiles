@@ -14,8 +14,6 @@ function M.config()
   luasnip.config.setup({
     history = true,
     enable_autosnippets = true,
-    -- Update more often, :h events for more info.
-    -- updateevents = "TextChanged,TextChangedI",
   })
 
   vim.cmd([[

@@ -19,6 +19,7 @@ function M.config()
 
   -- Setup nvim-cmp.
   local cmp = require("cmp")
+  local luasnip = require("luasnip")
 
   cmp.setup({
     completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
