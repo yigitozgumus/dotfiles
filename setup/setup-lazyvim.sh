@@ -2,9 +2,9 @@
 
 source $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/util.sh
 
-mv ~/.config/nvim ~/.config/nvim.bak
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-mv ~/.local/state/nvim ~/.local/state/nvim.bak
-mv ~/.cache/nvim ~/.cache/nvim.bak
+rm -rf ~/.config/nvim
+rm -rf  ~/.local/share/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.cache/nvim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 ln -sf "$DOTFILES/astronvim/yigitozgumus/" ~/.config/nvim/lua/user

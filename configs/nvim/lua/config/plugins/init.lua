@@ -5,13 +5,8 @@ return {
   "williamboman/mason-lspconfig.nvim",
   "nvim-lua/plenary.nvim",
   "windwp/nvim-spectre",
-  "folke/tokyonight.nvim",
   { "segeljakt/vim-silicon", lazy = false },
   "mfussenegger/nvim-dap",
-  { "ellisonleao/gruvbox.nvim" },
-  {
-    "martinsione/darkplus.nvim",
-  },
   { "elihunter173/dirbuf.nvim", cmd = { "Dirbuf" } },
   {
     "dstein64/vim-startuptime",
@@ -29,34 +24,6 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
-  -- Colorscheme
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-
-        transparent_background = false,
-        -- term_colors = false,
-        dim_inactive = {
-          enabled = false,
-          shade = "dark",
-          percentage = 0.15,
-        },
-      })
-      vim.cmd.colorscheme("catppuccin")
-    end,
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme("kanagawa")
-    end,
-  },
-
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
@@ -84,14 +51,6 @@ return {
         input = { relative = "editor" },
         select = { backend = { "telescope", "fzf", "builtin" } },
       })
-    end,
-  },
-  {
-    "sainnhe/gruvbox-material",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   -- IDE
