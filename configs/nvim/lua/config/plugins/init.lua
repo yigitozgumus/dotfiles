@@ -22,6 +22,13 @@ return {
     cond = true,
     enabled = true,
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    lazy = false,
+    config = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
   -- Colorscheme
   {
     "catppuccin/nvim",
