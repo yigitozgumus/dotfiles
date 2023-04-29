@@ -6,6 +6,7 @@ if not vim.loop.fs_stat(lazypath) then
     "--filter=blob:none",
     "--single-branch",
     "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
     lazypath,
   })
 end
@@ -21,7 +22,6 @@ require("lazy").setup("config.plugins", {
   performance = {
     cache = {
       enabled = true,
-      -- disable_events = {},
     },
     rtp = {
       disabled_plugins = {
@@ -37,14 +37,7 @@ require("lazy").setup("config.plugins", {
       },
     },
   },
-  ui = {
-    custom_keys = {
-
-      ["<localleader>d"] = function(plugin)
-        dd(plugin)
-      end,
-    },
-  },
+  ui = {},
   debug = false,
 })
 vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")

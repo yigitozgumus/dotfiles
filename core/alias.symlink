@@ -31,7 +31,7 @@ alias A='nvim ~/.alias'
 alias F='nvim ~/.functions'
 alias E='nvim ~/.exports'
 alias Z='nvim ~/.zshrc'
-alias vim-config='dotfiles; cd configs/nvim ; vim .'
+alias vim-config='dotfiles; cd configs/nvim ; vim '
 
 # Shortcuts
 alias slive='bundle exec jekyll serve'

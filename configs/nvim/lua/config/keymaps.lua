@@ -6,7 +6,9 @@ local keymap = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
+-- Clear search highlighting
 keymap("n", "<leader>k", ":nohlsearch<CR>", default_opts)
+
 keymap("n", "<leader>Q", ":bufdo bdelete<CR>", default_opts)
 
 -- Reselect visual selection after indenting
@@ -21,16 +23,12 @@ keymap("i", ",,", "<Esc>A,<Esc>", default_opts)
 keymap("n", "<leader>xo", ":!open %<cr><cr>", default_opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", default_opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", default_opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", default_opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", default_opts)
+keymap("n", "<A-Up>", ":resize +2<CR>", default_opts)
+keymap("n", "<A-Down>", ":resize -2<CR>", default_opts)
+keymap("n", "<A-Left>", ":vertical resize -2<CR>", default_opts)
+keymap("n", "<A-Right>", ":vertical resize +2<CR>", default_opts)
 
 -- Disable arrow keys
-keymap("n", "<up>", "<nop>", default_opts)
-keymap("n", "<down>", "<nop>", default_opts)
-keymap("n", "<left>", "<nop>", default_opts)
-keymap("n", "<right>", "<nop>", default_opts)
 keymap("i", "<up>", "<nop>", default_opts)
 keymap("i", "<down>", "<nop>", default_opts)
 keymap("i", "<left>", "<nop>", default_opts)
@@ -40,15 +38,8 @@ keymap("i", "<right>", "<nop>", default_opts)
 keymap("n", "<S-l>", ":bnext<CR>", default_opts)
 keymap("n", "<S-h>", ":bprevious<CR>", default_opts)
 
--- Stay in indent mode
-keymap("v", "<", "<gv", default_opts)
-keymap("v", ">", ">gv", default_opts)
-
 keymap("n", "j", "gj", default_opts)
 keymap("n", "k", "gk", default_opts)
-
--- Clear search highlighting with <leader> and c
-keymap("n", "<leader>c", ":nohl<CR>", default_opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", default_opts)
