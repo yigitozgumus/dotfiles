@@ -1,0 +1,12 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --light --line-numbers --paging=never --24-bit-color=never
+gui:
+  theme:
+    lightTheme: true
+    activeBorderColor:
+      - black
+      - bold
+    inactiveBorderColor:
+      - black

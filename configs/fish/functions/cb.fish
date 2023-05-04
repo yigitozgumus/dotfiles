@@ -19,9 +19,6 @@ function cb --argument mode_setting
     end
   end
 
-  # well, seems like there is no proper way to send a command to
-  # Vim as a client. Luckily we're using tmux, which means we can
-  # iterate over all vim sessions and change the background ourself.
   for tms in  (/opt/homebrew/bin/tmux list-sessions -F '#{session_name}')
     for wix in (/opt/homebrew/bin/tmux list-windows -t $tms -F "$tms:#{window_index}")
       for pix in (/opt/homebrew/bin/tmux list-panes -F "$tms:#{window_index}.#{pane_index}" -t $wix)
@@ -31,15 +28,6 @@ function cb --argument mode_setting
       end
     end
   end
-
-
-  # change tmux
- #     switch $mode
- #       case dark
- #         tmux source-file ~/.tmux/tmux-dark.conf
- #       case light
- #         tmux source-file ~/.tmux/tmux-light.conf
- #     end
 
   # change alacritty
   switch $mode
