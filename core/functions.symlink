@@ -115,12 +115,12 @@ ctlv() {
 
 # Navigation
 #
-gotv() {
+gtw() {
     folder=`ls ~/work | fzf-tmux -p --reverse`
     cd "$HOME/work/$folder"
 }
 
-gotp() {
+gtp() {
     folder=`ls ~/personal | fzf-tmux -p --reverse`
     cd "$HOME/personal/$folder"
 }
