@@ -1,7 +1,6 @@
 # General
 alias please='sudo'
 alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
-alias vim='nvim'
 alias r='ranger'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias lg='lazygit'
@@ -9,6 +8,7 @@ alias ldo='lazydocker'
 alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
 alias ll="exa -lhi"
+alias vim='nvim --listen /tmp/nvimsocket'
 # Vim
 alias uv='nvim ~/personal/dotfiles'
 alias nvd='neovide'
