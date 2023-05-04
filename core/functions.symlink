@@ -113,6 +113,17 @@ ctlv() {
     change_to_local_version $@
 }
 
+# Navigation
+#
+gotv() {
+    folder=`ls ~/work | fzf-tmux -p --reverse`
+    cd "$HOME/work/$folder"
+}
+
+gotp() {
+    folder=`ls ~/personal | fzf-tmux -p --reverse`
+    cd "$HOME/personal/$folder"
+}
 
 alacritty_theme(){
     if [ -z "~/.config/alacritty/color.yml" ]; then
