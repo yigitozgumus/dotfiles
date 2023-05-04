@@ -44,6 +44,13 @@ what-runs-on() {
     lsof -i tcp:$1
 }
 
+f() {
+    file=$(fzf-tmux -p --height 40% --reverse --info inline --border --preview 'cat {}')
+    if [ ! -z $file  -a $file != " " ]; then
+        nvim $file
+    fi
+}
+
 # usage jupy TYPE ENVIRONMENT PORT
 jupy(){
 
@@ -191,17 +198,23 @@ change_background(){
             /opt/homebrew/bin/nvr --servername "$addr" -c "set background=dark"
         fi
     done
-
+    # Change Alacritty
     if [[ "$MODE" == "light" ]]; then
         `alacritty_theme gruvbox_light`
     else
         `alacritty_theme gruvbox_dark`
     fi
-
+    # Change Lazygit
     if [[ "$MODE" == "light" ]]; then
         `lgt light`
     else
         `lgt dark`
+    fi
+    #Change Kitty
+    if [[ "$MODE" == "light" ]]; then
+        `ln -sf "$HOME/personal/dotfiles/configs/kitty/light-theme.conf" "$HOME/.config/kitty/current-theme.conf"`
+    else
+        `ln -sf "$HOME/personal/dotfiles/configs/kitty/dark-theme.conf" "$HOME/.config/kitty/current-theme.conf"`
     fi
 }
 
