@@ -3,3 +3,4 @@ configs/nvim/.DS_Store
 .DS_Store
 
 configs/tmux/plugins
+configs/kitty/current-theme.conf
