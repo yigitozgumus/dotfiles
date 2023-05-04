@@ -45,7 +45,7 @@ what-runs-on() {
 }
 
 f() {
-    file=$(fzf-tmux -p --height 40% --reverse --info inline --border --preview 'cat {}')
+    file=$(fd --type f --hidden --exclude .git | fzf-tmux -p --height 40% --reverse --info inline --border --preview 'cat {}')
     if [ ! -z $file  -a $file != " " ]; then
         nvim $file
     fi
@@ -143,12 +143,12 @@ gtp() {
 }
 
 alacritty_theme(){
-    if [ -z "~/.config/alacritty/color.yml" ]; then
-        echo "file ~/.config/alacritty/color.yml doesn't exist"
-        return 0
-    fi
     CONFIG_PATH="$HOME/.config/alacritty/color.yml"
-    sed -i "" -e "s#^colors: \*.*#colors: *$1#g" $CONFIG_PATH ;
+   if [[ "$1" == "dark" ]]; then
+       ln -sf "$HOME/.config/alacritty/dark-theme.yml" $CONFIG_PATH
+   else
+       ln -sf "$HOME/.config/alacritty/light-theme.yml" $CONFIG_PATH
+   fi
 }
 
 lgt(){
@@ -200,9 +200,9 @@ change_background(){
     done
     # Change Alacritty
     if [[ "$MODE" == "light" ]]; then
-        `alacritty_theme gruvbox_light`
+        `alacritty_theme light`
     else
-        `alacritty_theme gruvbox_dark`
+        `alacritty_theme dark`
     fi
     # Change Lazygit
     if [[ "$MODE" == "light" ]]; then
