@@ -170,7 +170,6 @@ cb () {
    else
        `fish -c 'cb light'`
    fi
-
 }
 
 change_background(){

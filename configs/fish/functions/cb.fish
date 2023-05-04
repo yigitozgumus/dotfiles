@@ -19,22 +19,20 @@ function cb --argument mode_setting
     end
   end
 
-  for tms in  (/opt/homebrew/bin/tmux list-sessions -F '#{session_name}')
-    for wix in (/opt/homebrew/bin/tmux list-windows -t $tms -F "$tms:#{window_index}")
-      for pix in (/opt/homebrew/bin/tmux list-panes -F "$tms:#{window_index}.#{pane_index}" -t $wix)
-        set -l is_vim "ps -o state= -o comm= -t '#{pane_tty}'  | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?\$'"
-        /opt/homebrew/bin/tmux if-shell -t "$pix" "$is_vim" "send-keys -t $pix escape ENTER"
-        /opt/homebrew/bin/tmux if-shell -t "$pix" "$is_vim" "send-keys -t $pix ':call ChangeBackground()' ENTER"
-      end
+  for addr in (/opt/homebrew/bin/nvr --serverlist)
+    switch $mode
+      case dark
+        /opt/homebrew/bin/nvr --servername "$addr" -c "set background=dark"
+      case light
+        /opt/homebrew/bin/nvr --servername "$addr" -c "set background=light"
     end
   end
-
   # change alacritty
   switch $mode
     case dark
-      alacritty-theme gruvbox_dark
+      alacritty-theme dark
     case light
-      alacritty-theme gruvbox_light
+      alacritty-theme light
   end
 
   # change lazygit
