@@ -20,6 +20,16 @@ clean-trash() {
     cd
 }
 
+hide-desktop-icons() {
+    defaults write com.apple.finder CreateDesktop false
+    killall Finder
+}
+
+show-desktop-icons() {
+    defaults write com.apple.finder CreateDesktop true
+    killall Finder
+}
+
 # Tmux session functions
 open-session() {
     tmx start $1
