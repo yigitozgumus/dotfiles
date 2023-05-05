@@ -3,6 +3,7 @@ git:
     colorArg: always
     pager: delta --light --line-numbers --paging=never --24-bit-color=never
 gui:
+  showIcons: true
   theme:
     lightTheme: true
     activeBorderColor:
