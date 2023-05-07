@@ -29,7 +29,7 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Hack Nerd Font Mono
+    family: FiraCode Nerd Font
     style: Regular
 
   # Point size of the font
