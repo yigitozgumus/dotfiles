@@ -137,6 +137,11 @@ gtw() {
     cd "$HOME/work/$folder"
 }
 
+gtwt() {
+    folder=`ls ~/work/workspaces | fzf-tmux -p --reverse`
+    cd "$HOME/work/workspaces/$folder"
+}
+
 gtp() {
     folder=`ls ~/personal | fzf-tmux -p --reverse`
     cd "$HOME/personal/$folder"
