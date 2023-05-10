@@ -1,4 +1,4 @@
-let mapleader="\ "
+
 
 """ Plugins -----------------
 
@@ -22,6 +22,7 @@ set incsearch
 set nu
 set relativenumber
 set expandtab
+set ideamarks
 set NERDTree
 """ Idea Specific Settings ----
 set ideajoin
@@ -29,17 +30,41 @@ set ideastatusicon=gray
 
 map sv <Action>(SplitVertically)
 map ss <Action>(SplitHorizontally)
-""" map <leader>tt <Action>(ActivateTerminalToolWindow)
 
-map <C-h> <C-W>h
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-l> <C-W>l
+nmap <C-O> <Action>(Back)
+nmap <C-I> <Action>(Forward)
+
+""" IdeaVim actions
+nmap [ <Action>(MethodUp)
+nmap ] <Action>(MethodDown)
+
+nmap ' <Action>(ShowBookmarks)
+nmap m <Action>(ToggleBookmarkWithMnemonic)
+
+" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
+nmap <leader>i ~hi
+" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
+vmap <leader>u d~h
+
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
 
 map <leader>d <Action>(Debug)
-map <leader>r <Action>(RenameElement)
 map <leader>c <Action>(Stop)
 map <leader>z <Action>(ToggleDistractionFreeMode)
+
+" Code actions
+nnoremap <leader>cu <Action>(FindUsages)
+nnoremap <leader>cr <Action>(RenameElement)
+nnoremap <leader>cg <Action>(IntroduceVariable)
+vnoremap <leader>cg <Action>(IntroduceVariable)
+nnoremap <leader>cd <Action>(QuickJavaDoc)
+vnoremap <leader>cs <Action>(SurroundWith)
+nnoremap <leader>o <Action>(FileStructurePopup)
+nnoremap <leader>p <Action>(ShowErrorDescription)
+nnoremap == <Action>(ReformatCode \| action OptimizeImports)
 
 map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
@@ -49,6 +74,8 @@ map <leader>ed <Action>(ShowErrorDescription)
 map <leader>qq <Action>(QuickImplementations)
 map <leader>th <Action>(ToggleInlayHintsGloballyAction)
 map <leader>mb <Action>(ShowTypeBookmarks)
+map <leader>ca <Action>(ShowIntentionActions)
+nnoremap <leader><leader> <Action>(SearchEverywhere)
 
 " Reformat the current line only
 map <leader>l V<Action>(ReformatCode)

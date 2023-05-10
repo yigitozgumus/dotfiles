@@ -29,70 +29,36 @@ function M.config()
       end,
     },
     mapping = cmp.mapping.preset.insert({
-      ["<C-l>"] = cmp.mapping({
-        i = function(fallback)
-          if luasnip.choice_active() then
-            luasnip.change_choice(1)
-          else
-            fallback()
-          end
-        end,
-      }),
-      ["<C-u>"] = cmp.mapping({
-        i = function(fallback)
-          if luasnip.choice_active() then
-            require("luasnip.extras.select_choice")()
-          else
-            fallback()
-          end
-        end,
-      }),
-      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-n>"] = cmp.mapping.select_next_item(),
+      ["<C-p>"] = cmp.mapping.select_prev_item(),
+      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete({}),
-      ["<C-e>"] = cmp.mapping.close(),
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      ["<C-j>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
-        elseif neogen.jumpable() then
-          neogen.jump_next()
+        elseif cmp.visible() then
+          cmp.select_next_item()
         elseif has_words_before() then
           cmp.complete()
         else
           fallback()
         end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
-      ["<C-k>"] = cmp.mapping(function(fallback)
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
-        elseif neogen.jumpable(true) then
-          neogen.jump_prev()
         else
           fallback()
         end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
-      ["<C-y>"] = {
-        i = cmp.mapping.confirm({ select = false }),
-      },
+      end, { "i", "s" }),
     }),
     sources = {
       { name = "nvim_lsp", max_item_count = 15 },
       { name = "nvim_lsp_signature_help", max_item_count = 5 },
       { name = "luasnip", max_item_count = 5 },
-      -- { name = "cmp_tabnine" },
       { name = "treesitter", max_item_count = 5 },
       { name = "rg", max_item_count = 2 },
       { name = "buffer", max_item_count = 5 },
@@ -100,6 +66,7 @@ function M.config()
       { name = "path" },
       { name = "crates" },
     },
+    preselect = cmp.PreselectMode.None,
     window = {
       documentation = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -115,15 +82,6 @@ function M.config()
       },
     },
   })
-  if cmdline then
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-        { name = "cmdline" },
-      }),
-    })
-  end
 end
 
 return M
