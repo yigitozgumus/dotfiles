@@ -22,9 +22,6 @@ tls() {
 }
 alias tmx='tmuxinator'
 alias tkill='tmux kill-session -t'
-tkill-all() {
-    for i in `tmux ls -F "#{session_name}"`; do tmux kill-session -t $i ; done;
-}
 
 # Configuration
 alias A='nvim ~/.alias'

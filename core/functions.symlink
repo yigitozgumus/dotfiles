@@ -147,6 +147,10 @@ gtp() {
     cd "$HOME/personal/$folder"
 }
 
+tkill-all() {
+    for i in `tmux ls -F "#{session_name}"`; do tmux kill-session -t $i ; done;
+}
+
 alacritty_theme(){
     if [ -z "~/.config/alacritty/color.yml" ]; then
         echo "file ~/.config/alacritty/color.yml doesn't exist"
