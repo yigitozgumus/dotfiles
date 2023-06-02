@@ -45,6 +45,11 @@ precmd_functions+=(hotreload-alias)
    export EDITOR='nvim'
  fi
 
+# Increase History Size
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
 
 # Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

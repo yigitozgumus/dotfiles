@@ -9,6 +9,7 @@ alias lse='exa -lhi'
 alias lvim="~/.local/bin/lvim"
 alias ll="exa -lhi"
 alias vim='nvim --listen /tmp/nvimsocket'
+alias rm='trash'
 # Vim
 alias uv='nvim ~/personal/dotfiles'
 alias nvd='neovide'
