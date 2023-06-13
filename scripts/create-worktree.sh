@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if ! command -v fzf &>/dev/null; then
+	echo "fzf is not found on your system. install it using \033[0;31m brew install fzf"
+	exit 1
+fi
+
 # Update the Repository
 echo "The Repo is being fetched..."
 git fetch

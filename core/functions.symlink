@@ -147,6 +147,63 @@ gtp() {
     cd "$HOME/personal/$folder"
 }
 
+# Project
+open-project() {
+  if [[ -f "settings.gradle" || -f "settings.gradle.kts" ]] ; then
+
+      choices="Stable\nBeta\nCanary"
+      choice=$(echo $choices | fzf)
+      case "$choice" in
+      "Stable")
+          echo "Opening Android Project with Android Stable"
+          studio-stable .
+        ;;
+      "Beta")
+          echo "Opening Android Project with Android Beta"
+          studio-beta .
+          ;;
+      "Canary")
+          echo "Opening Android Project with Android Canary"
+          studio-canary .
+          ;;
+      *)
+          echo "not valid"
+          exit 1
+          ;;
+      esac
+  elif [[ -d "Trendyol_V2" ]] ; then
+    cd "Trendyol_V2"
+      choices="Stable\nBeta\nCanary"
+      choice=$(echo $choices | fzf)
+      case "$choice" in
+      "Stable")
+          echo "Opening Trendyol Android Project with Android Stable"
+          studio-stable .
+          cd ..
+        ;;
+      "Beta")
+          echo "Opening Trendyol Android Project with Android Beta"
+          studio-beta .
+          cd ..
+          ;;
+      "Canary")
+          echo "Opening Trendyol Android Project with Android Canary"
+          studio-canary .
+          cd ..
+          ;;
+      *)
+          echo "not valid"
+          exit 1
+          ;;
+      esac
+  else
+      echo "Opening with Visual Studio Code"
+      code .
+  fi
+
+}
+
+
 tkill-all() {
     for i in `tmux ls -F "#{session_name}"`; do tmux kill-session -t $i ; done;
 }
