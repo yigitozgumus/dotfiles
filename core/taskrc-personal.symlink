@@ -39,9 +39,18 @@ color.uda.effort.l=color255
 color.uda.effort.xl=color255
 color.uda.effort.xxl=color255
 
+uda.quadrant.type=numeric
+uda.quadrant.label=Quadrant
+uda.quadrant.values=1,2,3,4
+urgency.uda.quadrant.1.coefficient=1.5
+urgency.uda.quadrant.2.coefficient=2.5
+urgency.uda.quadrant.3.coefficient=0.5
+urgency.uda.quadrant.4.coefficient=-0.2
+
 uda.score.type=numeric
 uda.score.label=Score 🏆
 urgency.uda.score.coefficient=2
+
+report.next.labels = ID,Active,Age,Deps,P,🦾,🥌,Project,Tag,Recur,S,Due,Until,Description,Urg,🏆
+report.next.columns=id,start.age,entry.age,depends,priority,effort,quadrant,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency,score
 # Add effor and score in reports
-report.next.labels = ID,Active,Age,Deps,P,🦾,Project,Tag,Recur,S,Due,Until,Description,Urg,🏆
-report.next.columns=id,start.age,entry.age,depends,priority,effort,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency,score

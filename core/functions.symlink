@@ -147,6 +147,11 @@ gtp() {
     cd "$HOME/personal/$folder"
 }
 
+gtc() {
+    folder=`find ~/code -mindepth 2 -maxdepth 2 -type d | fzf`
+    cd "$HOME/$folder"
+}
+
 # Project
 open-project() {
   if [[ -f "settings.gradle" || -f "settings.gradle.kts" ]] ; then
