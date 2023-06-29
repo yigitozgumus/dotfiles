@@ -149,7 +149,7 @@ gtp() {
 
 gtc() {
     folder=`find ~/code -mindepth 2 -maxdepth 2 -type d | fzf`
-    cd "$HOME/$folder"
+    cd "$folder"
 }
 
 # Project

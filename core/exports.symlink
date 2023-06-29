@@ -9,7 +9,6 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH=$PATH:~/Library/Android/sdk/tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:~/Library/Android/sdk/platform-tools
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_BASE='/opt/homebrew/bin/fzf'
@@ -22,3 +21,4 @@ export PATH=$PATH:$HOME/miniconda/bin
 
 source ~/.exports.work
 source ~/.private-env
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
