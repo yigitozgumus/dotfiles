@@ -51,6 +51,7 @@
     edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     # add conflicted file on merge
     add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
 [delta]
     side-by-side = false
     line-numbers-left-format = ""
@@ -74,41 +75,52 @@
 
 [interactive]
     diffFilter = delta --color-only
+
 [credential]
 	helper = osxkeychain
+
 [push]
 	default = matching
+
 [color]
 	ui = auto
+
 [color "branch"]
 	current = yellow bold
 	local = green bold
 	remote = cyan bold
+
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
 [color "status"]
 	added = green bold
 	changed = yellow bold
 	untracked = red bold
+
 [diff]
 	tool = vimdiff
+
 [difftool]
 	prompt = false
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+
 [alias]
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg = !"git lg1"
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+
 [init]
 	defaultBranch = main
+
+[merge]
+	conflictstyle = diff3
