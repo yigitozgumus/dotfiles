@@ -5,3 +5,4 @@ configs/nvim/.DS_Store
 configs/tmux/plugins
 configs/kitty/current-theme.conf
 configs/alacritty/color.yml
+configs/lazygit/state.yml
