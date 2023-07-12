@@ -40,6 +40,11 @@ update-repo() {
     git rebase
 }
 
+stash-all() {
+  git add .
+  git stash
+}
+
 what-runs-on() {
     lsof -i tcp:$1
 }
@@ -174,14 +179,13 @@ open-project() {
           studio-canary .
           ;;
       *)
-          echo "not valid"
-          exit 1
+          echo "Not a valid choice. Exiting..."
           ;;
       esac
-  elif [[ -d "Trendyol_V2" ]] ; then
-    cd "Trendyol_V2"
+  elif [[ -d "Trendyol_v2" ]] ; then
+    cd "Trendyol_v2"
       choices="Stable\nBeta\nCanary"
-      choice=$(echo $choices | fzf)
+      choice=$(echo -e $choices | fzf)
       case "$choice" in
       "Stable")
           echo "Opening Trendyol Android Project with Android Stable"
@@ -199,10 +203,13 @@ open-project() {
           cd ..
           ;;
       *)
-          echo "not valid"
-          exit 1
+          echo "Not a valid choice. Exiting..."
+          cd ..
           ;;
       esac
+  elif [[ -f "go.mod" ]]; then
+      echo "Opening Go project with Goland"
+      goland .
   else
       echo "Opening with Visual Studio Code"
       code .

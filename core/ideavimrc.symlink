@@ -1,16 +1,17 @@
 let mapleader=" "
 
 """ Plugins -----------------
-
-set surround
+Plug 'tpope/vim-surround'
 set multiple-cursors
+Plug 'terryma/vim-multiple-cursors'
 set commentary
 set argtextobj
-set easymotion
 set textobj-entire
 set ReplaceWithRegister
 set exchange
 Plug 'machakann/vim-highlightedyank'
+Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdtree'
 
 """ Plugin Settings ---------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -24,7 +25,6 @@ set nu
 set relativenumber
 set expandtab
 set ideamarks
-set NERDTree
 """ Idea Specific Settings ----
 set ideajoin
 set ideastatusicon=gray
