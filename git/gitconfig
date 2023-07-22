@@ -16,12 +16,15 @@
 [includeIf "gitdir/i:~/personal/"]
 	path = .gitconfig-personal
 
+[includeIf "gitdir/i:~/projects/"]
+	path = .gitconfig-personal
+
 # Signin
 
 [includeIf "gitdir/i:~/projects/"]
     path = .gitconfig-signin
 
-[includeIf "gitdir/i:~/code/"]
+[includeIf "gitdir/i:~/projects/"]
     path = .gitconfig-signin
 
 [includeIf "gitdir/i:~/personal/"]

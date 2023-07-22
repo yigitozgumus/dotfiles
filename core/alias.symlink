@@ -11,7 +11,7 @@ alias ll="exa -lhi"
 alias vim='nvim --listen /tmp/nvimsocket'
 alias rm='trash'
 # Vim
-alias uv='nvim ~/personal/dotfiles'
+alias uv='nvim ~/projects/personal/dotfiles'
 alias nvd='neovide'
 
 # Command Shortcuts
@@ -43,9 +43,9 @@ alias vault-work='cd ~/Documents/Notes/Work'
 alias vault-personal='cd ~/Documents/Notes/Personal'
 
 # dev shortcuts / personal
-alias dotfiles='cd ~/personal/dotfiles'
-alias android='cd ~/code/android'
-alias notebooks='cd ~/code/notebooks'
+alias dotfiles='cd ~/projects/personal/dotfiles'
+alias android='cd ~/projects/android'
+alias notebooks='cd ~/projects/notebooks'
 alias see-git-config='vim ~/.gitconfig'
 
 # Rust related
