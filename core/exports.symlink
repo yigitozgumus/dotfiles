@@ -23,3 +23,7 @@ source ~/.exports.work
 source ~/.private-env
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export JAVA_HOME=`/usr/libexec/java_home`
+
+# Cocoapods
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
