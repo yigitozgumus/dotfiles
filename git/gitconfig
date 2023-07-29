@@ -24,10 +24,7 @@
 [includeIf "gitdir/i:~/projects/"]
     path = .gitconfig-signin
 
-[includeIf "gitdir/i:~/projects/"]
-    path = .gitconfig-signin
-
-[includeIf "gitdir/i:~/personal/"]
+[includeIf "gitdir/i:~/projects/personal/"]
     path = .gitconfig-signin
 
 [alias]
