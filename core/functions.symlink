@@ -147,9 +147,11 @@ gtp() {
     cd "$HOME/personal/$folder"
 }
 
-gtc() {
-    folder=`find ~/code -mindepth 2 -maxdepth 2 -type d | fzf`
-    cd "$folder"
+go-to-project() {
+    folders=`find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*"`
+    selected=`echo $folders | xargs basename | fzf`
+    selectedPath=`echo $folders | grep $selected`
+    cd "$selectedPath"
 }
 
 # Project
