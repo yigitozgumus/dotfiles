@@ -82,7 +82,7 @@ jupy(){
 
 # Git based functions
 
-get-commit-list-for() {
+get-commit-list() {
   userName=$(git config user.name)
   branchName=$(git branch --show-current)
   total_args="$#"
@@ -94,6 +94,19 @@ get-commit-list-for() {
   fi
   branchPrefix=$(echo $branchName | grep -Eo '^[A-Z0-9\-]+')
   git log --author=$userName --grep=$branchPrefix --oneline --no-merges
+}
+
+get-commit-id-list() {
+    commitList=`get-commit-list`
+
+    commitIDList=$(echo "$commitList" | awk '{print $1}')
+    echo $commitIDList
+}
+
+get-reversed-commit-id-list() {
+    commitIDList=`get-commit-id-list`
+    reversedIDList=$(echo $commitIDList | awk '{ lines[NR] = $0 } END { for (i = NR; i >= 1; i--) print lines[i] } ')
+    echo $reversedIDList
 }
 
 force-ktlint() {
