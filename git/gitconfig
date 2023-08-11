@@ -9,15 +9,19 @@
 	email = yigitozgumus1@gmail.com
 
 # Credentials
-
-[includeIf "gitdir/i:~/work/"]
-	path = .gitconfig-work
-
-[includeIf "gitdir/i:~/personal/"]
-	path = .gitconfig-personal
-
+#
 [includeIf "gitdir/i:~/projects/"]
 	path = .gitconfig-personal
+
+[includeIf "gitdir/i:~/projects/work/"]
+	path = .gitconfig-work
+
+[includeIf "gitdir/i:~/projects/workspaces/"]
+	path = .gitconfig-work
+
+[includeIf "gitdir/i:~/projects/personal/"]
+	path = .gitconfig-personal
+
 
 # Signin
 

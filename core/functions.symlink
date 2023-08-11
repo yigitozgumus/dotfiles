@@ -150,22 +150,8 @@ ctlv() {
 
 # Navigation
 #
-gtw() {
-    folder=`ls ~/work | fzf-tmux -p --reverse`
-    cd "$HOME/work/$folder"
-}
 
-gtwt() {
-    folder=`ls ~/work/workspaces | fzf-tmux -p --reverse`
-    cd "$HOME/work/workspaces/$folder"
-}
-
-gtp() {
-    folder=`ls ~/personal | fzf-tmux -p --reverse`
-    cd "$HOME/personal/$folder"
-}
-
-go-to-project() {
+cdtp() {
     folders=`find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*"`
     selected=`echo $folders | xargs basename | fzf`
     selectedPath=`echo $folders | grep $selected`
