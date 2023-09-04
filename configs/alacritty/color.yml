@@ -49,4 +49,71 @@ schemes:
       magenta: "#ff99cc"
       cyan: "#99ffff"
       white: "#ffffff"
-colors: *dark
+
+catpuccin: &catpuccin # Default colors
+  primary:
+    background: "0x1E1D2F"
+    foreground: "0xD9E0EE"
+
+  cursor:
+    text: "0x1E1D2F"
+    cursor: "0xF5E0DC"
+
+  # Normal colors
+  normal:
+    black: "0x6E6C7E"
+    red: "0xF28FAD"
+    green: "0xABE9B3"
+    yellow: "0xFAE3B0"
+    blue: "0x96CDFB"
+    magenta: "0xF5C2E7"
+    cyan: "0x89DCEB"
+    white: "0xD9E0EE"
+
+  # Bright colors
+  bright:
+    black: "0x988BA2"
+    red: "0xF28FAD"
+    green: "0xABE9B3"
+    yellow: "0xFAE3B0"
+    blue: "0x96CDFB"
+    magenta: "0xF5C2E7"
+    cyan: "0x89DCEB"
+    white: "0xD9E0EE"
+
+  indexed_colors:
+    - { index: 16, color: "0xF8BD96" }
+    - { index: 17, color: "0xF5E0DC" }
+
+github: &github # Default colors
+  primary:
+    background: "0x0d1117"
+    foreground: "0xb3b1ad"
+
+  # Normal colors
+  normal:
+    black: "0x484f58"
+    red: "0xff7b72"
+    green: "0x3fb950"
+    yellow: "0xd29922"
+    blue: "0x58a6ff"
+    magenta: "0xbc8cff"
+    cyan: "0x39c5cf"
+    white: "0xb3b1ad"
+
+  # Bright colors
+  bright:
+    black: "0x6e7681"
+    red: "0xffa198"
+    green: "0x56d364"
+    yellow: "0xe3b341"
+    blue: "0x79c0ff"
+    magenta: "0xd2a8ff"
+    cyan: "0x39c5cf"
+    white: "0xb3b1ad"
+
+  indexed_colors:
+    - { index: 16, color: "0xd18616" }
+    - { index: 17, color: "0xffa198" }
+theme: github_dark_default
+colors: *github
