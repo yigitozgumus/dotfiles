@@ -10,6 +10,7 @@ M.tools = {
   "markdownlint",
   "rustfmt",
   "gopls",
+  "kotlin-language-server",
 }
 
 function M.check()
