@@ -27,7 +27,7 @@ function M.config()
     dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
     dashboard.button("c", "  Configuration", ":e $MYVIMRC <CR>"),
     dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
-    dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
+    -- dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
     dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
   }
 
