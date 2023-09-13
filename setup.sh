@@ -18,9 +18,6 @@ nvim)
 homebrew)
 	source ./setup/setup-homebrew.sh
 	;;
-lazyvim)
-	source ./setup/setup-lazyvim.sh
-	;;
 shell)
 	source ./setup/setup-shell.sh
 	;;
@@ -36,9 +33,6 @@ purge)
 scripts)
 	source ./setup/setup-scripts.sh
 	;;
-nvchad)
-	source ./setup/setup-nvchad.sh
-	;;
 all)
 	source ./setup/setup-symlinks.sh
 	source ./setup/setup-terminfo.sh
@@ -50,7 +44,7 @@ all)
 	source ./setup/setup-neovim.sh
 	;;
 *)
-	echo $"\nUsage: $(basename "$0") {backup|link|git|nvim|homebrew|astronvim|shell|terminfo|macos|nvchad|scripts|purge|all}\n"
+	echo $"\nUsage: $(basename "$0") {backup|link|git|nvim|homebrew|shell|terminfo|macos|scripts|purge|all}\n"
 	exit 1
 	;;
 esac
