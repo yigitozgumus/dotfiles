@@ -7,7 +7,6 @@ M.tools = {
   "prettierd",
   "stylua",
   "luacheck",
-  "markdownlint",
   "rustfmt",
   "gopls",
   "kotlin-language-server",
