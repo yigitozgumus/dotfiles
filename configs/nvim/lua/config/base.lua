@@ -53,6 +53,7 @@ local options = {
   wildmode = "longest:full,full",
   scrolloff = 10,
   sidescrolloff = 10,
+  colorcolumn = "80",
   confirm = true,
   fillchars = "eob: ",
 }
