@@ -26,6 +26,8 @@ return {
           "rust",
           "scss",
           "toml",
+          "kotlin",
+          "swift",
           "typescript",
           "vim",
           "json",
