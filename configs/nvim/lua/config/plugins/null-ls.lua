@@ -10,7 +10,6 @@ function M.setup(options)
     sources = {
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.shfmt,
-      nls.builtins.diagnostics.markdownlint,
       nls.builtins.formatting.gofmt,
       nls.builtins.formatting.rustfmt,
       nls.builtins.formatting.prettierd.with({
