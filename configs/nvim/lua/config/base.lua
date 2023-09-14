@@ -58,8 +58,8 @@ local options = {
   fillchars = "eob: ",
 }
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
+for option, value in pairs(options) do
+  vim.opt[option] = value
 end
 
 -- allows neovim to access to system clipboard
