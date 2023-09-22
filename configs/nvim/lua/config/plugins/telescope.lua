@@ -33,20 +33,6 @@ return {
         require("utils").info("File path is yanked ")
         require("telescope.actions").close(prompt_bufnr)
       end,
-
-      -- VisiData
-      visidata = function(prompt_bufnr)
-        -- Get the full path
-        local content = require("telescope.actions.state").get_selected_entry()
-        local full_path = content.cwd .. require("plenary.path").path.sep .. content.value
-
-        -- Close the Telescope window
-        require("telescope.actions").close(prompt_bufnr)
-
-        -- Open the file with VisiData
-        local term = require("utils.term")
-        term.open_term("vd " .. full_path, { direction = "float" })
-      end,
     })
     local actions = require("telescope.actions")
     local actions_layout = require("telescope.actions.layout")
@@ -68,11 +54,9 @@ return {
             mappings = {
               n = {
                 ["y"] = nvb_actions.file_path,
-                ["s"] = nvb_actions.visidata,
               },
               i = {
                 ["<C-y>"] = nvb_actions.file_path,
-                ["<C-s>"] = nvb_actions.visidata,
               },
             },
             hidden = true,
@@ -84,11 +68,9 @@ return {
             mappings = {
               n = {
                 ["y"] = nvb_actions.file_path,
-                ["s"] = nvb_actions.visidata,
               },
               i = {
                 ["<C-y>"] = nvb_actions.file_path,
-                ["<C-s>"] = nvb_actions.visidata,
               },
             },
           },
@@ -98,17 +80,15 @@ return {
             mappings = {
               n = {
                 ["y"] = nvb_actions.file_path,
-                ["s"] = nvb_actions.visidata,
               },
               i = {
                 ["<C-y>"] = nvb_actions.file_path,
-                ["<C-s>"] = nvb_actions.visidata,
               },
             },
           },
         },
         layout_config = {
-          prompt_position = "top",
+          prompt_position = "bottom",
           vertical = { width = 0.5 },
         },
         border = {},
