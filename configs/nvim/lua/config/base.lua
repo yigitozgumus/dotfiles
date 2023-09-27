@@ -3,9 +3,15 @@
 ---------------------
 
 local options = {
-  encoding = "utf-8", -- Output Encoding that is shown on the terminal
-  fileencoding = "utf-8", -- Output Encoding of that file that is written
-  mouse = "a", -- allow mouse to be used in neovim
+
+  -- Output Encoding that is shown on the terminal
+  encoding = "utf-8",
+
+  -- Output Encoding of that file that is written
+  fileencoding = "utf-8",
+
+  -- allow mouse to be used in neovim
+  mouse = "a",
   swapfile = false, -- creates a swapfile
   timeoutlen = 1000, -- time towait for a mapped sequence to complete
   undofile = true, -- enable persistent undo
