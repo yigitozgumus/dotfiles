@@ -18,22 +18,6 @@ return {
   },
   config = function()
     -- Custom actions
-    local transform_mod = require("telescope.actions.mt").transform_mod
-    local nvb_actions = transform_mod({
-      file_path = function(prompt_bufnr)
-        -- Get selected entry and the file full path
-        local content = require("telescope.actions.state").get_selected_entry()
-        local full_path = content.cwd .. require("plenary.path").path.sep .. content.value
-
-        -- Yank the path to unnamed and clipboard registers
-        vim.fn.setreg('"', full_path)
-        vim.fn.setreg("+", full_path)
-
-        -- Close the popup
-        require("utils").info("File path is yanked ")
-        require("telescope.actions").close(prompt_bufnr)
-      end,
-    })
     local actions = require("telescope.actions")
     local actions_layout = require("telescope.actions.layout")
     local telescope = require("telescope")
@@ -51,28 +35,12 @@ return {
           find_files = {
             theme = "ivy",
             previewer = false,
-            mappings = {
-              n = {
-                ["y"] = nvb_actions.file_path,
-              },
-              i = {
-                ["<C-y>"] = nvb_actions.file_path,
-              },
-            },
             hidden = true,
             find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
           },
           git_files = {
             theme = "dropdown",
             previewer = false,
-            mappings = {
-              n = {
-                ["y"] = nvb_actions.file_path,
-              },
-              i = {
-                ["<C-y>"] = nvb_actions.file_path,
-              },
-            },
           },
           buffers = {
             theme = "dropdown",
