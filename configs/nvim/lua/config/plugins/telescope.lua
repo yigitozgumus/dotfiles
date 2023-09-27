@@ -45,14 +45,6 @@ return {
           buffers = {
             theme = "dropdown",
             previewer = false,
-            mappings = {
-              n = {
-                ["y"] = nvb_actions.file_path,
-              },
-              i = {
-                ["<C-y>"] = nvb_actions.file_path,
-              },
-            },
           },
         },
         layout_config = {
