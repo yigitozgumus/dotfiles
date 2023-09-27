@@ -139,6 +139,13 @@ require("lazy").setup({
       require("Comment").setup({})
     end,
   },
+{
+  "kylechui/nvim-surround",
+  event = "VeryLazy",
+  config = function()
+    require("nvim-surround").setup({})
+  end,
+},
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -170,7 +177,7 @@ require("lazy").setup({
     },
     build = ":TSUpdate",
   },
-  -- { import = "config.plugins" },
+  { import = "config.plugins" },
 }, {
   defaults = { lazy = true },
   install = { colorscheme = { "catppuccin", "gruvbox-material", "tokyonight", "habamax" } },
@@ -183,7 +190,7 @@ require("lazy").setup({
       enabled = true,
     },
     rtp = {
-      disabled_plugins = {
+    disabled_plugins = {
         "gzip",
         "matchit",
         "matchparen",
