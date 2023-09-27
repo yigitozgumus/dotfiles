@@ -82,11 +82,6 @@ return {
             cond = require("lazy.status").has_updates,
             color = { fg = "#ff9e64" },
           },
-          {
-            function()
-              return require("util.dashboard").status()
-            end,
-          },
         },
         lualine_y = { "location" },
         lualine_z = { { clock, separator = { right = "" } } },
