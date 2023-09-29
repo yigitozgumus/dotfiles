@@ -13,8 +13,20 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
   },
-  mappings = {},
+  mappings = {
+  },
   opts = {
-    dir = "~/Documents/Notes/Personal", -- no need to call 'vim.fn.expand' here
+    dir = "~/Documents/Notes/Personal", -- no need to call 'vim.fn.expand' here,
+    daily_notes = {
+      folder = "/Daily",
+    },
+    completion = {
+      nvim_cmp = true,
+      min_chars = 2,
+      new_notes_location = "/",
+      prepend_note_id = false,
+    },
+    open_app_foreground = true,
+    open_notes_in = "vsplit",
   },
 }
