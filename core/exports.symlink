@@ -14,16 +14,26 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_BASE='/opt/homebrew/bin/fzf'
-export PATH=$PATH:/opt/homebrew/bin
+
+if [ -d "/opt/homebrew/bin"]; then
+    export PATH=$PATH:/opt/homebrew/bin
+fi
 
 # local bin
 export PATH=$PATH:$HOME/.local/bin
 # Conda
 export PATH=$PATH:$HOME/miniconda/bin
 
-source ~/.exports.work
-source ~/.private-env
+if [ -e "$HOME/.exports.work"]; then
+    source ~/.exports.work
+fi
+
+if [ -e "$HOME/.private-env"]; then
+    source ~/.private-env
+fi
+
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
 export JAVA_HOME=`/usr/libexec/java_home`
 
 # Cocoapods
