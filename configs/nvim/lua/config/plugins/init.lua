@@ -116,6 +116,13 @@ return {
     opts = { snippet_engine = "luasnip" },
   },
   {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup({})
+    end,
+  },
+
+  {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
     cond = false,
