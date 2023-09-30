@@ -65,21 +65,6 @@ return {
       })
     end,
   },
-  {
-    "stevearc/dressing.nvim",
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-  },
 
   -- Better Comment
   {
@@ -111,24 +96,6 @@ return {
   },
 
   {
-    "ThePrimeagen/refactoring.nvim",
-    cond = false,
-    keys = {
-      {
-        "<leader>r",
-        function()
-          require("refactoring").select_refactor()
-        end,
-        mode = "v",
-        noremap = true,
-        silent = true,
-        expr = false,
-      },
-    },
-    opts = {},
-  },
-
-  {
     "simrat39/symbols-outline.nvim",
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
@@ -148,13 +115,6 @@ return {
     },
     opts = { snippet_engine = "luasnip" },
   },
-  {
-    "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup({})
-    end,
-  },
-
   {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
