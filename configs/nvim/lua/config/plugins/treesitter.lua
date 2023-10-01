@@ -13,6 +13,7 @@ return {
           "bash",
           "c",
           "cmake",
+          "astro",
           "css",
           "gitignore",
           "go",

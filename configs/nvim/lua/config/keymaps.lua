@@ -4,7 +4,6 @@
 
 local keymap = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
-local expr_opts = { noremap = true, expr = true, silent = true }
 
 -- Clear search highlighting
 keymap("n", "<leader>k", ":nohlsearch<CR>", default_opts)
@@ -90,9 +89,9 @@ keymap("n", "N", "Nzzzv", default_opts)
 keymap("n", "<leader>rs", ":LspRestart<CR>", default_opts) -- mapping to restart lsp if necessary
 
 vim.keymap.set("n", "<leader>/", function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-    winblend = 10,
-    previewer = false,
-  }))
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
 end, { desc = "[/] Fuzzily search in current buffer" })
