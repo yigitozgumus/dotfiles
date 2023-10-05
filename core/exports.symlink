@@ -15,7 +15,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_BASE='/opt/homebrew/bin/fzf'
 
-if [ -d "/opt/homebrew/bin"]; then
+if [ -d "/opt/homebrew/bin" ]; then
     export PATH=$PATH:/opt/homebrew/bin
 fi
 
@@ -24,11 +24,11 @@ export PATH=$PATH:$HOME/.local/bin
 # Conda
 export PATH=$PATH:$HOME/miniconda/bin
 
-if [ -e "$HOME/.exports.work"]; then
+if [ -e "$HOME/.exports.work" ]; then
     source ~/.exports.work
 fi
 
-if [ -e "$HOME/.private-env"]; then
+if [ -e "$HOME/.private-env" ]; then
     source ~/.private-env
 fi
 
