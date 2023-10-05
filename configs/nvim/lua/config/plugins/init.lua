@@ -5,7 +5,7 @@ return {
   { "williamboman/mason-lspconfig.nvim" },
   { "nvim-lua/plenary.nvim" },
   { "windwp/nvim-spectre" },
-  { "segeljakt/vim-silicon", lazy = false },
+  { "segeljakt/vim-silicon" },
   { "mfussenegger/nvim-dap" },
   { "elihunter173/dirbuf.nvim", cmd = { "Dirbuf" } },
   {
@@ -19,7 +19,7 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
-    lazy = false,
+    event = { "InsertEnter" },
     config = function()
       vim.fn["mkdp#util#install"]()
     end,

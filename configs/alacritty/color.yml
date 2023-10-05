@@ -116,30 +116,30 @@ github: &github # Default colors
     - { index: 16, color: "0xd18616" }
     - { index: 17, color: "0xffa198" }
 
-visiBone: &visiBone
+chalk: &chalk
   primary:
-    background: "#000000"
-    foreground: "#ffffff"
+    background: "#151515"
+    foreground: "#d0d0d0"
   cursor:
-    text: "#000000"
-    cursor: "#ffffff"
+    text: "#151515"
+    cursor: "#d0d0d0"
   normal:
-    black: "#666666"
-    red: "#cc6666"
-    green: "#66cc99"
-    yellow: "#cc9966"
-    blue: "#6699cc"
-    magenta: "#cc6699"
-    cyan: "#66cccc"
-    white: "#cccccc"
+    black: "#151515"
+    red: "#fb9fb1"
+    green: "#acc267"
+    yellow: "#ddb26f"
+    blue: "#6fc2ef"
+    magenta: "#e1a3ee"
+    cyan: "#12cfc0"
+    white: "#d0d0d0"
   bright:
-    black: "#999999"
-    red: "#ff9999"
-    green: "#99ffcc"
-    yellow: "#ffcc99"
-    blue: "#99ccff"
-    magenta: "#ff99cc"
-    cyan: "#99ffff"
-    white: "#ffffff"
+    black: "#505050"
+    red: "#fb9fb1"
+    green: "#acc267"
+    yellow: "#ddb26f"
+    blue: "#6fc2ef"
+    magenta: "#e1a3ee"
+    cyan: "#12cfc0"
+    white: "#f5f5f5"
 
-colors: *visiBone
+colors: *chalk
