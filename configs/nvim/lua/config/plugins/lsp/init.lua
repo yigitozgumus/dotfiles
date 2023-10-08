@@ -50,7 +50,13 @@ function M.config()
         },
       },
     },
-    gopls = {},
+    gopls = {
+      ["ui.inlayhint.hints"] = {
+        compositeLiteralFields = true,
+        constantValues = true,
+        parameterNames = true,
+      },
+    },
     rust_analyzer = {
       settings = {
         ["rust-analyzer"] = {
@@ -133,7 +139,6 @@ function M.config()
         },
       },
     },
-    vimls = {},
     tailwindcss = {},
   }
 

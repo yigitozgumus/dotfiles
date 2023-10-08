@@ -22,6 +22,7 @@ return {
           "http",
           "javascript",
           "latex",
+          "regex",
           "lua",
           "markdown",
           "markdown_inline",
