@@ -13,6 +13,7 @@ alias rm='trash'
 # Vim
 alias uv='nvim ~/projects/personal/dotfiles'
 alias nvd='neovide'
+alias rgt='run-gradle-task'
 
 # Command Shortcuts
 alias tt='tmux attach -t'
