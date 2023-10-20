@@ -97,14 +97,14 @@ get-commit-list() {
 }
 
 get-commit-id-list() {
-    commitList=`get-commit-list`
+    commitList=`get-commit-list $1`
 
     commitIDList=$(echo "$commitList" | awk '{print $1}')
     echo $commitIDList
 }
 
 get-reversed-commit-id-list() {
-    commitIDList=`get-commit-id-list`
+    commitIDList=`get-commit-id-list $1`
     reversedIDList=$(echo $commitIDList | awk '{ lines[NR] = $0 } END { for (i = NR; i >= 1; i--) print lines[i] } ')
     echo $reversedIDList
 }

@@ -71,7 +71,9 @@ if pyenv --version >/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
-export GRADLE_COMMAND_PROJECT_DIR=$HOME/projects/work/android-phone
-export GRADLE_RUN_COMMAND_INSTALLED=1
+export PATH=$HOME/.local/bin:$PATH
+alias rgt='run-gradle-task'
 export GRADLE_TASK_PROJECT_DIR=$HOME/projects/work/android-phone
 export GRADLE_RUN_TASK_INSTALLED=1
+export PATH=$HOME/.local/bin:$PATH
+alias rgt='run-gradle-task'

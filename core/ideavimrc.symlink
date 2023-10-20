@@ -71,6 +71,7 @@ map <leader>o <Action>(FileStructurePopup)
 map <leader>th <Action>(ToggleInlayHintsGloballyAction)
 map <leader>mb <Action>(ShowTypeBookmarks)
 map <leader>ca <Action>(ShowIntentionActions)
+map <leader>t <Action>(GoToTest)
 
 map <leader>l V<Action>(ReformatCode)
 
