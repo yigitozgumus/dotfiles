@@ -50,6 +50,10 @@ what-runs-on() {
 }
 
 f() {
+    if [ "$1" = "--help" ]; then
+        echo "Open a file in the Directory with Neovim."
+        return 0
+    fi
     file=$(fd --type f --hidden --exclude .git | fzf-tmux -p --height 40% --reverse --info inline --border --preview 'cat {}')
     if [ ! -z $file  -a $file != " " ]; then
         nvim $file
@@ -117,17 +121,55 @@ force-ktlint() {
   done
 }
 
-push-to-remote() {
+ptr() {
+    if [ "$1" = "--help" ]; then
+        echo "Push the changes to the remote."
+        return 0
+    fi
     branch=$(git branch --show-current)
     git push -u origin $branch
 }
 
-get-to-conflict() {
+gtc() {
+    if [ "$1" = "--help" ]; then
+        echo "Get to the conflict with given branch or develop."
+        return 0
+    fi
   branchToPull="develop"
   if [[ ! -z "$1" ]]; then
     $branchToPull = $1
   fi
   git pull origin $branchToPull
+}
+
+cbl() {
+
+    if [ "$1" = "--help" ]; then
+        echo "Select branch from local list and check out."
+        return 0
+    fi
+    branch=$(git branch | fzf)
+
+    if [ -z $branch ]; then
+        echo "Branch selection is empty, exiting..."
+        return 0
+    fi
+    git checkout $branch
+}
+
+cbr() {
+
+    if [ "$1" = "--help" ]; then
+        echo "Select branch from remote list and check out."
+        return 0
+    fi
+    branch=$(git branch -r | fzf)
+
+    if [ -z $branch ]; then
+        echo "Branch selection is empty, exiting..."
+        return 0
+    fi
+    git checkout $branch
 }
 
 rebase() {
@@ -152,6 +194,11 @@ ctlv() {
 #
 
 cdtp() {
+
+    if [[ "$1" = "--help" ]]; then
+        echo "Get to your project"
+        return 0
+    fi
     folders=`find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*"`
     selected=`echo $folders | xargs basename | fzf`
     selectedPath=`echo $folders | grep $selected`
@@ -159,7 +206,11 @@ cdtp() {
 }
 
 # Project
-open-project() {
+op() {
+    if [ "$1" = "--help" ]; then
+        echo "open project with designated IDE."
+        return 0
+    fi
   if [[ -f "settings.gradle" || -f "settings.gradle.kts" ]] ; then
 
       choices="Stable\nBeta\nCanary"

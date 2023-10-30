@@ -119,6 +119,7 @@ detektBaselineDebug\n\
 testDebugUnitTest\n\
 assertDependencyBreaches\n\
 detektDebug\n\
+compileDebugKotlin\n\
 detektKts\n\
 assembleDebug\n\
 checkPropertyFile\n\
