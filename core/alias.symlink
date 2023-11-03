@@ -41,7 +41,7 @@ alias demos="cd  ~/Desktop"
 # Obsidian Vaults
 
 alias vault-work='cd ~/Documents/Notes/Work'
-alias vault-personal='cd ~/Documents/Notes/Personal'
+alias notes='cd ~/Documents/Notes/Personal'
 
 # dev shortcuts / personal
 alias dotfiles='cd ~/projects/personal/dotfiles'
