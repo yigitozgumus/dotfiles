@@ -11,16 +11,6 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-local function _run_command(cmd)
-	local f = assert(io.popen(cmd, "r"))
-	local s = assert(f:read("*a"))
-	f:close()
-	s = string.gsub(s, "^%s+", "")
-	s = string.gsub(s, "%s+$", "")
-	s = string.gsub(s, "[\n\r]+", "")
-	return s
-end
-
 local function _home_dir()
 	return string.format("file://%s", os.getenv("HOME"))
 end
@@ -103,60 +93,6 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	return {
 		{ Text = title },
 	}
-end)
-
---- ========== Right Status ==========
-
-wezterm.on("update-right-status", function(window, pane)
-	local SOLID_LEFT_ARROW = ""
-	local SOLID_RIGHT_ARROW = ""
-	local COLORS = {
-		"#3c1361",
-		"#52307c",
-		"#663a82",
-		"#7c5295",
-		"#b491c8",
-	}
-	local TEXT_FG = "#c0c0c0"
-
-	local cells = {}
-	local cwd_uri = pane:get_current_working_dir()
-	local cwd = nil
-	if type(cwd_uri) == "userdata" then
-		cwd = cwd_uri.file_path
-	else
-		cwd = _current_dir(cwd_uri)
-	end
-	table.insert(cells, cwd)
-
-	local date = wezterm.strftime("%a %b %-d %H:%M")
-	table.insert(cells, date)
-
-	local elements = {}
-	local num_cells = 0
-
-	table.insert(elements, { Foreground = { Color = "#3c1361" } })
-
-	table.insert(elements, { Text = SOLID_RIGHT_ARROW })
-
-	local function _push(text, is_last)
-		local cell_no = num_cells + 1
-		table.insert(elements, { Foreground = { Color = TEXT_FG } })
-		table.insert(elements, { Background = { Color = COLORS[cell_no] } })
-		table.insert(elements, { Text = " " .. text .. " " })
-		if not is_last then
-			table.insert(elements, { Foreground = { Color = COLORS[cell_no + 1] } })
-			table.insert(elements, { Text = SOLID_RIGHT_ARROW })
-		end
-		num_cells = num_cells + 1
-	end
-
-	while #cells > 0 do
-		local cell = table.remove(cells, 1)
-		_push(cell, #cells == 0)
-	end
-
-	window:set_right_status(wezterm.format(elements))
 end)
 
 --- ========== CWD ==========
