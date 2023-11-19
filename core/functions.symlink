@@ -347,3 +347,6 @@ change_background(){
     fi
 }
 
+jj () {
+    cd "${1:-.}/$(find . -maxdepth 5 -type d -name .git | sed 's|/.git$||' | fzf --preview 'tree -L 2 ./{}')"
+}

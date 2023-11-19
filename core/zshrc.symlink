@@ -77,3 +77,7 @@ export GRADLE_TASK_PROJECT_DIR=$HOME/projects/work/android-phone
 export GRADLE_RUN_TASK_INSTALLED=1
 export PATH=$HOME/.local/bin:$PATH
 alias rgt='run-gradle-task'
+
+setopt nocaseglob # ignore case
+setopt correct
+setopt auto_cd
