@@ -84,19 +84,16 @@ return {
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local fb_actions = require("telescope").extensions.file_browser.actions
-      opts.defualts = vim.tbl_deep_extend(
-        "force",
-        opts.defaults({
-          wrap_restuls = true,
-          layout_strategy = "horizontal",
-          layout_config = { prompt_position = "top" },
-          sorting_strategy = "ascending",
-          winblend = 0,
-          mappings = {
-            n = {},
-          },
-        })
-      )
+      opts.defualts = vim.tbl_deep_extend("force", opts.defaults, {
+        wrap_restuls = true,
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
+        mappings = {
+          n = {},
+        },
+      })
       opts.pickers = {
         diagnostics = {
           theme = "ivy",
@@ -132,8 +129,8 @@ return {
         },
       }
       telescope.setup(opts)
-      require("telescope").loas_extension("fzf")
-      require("telescope").loas_extension("file_browser")
+      require("telescope").load_extension("fzf")
+      require("telescope").load_extension("file_browser")
     end,
   },
   {
