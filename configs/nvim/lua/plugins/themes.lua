@@ -8,6 +8,11 @@ return {
   { "ellisonleao/gruvbox.nvim" },
   {
     "martinsione/darkplus.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("darkplus")
+    end,
   },
   {
     "catppuccin/nvim",
@@ -24,7 +29,7 @@ return {
           percentage = 0.15,
         },
       })
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
