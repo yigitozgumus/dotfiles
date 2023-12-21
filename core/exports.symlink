@@ -43,3 +43,8 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # DoomEmacs 
 export PATH="$HOME/.config/emacs/bin:$PATH"
+
+# Fly
+
+export FLYCTL_INSTALL="/Users/yigitozgumus/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"

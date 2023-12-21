@@ -68,10 +68,10 @@ config.window_frame = {
 config.scrollback_lines = 200000
 config.enable_scroll_bar = true
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = "1cell",
+	right = "1cell",
+	top = "0.5cell",
+	bottom = "0.5cell",
 }
 
 config.window_decorations = "RESIZE"
