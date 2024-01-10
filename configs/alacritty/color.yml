@@ -142,4 +142,4 @@ chalk: &chalk
     cyan: "#12cfc0"
     white: "#f5f5f5"
 
-colors: *catpuccin
+colors: *chalk
