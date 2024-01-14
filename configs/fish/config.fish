@@ -3,9 +3,6 @@ if status is-interactive
     # Aliases
     #
 
-    # VSCodium
-    alias code '/usr/bin/codium'
-
     #
     # Abbreviations
     #
@@ -25,8 +22,8 @@ if status is-interactive
     abbr --add --global git-undo-last-commit 'git reset HEAD~'
 
     # Aliases for getting system and app information.
-    abbr --add --global system-information 'neofetch'
-    abbr --add --global disk-usage 'dust'
+    abbr --add --global system-information neofetch
+    abbr --add --global disk-usage dust
     abbr --add --global which-kernel 'apt-cache policy linux-generic'
     abbr --add --global node-v8-version 'node -p process.versions.v8'
 
@@ -51,14 +48,15 @@ if status is-interactive
     abbr --add --global port 'lsof -i'
 
     # Better find
-    abbr --add --global find 'fd'
+    abbr --add --global find fd
 
     # Better ps
-    abbr --add --global ps 'procs'
+    abbr --add --global ps procs
 
     # Package.json validator
     abbr --add --global validate-package.json 'pjv package.json'
 
     # Use ripgrep instead of grep
-    abbr --add --global grep 'rg'
+    abbr --add --global grep rg
 end
+
