@@ -30,6 +30,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 [[ ! -f ~/.functions ]] || source ~/.functions
+[[ ! -f ~/.functions-work ]] || source ~/.functions-work
 [[ ! -f ~/.exports ]] || source ~/.exports
 
 hotreload-alias() {
@@ -81,3 +82,4 @@ alias rgt='run-gradle-task'
 setopt nocaseglob # ignore case
 setopt correct
 setopt auto_cd
+export PATH="/opt/homebrew/opt/go@1.20/bin:$PATH"

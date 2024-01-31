@@ -8,87 +8,24 @@ FORMAT_INSTALL='\e[36m >> \e[92m\e[1m'
 FORMAT_END='\e[0m'
 FORMAT_WARNING='\e[36m >> \e[91m'
 
-remove-dmg() {
-    cd ~/Downloads/
-    rm -rf *.dmg
-    cd
+command-list() {
+  echo "\nFeature Related Commands:"
+  echo "- get-commit-list"
+  echo "- get-commit-id-list"
+  echo "- get-reversed-commit-id-list"
+  echo "\nWorkflow Related Commands:"
+  echo "- ptr (Push to Remote)"
+  echo "- gtc (Get to Conflict)"
+  echo "- cbl (Change Branch Local)"
+  echo "- cbr (Change Branch Remote)"
+  echo "- kpop (Kill Process on Port)"
+  echo "- update-repo"
+  echo "\nNavigation Related Commands:"
+  echo "- cdtp (Change Directory to Project)"
+  echo "- op (Open Project)"
 }
 
-clean-trash() {
-    cd ~/.Trash
-    rm -rf *
-    cd
-}
-
-hide-desktop-icons() {
-    defaults write com.apple.finder CreateDesktop false
-    killall Finder
-}
-
-show-desktop-icons() {
-    defaults write com.apple.finder CreateDesktop true
-    killall Finder
-}
-
-# Tmux session functions
-open-session() {
-    tmx start $1
-}
-
-update-repo() {
-    git fetch
-    git rebase
-}
-
-stash-all() {
-  git add .
-  git stash
-}
-
-what-runs-on() {
-    if [ "$1" = "--help" ]; then
-        echo "Gets the running app info for port"
-        return 0
-    fi
-    lsof -i tcp:$1
-}
-
-f() {
-    if [ "$1" = "--help" ]; then
-        echo "Open a file in the Directory with Neovim."
-        return 0
-    fi
-    file=$(fd --type f --hidden --exclude .git | fzf-tmux -p --height 40% --reverse --info inline --border --preview 'cat {}')
-    if [ ! -z $file  -a $file != " " ]; then
-        nvim $file
-    fi
-}
-
-# usage jupy TYPE ENVIRONMENT PORT
-jupy(){
-
-    total_args="$#"
-    type="lab"
-    environment="root"
-    port="8888"
-    if [ -z $1 ]; then
-        printf "${FORMAT_WARNING}Environment name should not be empty.\n${FORMAT_END}"
-        printf "${FORMAT_INFO}jupy ENVIRONMENT TYPE(default=lab) PORT(default=8888).\n${FORMAT_END}"
-        return 0
-    fi
-    environment=$1
-    if [ $total_args -eq "2" ]; then
-        type=$2
-    elif [ $total_args -eq "3" ]; then
-        port=$3
-    fi
-    load_env $environment;
-    jupyter $type --no-browser --port=$port | sleep 4 |
-    open -a /Applications/Google\ Chrome.app "http://localhost:$port"
-}
-
-
-# Git based functions
+# Commit List for Task
 
 get-commit-list() {
 
@@ -136,15 +73,8 @@ get-reversed-commit-id-list() {
     echo $reversedIDList
 }
 
-force-ktlint() {
-  fileList=$(git diff --name-only HEAD)
-  for file in $fileList
-  do
-    ktlint -F $file
-  done
-}
+# Workflow related
 
-# Push to Remote
 ptr() {
     if [ "$1" = "--help" ]; then
         echo "Push the changes to the remote."
@@ -152,6 +82,17 @@ ptr() {
     fi
     branch=$(git branch --show-current)
     git push -u origin $branch
+}
+
+open-mr() {
+  
+    if [ "$1" = "--help" ]; then
+        echo "Push the changes to the remote and opens the MR page on your default browser"
+        return 0
+    fi
+    branch=$(git branch --show-current)
+    output=$(git push -u origin $branch)
+    echo $output | grep -o "https:[^ ]*" | xargs open -u
 }
 
 # Get to Conflict
@@ -197,26 +138,31 @@ cbr() {
     git checkout $branch
 }
 
-rebase() {
-    var=$1
-    git rebase -i @~$var
+kpop() {
+    local port=$1
+    local pid
+
+    # Find PID of the process using the port
+    pid=$(lsof -i tcp:${port} -t)
+
+    # Check if PID was found
+    if [ -z "$pid" ]; then
+        echo "No process found listening on port $port"
+        return 1
+    else
+        echo "Killing process with PID $pid on port $port"
+        # Kill the process
+        kill $pid
+    fi
 }
 
-change() {
-    git add .
-    git commit --amend
+update-repo() {
+    git fetch
+    git rebase
 }
 
-step-forward() {
-    git rebase --continue
-}
+# Navigation Related Commands
 
-ctlv() {
-    change_to_local_version $@
-}
-
-# Navigation
-#
 
 cdtp() {
 
@@ -264,23 +210,20 @@ op() {
       "Stable")
           echo "Opening Trendyol Android Project with Android Stable"
           studio-stable .
-          cd ..
         ;;
       "Beta")
           echo "Opening Trendyol Android Project with Android Beta"
           studio-beta .
-          cd ..
           ;;
       "Canary")
           echo "Opening Trendyol Android Project with Android Canary"
           studio-canary .
-          cd ..
           ;;
       *)
           echo "Not a valid choice. Exiting..."
-          cd ..
           ;;
       esac
+      cd ..
   elif [[ -d "pl-app" ]] ; then
     cd "pl-app"
       choices="Stable\nBeta\nCanary"
@@ -289,23 +232,20 @@ op() {
       "Stable")
           echo "Opening Trendyol Android Project with Android Stable"
           studio-stable .
-          cd ..
         ;;
       "Beta")
           echo "Opening Trendyol Android Project with Android Beta"
           studio-beta .
-          cd ..
           ;;
       "Canary")
           echo "Opening Trendyol Android Project with Android Canary"
           studio-canary .
-          cd ..
           ;;
       *)
           echo "Not a valid choice. Exiting..."
-          cd ..
           ;;
       esac
+      cd ..
   elif [[ -f "go.mod" ]]; then
       echo "Opening Go project with Goland"
       goland .
@@ -314,88 +254,4 @@ op() {
       code .
   fi
 
-}
-
-
-tkill-all() {
-    for i in `tmux ls -F "#{session_name}"`; do tmux kill-session -t $i ; done;
-}
-
-alacritty_theme(){
-    if [ -z "~/.config/alacritty/color.yml" ]; then
-        echo "file ~/.config/alacritty/color.yml doesn't exist"
-        return 0
-    fi
-    CONFIG_PATH="$HOME/.config/alacritty/color.yml"
-    sed -i "" -e "s#^colors: \*.*#colors: *$1#g" $CONFIG_PATH ;
-}
-
-lgt(){
-    if [ -z "~/Library/Application Support/lazygit/config.yml" ]; then
-        echo "file doesn't exist."
-        return 0
-    fi
-    CONFIG_PATH="$HOME/Library/Application Support/lazygit/config.yml"
-    if [[ "$1" == "light" ]]; then
-        cp -f "$HOME/.config/lazygit/config-light.yml" $CONFIG_PATH
-    else
-        cp -f "$HOME/.config/lazygit/config-dark.yml" $CONFIG_PATH
-    fi
-}
-
-cb () {
-   if [[ "$1" == "dark" ]]; then
-       `fish -c 'cb dark'`
-   else
-       `fish -c 'cb light'`
-   fi
-}
-
-change_background(){
-    local MODE="light"
-    if [ -z "$1" ]; then
-        local DEFAULT=`defaults read -g AppleInterfaceStyle 2>/dev/null`
-        if [[ "$DEFAULT" == "Dark" ]]; then
-            MODE="dark"
-        fi
-    else
-        if [[ "$1" == "light" ]]; then
-            osascript -l JavaScript -e "Application('System Events').appearancePreferences.darkMode = false" 2>/dev/null;
-            MODE="light"
-        else
-            osascript -l JavaScript -e "Application('System Events').appearancePreferences.darkMode = true" 2>/dev/null;
-            MODE="dark"
-        fi
-    fi
-    # Change neovim    
-    nvr --serverlist | while read addr; do
-        
-        if [[ "$MODE" == "light" ]]; then
-            /opt/homebrew/bin/nvr --servername "$addr" -c "set background=light"
-        else
-            /opt/homebrew/bin/nvr --servername "$addr" -c "set background=dark"
-        fi
-    done
-    # Change Alacritty
-    if [[ "$MODE" == "light" ]]; then
-        `alacritty_theme light`
-    else
-        `alacritty_theme dark`
-    fi
-    # Change Lazygit
-    if [[ "$MODE" == "light" ]]; then
-        `lgt light`
-    else
-        `lgt dark`
-    fi
-    #Change Kitty
-    if [[ "$MODE" == "light" ]]; then
-        `ln -sf "$HOME/personal/dotfiles/configs/kitty/light-theme.conf" "$HOME/.config/kitty/current-theme.conf"`
-    else
-        `ln -sf "$HOME/personal/dotfiles/configs/kitty/dark-theme.conf" "$HOME/.config/kitty/current-theme.conf"`
-    fi
-}
-
-jj () {
-    cd "${1:-.}/$(find . -maxdepth 5 -type d -name .git | sed 's|/.git$||' | fzf --preview 'tree -L 2 ./{}')"
 }
