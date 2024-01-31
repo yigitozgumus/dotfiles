@@ -20,6 +20,7 @@ command-list() {
   echo "- cbr (Change Branch Remote)"
   echo "- kpop (Kill Process on Port)"
   echo "- update-repo"
+  echo "- open-mr"
   echo "\nNavigation Related Commands:"
   echo "- cdtp (Change Directory to Project)"
   echo "- op (Open Project)"
@@ -85,7 +86,6 @@ ptr() {
 }
 
 open-mr() {
-  
     if [ "$1" = "--help" ]; then
         echo "Push the changes to the remote and opens the MR page on your default browser"
         return 0
