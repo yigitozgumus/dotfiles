@@ -11,7 +11,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("darkplus")
+      -- vim.cmd.colorscheme("darkplus")
     end,
   },
   {
@@ -29,7 +29,7 @@ return {
           percentage = 0.15,
         },
       })
-      -- vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
