@@ -1,257 +1,289 @@
 #!/bin/sh
 
-# Mac related Functions
-# Formatting helpers
-FORMAT_INFO='\e[36m >> \e[39m\e[1m'
-FORMAT_DONE='\e[36m >> \e[1m'
-FORMAT_INSTALL='\e[36m >> \e[92m\e[1m'
-FORMAT_END='\e[0m'
-FORMAT_WARNING='\e[36m >> \e[91m'
+# Colors
+COLOR_GRAY="\033[1;38;5;243m"
+COLOR_BLUE="\033[1;34m"
+COLOR_GREEN="\033[1;32m"
+COLOR_RED="\033[1;31m"
+COLOR_PURPLE="\033[1;35m"
+COLOR_YELLOW="\033[1;33m"
+COLOR_NONE="\033[0m"
+
+
+title-echo() {
+	printf "\n${COLOR_PURPLE}$1${COLOR_NONE}\n"
+	printf "${COLOR_GRAY}==============================${COLOR_NONE}\n"
+}
+
+command-echo() {
+	printf "${COLOR_YELLOW}Command: ${COLOR_GREEN}$1${COLOR_NONE} "
+}
+
+info-echo() {
+	printf "${COLOR_BLUE}\tInfo: ${COLOR_NONE}$1\n"
+}
+
 
 command-list() {
-  echo "\nFeature Related Commands:"
-  echo "- get-commit-list"
-  echo "- get-commit-id-list"
-  echo "- get-reversed-commit-id-list"
-  echo "\nWorkflow Related Commands:"
-  echo "- ptr (Push to Remote)"
-  echo "- gtc (Get to Conflict)"
-  echo "- cbl (Change Branch Local)"
-  echo "- cbr (Change Branch Remote)"
-  echo "- kpop (Kill Process on Port)"
-  echo "- update-repo"
-  echo "- open-mr"
-  echo "\nNavigation Related Commands:"
-  echo "- cdtp (Change Directory to Project)"
-  echo "- op (Open Project)"
+	title-echo "Feature Related Commands"
+
+	command-echo "get-commit-list"
+  info-echo "Get your commit list in the feature branch"
+	command-echo "get-commit-id-list"
+  info-echo "Get your commit id List in the feature branch"
+	command-echo "get-reversed-commit-id-list"
+  info-echo "Get your reversed commit it List in the feature branch"
+
+	title-echo "Workflow Related Commands:"
+
+  command-echo "open-mr"
+  info-echo "Push to Remote and open MR link in your default browser"
+  command-echo "ptr"
+  info-echo "Push to Remote"
+	command-echo "gtc"
+  info-echo "Get to Conflict"
+  command-echo "cbl"
+  info-echo "Change Branch Local"
+  command-echo "cbr"
+  info-echo "Change Branch Remote"
+  command-echo "kpop"
+  info-echo "Kill Process on Port"
+  command-echo "update-repo"
+  info-echo "Fetch the Latest Changes"
+
+	title-echo "Navigation Related Commands:"
+  
+  command-echo "cdtp"
+  info-echo "Change Directory to Project"
+  command-echo "op"
+  info-echo "Open Project in IDE"
 }
 
 # Commit List for Task
 
 get-commit-list() {
 
-    if [ "$1" = "--help" ]; then
-        echo "Gets the commit list for the current task. Ignores others' commits and merge commits"
-        echo "There are 3 ways you can use this command"
-        echo "\t Run without any parameters: Lists your commits for the current branch you are in."
-        echo "\t Pass in gitlab username: Lists target developer's commits for the current branch you are in."
-        echo "\t Pass in gitlab username and branch: Lists target developer's commits for the target branch."
-        return 0
-    fi
-  userName=$(git config user.name)
-  branchName=$(git branch --show-current)
-  total_args="$#"
-  if [ $total_args -eq "1" ]; then
-    userName=$1
-  elif [ $total_args -eq "2" ]; then
-    userName=$1
-    branchName=$2
-  fi
-  branchPrefix=$(echo $branchName | grep -Eo '^[A-Z0-9\-]+')
-  git log --author=$userName --grep=$branchPrefix --oneline --no-merges
+	if [ "$1" = "--help" ]; then
+		echo "Gets the commit list for the current task. Ignores others' commits and merge commits"
+		echo "There are 3 ways you can use this command"
+		echo "\t Run without any parameters: Lists your commits for the current branch you are in."
+		echo "\t Pass in gitlab username: Lists target developer's commits for the current branch you are in."
+		echo "\t Pass in gitlab username and branch: Lists target developer's commits for the target branch."
+		return 0
+	fi
+	userName=$(git config user.name)
+	branchName=$(git branch --show-current)
+	total_args="$#"
+	if [ $total_args -eq "1" ]; then
+		userName=$1
+	elif [ $total_args -eq "2" ]; then
+		userName=$1
+		branchName=$2
+	fi
+	branchPrefix=$(echo $branchName | grep -Eo '^[A-Z0-9\-]+')
+	git log --author=$userName --grep=$branchPrefix --oneline --no-merges
 }
 
 get-commit-id-list() {
 
-    if [ "$1" = "--help" ]; then
-        echo "Gets the commit id list for the current task. Ignores others' commits and merge commits"
-        return 0
-    fi
-    commitList=`get-commit-list $1`
+	if [ "$1" = "--help" ]; then
+		echo "Gets the commit id list for the current task. Ignores others' commits and merge commits"
+		return 0
+	fi
+	commitList=$(get-commit-list $1)
 
-    commitIDList=$(echo "$commitList" | awk '{print $1}')
-    echo $commitIDList
+	commitIDList=$(echo "$commitList" | awk '{print $1}')
+	echo $commitIDList
 }
 
 get-reversed-commit-id-list() {
 
-    if [ "$1" = "--help" ]; then
-        echo "Gets the reversed commit id list for the current task. Ignores others' commits and merge commits"
-        return 0
-    fi
-    commitIDList=`get-commit-id-list $1`
-    reversedIDList=$(echo $commitIDList | awk '{ lines[NR] = $0 } END { for (i = NR; i >= 1; i--) print lines[i] } ')
-    echo $reversedIDList
+	if [ "$1" = "--help" ]; then
+		echo "Gets the reversed commit id list for the current task. Ignores others' commits and merge commits"
+		return 0
+	fi
+	commitIDList=$(get-commit-id-list $1)
+	reversedIDList=$(echo $commitIDList | awk '{ lines[NR] = $0 } END { for (i = NR; i >= 1; i--) print lines[i] } ')
+	echo $reversedIDList
 }
 
 # Workflow related
 
 ptr() {
-    if [ "$1" = "--help" ]; then
-        echo "Push the changes to the remote."
-        return 0
-    fi
-    branch=$(git branch --show-current)
-    git push -u origin $branch
+	if [ "$1" = "--help" ]; then
+		echo "Push the changes to the remote."
+		return 0
+	fi
+	branch=$(git branch --show-current)
+	git push -u origin $branch
 }
 
 open-mr() {
-    if [ "$1" = "--help" ]; then
-        echo "Push the changes to the remote and opens the MR page on your default browser"
-        return 0
-    fi
-    branch=$(git branch --show-current)
-    output=$(git push -u origin $branch)
-    echo $output | grep -o "https:[^ ]*" | xargs open -u
+	if [ "$1" = "--help" ]; then
+		echo "Push the changes to the remote and opens the MR page on your default browser"
+		return 0
+	fi
+	branch=$(git branch --show-current)
+	output=$(git push -u origin $branch)
+	echo $output | grep -o "https:[^ ]*" | xargs open -u
 }
 
 # Get to Conflict
 gtc() {
-    if [ "$1" = "--help" ]; then
-        echo "Get to the conflict with given branch or develop."
-        return 0
-    fi
-  branchToPull="develop"
-  if [[ ! -z "$1" ]]; then
-    $branchToPull = $1
-  fi
-  git pull origin $branchToPull
+	if [ "$1" = "--help" ]; then
+		echo "Get to the conflict with given branch or develop."
+		return 0
+	fi
+	branchToPull="develop"
+	if [[ ! -z "$1" ]]; then
+		$branchToPull = $1
+	fi
+	git pull origin $branchToPull
 }
 
 cbl() {
 
-    if [ "$1" = "--help" ]; then
-        echo "Select branch from local list and check out."
-        return 0
-    fi
-    branch=$(git branch | fzf)
+	if [ "$1" = "--help" ]; then
+		echo "Select branch from local list and check out."
+		return 0
+	fi
+	branch=$(git branch | fzf)
 
-    if [ -z $branch ]; then
-        echo "Branch selection is empty, exiting..."
-        return 0
-    fi
-    git checkout $branch
+	if [ -z $branch ]; then
+		echo "Branch selection is empty, exiting..."
+		return 0
+	fi
+	git checkout $branch
 }
 
 cbr() {
 
-    if [ "$1" = "--help" ]; then
-        echo "Select branch from remote list and check out."
-        return 0
-    fi
-    branch=$(git branch -r | fzf)
+	if [ "$1" = "--help" ]; then
+		echo "Select branch from remote list and check out."
+		return 0
+	fi
+	branch=$(git branch -r | fzf)
 
-    if [ -z $branch ]; then
-        echo "Branch selection is empty, exiting..."
-        return 0
-    fi
-    git checkout $branch
+	if [ -z $branch ]; then
+		echo "Branch selection is empty, exiting..."
+		return 0
+	fi
+	git checkout $branch
 }
 
 kpop() {
-    local port=$1
-    local pid
+	local port=$1
+	local pid
 
-    # Find PID of the process using the port
-    pid=$(lsof -i tcp:${port} -t)
+	# Find PID of the process using the port
+	pid=$(lsof -i tcp:${port} -t)
 
-    # Check if PID was found
-    if [ -z "$pid" ]; then
-        echo "No process found listening on port $port"
-        return 1
-    else
-        echo "Killing process with PID $pid on port $port"
-        # Kill the process
-        kill $pid
-    fi
+	# Check if PID was found
+	if [ -z "$pid" ]; then
+		echo "No process found listening on port $port"
+		return 1
+	else
+		echo "Killing process with PID $pid on port $port"
+		# Kill the process
+		kill $pid
+	fi
 }
 
 update-repo() {
-    git fetch
-    git rebase
+	git fetch
+	git rebase
 }
 
 # Navigation Related Commands
 
-
 cdtp() {
 
-    if [[ "$1" = "--help" ]]; then
-        echo "Get to your project"
-        return 0
-    fi
-    folders=`find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*"`
-    selected=`echo $folders | xargs basename | fzf`
-    selectedPath=`echo $folders | grep $selected`
-    cd "$selectedPath"
+	if [[ "$1" = "--help" ]]; then
+		echo "Get to your project"
+		return 0
+	fi
+	folders=$(find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*")
+	selected=$(echo $folders | xargs basename | fzf)
+	selectedPath=$(echo $folders | grep $selected)
+	cd "$selectedPath"
 }
 
 # Project
 op() {
-    if [ "$1" = "--help" ]; then
-        echo "open project with designated IDE."
-        return 0
-    fi
-  if [[ -f "settings.gradle" || -f "settings.gradle.kts" ]] ; then
-      choices="Stable\nBeta\nCanary"
-      choice=$(echo $choices | fzf)
-      case "$choice" in
-      "Stable")
-          echo "Opening Android Project with Android Stable"
-          studio-stable .
-        ;;
-      "Beta")
-          echo "Opening Android Project with Android Beta"
-          studio-beta .
-          ;;
-      "Canary")
-          echo "Opening Android Project with Android Canary"
-          studio-canary .
-          ;;
-      *)
-          echo "Not a valid choice. Exiting..."
-          ;;
-      esac
-  elif [[ -d "Trendyol_v2" ]] ; then
-    cd "Trendyol_v2"
-      choices="Stable\nBeta\nCanary"
-      choice=$(echo -e $choices | fzf)
-      case "$choice" in
-      "Stable")
-          echo "Opening Trendyol Android Project with Android Stable"
-          studio-stable .
-        ;;
-      "Beta")
-          echo "Opening Trendyol Android Project with Android Beta"
-          studio-beta .
-          ;;
-      "Canary")
-          echo "Opening Trendyol Android Project with Android Canary"
-          studio-canary .
-          ;;
-      *)
-          echo "Not a valid choice. Exiting..."
-          ;;
-      esac
-      cd ..
-  elif [[ -d "pl-app" ]] ; then
-    cd "pl-app"
-      choices="Stable\nBeta\nCanary"
-      choice=$(echo -e $choices | fzf)
-      case "$choice" in
-      "Stable")
-          echo "Opening Trendyol Android Project with Android Stable"
-          studio-stable .
-        ;;
-      "Beta")
-          echo "Opening Trendyol Android Project with Android Beta"
-          studio-beta .
-          ;;
-      "Canary")
-          echo "Opening Trendyol Android Project with Android Canary"
-          studio-canary .
-          ;;
-      *)
-          echo "Not a valid choice. Exiting..."
-          ;;
-      esac
-      cd ..
-  elif [[ -f "go.mod" ]]; then
-      echo "Opening Go project with Goland"
-      goland .
-  else
-      echo "Opening with Visual Studio Code"
-      code .
-  fi
+	if [ "$1" = "--help" ]; then
+		echo "open project with designated IDE."
+		return 0
+	fi
+	if [[ -f "settings.gradle" || -f "settings.gradle.kts" ]]; then
+		choices="Stable\nBeta\nCanary"
+		choice=$(echo $choices | fzf)
+		case "$choice" in
+		"Stable")
+			echo "Opening Android Project with Android Stable"
+			studio-stable .
+			;;
+		"Beta")
+			echo "Opening Android Project with Android Beta"
+			studio-beta .
+			;;
+		"Canary")
+			echo "Opening Android Project with Android Canary"
+			studio-canary .
+			;;
+		*)
+			echo "Not a valid choice. Exiting..."
+			;;
+		esac
+	elif [[ -d "Trendyol_v2" ]]; then
+		cd "Trendyol_v2"
+		choices="Stable\nBeta\nCanary"
+		choice=$(echo -e $choices | fzf)
+		case "$choice" in
+		"Stable")
+			echo "Opening Trendyol Android Project with Android Stable"
+			studio-stable .
+			;;
+		"Beta")
+			echo "Opening Trendyol Android Project with Android Beta"
+			studio-beta .
+			;;
+		"Canary")
+			echo "Opening Trendyol Android Project with Android Canary"
+			studio-canary .
+			;;
+		*)
+			echo "Not a valid choice. Exiting..."
+			;;
+		esac
+		cd ..
+	elif [[ -d "pl-app" ]]; then
+		cd "pl-app"
+		choices="Stable\nBeta\nCanary"
+		choice=$(echo -e $choices | fzf)
+		case "$choice" in
+		"Stable")
+			echo "Opening Trendyol Android Project with Android Stable"
+			studio-stable .
+			;;
+		"Beta")
+			echo "Opening Trendyol Android Project with Android Beta"
+			studio-beta .
+			;;
+		"Canary")
+			echo "Opening Trendyol Android Project with Android Canary"
+			studio-canary .
+			;;
+		*)
+			echo "Not a valid choice. Exiting..."
+			;;
+		esac
+		cd ..
+	elif [[ -f "go.mod" ]]; then
+		echo "Opening Go project with Goland"
+		goland .
+	else
+		echo "Opening with Visual Studio Code"
+		code .
+	fi
 
 }
