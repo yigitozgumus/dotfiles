@@ -6,9 +6,7 @@ return {
     end,
   },
   { "ellisonleao/gruvbox.nvim" },
-  {
-    "martinsione/darkplus.nvim",
-  },
+  { "martinsione/darkplus.nvim" },
   {
     "catppuccin/nvim",
     lazy = false,
@@ -16,7 +14,7 @@ return {
     config = function()
       require("catppuccin").setup({
 
-        transparent_background = true,
+        transparent_background = false,
         -- term_colors = false,
         dim_inactive = {
           enabled = false,
