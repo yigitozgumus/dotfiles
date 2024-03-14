@@ -127,6 +127,9 @@ keymap("n", "<leader>rs", ":LspRestart<CR>", default_opts) -- mapping to restart
 -- Neotree
 keymap("n", "<leader>e", ":Neotree toggle<CR>", default_opts)
 
+-- CmdLine
+keymap("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })
+
 vim.keymap.set("n", "<leader>/", function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
