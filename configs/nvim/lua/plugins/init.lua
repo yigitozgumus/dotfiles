@@ -97,11 +97,11 @@ return {
     cond = true,
     enabled = true,
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
-    config = true,
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   event = "BufReadPre",
+  --   config = true,
+  -- },
 
   {
     "simrat39/symbols-outline.nvim",
