@@ -13,8 +13,8 @@ return {
   { "windwp/nvim-spectre" },
   { "segeljakt/vim-silicon" },
   { "mfussenegger/nvim-dap" },
+  { "preservim/vim-pencil" },
   { "elihunter173/dirbuf.nvim", cmd = { "Dirbuf" } },
-  { "folke/zen-mode.nvim" },
   {
     "folke/twilight.nvim",
     opts = {
