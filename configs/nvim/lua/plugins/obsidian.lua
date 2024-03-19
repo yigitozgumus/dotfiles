@@ -1,7 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*",
-  lazy = true,
   event = {
     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
     -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
@@ -25,7 +24,7 @@ return {
   opts = {
     dir = "~/Documents/Notes/Personal", -- no need to call 'vim.fn.expand' here,
     daily_notes = {
-      folder = "/Daily",
+      folder = "Journal/Daily",
     },
     new_notes_location = "Commonplace/",
     completion = {

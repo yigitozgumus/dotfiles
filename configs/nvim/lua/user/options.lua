@@ -36,7 +36,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.wildmode = "list:longest"
 
 -- Mainly for obsidian plugin
-vim.opt_local.conceallevel = 2
+vim.opt.conceallevel = 2
 
 -- when opening a file with a command (like :e),
 -- don't suggest files like there:
