@@ -18,6 +18,7 @@ return {
           "css",
           "gleam",
           "graphql",
+          "yaml",
           "html",
           "javascript",
           "json",
