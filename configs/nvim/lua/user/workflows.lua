@@ -45,12 +45,3 @@ vim.keymap.set("n", "<leader>oz", ':Telescope live_grep search_dirs={"$HOME/Docu
 vim.keymap.set("n", "<leader>ok", ":!mv '%:p' $HOME/Documents/Notes/Personal/zettelkasten<cr>:bd<cr>")
 -- delete file in current buffer
 vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<cr>:bd<cr>")
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.opt.shiftwidth = 2
-    vim.opt.tabstop = 2
-    vim.opt.softtabstop = 2
-  end,
-})
