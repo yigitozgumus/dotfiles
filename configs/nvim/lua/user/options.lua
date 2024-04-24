@@ -13,6 +13,15 @@ vim.opt.foldenable = false
 vim.opt.foldmethod = "manual"
 vim.opt.foldlevelstart = 99
 
+vim.cmd([[
+set autoindent
+set expandtab
+set shiftwidth=2
+set smartindent
+set softtabstop=2
+set tabstop=2
+]])
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
