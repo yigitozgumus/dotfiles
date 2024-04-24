@@ -54,6 +54,9 @@ keymap("v", ">", ">gv", default_opts)
 -- keymap("i", ";;", "<Esc>A;<Esc>", default_opts)
 -- keymap("i", ",,", "<Esc>A,<Esc>", default_opts)
 
+-- copy currently open filename
+keymap("n", "<leader>cpn", ':let @+ = expand("%:t")<cr>', default_opts)
+
 -- Open the current file in the default program (on Mac I think this is just `open`)
 keymap("n", "<leader>xo", ":!open %<cr><cr>", default_opts)
 
@@ -125,7 +128,10 @@ keymap("n", "N", "Nzzzv", default_opts)
 keymap("n", "<leader>rs", ":LspRestart<CR>", default_opts) -- mapping to restart lsp if necessary
 
 -- Neotree
-keymap("n", "<leader>e", ":Neotree toggle<CR>", default_opts)
+-- keymap("n", "<leader>e", ":Neotree toggle<CR>", default_opts)
+--
+-- NvimTree
+keymap("n", "<leader>e", ":NvimTreeToggle <CR>", default_opts)
 
 -- CmdLine
 keymap("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })

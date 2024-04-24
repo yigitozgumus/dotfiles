@@ -158,11 +158,14 @@ return {
     opts = {
       notify_on_error = false,
       format_on_save = {
-        timeout_ms = 500,
+        timeout_ms = 300,
         lsp_fallback = true,
       },
       formatters_by_ft = {
         lua = { "stylua" },
+        javascript = { { "prettierd", "prettier" } },
+        go = { "goimports", "gofmt" },
+        yaml = { "yamlfmt" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

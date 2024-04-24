@@ -58,6 +58,7 @@ return { -- LSP Configuration & Plugins
       gopls = {},
       -- pyright = {},
       rust_analyzer = {},
+      yamlls = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},

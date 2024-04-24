@@ -10,6 +10,7 @@ alias lvim="~/.local/bin/lvim"
 alias ll="exa -lhi"
 alias vim='nvim --listen /tmp/nvimsocket'
 alias rm='trash'
+alias emulator="$HOME/Library/Android/sdk/emulator/emulator"
 # Vim
 alias uv='nvim ~/projects/personal/dotfiles'
 alias nvd='neovide'
@@ -55,7 +56,6 @@ nrp() {
 }
 
 # Work
-alias emulator='$HOME/Library/Android/sdk/emulator/emulator'
 alias activate-doc='source /Users/yigit.ozgumus/mkdocs/bin/activate'
 alias demoOn='sh /Users/$(whoami)/.local/bin/adb-demo.sh on'
 alias demoOff='sh /Users/$(whoami)/.local/bin/adb-demo.sh off'
