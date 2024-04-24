@@ -1,14 +1,8 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*",
-  event = {
-    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    "BufReadPre "
-      .. vim.fn.expand("~")
-      .. "/Documents/Notes/Personal/**.md",
-    "BufNewFile " .. vim.fn.expand("~") .. "/Documents/Notes/Personal/**.md",
-  },
+  lazy = true,
+  ft = "markdown",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
@@ -18,15 +12,34 @@ return {
     { "<leader>oo", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
     { "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch", mode = "n" },
     { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Show location list of backlinks", mode = "n" },
-    { "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Follow link under cursor", mode = "n" },
+    -- { "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Follow link under cursor", mode = "n" },
   },
-  mappings = {},
+  mappings = {
+    ["gf"] = {
+      action = function()
+        return require("obsidian").util.gf_passthrough()
+      end,
+      opts = { noremap = false, expr = true, buffer = true },
+    },
+  },
   opts = {
-    dir = "~/Documents/Notes/Personal", -- no need to call 'vim.fn.expand' here,
+    workspaces = {
+      {
+        name = "notes",
+        path = "$HOME/Documents/Notes/Personal",
+      },
+    },
+    disable_frontmatter = true,
+    notes_subdir = "_inbox",
+    new_notes_location = "notes_subdir",
+    templates = {
+      subdir = "Templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M:%S",
+    },
     daily_notes = {
       folder = "Journal/Daily",
     },
-    new_notes_location = "Commonplace/",
     completion = {
       nvim_cmp = true,
       min_chars = 2,
