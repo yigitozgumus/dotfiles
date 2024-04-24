@@ -1,7 +1,7 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*",
-  lazy = true,
+  lazy = false,
   ft = "markdown",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -12,6 +12,7 @@ return {
     { "<leader>oo", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
     { "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch", mode = "n" },
     { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Show location list of backlinks", mode = "n" },
+    { "<leader>fl", "<cmd>ObsidianFollowLink<cr>", desc = "Follow link under cursor", mode = "n" },
     -- { "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Follow link under cursor", mode = "n" },
   },
   mappings = {
@@ -35,10 +36,11 @@ return {
     templates = {
       subdir = "Templates",
       date_format = "%Y-%m-%d",
-      time_format = "%H:%M:%S",
+      time_format = "%H::%S",
     },
     daily_notes = {
       folder = "Journal/Daily",
+      template = "Daily Template.md",
     },
     completion = {
       nvim_cmp = true,
@@ -46,6 +48,6 @@ return {
       prepend_note_id = false,
     },
     open_app_foreground = true,
-    open_notes_in = "vsplit",
+    open_notes_in = "current",
   },
 }
