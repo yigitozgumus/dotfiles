@@ -22,7 +22,7 @@ return {
           percentage = 0.15,
         },
       })
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
   {
@@ -31,6 +31,14 @@ return {
     priority = 1000,
     config = function()
       -- vim.cmd.colorscheme("kanagawa")
+    end,
+  },
+  {
+    "EdenEast/nightfox.nvim",
+    -- lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("nightfox")
     end,
   },
   {
