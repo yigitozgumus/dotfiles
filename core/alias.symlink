@@ -43,7 +43,7 @@ alias demos="cd  ~/Desktop"
 
 alias vault-work='cd ~/Documents/Notes/Work'
 alias notes='cd ~/Documents/Notes/Personal'
-alias or='vim $HOME/Documents/Notes/Personal/_inbox/*.md'
+alias review-notes='vim $HOME/Documents/Notes/Personal/_inbox/*.md'
 
 # dev shortcuts / personal
 alias dotfiles='cd ~/projects/personal/dotfiles'

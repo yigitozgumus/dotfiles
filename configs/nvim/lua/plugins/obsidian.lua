@@ -12,6 +12,7 @@ return {
     { "<leader>oo", "<cmd>ObsidianSearch<cr>", desc = "Search Obsidian notes", mode = "n" },
     { "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch", mode = "n" },
     { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Show location list of backlinks", mode = "n" },
+    { "<leader>od", "<cmd>ObsidianToday<cr>", desc = "Go to Today's Note", mode = "n" },
     { "<leader>fl", "<cmd>ObsidianFollowLink<cr>", desc = "Follow link under cursor", mode = "n" },
     -- { "<leader>ot", "<cmd>ObsidianTemplate<cr>", desc = "Follow link under cursor", mode = "n" },
   },
