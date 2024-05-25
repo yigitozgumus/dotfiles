@@ -60,7 +60,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<leader>ok",
-  ":!mv '%:p' $HOME/Documents/Notes/Personal/zettelkasten<cr>:bd<cr>",
+  ':!mv "%:p" $HOME/Documents/Notes/Personal/zettelkasten<cr>:bd<cr>',
   { desc = "Keep Fleeting file" }
 )
 -- delete file in current buffer
