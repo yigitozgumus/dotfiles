@@ -58,6 +58,7 @@ return { -- LSP Configuration & Plugins
       gopls = {},
       -- pyright = {},
       rust_analyzer = {},
+      kotlin_language_server = {},
       yamlls = {},
       lua_ls = {
         -- cmd = {...},
@@ -98,6 +99,7 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format lua code
+      "ktlint",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
