@@ -18,7 +18,7 @@ git fetch -q
 read -p "Worktree Path (Without /, base is $WORKSPACE_DIR): " worktree
 
 if [ -z $worktree ]; then
-	echo "Input is empty, exiting..."
+	echo "Worktree name is empty, exiting..."
 	exit 1
 fi
 # Decide on branch type
@@ -44,17 +44,25 @@ case "$branchType" in
 	;;
 
 esac
+
 if [ -z $sourceBranch ]; then
-	echo "Input is empty, exiting..."
+	echo "Source branch is empty, exiting..."
 	exit 1
 fi
 echo "Source Branch is $sourceBranch"
-#read -p "Source Branch Name: " branch
+
 read -p "Target Branch Name: " target
 
 if [ -z $target ]; then
-	echo "Input is empty, exiting..."
-	exit 1
+	echo "Target branch is empty, checking out the source branch:"
+	echo "Worktree Location: $WORKSPACE_DIR/$worktree"
+	echo "Source Branch: $sourceBranch"
+	git worktree add $WORKSPACE_DIR/$worktree $sourceBranch
+else
+	echo "Creating target branch from source branch in worktree Location:"
+	echo "Worktree Location: $WORKSPACE_DIR/$worktree"
+	echo "Source Branch: $sourceBranch"
+	echo "Target Branch: $target"
+	git worktree add -b $target $WORKSPACE_DIR/$worktree $sourceBranch
 fi
 # Create the worktree
-git worktree add -b $target $WORKSPACE_DIR/$worktree $sourceBranch
