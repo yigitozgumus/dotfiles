@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+#
+echo "This script lets you create a new worktree for the repository you are in."
 
 if [ -z "$WORKSPACE_DIR" ]; then
 	echo "Workspace Dir value is empty. Set using export WORKSPACE_DIR=<target-dir>"
@@ -51,7 +53,7 @@ if [ -z $sourceBranch ]; then
 fi
 echo "Source Branch is $sourceBranch"
 
-read -p "Target Branch Name: " target
+read -p "Target Branch Name (Leave empty if you want to create worktree off of source branch): " target
 
 if [ -z $target ]; then
 	echo "Target branch is empty, checking out the source branch:"
