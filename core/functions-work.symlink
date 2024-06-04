@@ -9,6 +9,18 @@ COLOR_PURPLE="\033[1;35m"
 COLOR_YELLOW="\033[1;33m"
 COLOR_NONE="\033[0m"
 
+cdtpw() {
+
+    if [[ "$1" = "--help" ]]; then
+        echo "Get to your project"
+        return 0
+    fi
+    folders=`find ~/trendyol-projects -mindepth 2 -maxdepth 2 -type d ! -name ".*"`
+    selected=`echo $folders | xargs basename | fzf`
+    selectedPath=`echo $folders | grep $selected`
+    cd "$selectedPath"
+}
+
 
 title-echo() {
 	printf "\n${COLOR_PURPLE}$1${COLOR_NONE}\n"
