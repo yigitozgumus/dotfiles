@@ -35,7 +35,7 @@ return {
     notes_subdir = "_inbox",
     new_notes_location = "notes_subdir",
     templates = {
-      subdir = "Templates",
+      subdir = "5 - Templates",
       date_format = "%Y-%m-%d",
       time_format = "%H::%S",
     },

@@ -22,7 +22,7 @@ return {
           percentage = 0.15,
         },
       })
-      -- vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
   {

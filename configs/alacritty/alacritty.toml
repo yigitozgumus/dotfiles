@@ -677,7 +677,7 @@ action = "PasteSelection"
 mouse = "Middle"
 
 [scrolling]
-history = 10000
+history = 20000
 multiplier = 3
 
 [selection]
@@ -689,7 +689,7 @@ args = ["new-session", "-A", "-D", "-s", "main"]
 program = "/opt/homebrew/bin/tmux"
 
 [window]
-decorations = "none"
+decorations = "Full"
 dynamic_padding = false
 dynamic_title = true
 opacity = 0.95
@@ -699,5 +699,5 @@ columns = 160
 lines = 48
 
 [window.padding]
-x = 8
-y = 8
+x = 12
+y = 12
