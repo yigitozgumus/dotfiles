@@ -31,29 +31,26 @@ table.insert(config.keys, { key = "RightArrow", mods = "SHIFT|SUPER", action = w
 
 --- ========== Fonts & Themes ==========
 local FiraCodeFont = "FiraCode Nerd Font Mono"
-local CodeNewRomanFont = "CodeNewRoman Nerd Font"
-local MonacoFont = "Monaco Nerd Font Mono"
-local NotoSansMonoFont = "NotoSansMono NFM"
-local IosevakaFont = "Iosevka Nerd Font Mono"
-local HackFont = "Hack Nerd Font Mono"
-local FantasqueSansMonoFont = "FantasqueSansMono NFM"
-local SauceCodeProFont = "SauceCodePro Nerd Font Mono"
+-- local CodeNewRomanFont = "CodeNewRoman Nerd Font"
+-- local MonacoFont = "Monaco Nerd Font Mono"
+-- local NotoSansMonoFont = "NotoSansMono NFM"
+-- local IosevakaFont = "Iosevka Nerd Font Mono"
+-- local HackFont = "Hack Nerd Font Mono"
+-- local FantasqueSansMonoFont = "FantasqueSansMono NFM"
+-- local SauceCodeProFont = "SauceCodePro Nerd Font Mono"
 
 local CatppuccinMochaTheme = "Catppuccin Mocha"
 local GruvboxDarkTheme = "Gruvbox Dark (Gogh)"
 
 config.font = wezterm.font(FiraCodeFont)
 
-config.font_size = 15.0
+config.font_size = 18.0
 if IS_WINDOWS then
 	config.font_size = 14.0
 end
 if IS_LINUX then
 	config.font_size = 11.0
 end
-config.colors = {
-	scrollbar_thumb = "black",
-}
 
 -- This is where you actually apply your config choices
 config.color_scheme = CatppuccinMochaTheme
@@ -66,13 +63,15 @@ config.window_frame = {
 	font_size = 13,
 }
 config.scrollback_lines = 200000
-config.enable_scroll_bar = true
+config.enable_scroll_bar = false
 config.window_padding = {
-	left = "1cell",
-	right = "1cell",
-	top = "0.5cell",
-	bottom = "0.5cell",
+	left = "2cell",
+	right = "2cell",
+	top = "1cell",
+	bottom = "1cell",
 }
+
+config.hide_tab_bar_if_only_one_tab = true
 
 config.window_decorations = "RESIZE"
 
