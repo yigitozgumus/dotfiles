@@ -53,7 +53,7 @@ if IS_LINUX then
 end
 
 -- This is where you actually apply your config choices
-config.color_scheme = CatppuccinMochaTheme
+config.color_scheme = "Chalk (dark) (terminal.sexy)"
 
 --- ========== Tabs ==========
 config.use_fancy_tab_bar = true
