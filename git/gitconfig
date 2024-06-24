@@ -19,6 +19,9 @@
 [includeIf "gitdir/i:~/projects/workspaces/"]
 	path = .gitconfig-work
 
+[includeIf "gitdir/i:~/trendyol-projects/"]
+	path = .gitconfig-work
+
 [includeIf "gitdir/i:~/projects/personal/"]
 	path = .gitconfig-personal
 
