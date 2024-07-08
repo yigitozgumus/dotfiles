@@ -9,5 +9,5 @@ file_name=$(echo "$1" | tr ' ' ' ')
 # $(date "+%Y-%m-%d")_
 formatted_file_name=${file_name}.md
 cd "$HOME/Documents/Notes/Personal" || exit
-touch "_inbox/${formatted_file_name}"
-nvim "_inbox/${formatted_file_name}"
+touch "📬 Inbox/${formatted_file_name}"
+nvim "📬 Inbox/${formatted_file_name}"
