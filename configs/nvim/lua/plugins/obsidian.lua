@@ -32,7 +32,7 @@ return {
       },
     },
     disable_frontmatter = true,
-    notes_subdir = "_inbox",
+    notes_subdir = "📬 Inbox",
     new_notes_location = "notes_subdir",
     templates = {
       subdir = "5 - Templates",
@@ -40,7 +40,7 @@ return {
       time_format = "%H::%S",
     },
     daily_notes = {
-      folder = "Journal/Daily",
+      folder = "📓 Logs/Daily",
       template = "Daily Template.md",
     },
     completion = {
