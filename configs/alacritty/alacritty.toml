@@ -689,7 +689,7 @@ args = ["new-session", "-A", "-D", "-s", "main"]
 program = "/opt/homebrew/bin/tmux"
 
 [window]
-decorations = "Full"
+decorations = "none"
 dynamic_padding = false
 dynamic_title = true
 opacity = 0.95
