@@ -35,6 +35,9 @@ info-echo() {
 	printf "${COLOR_BLUE}\tInfo: ${COLOR_NONE}$1\n"
 }
 
+sfx-info() {
+	sfx info --tr tmcpdp --te mproductdetail $@
+}
 
 command-list() {
 	title-echo "Feature Related Commands"
