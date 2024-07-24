@@ -32,15 +32,15 @@ return {
       },
     },
     disable_frontmatter = true,
-    notes_subdir = "📬 Inbox",
+    notes_subdir = "00-Captures",
     new_notes_location = "notes_subdir",
     templates = {
-      subdir = "5 - Templates",
+      subdir = "_system/templates",
       date_format = "%Y-%m-%d",
       time_format = "%H::%S",
     },
     daily_notes = {
-      folder = "📓 Logs/Daily",
+      folder = "10-Logs/Daily",
       template = "Daily Template.md",
     },
     completion = {
