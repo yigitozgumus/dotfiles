@@ -30,7 +30,7 @@ table.insert(config.keys, { key = "LeftArrow", mods = "SHIFT|SUPER", action = we
 table.insert(config.keys, { key = "RightArrow", mods = "SHIFT|SUPER", action = wezterm_action.ActivateTabRelative(1) })
 
 --- ========== Fonts & Themes ==========
-local FiraCodeFont = "MesloLGS Nerd Font Mono"
+local FiraCodeFont = "MesloLG Nerd Font"
 -- local CodeNewRomanFont = "CodeNewRoman Nerd Font"
 -- local MonacoFont = "Monaco Nerd Font Mono"
 -- local NotoSansMonoFont = "NotoSansMono NFM"
