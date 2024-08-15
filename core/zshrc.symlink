@@ -84,5 +84,3 @@ setopt correct
 setopt auto_cd
 export PATH="/opt/homebrew/opt/go@1.20/bin:$PATH"
 export PATH=$PATH:$HOME/.maestro/bin
-
-source /Users/yigitozgumus/.config/broot/launcher/bash/br
