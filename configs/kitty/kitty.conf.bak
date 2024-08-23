@@ -1,7 +1,7 @@
 # For more info https://sw.kovidgoyal.net/kitty/conf/
 #
 include ./theme.conf
-font_size 18.0
+font_size 14.0
 font_family FiraCode Nerd Font Mono
 
 symbol_map U+E0A0-U+E0A3,U+E0C0-U+E0C7 PowerlineSymbols
@@ -28,6 +28,6 @@ hide_window_decorations titlebar-only
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Material Dark Hard
+# Catppuccin-Mocha
 include current-theme.conf
 # END_KITTY_THEME
