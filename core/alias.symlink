@@ -78,16 +78,15 @@ select-env() {
 }
 
 # Taskwarrior
-alias t=task
-tw() {
-  ln -sf "$HOME/.taskrc-work" "$HOME/.taskrc"
-  task "$@"
-}
-
-tp() {
-  ln -sf "$HOME/.taskrc-personal" "$HOME/.taskrc"
-  task "$@"
-}
+# tw() {
+#   ln -sf "$HOME/.taskrc-work" "$HOME/.taskrc"
+#   task "$@"
+# }
+#
+# tp() {
+#   ln -sf "$HOME/.taskrc-personal" "$HOME/.taskrc"
+#   task "$@"
+# }
 
 alias tasks-location="cd $HOME/Documents/Tasks/task-tracking"
 alias maestro-test=~/projects/personal/maestro/maestro-cli/build/install/maestro/bin/maestro
