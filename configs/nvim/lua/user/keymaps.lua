@@ -143,3 +143,6 @@ vim.keymap.set("n", "<leader>/", function()
     previewer = false,
   }))
 end, { desc = "[/] Fuzzily search in current buffer" })
+
+-- Git Blame
+keymap("n", "<leader>gb", ":BlameToggle<CR>", { noremap = true })

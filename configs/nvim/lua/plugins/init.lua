@@ -50,6 +50,12 @@ return {
       require("suit").setup({})
     end,
   },
+  {
+    "FabijanZulj/blame.nvim",
+    config = function()
+      require("blame").setup({})
+    end,
+  },
 
   {
     "stevearc/dressing.nvim",

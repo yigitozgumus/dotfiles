@@ -1,6 +1,6 @@
 #!/bin/bash
 read -p "Task: " taskContent
-current=$taskContent
+current="${taskContent}"
 read -p "Due: " dueTime
 if [ "$dueTime" != "" ]; then
 	current="${current} due:${dueTime}"
