@@ -185,6 +185,10 @@ if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace B'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = 'move-node-to-workspace B'
+
+[[on-window-detected]]
 if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace N'
 
@@ -214,6 +218,10 @@ run = 'move-node-to-workspace I'
 
 [[on-window-detected]]
 if.app-id = 'com.google.android.studio'
+run = 'move-node-to-workspace M'
+
+[[on-window-detected]]
+if.app-id = 'com.google.android.studio-EAP'
 run = 'move-node-to-workspace M'
 
 [[on-window-detected]]
