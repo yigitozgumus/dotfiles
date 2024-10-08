@@ -151,7 +151,7 @@ ptr() {
         return 0
     fi
     branch=$(git branch --show-current)
-    git push -u origin $branch
+    git push -u origin $branch $@
 }
 
 # Get to Conflict

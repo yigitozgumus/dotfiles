@@ -50,12 +50,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = [ { monitor."Built-in Retina Display" = 10 }, 15  ]
-inner.vertical =   [ { monitor."Built-in Retina Display" = 10 }, 15  ]
-outer.left =       [ { monitor."Built-in Retina Display" = 10 }, 25  ]
-outer.bottom =     [ { monitor."Built-in Retina Display" = 10 }, 25  ]
-outer.top =        [ { monitor."Built-in Retina Display" = 10 }, 25  ]
-outer.right =      [ { monitor."Built-in Retina Display" = 10 }, 25  ]
+inner.horizontal = [ { monitor."Built-in Retina Display" = 10 }, 0  ]
+inner.vertical =   [ { monitor."Built-in Retina Display" = 10 }, 0  ]
+outer.left =       [ { monitor."Built-in Retina Display" = 10 }, 0  ]
+outer.bottom =     [ { monitor."Built-in Retina Display" = 10 }, 0  ]
+outer.top =        [ { monitor."Built-in Retina Display" = 10 }, 0  ]
+outer.right =      [ { monitor."Built-in Retina Display" = 10 }, 0  ]
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
