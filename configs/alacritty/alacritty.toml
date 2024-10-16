@@ -1,4 +1,4 @@
-import = ["/Users/yigitozgumus/.config/alacritty/color.toml"]
+import = ["$HOME/.config/alacritty/color.toml"]
 live_config_reload = true
 
 [bell]
@@ -19,7 +19,7 @@ render_timer = false
 TERM = "xterm-256color"
 
 [font]
-size = 20.0
+size = 16.0
 
 [font.glyph_offset]
 x = 0
