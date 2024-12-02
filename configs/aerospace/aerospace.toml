@@ -125,6 +125,7 @@ cmd-ctrl-alt-shift-a = 'workspace A' # In your config, you can drop workspace bi
 cmd-ctrl-alt-shift-b = 'workspace B' # Browser
 cmd-ctrl-alt-shift-c = 'workspace C' # Chat
 cmd-ctrl-alt-shift-d = 'workspace D' # DevTools
+cmd-ctrl-alt-shift-i = 'workspace I' # Ide
 cmd-ctrl-alt-shift-m = 'workspace M' # Mobile
 cmd-ctrl-alt-shift-n = 'workspace N' # Notes
 cmd-ctrl-alt-shift-t = 'workspace T' # Terminal
