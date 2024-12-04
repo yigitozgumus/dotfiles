@@ -33,6 +33,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.functions ]] || source ~/.functions
 [[ ! -f ~/.functions-work ]] || source ~/.functions-work
 [[ ! -f ~/.exports ]] || source ~/.exports
+[[ ! -f ~/.exports-work ]] || source ~/.exports-work
 
 hotreload-alias() {
     [[ ! -f ~/.alias ]] || source ~/.alias
