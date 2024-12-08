@@ -219,15 +219,55 @@ ctlv() {
 #
 
 cdtp() {
-
-    if [[ "$1" = "--help" ]]; then
-        echo "Get to your project"
+    if [[ "$1" == "--help" ]]; then
+        echo "Usage: cdtp"
+        echo "Navigate to your project folder inside '~/projects'."
         return 0
     fi
-    folders=`find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*"`
-    selected=`echo $folders | xargs basename | fzf`
-    selectedPath=`echo $folders | grep "/$selected"`
-    cd "$selectedPath"
+
+    # Find all subdirectories at depth 2 in ~/projects
+    local folders
+    folders=$(find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*")
+
+    # Ensure there are folders to search
+    if [[ -z "$folders" ]]; then
+        echo "No project folders found in ~/projects."
+        return 1
+    fi
+
+    # Create a list of basenames
+    local basenames=()
+    while IFS= read -r folder; do
+        basenames+=("$(basename "$folder")")
+    done <<< "$folders"
+
+    # Use fzf to select a basename
+    local selected
+    selected=$(printf "%s\n" "${basenames[@]}" | fzf --prompt="Select a project: " --height=40%)
+
+    # Handle no selection
+    if [[ -z "$selected" ]]; then
+        echo "No project selected."
+        return 1
+    fi
+
+    # Find the selected project's full path
+    local selectedPath
+    selectedPath=$(echo "$folders" | grep "/$selected\$")
+
+    if [[ -z "$selectedPath" ]]; then
+        echo "Error: Could not find the selected project '$selected'."
+        return 1
+    fi
+
+    # Navigate to the selected folder
+    cd "$selectedPath" || {
+        echo "Error: Could not navigate to '$selectedPath'."
+        return 1
+    }
+
+    # Print the current directory
+    echo "Navigated to $(pwd)"
 }
 
 # Project
