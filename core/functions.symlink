@@ -226,7 +226,7 @@ cdtp() {
     fi
     folders=`find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*"`
     selected=`echo $folders | xargs basename | fzf`
-    selectedPath=`echo $folders | grep $selected`
+    selectedPath=`echo $folders | grep "/$selected"`
     cd "$selectedPath"
 }
 
