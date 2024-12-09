@@ -66,6 +66,7 @@ map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 map <S-Space> <Action>(GotoNextError)
+map <leader>gd <Action>(GoToDeclaration)
 
 map <leader>o <Action>(FileStructurePopup)
 map <leader>th <Action>(ToggleInlayHintsGloballyAction)
