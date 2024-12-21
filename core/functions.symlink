@@ -221,17 +221,24 @@ ctlv() {
 cdtp() {
     if [[ "$1" == "--help" ]]; then
         echo "Usage: cdtp"
-        echo "Navigate to your project folder inside '~/projects'."
+        echo "Navigate to your project folder from defined PROJECT_PATHS."
+        echo "Define PROJECT_PATHS as a colon-separated list of directories to scan."
         return 0
     fi
 
-    # Find all subdirectories at depth 2 in ~/projects
+    # Ensure PROJECT_PATHS is defined
+    if [[ -z "$PROJECT_PATHS" ]]; then
+        echo "Error: PROJECT_PATHS is not defined. Please set it in your shell configuration."
+        return 1
+    fi
+
+    # Gather all subdirectories from the paths in PROJECT_PATHS
     local folders
-    folders=$(find ~/projects -mindepth 2 -maxdepth 2 -type d ! -name ".*")
+    folders=$(find $(echo "$PROJECT_PATHS" | tr ':' ' ') -mindepth 2 -maxdepth 2 -type d ! -name ".*" 2>/dev/null)
 
     # Ensure there are folders to search
     if [[ -z "$folders" ]]; then
-        echo "No project folders found in ~/projects."
+        echo "No project folders found in the defined PROJECT_PATHS."
         return 1
     fi
 

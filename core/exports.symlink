@@ -54,3 +54,7 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # Worktrees
 export WORKSPACE_DIR="$HOME/projects/workspaces"
+
+# Project locations
+export PROJECT_PATHS="$HOME/projects:$HOME/trendyol-projects"
+
