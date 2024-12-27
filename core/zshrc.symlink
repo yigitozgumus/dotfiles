@@ -16,8 +16,8 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' frequency 13
 
 plugins=(
   git
@@ -39,6 +39,9 @@ source $ZSH/oh-my-zsh.sh
  fi
 
 [ -f ~/.alias ] && source ~/.alias
+[ -f ~/.functions ] && source ~/.functions
+[ -f ~/.functions-work ] && source ~/.functions-work
+[ -f ~/.exports ] && source ~/.exports
 
 # Increase History Size
 HISTFILE=~/.zsh_history
@@ -57,7 +60,7 @@ export GPG_TTY=$(tty)
 source $HOME/.cargo/env
 # Pyenv
 
-# PATH="$PATH:$HOME/.pyenv/bin"
+export PATH=$PATH:$HOME/.pyenv/bin
 if pyenv --version >/dev/null 2>&1; then 
   # eval "$(pyenv init -)"
   # eval "$(pyenv virtualenv-init -)"
@@ -78,12 +81,5 @@ setopt auto_cd
 timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
-}
-
-init() {
-
-  [ -f ~/.functions ] && source ~/.functions
-  [ -f ~/.functions-work ] && source ~/.functions-work
-  [ -f ~/.exports ] && source ~/.exports
 }
 
