@@ -10,11 +10,11 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-'exec-and-forget borders active_color=0xff8fce00 inactive_color=0xff494d64 width=5.0'
+# 'exec-and-forget borders active_color=0xff8fce00 inactive_color=0xff494d64 width=5.0'
 ]
 
 # Start AeroSpace at login
-start-at-login = true
+start-at-login = false
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
