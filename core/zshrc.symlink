@@ -53,7 +53,7 @@ SAVEHIST=$HISTSIZE
 
 # Homebrew
 _evalcache /opt/homebrew/bin/brew shellenv
-# eval "$(/opt/homebrew/bin/brew shellenv)"
+_evalcache zoxide init zsh
 
 export GPG_TTY=$(tty)
 
