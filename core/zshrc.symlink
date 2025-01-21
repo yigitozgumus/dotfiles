@@ -14,7 +14,10 @@ export PATH=$HOME/.local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [ -e ~/.p10k.zsh ]; then
+  source ~/.p10k.zsh
+fi
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 13
@@ -25,23 +28,28 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   vi-mode
-  timewarrior
   evalcache
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
- else
-   export EDITOR='nvim'
- fi
+#
+if [ -e ~/.alias ]; then
+  source ~/.alias
+fi
 
-[ -f ~/.alias ] && source ~/.alias
-[ -f ~/.functions ] && source ~/.functions
-[ -f ~/.functions-work ] && source ~/.functions-work
-[ -f ~/.exports ] && source ~/.exports
+if [ -e ~/.functions ]; then
+  source ~/.functions
+fi
+
+if [ -e ~/.exports ]; then
+  source ~/.exports
+fi
+
+if [ -e ~/.functions-work ]; then
+  source ~/.functions-work
+fi
 
 # Increase History Size
 HISTFILE=~/.zsh_history
@@ -49,7 +57,9 @@ HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
 
 # Fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -e ~/.fzf.sh ]; then
+  source ~/.fzf.sh
+fi
 
 # Homebrew
 _evalcache /opt/homebrew/bin/brew shellenv
@@ -58,25 +68,10 @@ _evalcache zoxide init zsh
 export GPG_TTY=$(tty)
 
 source $HOME/.cargo/env
-# Pyenv
-
-export PATH=$PATH:$HOME/.pyenv/bin
-if pyenv --version >/dev/null 2>&1; then 
-  # eval "$(pyenv init -)"
-  # eval "$(pyenv virtualenv-init -)"
-  _evalcache pyenv init -
-  _evalcache pyenv virtualenv-init -
-fi
-
-alias rgt='run-gradle-task'
-export GRADLE_TASK_PROJECT_DIR=$HOME/projects/work/android-phone
-export GRADLE_RUN_TASK_INSTALLED=1
-alias rgt='run-gradle-task'
 
 setopt nocaseglob # ignore case
 setopt correct
 setopt auto_cd
-
 
 timezsh() {
   shell=${1-$SHELL}
