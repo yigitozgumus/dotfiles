@@ -41,7 +41,7 @@ return {
     },
     daily_notes = {
       folder = "02-Track/Calendar Notes/daily",
-      date_format = "%m-%d",
+      date_format = "%y-%m-%d",
       template = "Daily Template.md",
     },
     completion = {
