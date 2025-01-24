@@ -1,238 +1,4 @@
 
-# Speed up completion init, see: https://gist.github.com/ctechols/ca1035271ad134841284
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
-
-# unsetopt menucomplete
-unsetopt flowcontrol
-setopt auto_menu
-setopt complete_in_word
-setopt always_to_end
-setopt auto_pushd
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-###############
-# KEY BINDINGS
-###############
-
-# Vim Keybindings
-bindkey -v
-
-# This is a "fix" for zsh in Ghostty:
-# Ghostty implements the fixterms specification https://www.leonerd.org.uk/hacks/fixterms/
-# and under that `Ctrl-[` doesn't send escape but `ESC [91;5u`.
-#
-# (tmux and Neovim both handle 91;5u correctly, but raw zsh inside Ghostty doesn't)
-#
-# Thanks to @rockorager for this!
-bindkey "^[[91;5u" vi-cmd-mode
-
-# Open line in Vim by pressing 'v' in Command-Mode
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-
-# Push current line to buffer stack, return to PS1
-bindkey "^Q" push-input
-
-# Make up/down arrow put the cursor at the end of the line
-# instead of using the vi-mode mappings for these keys
-bindkey "\eOA" up-line-or-history
-bindkey "\eOB" down-line-or-history
-bindkey "\eOC" forward-char
-bindkey "\eOD" backward-char
-
-# CTRL-R to search through history
-bindkey '^R' history-incremental-search-backward
-# CTRL-S to search forward in history
-bindkey '^S' history-incremental-search-forward
-# Accept the presented search result
-bindkey '^Y' accept-search
-
-# Use the arrow keys to search forward/backward through the history,
-# using the first word of what's typed in as search word
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-
-# Use the same keys as bash for history forward/backward: Ctrl+N/Ctrl+P
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
-
-# Backspace working the way it should
-bindkey '^?' backward-delete-char
-bindkey '^[[3~' delete-char
-
-# Some emacs keybindings won't hurt nobody
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-
-# Where should I put you?
-bindkey -s '^F' "tmux-sessionizer\n"
-
-#########
-# Aliases
-#########
-
-
-if type lsd &> /dev/null; then
-  alias ls=lsd
-fi
-alias lls='ls -lh --sort=size --reverse'
-alias llt='ls -lrt'
-alias bear='clear && echo "Clear as a bear!"'
-
-alias history='history 1'
-alias hs='history | grep '
-
-# Use rsync with ssh and show progress
-alias rsyncssh='rsync -Pr --rsh=ssh'
-
-# Edit/Source vim config
-alias ez='vim ~/.zshrc'
-alias sz='source ~/.zshrc'
-
-# git
-alias gst='git status'
-alias s='git status'
-alias gaa='git add -A'
-alias gc='git commit'
-alias gcm='git checkout main'
-alias gd='git diff'
-alias gdc='git diff --cached'
-# [c]heck [o]ut
-alias co='git checkout'
-# [f]uzzy check[o]ut
-fo() {
-  git branch --no-color --sort=-committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
-}
-# [p]ull request check[o]ut
-po() {
-  gh pr list --author "@me" | fzf --header 'checkout PR' | awk '{print $(NF-5)}' | xargs git checkout
-}
-
-alias up='git push'
-alias upf='git push --force'
-alias pu='git pull'
-alias pur='git pull --rebase'
-alias fe='git fetch'
-alias re='git rebase'
-alias lr='git l -30'
-alias cdr='cd $(git rev-parse --show-toplevel)' # cd to git Root
-alias hs='git rev-parse --short HEAD'
-alias hm='git log --format=%B -n 1 HEAD'
-
-# tmux
-alias tma='tmux attach -t'
-alias tmn='tmux new -s'
-alias tmm='tmux new -s main'
-
-# ceedee dot dot dot
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
-
-
-# Go
-alias got='go test ./...'
-
-alias -g withcolors="| sed '/PASS/s//$(printf "\033[32mPASS\033[0m")/' | sed '/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'"
-
-alias -g DLOG='RUST_LOG=debug,cranelift_codegen=error,h2=error,hyper_util=error,wasmtime=error,globset=error'
-##########
-# FUNCTIONS
-##########
-
-mkdircd() {
-  mkdir -p $1 && cd $1
-}
-
-render_dot() {
-  local out="${1}.png"
-  dot "${1}" \
-    -Tpng \
-    -Nfontname='JetBrains Mono' \
-    -Nfontsize=10 \
-    -Nfontcolor='#fbf1c7' \
-    -Ncolor='#fbf1c7' \
-    -Efontname='JetBrains Mono' \
-    -Efontcolor='#fbf1c7' \
-    -Efontsize=10 \
-    -Ecolor='#fbf1c7' \
-    -Gbgcolor='#1d2021' > ${out} && \
-    kitty +kitten icat --align=left ${out}
-}
-
-serve() {
-  local port=${1:-8000}
-  local ip=$(ipconfig getifaddr en0)
-  echo "Serving on ${ip}:${port} ..."
-  python -m SimpleHTTPServer ${port}
-}
-
-beautiful() {
-  while
-  do
-    i=$((i + 1)) && echo -en "\x1b[3$(($i % 7))mo" && sleep .2
-  done
-}
-
-spinner() {
-  while
-  do
-    for i in "-" "\\" "|" "/"
-    do
-      echo -n " $i \r\r"
-      sleep .1
-    done
-  done
-}
-
-# Open PR on GitHub
-pr() {
-  if type gh &> /dev/null; then
-    gh pr view -w
-  else
-    echo "gh is not installed"
-  fi
-}
-
-#########
-# PROMPT
-#########
-
-setopt prompt_subst
-
-git_prompt_info() {
-  local dirstatus=" OK"
-  local dirty="%{$fg_bold[red]%} X%{$reset_color%}"
-
-  if [[ ! -z $(git status --porcelain 2> /dev/null | tail -n1) ]]; then
-    dirstatus=$dirty
-  fi
-
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  echo " %{$fg_bold[green]%}${ref#refs/heads/}$dirstatus%{$reset_color%}"
-}
-
-# local dir_info_color="$fg_bold[black]"
-
-# This just sets the color to "bold".
-# Future me. Try this to see what's correct:
-#   $ print -P '%fg_bold[black] black'
-#   $ print -P '%B%F{black} black'
-#   $ print -P '%B black'
-local dir_info_color="%B"
-
-local dir_info_color_file="${HOME}/.zsh.d/dir_info_color"
-if [ -r ${dir_info_color_file} ]; then
-  source ${dir_info_color_file}
-fi
-
 local dir_info="%{$dir_info_color%}%(5~|%-1~/.../%2~|%4~)%{$reset_color%}"
 local promptnormal="φ %{$reset_color%}"
 local promptjobs="%{$fg_bold[red]%}φ %{$reset_color%}"
@@ -326,6 +92,64 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/opt/homebrew/opt/go@1.21/bin:$PATH"
 export PATH=$PATH:$HOME/.maestro/bin
 export PATH=$HOME/.local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="robbyrussell"
+
+zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' frequency 13
+
+plugins=(
+  git
+  fzf-tab
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  vi-mode
+  evalcache
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Preferred editor for local and remote sessions
+#
+if [ -e ~/.alias ]; then
+  source ~/.alias
+fi
+
+if [ -e ~/.functions ]; then
+  source ~/.functions
+fi
+
+if [ -e ~/.exports ]; then
+  source ~/.exports
+fi
+
+if [ -e ~/.functions-work ]; then
+  source ~/.functions-work
+fi
+
+# Increase History Size
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
+# Fzf
+if [ -e ~/.fzf.sh ]; then
+  source ~/.fzf.sh
+fi
+
+# Homebrew
+_evalcache /opt/homebrew/bin/brew shellenv
+_evalcache zoxide init zsh
+
+export GPG_TTY=$(tty)
+
+source $HOME/.cargo/env
+
+setopt nocaseglob # ignore case
+setopt correct
+setopt auto_cd
 
 timezsh() {
   shell=${1-$SHELL}
