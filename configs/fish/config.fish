@@ -1,63 +1,429 @@
-if status is-interactive
-    #
-    # Aliases
-    #
 
-    #
-    # Abbreviations
-    #
+set -x PATH /opt/homebrew/bin $PATH
+# Set up PATH
+set -x PATH $HOME/bin /usr/local/bin $PATH
+set -x PATH /opt/homebrew/opt/go@1.21/bin $PATH
+set -x PATH $PATH $HOME/.maestro/bin
+set -x PATH $HOME/.local/bin $PATH
+
+# Homebrew initialization
+status --is-interactive; and source (eval (/opt/homebrew/bin/brew shellenv | string join \n))
+
+# Set EDITOR
+set -x EDITOR nvim
+
+# Add Cargo to PATH
+set -x PATH $PATH $HOME/.cargo/bin
+
+# Go Installation
+set -x GO111MODULE on
+
+# Android SDK
+set -x ANDROID_HOME "$HOME/Library/Android/sdk"
+set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
+set -x PATH $PATH /opt/homebrew/opt/openjdk/bin
+
+# XDG Config Home
+set -x XDG_CONFIG_HOME "$HOME/.config"
+
+# FZF Default Options
+set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
+set -x FZF_BASE '/opt/homebrew/bin/fzf'
+
+# Local bin
+set -x PATH $PATH $HOME/.local/bin
+
+# Conda
+set -x PATH $PATH $HOME/miniconda/bin
+
+# Source additional exports if they exist
+# if test -e "$HOME/.exports.work"
+#     source "$HOME/.exports.work"
+# end
+
+# if test -e "$HOME/.private-env"
+#     source "$HOME/.private-env"
+# end
+
+# OpenJDK 17
+set -x PATH $PATH /opt/homebrew/opt/openjdk@17/bin
+set -x JAVA_HOME (eval /usr/libexec/java_home)
+
+# Cocoapods
+set -x LANG en_US.UTF-8
+set -x LC_ALL en_US.UTF-8
+set -x PATH $PATH /opt/homebrew/opt/ruby/bin
+
+# DoomEmacs
+set -x PATH $PATH $HOME/.config/emacs/bin
+
+# Fly
+set -x FLYCTL_INSTALL "$HOME/.fly"
+set -x PATH $PATH $FLYCTL_INSTALL/bin
+
+# MySQL Client
+set -x PATH $PATH /opt/homebrew/opt/mysql-client/bin
+
+# Worktrees
+set -x WORKSPACE_DIR "$HOME/projects/workspaces"
+
+# Project Locations
+set -x PROJECT_PATHS "$HOME/projects:$HOME/trendyol-projects"
+
+# Set GPG_TTY
+set -x GPG_TTY (tty)
+
+# Behavior settings (equivalents for `setopt`)
+# Fish handles case-insensitive tab completions by default.
+set -U fish_autocd true  # Automatically change directories
+set -U fish_case_sensitive false
+
+# Time shell execution (converted function)
+function timefish
+    set shell (string join ' ' $argv[1])
+    for i in (seq 1 10)
+        /usr/bin/time $shell -i -c exit
+    end
+end
+
+## Functions
+
+# Mac related Functions
+function remove-dmg
+    cd ~/Downloads/
+    rm -rf *.dmg
+    cd ~
+end
+
+function clean-trash
+    cd ~/.Trash
+    rm -rf *
+    cd ~
+end
+
+function hide-desktop-icons
+    defaults write com.apple.finder CreateDesktop false
+    killall Finder
+end
+
+function show-desktop-icons
+    defaults write com.apple.finder CreateDesktop true
+    killall Finder
+end
+
+# Tmux session functions
+function open-session
+    tmx start $argv[1]
+end
+
+function update-repo
+    git fetch
+    git rebase
+end
+
+function stash-all
+    git add .
+    git stash
+end
+
+function what-runs-on
+    if test "$argv[1]" = "--help"
+        echo "Gets the running app info for port"
+        return 0
+    end
+    lsof -i tcp:$argv[1]
+end
+
+function f
+    if test "$argv[1]" = "--help"
+        echo "Open a file in the Directory with Neovim."
+        return 0
+    end
+    set file (fd --type f --hidden --exclude .git | fzf-tmux -p --height 40% --reverse --info inline --border --preview 'cat {}')
+    if test -n "$file"
+        nvim $file
+    end
+end
+
+# Usage: jupy TYPE ENVIRONMENT PORT
+function jupy
+    set type "lab"
+    set environment "root"
+    set port "8888"
+    if test -z "$argv[1]"
+        echo "Environment name should not be empty."
+        echo "jupy ENVIRONMENT TYPE(default=lab) PORT(default=8888)."
+        return 0
+    end
+    set environment $argv[1]
+    if test (count $argv) -ge 2
+        set type $argv[2]
+    end
+    if test (count $argv) -ge 3
+        set port $argv[3]
+    end
+    load_env $environment
+    jupyter $type --no-browser --port=$port | sleep 4 | open -a /Applications/Google\ Chrome.app "http://localhost:$port"
+end
+
+# Git based functions
+function get-commit-list
+    if test "$argv[1]" = "--help"
+        echo "Gets the commit list for the current task. Ignores others' commits and merge commits."
+        echo "\tRun without any parameters: Lists your commits for the current branch."
+        echo "\tPass in gitlab username: Lists target developer's commits for the current branch."
+        echo "\tPass in gitlab username and branch: Lists target developer's commits for the target branch."
+        return 0
+    end
+    set userName (git config user.name)
+    set branchName (git branch --show-current)
+    if test (count $argv) -ge 1
+        set userName $argv[1]
+    end
+    if test (count $argv) -ge 2
+        set branchName $argv[2]
+    end
+    set branchPrefix (echo $branchName | grep -Eo '^[A-Z0-9\-]+')
+    git log --author=$userName --grep=$branchPrefix --oneline --no-merges
+end
+
+function get-commit-id-list
+    if test "$argv[1]" = "--help"
+        echo "Gets the commit id list for the current task. Ignores others' commits and merge commits."
+        return 0
+    end
+    set commitList (get-commit-list $argv[1])
+    echo $commitList | awk '{print $1}'
+end
+
+function get-reversed-commit-id-list
+    if test "$argv[1]" = "--help"
+        echo "Gets the reversed commit id list for the current task. Ignores others' commits and merge commits."
+        return 0
+    end
+    set commitIDList (get-commit-id-list $argv[1])
+    echo $commitIDList | awk '{ lines[NR] = $0 } END { for (i = NR; i >= 1; i--) print lines[i] }'
+end
+
+function force-ktlint
+    set fileList (git diff --name-only HEAD)
+    for file in $fileList
+        ktlint -F $file
+    end
+end
+
+function ptr
+    if test "$argv[1]" = "--help"
+        echo "Push the changes to the remote."
+        return 0
+    end
+    set branch (git branch --show-current)
+    git push -u origin $branch $argv
+end
+
+function gtc
+    if test "$argv[1]" = "--help"
+        echo "Get to the conflict with given branch or develop."
+        return 0
+    end
+    set branchToPull "develop"
+    if test -n "$argv[1]"
+        set branchToPull $argv[1]
+    end
+    git pull origin $branchToPull
+end
+
+function cbl
+    if test "$argv[1]" = "--help"
+        echo "Select branch from local list and check out."
+        return 0
+    end
+    set branch (git branch | fzf)
+    if test -z "$branch"
+        echo "Branch selection is empty, exiting..."
+        return 0
+    end
+    git checkout $branch
+end
+
+function cbr
+    if test "$argv[1]" = "--help"
+        echo "Select branch from remote list and check out."
+        return 0
+    end
+    set branch (git branch -r | fzf)
+    if test -z "$branch"
+        echo "Branch selection is empty, exiting..."
+        return 0
+    end
+    git checkout $branch
+end
+
+function rebase
+    git rebase -i @~$argv[1]
+end
+
+function change
+    git add .
+    git commit --amend
+end
+
+function step-forward
+    git rebase --continue
+end
+
+function ctlv
+    change_to_local_version $argv
+end
+
+function cdtp
+    if test "$argv[1]" = "--help"
+        echo "Usage: cdtp"
+        echo "Navigate to your project folder from defined PROJECT_PATHS."
+        echo "Define PROJECT_PATHS as a colon-separated list of directories to scan."
+        return 0
+    end
+
+    # Ensure PROJECT_PATHS is defined
+    if test -z "$PROJECT_PATHS"
+        echo "Error: PROJECT_PATHS is not defined. Please set it in your shell configuration."
+        return 1
+    end
+
+    # Gather all subdirectories from the paths in PROJECT_PATHS
+    set folders (string split : "$PROJECT_PATHS" | xargs -I{} find {} -mindepth 2 -maxdepth 2 -type d ! -name ".*" 2>/dev/null)
+
+    # Ensure there are folders to search
+    if test -z "$folders"
+        echo "No project folders found in the defined PROJECT_PATHS."
+        return 1
+    end
+
+    # Use fzf to select a directory, ensuring folders are passed line-by-line
+    set selected (printf "%s\n" $folders | fzf --prompt="Select a project: " --height=40%)
+
+    # Handle no selection
+    if test -z "$selected"
+        echo "No project selected."
+        return 1
+    end
+
+    # Navigate to the selected folder
+    cd $selected
+    echo "Navigated to ($selected)"
+end
+
+if status is-interactive
 
     # Copy and paste to the clipboard by piping to these commands.
     # (Inspired by the default behaviour in macOS.)
     abbr --add --global pbcopy 'xsel --clipboard --input'
     abbr --add --global pbpaste 'xsel --clipboard --output'
 
-    # Open files in their associated apps from Terminal.
-    abbr --add --global open 'xdg-open &>/dev/null '
+    # General
+    abbr please 'sudo'
+    abbr v 'fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+    abbr r 'ranger'
+    abbr ranger 'ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
+    abbr lg 'lazygit'
+    abbr ldo 'lazydocker'
+    abbr lse 'exa -lhi'
+    abbr lvim '~/.local/bin/lvim'
+    abbr ll 'exa -lhi'
+    abbr vim 'nvim --listen /tmp/nvimsocket'
+    abbr rm 'trash'
+    abbr emulator "$HOME/Library/Android/sdk/emulator/emulator"
 
-    # Git aliases to make git a bit more humane for everyday use.
-    abbr --add --global git-log 'git log --graph --decorate --pretty=oneline --abbrev-commit'
-    abbr --add --global git-log-dates 'git log --graph --decorate --pretty=format:"%h [%cr] %s'
-    abbr --add --global git-tag 'git tag -n'
-    abbr --add --global git-undo-last-commit 'git reset HEAD~'
+    # Vim
+    abbr uv 'nvim ~/projects/personal/dotfiles'
+    abbr nvd 'neovide'
+    abbr rgt 'run-gradle-task'
 
-    # Aliases for getting system and app information.
-    abbr --add --global system-information neofetch
-    abbr --add --global disk-usage dust
-    abbr --add --global which-kernel 'apt-cache policy linux-generic'
-    abbr --add --global node-v8-version 'node -p process.versions.v8'
+    # Command Shortcuts
+    abbr tt 'tmux attach -t'
+    abbr ttt 'tmux new-session -s'
 
-    # Make rm a little safer (have it prompt once when deleting
-    # more than three files or when deleting recursively).
-    abbr --add --global rm 'rm -I'
+    function tls
+        set target (tmux ls -F "#{session_name}" | fzf-tmux -p --reverse)
+        tmux attach -t $target
+    end
 
-    # A nicer ls that also shows the git status of files
-    abbr --add --global l 'exa -lh --git --all'
+    abbr tmx 'tmuxinator'
+    abbr tkill 'tmux kill-session -t'
 
-    # A nicer ls that also shows the git status of files
-    # (but not hidden files)
-    abbr --add --global ll 'exa -lh --git'
+    # Configuration
+    abbr A 'nvim ~/.alias'
+    abbr F 'nvim ~/.functions'
+    abbr E 'nvim ~/.exports'
+    abbr Z 'nvim ~/.zshrc'
+    abbr vim-config 'dotfiles; cd configs/nvim; vim'
 
-    # Same nicer ls but in tree view.
-    abbr --add --global lt 'exa -lh --git --all --tree'
+    # Shortcuts
+    abbr slive 'bundle exec jekyll serve'
+    abbr ccd 'cd; exa -i'
+    abbr dev 'cd ~/Projects'
+    abbr demos 'cd ~/Desktop'
 
-    # lc = line count
-    abbr --add --global lc 'wc -l'
+    # Obsidian Vaults
+    abbr vault-work 'cd ~/Documents/Notes/Work'
+    abbr notes 'cd ~/Documents/Notes/Personal'
+    abbr review-notes 'vim $HOME/Documents/Notes/Personal/00-Captures/*.md'
+    abbr tasks-repo 'cd ~/Documents/Tasks/task-tracking/'
 
-    # Find out what’s running on port X
-    abbr --add --global port 'lsof -i'
+    # Dev Shortcuts / Personal
+    abbr dotfiles 'cd ~/projects/personal/dotfiles'
+    abbr android 'cd ~/projects/android'
+    abbr notebooks 'cd ~/projects/notebooks'
+    abbr see-git-config 'vim ~/.gitconfig'
 
-    # Better find
-    abbr --add --global find fd
+    # Rust related
+    function nrp
+        cargo new $argv[1]
+        cd $argv[1]
+        nvim
+    end
 
-    # Better ps
-    abbr --add --global ps procs
+    # Work
+    abbr activate-doc 'source /Users/yigit.ozgumus/mkdocs/bin/activate'
+    abbr demoOn 'sh /Users/(whoami)/.local/bin/adb-demo.sh on'
+    abbr demoOff 'sh /Users/(whoami)/.local/bin/adb-demo.sh off'
 
-    # Package.json validator
-    abbr --add --global validate-package.json 'pjv package.json'
+    abbr wip 'git add -A && git commit -m "WIP" --no-verify'
+    abbr btw 'git reset --soft HEAD^' # back to work
 
-    # Use ripgrep instead of grep
-    abbr --add --global grep rg
+    abbr cout 'git branch | fzf | xargs git checkout'
+    abbr coutr 'git branch -r | fzf | xargs git checkout'
+
+    # Android Aliases
+    abbr screen 'scrcpy --stay-awake --encoder OMX.google.h264.encoder -m 1024 --window-title Android --window-height 800'
+    abbr startApp 'adb shell am start -n trendyol.com.stage/com.trendyol.common.splash.impl.ui.SplashActivity'
+
+    # Gradle Aliases
+    abbr gw './gradlew $argv'
+
+    # Python
+    function select-env
+        set target (conda env list | awk '/^[a-z]/ {print $1}' | fzf-tmux -p --reverse)
+        conda activate $target
+    end
+
+    # Taskwarrior (Uncomment if needed)
+    # function tw
+    #     ln -sf "$HOME/.taskrc-work" "$HOME/.taskrc"
+    #     task $argv
+    # end
+
+    # function tp
+    #     ln -sf "$HOME/.taskrc-personal" "$HOME/.taskrc"
+    #     task $argv
+    # end
+
+    abbr tasks-location 'cd $HOME/Documents/Tasks/task-tracking'
+    abbr maestro-test '~/projects/personal/maestro/maestro-cli/build/install/maestro/bin/maestro'
+
+    # Atuin initialization
+    atuin init fish | source
+
+    # Zoxide initialization
+    zoxide init fish | source
 end
-
-set -x PATH /opt/homebrew/bin $PATH
