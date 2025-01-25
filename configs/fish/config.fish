@@ -313,6 +313,250 @@ function cdtp
     echo "Navigated to ($selected)"
 end
 
+## Work Functions
+
+# Colors
+set -g COLOR_GRAY (set_color  243)  # Bright gray
+set -g COLOR_BLUE (set_color blue)             # Blue
+set -g COLOR_GREEN (set_color green)           # Green
+set -g COLOR_RED (set_color red)               # Red
+set -g COLOR_PURPLE (set_color magenta)        # Purple/Magenta
+set -g COLOR_YELLOW (set_color yellow)         # Yellow
+set -g COLOR_NONE (set_color normal)           # Reset to default
+
+# Print title
+function title-echo
+    echo
+    echo -n $COLOR_PURPLE
+    echo -n $argv[1]
+    echo $COLOR_NONE
+    echo -n $COLOR_GRAY
+    echo "=============================="
+    echo $COLOR_NONE
+end
+
+# Print command name
+function command-echo
+    echo -n $COLOR_YELLOW
+    echo -n "Command: "
+    echo -n $COLOR_GREEN
+    echo -n $argv[1]
+    echo $COLOR_NONE
+end
+
+# Print info
+function info-echo
+    echo -n $COLOR_BLUE
+    echo -n "Info: "
+    echo -n $COLOR_NONE
+    echo $argv[1]
+end
+
+# SFX info
+function sfx-info
+    sfx info --tr tmcpdp --te mproductdetail $argv
+end
+
+# List commands
+function command-list
+    title-echo "Feature Related Commands"
+
+    command-echo "get-commit-list"
+    info-echo "Get your commit list in the feature branch"
+    command-echo "get-commit-id-list"
+    info-echo "Get your commit ID list in the feature branch"
+    command-echo "get-reversed-commit-id-list"
+    info-echo "Get your reversed commit ID list in the feature branch"
+
+    title-echo "Workflow Related Commands:"
+
+    command-echo "open-mr"
+    info-echo "Push to Remote and open MR link in your default browser"
+    command-echo "ptr"
+    info-echo "Push to Remote"
+    command-echo "gtc"
+    info-echo "Get to Conflict"
+    command-echo "cbl"
+    info-echo "Change Branch Local"
+    command-echo "cbr"
+    info-echo "Change Branch Remote"
+    command-echo "kpop"
+    info-echo "Kill Process on Port"
+    command-echo "update-repo"
+    info-echo "Fetch the Latest Changes"
+
+    title-echo "Navigation Related Commands:"
+
+    command-echo "cdtp"
+    info-echo "Change Directory to Project"
+    command-echo "op"
+    info-echo "Open Project in IDE"
+end
+
+# Git commands
+function get-commit-list
+    if test "$argv[1]" = "--help"
+        echo "Gets the commit list for the current task. Ignores others' commits and merge commits"
+        echo "Run without any parameters: Lists your commits for the current branch you are in."
+        echo "Pass in GitLab username: Lists target developer's commits for the current branch."
+        echo "Pass in GitLab username and branch: Lists target developer's commits for the target branch."
+        return 0
+    end
+    set userName (git config user.name)
+    set branchName (git branch --show-current)
+    if test (count $argv) -eq 1
+        set userName $argv[1]
+    end
+    if test (count $argv) -eq 2
+        set userName $argv[1]
+        set branchName $argv[2]
+    end
+    set branchPrefix (echo $branchName | grep -Eo '^[A-Z0-9\-]+')
+    git log --author=$userName --grep=$branchPrefix --oneline --no-merges
+end
+
+function get-commit-id-list
+    if test "$argv[1]" = "--help"
+        echo "Gets the commit ID list for the current task. Ignores others' commits and merge commits."
+        return 0
+    end
+    set commitList (get-commit-list $argv[1])
+    echo $commitList | awk '{print $1}'
+end
+
+function get-reversed-commit-id-list
+    if test "$argv[1]" = "--help"
+        echo "Gets the reversed commit ID list for the current task. Ignores others' commits and merge commits."
+        return 0
+    end
+    set commitIDList (get-commit-id-list $argv[1])
+    echo $commitIDList | awk '{ lines[NR] = $0 } END { for (i = NR; i >= 1; i--) print lines[i] }'
+end
+
+# Workflow functions
+function ptr
+    if test "$argv[1]" = "--help"
+        echo "Push the changes to the remote."
+        return 0
+    end
+    set branch (git branch --show-current)
+    git push -u origin $branch
+end
+
+function open-mr
+    if test "$argv[1]" = "--help"
+        echo "Push the changes to the remote and opens the MR page on your default browser."
+        return 0
+    end
+    set branch (git branch --show-current)
+    set output (git push -u origin $branch)
+    echo $output | grep -o "https:[^ ]*" | xargs open -u
+end
+
+function gtc
+    if test "$argv[1]" = "--help"
+        echo "Get to the conflict with the given branch or develop."
+        return 0
+    end
+    set branchToPull "develop"
+    if test -n "$argv[1]"
+        set branchToPull $argv[1]
+    end
+    git pull origin $branchToPull
+end
+
+function cbl
+    if test "$argv[1]" = "--help"
+        echo "Select branch from the local list and check it out."
+        return 0
+    end
+    set branch (git branch | fzf)
+    if test -z "$branch"
+        echo "Branch selection is empty, exiting..."
+        return 0
+    end
+    git checkout $branch
+end
+
+function cbr
+    if test "$argv[1]" = "--help"
+        echo "Select branch from the remote list and check it out."
+        return 0
+    end
+    set branch (git branch -r | fzf)
+    if test -z "$branch"
+        echo "Branch selection is empty, exiting..."
+        return 0
+    end
+    git checkout $branch
+end
+
+function kpop
+    set port $argv[1]
+    set pid (lsof -i tcp:$port -t)
+    if test -z "$pid"
+        echo "No process found listening on port $port"
+        return 1
+    else
+        echo "Killing process with PID $pid on port $port"
+        kill $pid
+    end
+end
+
+function update-repo
+    git fetch
+    git rebase
+end
+
+# Open project in IDE
+function op
+    if test "$argv[1]" = "--help"
+        echo "Open project with a designated IDE."
+        return 0
+    end
+    if test -f "settings.gradle" -o -f "settings.gradle.kts"
+        set choices "Stable\nBeta\nCanary"
+        set choice (echo $choices | fzf)
+        switch $choice
+            case "Stable"
+                echo "Opening Android Project with Android Stable"
+                studio-stable .
+            case "Beta"
+                echo "Opening Android Project with Android Beta"
+                studio-beta .
+            case "Canary"
+                echo "Opening Android Project with Android Canary"
+                studio-canary .
+            case '*'
+                echo "Not a valid choice. Exiting..."
+        end
+    else if test -d "Trendyol_v2"
+        cd "Trendyol_v2"
+        set choices "Stable\nBeta\nCanary"
+        set choice (echo $choices | fzf)
+        switch $choice
+            case "Stable"
+                echo "Opening Trendyol Android Project with Android Stable"
+                studio-stable .
+            case "Beta"
+                echo "Opening Trendyol Android Project with Android Beta"
+                studio-beta .
+            case "Canary"
+                echo "Opening Trendyol Android Project with Android Canary"
+                studio-canary .
+            case '*'
+                echo "Not a valid choice. Exiting..."
+        end
+        cd ..
+    else if test -f "go.mod"
+        echo "Opening Go project with Goland"
+        goland .
+    else
+        echo "Opening with Visual Studio Code"
+        code .
+    end
+end
+
 if status is-interactive
 
     # Copy and paste to the clipboard by piping to these commands.
