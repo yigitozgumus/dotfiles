@@ -60,3 +60,4 @@ if status is-interactive
     abbr --add --global grep rg
 end
 
+set -x PATH /opt/homebrew/bin $PATH
