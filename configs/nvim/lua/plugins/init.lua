@@ -12,6 +12,10 @@ return {
   { "nvim-lua/plenary.nvim" },
   { "windwp/nvim-spectre" },
   { "segeljakt/vim-silicon" },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+  },
   { "mfussenegger/nvim-dap" },
   { "preservim/vim-pencil" },
   { "elihunter173/dirbuf.nvim", cmd = { "Dirbuf" } },

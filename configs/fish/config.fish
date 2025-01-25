@@ -516,7 +516,7 @@ function op
     end
     if test -f "settings.gradle" -o -f "settings.gradle.kts"
         set choices "Stable\nBeta\nCanary"
-        set choice (echo $choices | fzf)
+        set choice (echo -e $choices | fzf)
         switch $choice
             case "Stable"
                 echo "Opening Android Project with Android Stable"
@@ -533,7 +533,7 @@ function op
     else if test -d "Trendyol_v2"
         cd "Trendyol_v2"
         set choices "Stable\nBeta\nCanary"
-        set choice (echo $choices | fzf)
+        set choice (echo -e $choices | fzf)
         switch $choice
             case "Stable"
                 echo "Opening Trendyol Android Project with Android Stable"
