@@ -37,13 +37,13 @@ set -x PATH $PATH $HOME/.local/bin
 set -x PATH $PATH $HOME/miniconda/bin
 
 # Source additional exports if they exist
-# if test -e "$HOME/.exports.work"
-#     source "$HOME/.exports.work"
-# end
+if test -e "$HOME/.exports.work"
+    source "$HOME/.exports.work"
+end
 
-# if test -e "$HOME/.private-env"
-#     source "$HOME/.private-env"
-# end
+if test -e "$HOME/.private-env"
+    source "$HOME/.private-env"
+end
 
 # OpenJDK 17
 set -x PATH $PATH /opt/homebrew/opt/openjdk@17/bin
