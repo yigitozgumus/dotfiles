@@ -299,9 +299,22 @@ function cdtp
         return 1
     end
 
-    # Use fzf to select a directory, ensuring folders are passed line-by-line
-    set selected (printf "%s\n" $folders | fzf --prompt="Select a project: " --height=40%)
+    # Map full paths to their basenames
+    set selections
+    for folder in $folders
+        set basename (basename "$folder")
+        # echo "Adding: $basename | ($folder"  # Debugging print
+        set selections $selections "$basename -> ($folder)"
+    end
 
+    # Debugging: Ensure fzf gets input
+    # echo "Selections for fzf:"
+    # for line in $selections
+    #     echo $line
+    # end
+
+    # Use fzf to select a directory based on its basename
+    set selected (for line in $selections; echo $line; end | fzf --prompt="Select a project: " --height=40% | sed -E 's/.*-> \((.*)\)/\1/' | string trim)
     # Handle no selection
     if test -z "$selected"
         echo "No project selected."
@@ -312,7 +325,6 @@ function cdtp
     cd $selected
     echo "Navigated to ($selected)"
 end
-
 ## Work Functions
 
 # Colors
