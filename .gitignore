@@ -6,3 +6,5 @@ configs/tmux/plugins
 configs/kitty/current-theme.conf
 configs/alacritty/color.yml
 configs/lazygit/state.yml
+# until I find a way to separate work and personal computers
+configs/fish/fish_variables
