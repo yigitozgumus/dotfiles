@@ -88,6 +88,7 @@
 
 [push]
 	default = matching
+	autoSetupRemote = true
 
 [color]
 	ui = auto
@@ -111,6 +112,10 @@
 
 [diff]
 	tool = vimdiff
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 
 [difftool]
 	prompt = false
@@ -124,8 +129,16 @@
 [init]
 	defaultBranch = main
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[merge]
+	conflictstyle = zdiff3
+[rerere]
+	enabled = true
+	autoupdate = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate

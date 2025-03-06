@@ -40,7 +40,7 @@ return {
       time_format = "%H::%S",
     },
     daily_notes = {
-      folder = "02-Track/Calendar Notes/daily",
+      folder = "02-Track",
       date_format = "%Y-%m-%d",
       template = "Daily Template.md",
     },

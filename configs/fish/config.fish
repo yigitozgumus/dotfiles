@@ -70,6 +70,9 @@ set -x WORKSPACE_DIR "$HOME/projects/workspaces"
 # Project Locations
 set -x PROJECT_PATHS "$HOME/projects:$HOME/trendyol-projects"
 
+set -x GRADLE_TASK_PROJECT_DIR $HOME/trendyol-projects/Android/anroid-phone
+set -x GRADLE_RUN_TASK_INSTALLED 1
+
 # Set GPG_TTY
 set -x GPG_TTY (tty)
 
@@ -560,9 +563,6 @@ function op
                 echo "Not a valid choice. Exiting..."
         end
         cd ..
-    else if test -f "go.mod"
-        echo "Opening Go project with Goland"
-        goland .
     else
         echo "Opening with Visual Studio Code"
         code .
@@ -571,10 +571,6 @@ end
 
 if status is-interactive
 
-    # Copy and paste to the clipboard by piping to these commands.
-    # (Inspired by the default behaviour in macOS.)
-    abbr --add --global pbcopy 'xsel --clipboard --input'
-    abbr --add --global pbpaste 'xsel --clipboard --output'
 
     # General
     abbr please 'sudo'
@@ -683,3 +679,5 @@ if status is-interactive
     # Zoxide initialization
     zoxide init fish | source
 end
+
+set -Ux PATH /opt/homebrew/opt/python@3.11/bin $PATH
