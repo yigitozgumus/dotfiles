@@ -46,8 +46,8 @@ if test -e "$HOME/.private-env"
 end
 
 # OpenJDK 17
-set -x PATH $PATH /opt/homebrew/opt/openjdk@17/bin
-set -x JAVA_HOME (eval /usr/libexec/java_home)
+# set -x PATH $PATH /opt/homebrew/opt/openjdk@17/bin
+set -x JAVA_HOME (eval /usr/libexec/java_home -v21)
 
 # Cocoapods
 set -x LANG en_US.UTF-8
@@ -241,12 +241,18 @@ function cbl
         echo "Select branch from local list and check out."
         return 0
     end
-    set branch (git branch | fzf)
+    
+    # Use sed to completely remove leading whitespace, asterisks, and trailing whitespace
+    set branch (git branch --color | fzf --height 40% --layout=reverse --border --ansi | sed -E 's/^[[:space:]]*\*?[[:space:]]*//' | sed -E 's/[[:space:]]*$//')
+    
     if test -z "$branch"
         echo "Branch selection is empty, exiting..."
         return 0
     end
-    git checkout $branch
+    
+    echo "Checking out branch: '$branch'"
+    echo $branch
+    git checkout "$branch"
 end
 
 function cbr
@@ -254,12 +260,18 @@ function cbr
         echo "Select branch from remote list and check out."
         return 0
     end
-    set branch (git branch -r | fzf)
-    if test -z "$branch"
+    
+    # Use sed to completely remove leading whitespace and trailing whitespace
+    set remote_branch (git branch -r --color | fzf --height 40% --layout=reverse --border --ansi | sed -E 's/^[[:space:]]*//' | sed -E 's/[[:space:]]*$//')
+    
+    if test -z "$remote_branch"
         echo "Branch selection is empty, exiting..."
         return 0
     end
-    git checkout $branch
+    
+    echo "Checking out remote branch: '$remote_branch'"
+    echo $remote_branch
+    git checkout --track "$remote_branch"
 end
 
 function rebase
