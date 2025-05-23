@@ -66,3 +66,8 @@ timezsh() {
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
 eval "$(atuin init zsh)"
+
+[[ -s "/Users/yigit.ozgumus/.gvm/scripts/gvm" ]] && source "/Users/yigit.ozgumus/.gvm/scripts/gvm"
+export PATH="$HOME/.local/bin:$PATH"
+alias gmr="generate-mr-prompt"
+export GENERATE_MR_PROMPT_SCRIPT_INSTALLED=1

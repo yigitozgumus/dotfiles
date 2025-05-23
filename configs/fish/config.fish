@@ -1,4 +1,3 @@
-
 set -x PATH /opt/homebrew/bin $PATH
 # Set up PATH
 set -x PATH $HOME/bin /usr/local/bin $PATH
@@ -22,6 +21,7 @@ set -x GO111MODULE on
 set -x ANDROID_HOME "$HOME/Library/Android/sdk"
 set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 set -x PATH $PATH /opt/homebrew/opt/openjdk/bin
+set -x PATH $PATH ~/Library/Android/sdk/build-tools/34.0.0
 
 # XDG Config Home
 set -x XDG_CONFIG_HOME "$HOME/.config"
@@ -322,12 +322,6 @@ function cdtp
         set selections $selections "$basename -> ($folder)"
     end
 
-    # Debugging: Ensure fzf gets input
-    # echo "Selections for fzf:"
-    # for line in $selections
-    #     echo $line
-    # end
-
     # Use fzf to select a directory based on its basename
     set selected (for line in $selections; echo $line; end | fzf --prompt="Select a project: " --height=40% | sed -E 's/.*-> \((.*)\)/\1/' | string trim)
     # Handle no selection
@@ -492,32 +486,6 @@ function gtc
     git pull origin $branchToPull
 end
 
-function cbl
-    if test "$argv[1]" = "--help"
-        echo "Select branch from the local list and check it out."
-        return 0
-    end
-    set branch (git branch | fzf)
-    if test -z "$branch"
-        echo "Branch selection is empty, exiting..."
-        return 0
-    end
-    git checkout $branch
-end
-
-function cbr
-    if test "$argv[1]" = "--help"
-        echo "Select branch from the remote list and check it out."
-        return 0
-    end
-    set branch (git branch -r | fzf)
-    if test -z "$branch"
-        echo "Branch selection is empty, exiting..."
-        return 0
-    end
-    git checkout $branch
-end
-
 function kpop
     set port $argv[1]
     set pid (lsof -i tcp:$port -t)
@@ -586,7 +554,7 @@ if status is-interactive
 
     # General
     abbr please 'sudo'
-    abbr v 'fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+    # abbr v 'fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
     abbr r 'ranger'
     abbr ranger 'ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
     abbr lg 'lazygit'
@@ -690,6 +658,60 @@ if status is-interactive
 
     # Zoxide initialization
     zoxide init fish | source
+end
+
+function build_and_install_debug
+    # Check for arguments
+    if test (count $argv) -gt 0
+        set arg $argv[1]
+        set selected_task ""
+        
+        if test "$arg" = "pdp"
+            set selected_task ":trendyol:pdp:app:assembleDebug"
+        else if test "$arg" = "full"
+            # Show selector as before
+            set options "app:assembleDebug" ":trendyol:pdp:app:assembleDebug"
+            set selected_task (printf "%s\n" $options | fzf --prompt="Select build task > ")
+        else
+            # Assume direct task name
+            set selected_task $arg
+        end
+    else
+        # No arguments - show selector as before
+        set options "app:assembleDebug" ":trendyol:pdp:app:assembleDebug"
+        set selected_task (printf "%s\n" $options | fzf --prompt="Select build task > ")
+    end
+    
+    if test -z "$selected_task"
+        echo "❌ No task selected. Exiting."
+        return
+    end
+
+    echo "🏗️  Running: ./gradlew $selected_task ..."
+    ./gradlew $selected_task --warning-mode=none --quiet
+
+    # Step 2: Find the APK
+    echo "🔍 Searching for APK..."
+    set apk_dir app/build/outputs/apk/debug
+    if string match -r ":trendyol:pdp:app.*" "$selected_task"
+        set apk_dir trendyol/pdp/app/build/outputs/apk/debug
+    end
+
+    set apk_path (find $apk_dir -name "*.apk" | head -n 1)
+
+    if test -f "$apk_path"
+        echo "✅ APK found: $apk_path"
+        echo "📦 Installing on emulator..."
+        adb install -r "$apk_path"
+
+        if test $status -eq 0
+            echo "✅ APK installed successfully!"
+        else
+            echo "❌ APK installation failed."
+        end
+    else
+        echo "❌ No APK found under $apk_dir"
+    end
 end
 
 set -Ux PATH /opt/homebrew/opt/python@3.11/bin $PATH
