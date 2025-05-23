@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-# 'exec-and-forget borders active_color=0xff8fce00 inactive_color=0xff494d64 width=5.0'
+ 'exec-and-forget borders active_color=0xff8fce00 inactive_color=0xff494d64 width=5.0'
 ]
 
 # Start AeroSpace at login
@@ -131,6 +131,7 @@ cmd-ctrl-alt-shift-n = 'workspace N' # Notes
 cmd-ctrl-alt-shift-t = 'workspace T' # Terminal
 cmd-ctrl-alt-shift-o = 'workspace O' # Other
 cmd-ctrl-alt-shift-s = 'workspace S' # Schedule
+cmd-ctrl-alt-shift-v = 'workspace V' # Cursor
 cmd-ctrl-alt-shift-z = 'workspace Z' # Zoom
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -153,6 +154,7 @@ alt-shift-n = 'move-node-to-workspace N' # Notes
 alt-shift-o = 'move-node-to-workspace O' # Other
 alt-shift-s = 'move-node-to-workspace S' # Schedule
 alt-shift-t = 'move-node-to-workspace T' # Terminal
+alt-shift-v = 'move-node-to-workspace V' # Vibe
 alt-shift-z = 'move-node-to-workspace Z' # Zoom
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
@@ -184,7 +186,7 @@ if.app-id = 'com.github.wez.wezterm'
 run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
+if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
@@ -238,10 +240,6 @@ run = 'move-node-to-workspace M'
 [[on-window-detected]]
 if.app-id = 'com.google.android.studio-EAP'
 run = 'move-node-to-workspace M'
-
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = 'move-node-to-workspace B'
 
 
 [[on-window-detected]]
